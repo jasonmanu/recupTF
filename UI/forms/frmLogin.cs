@@ -39,11 +39,31 @@ namespace UI.forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            bool validLogin = Login(username, password);
+            if (validLogin)
+            {
+                var mainMDI = new MDIBase
+                {
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                Hide();
+                mainMDI.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuario y/o contraseña no validos");
+            }
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
+        private bool Login(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                return false;
 
-        //}
+            return true;
+        }
     }
 }
