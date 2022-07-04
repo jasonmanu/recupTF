@@ -103,5 +103,22 @@ namespace UI
                 childForm.Close();
             }
         }
+
+        private void MDIBase_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //var frmProduct = new frmProduct();
+            //frmProduct.StartPosition = FormStartPosition.CenterScreen;
+            //frmProduct.Show();
+        }
     }
 }
