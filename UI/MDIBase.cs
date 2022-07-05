@@ -106,19 +106,19 @@ namespace UI
 
         private void MDIBase_Load(object sender, EventArgs e)
         {
-            
-        }
+            int loginRole = 7;// new Random().Next(1, 10);
 
-        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var frmProduct = new frmProduct();
-            //frmProduct.StartPosition = FormStartPosition.CenterScreen;
-            //frmProduct.Show();
+            if(loginRole < 3)
+            {
+                reportsMenu.Visible = true;
+            } else if(loginRole < 6)
+            {
+                offersMenu.Visible = true;
+            }
+            else
+            {
+                productsMenu.Visible = true;
+            }
         }
     }
 }
