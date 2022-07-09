@@ -18,21 +18,24 @@ namespace BLL
                 CreatedAt=DateTime.Now.AddDays(-21),
                 Discount = 50,
                 Id = 1,
+                Name=$"50 % hasta {DateTime.Now.AddDays(-21).ToShortDateString()}",
                 Type = DiscountType.Percentage
             },
             new Offer()
             {
                 Active=false,
                 CreatedAt=DateTime.Now.AddDays(-1),
-                Discount = 50,
+                Discount = 10,
                 Id = 2,
-                Type = DiscountType.Percentage
+                Name = "$10",
+                Type = DiscountType.Money
             },
             new Offer()
             {
                 Active=true,
                 CreatedAt=DateTime.Now.AddDays(4),
-                Discount = 50,
+                Discount = 33,
+                Name= "33% navidad",
                 Id = 3,
                 Type = DiscountType.Percentage
             }
@@ -45,7 +48,7 @@ namespace BLL
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            offers = offers.Where(x => x.Id != id).ToList();
         }
 
         public List<Offer> GetAll()

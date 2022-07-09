@@ -23,14 +23,42 @@ namespace UI.forms
             InitializeComponent();
         }
 
+        private int? GetCurrentId()
+        {
+            DataGridViewRow currentRow = dgvOffers.CurrentRow;
+
+            if (currentRow == null)
+                return null;
+
+            return Convert.ToInt32(currentRow.Cells["Id"]?.Value);
+        }
+
         private void frmManageOffer_Load(object sender, EventArgs e)
         {
+            LoadOffers();
+        }
+
+        private void LoadOffers()
+        {
             List<Offer> offers = offerService.GetAll();
+
             if (offers != null)
             {
                 dgvOffers.DataSource = offers;
+                dgvOffers.Columns["Id"].Visible = false;
+                dgvOffers.Columns["Name"].Width = 150;
             }
-            dgvOffers.Columns["Id"].Visible = false;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int? discountId = GetCurrentId();
+
+            if (discountId != null)
+            {
+                offerService.Delete((int)discountId);
+                LoadOffers();
+            }
         }
     }
 }

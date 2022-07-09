@@ -18,5 +18,6 @@ namespace Entities
         public DiscountType Type { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool Active { get; set; }
+        public string Name { get; set; }
     }
 }
