@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BLL.Contracts;
+using Entities;
+using System;
 using System.Windows.Forms;
 
 namespace UI.forms
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        private readonly IUserService userService;
+
+        public frmLogin(IUserService userService)
         {
+            this.userService = userService;
             InitializeComponent();
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -27,15 +20,15 @@ namespace UI.forms
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            bool validLogin = Login(username, password);
-            if (validLogin)
+            User loggedUser = userService.Login(username, password);
+
+            if (loggedUser != null)
             {
-                var mainMDI = new MDIBase
+                Hide();
+                new MDIBase(loggedUser.Role)
                 {
                     StartPosition = FormStartPosition.CenterScreen
-                };
-                Hide();
-                mainMDI.Show();
+                }.Show();
             }
             else
             {
@@ -43,12 +36,26 @@ namespace UI.forms
             }
         }
 
-        private bool Login(string username, string password)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                return false;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
 
-            return true;
+            bool registerFinished = userService.Register(username, password);
+
+            if (registerFinished)
+            {
+                MessageBox.Show("Registrado Correctamente");
+            }
+        }
+
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void tlpLogin_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

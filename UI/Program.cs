@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,9 +18,9 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MDIBase());
             //var productService = IServiceProvider
-            Application.Run(new frmLogin());
+            var userService = new UserService();
+            Application.Run(new frmLogin(userService));
         }
     }
 }

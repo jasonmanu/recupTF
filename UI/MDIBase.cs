@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.forms;
 
 namespace UI
 {
@@ -14,17 +16,32 @@ namespace UI
     {
         private int childFormNumber = 0;
 
-        public MDIBase()
+        public MDIBase(UserRole userRole)
         {
             InitializeComponent();
+            LoadRoleButtons(userRole);
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void LoadRoleButtons(UserRole userRole)
         {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
+            switch (userRole)
+            {
+                case UserRole.ADMIN:
+                    sellersMenu.Visible = true;
+                    reportsMenu.Visible = true;
+                    productsMenu.Visible = true;
+                    offersMenu.Visible = true;
+                    break;
+                case UserRole.SELLER:
+                    offersMenu.Visible = true;
+                    productsMenu.Visible = true;
+                    break;
+                case UserRole.SHOPPER:
+                    ordersMenu.Visible = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -49,76 +66,15 @@ namespace UI
             }
         }
 
-        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void createOfferMenu_Click(object sender, EventArgs e)
         {
         }
 
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void offersMenu_Click(object sender, EventArgs e)
         {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-        }
-
-        private void MDIBase_Load(object sender, EventArgs e)
-        {
-            int loginRole = 7;// new Random().Next(1, 10);
-
-            if(loginRole < 3)
-            {
-                reportsMenu.Visible = true;
-            } else if(loginRole < 6)
-            {
-                offersMenu.Visible = true;
-            }
-            else
-            {
-                productsMenu.Visible = true;
-            }
+            frmManageOffer manageOffersForm = new frmManageOffer() { StartPosition = FormStartPosition.CenterScreen };
+            manageOffersForm.MdiParent = this;
+            manageOffersForm.Show();
         }
     }
 }
