@@ -8,10 +8,12 @@ namespace UI.forms
     public partial class frmLogin : Form
     {
         private readonly IUserService userService;
+        private readonly IOfferService offerService;
 
-        public frmLogin(IUserService userService)
+        public frmLogin(IUserService userService, IOfferService offerService)
         {
             this.userService = userService;
+            this.offerService = offerService;
             InitializeComponent();
         }
 
@@ -25,7 +27,7 @@ namespace UI.forms
             if (loggedUser != null)
             {
                 Hide();
-                new MDIBase(loggedUser.Role)
+                new MDIBase(loggedUser.Role, offerService)
                 {
                     StartPosition = FormStartPosition.CenterScreen
                 }.Show();

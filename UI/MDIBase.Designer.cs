@@ -37,6 +37,8 @@ namespace UI
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.sellersMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -49,8 +51,8 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.sellersMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordersMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -72,11 +74,13 @@ namespace UI
             // 
             // offersMenu
             // 
+            this.offersMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCreateOffer,
+            this.btnGetOffers});
             this.offersMenu.Name = "offersMenu";
             this.offersMenu.Size = new System.Drawing.Size(57, 20);
             this.offersMenu.Text = "Ofertas";
             this.offersMenu.Visible = false;
-            this.offersMenu.Click += new System.EventHandler(this.offersMenu_Click);
             // 
             // productsMenu
             // 
@@ -91,12 +95,12 @@ namespace UI
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(114, 6);
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem.Text = "Manage";
             // 
             // reportsMenu
@@ -105,6 +109,20 @@ namespace UI
             this.reportsMenu.Size = new System.Drawing.Size(65, 20);
             this.reportsMenu.Text = "Reportes";
             this.reportsMenu.Visible = false;
+            // 
+            // sellersMenu
+            // 
+            this.sellersMenu.Name = "sellersMenu";
+            this.sellersMenu.Size = new System.Drawing.Size(80, 20);
+            this.sellersMenu.Text = "Vendedores";
+            this.sellersMenu.Visible = false;
+            // 
+            // ordersMenu
+            // 
+            this.ordersMenu.Name = "ordersMenu";
+            this.ordersMenu.Size = new System.Drawing.Size(87, 20);
+            this.ordersMenu.Text = "Mis compras";
+            this.ordersMenu.Visible = false;
             // 
             // toolStrip
             // 
@@ -204,19 +222,19 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // sellersMenu
+            // btnCreateOffer
             // 
-            this.sellersMenu.Name = "sellersMenu";
-            this.sellersMenu.Size = new System.Drawing.Size(80, 20);
-            this.sellersMenu.Text = "Vendedores";
-            this.sellersMenu.Visible = false;
+            this.btnCreateOffer.Name = "btnCreateOffer";
+            this.btnCreateOffer.Size = new System.Drawing.Size(180, 22);
+            this.btnCreateOffer.Text = "Crear";
+            this.btnCreateOffer.Click += new System.EventHandler(this.btnCreateOffer_Click);
             // 
-            // ordersMenu
+            // btnGetOffers
             // 
-            this.ordersMenu.Name = "ordersMenu";
-            this.ordersMenu.Size = new System.Drawing.Size(87, 20);
-            this.ordersMenu.Text = "Mis compras";
-            this.ordersMenu.Visible = false;
+            this.btnGetOffers.Name = "btnGetOffers";
+            this.btnGetOffers.Size = new System.Drawing.Size(180, 22);
+            this.btnGetOffers.Text = "Ver ofertas";
+            this.btnGetOffers.Click += new System.EventHandler(this.btnGetOffers_Click);
             // 
             // MDIBase
             // 
@@ -264,6 +282,8 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem reportsMenu;
         private System.Windows.Forms.ToolStripMenuItem sellersMenu;
         private System.Windows.Forms.ToolStripMenuItem ordersMenu;
+        private System.Windows.Forms.ToolStripMenuItem btnCreateOffer;
+        private System.Windows.Forms.ToolStripMenuItem btnGetOffers;
     }
 }
 

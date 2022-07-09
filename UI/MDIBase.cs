@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using BLL.Contracts;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,13 @@ namespace UI
 {
     public partial class MDIBase : Form
     {
-        private int childFormNumber = 0;
+        private readonly IOfferService offerService;
 
-        public MDIBase(UserRole userRole)
+        public MDIBase(UserRole userRole, IOfferService offerService)
         {
             InitializeComponent();
             LoadRoleButtons(userRole);
+            this.offerService = offerService;
         }
 
         private void LoadRoleButtons(UserRole userRole)
@@ -70,11 +72,22 @@ namespace UI
         {
         }
 
-        private void offersMenu_Click(object sender, EventArgs e)
+        private void btnCreateOffer_Click(object sender, EventArgs e)
         {
-            frmManageOffer manageOffersForm = new frmManageOffer() { StartPosition = FormStartPosition.CenterScreen };
-            manageOffersForm.MdiParent = this;
-            manageOffersForm.Show();
+            var formCreateOffer = new frmCreateOffer(offerService)
+            {
+                MdiParent = this
+            };
+            formCreateOffer.Show();
+        }
+
+        private void btnGetOffers_Click(object sender, EventArgs e)
+        {
+            var formCreateOffer = new frmManageOffer(offerService)
+            {
+                MdiParent = this
+            };
+            formCreateOffer.Show();
         }
     }
 }

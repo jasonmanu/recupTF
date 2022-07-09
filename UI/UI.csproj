@@ -46,17 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="forms\frmManageOffer.cs">
+    <Compile Include="forms\frmCreateOffer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmManageOffer.Designer.cs">
-      <DependentUpon>frmManageOffer.cs</DependentUpon>
+    <Compile Include="forms\frmCreateOffer.Designer.cs">
+      <DependentUpon>frmCreateOffer.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmManageOffer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmManageOffer.Designer.cs">
+      <DependentUpon>frmManageOffer.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmProduct.cs">
       <SubType>Form</SubType>
@@ -72,11 +78,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\frmManageOffer.resx">
-      <DependentUpon>frmManageOffer.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmCreateOffer.resx">
+      <DependentUpon>frmCreateOffer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmManageOffer.resx">
+      <DependentUpon>frmManageOffer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>

@@ -20,7 +20,8 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
             //var productService = IServiceProvider
             var userService = new UserService();
-            Application.Run(new frmLogin(userService));
+            var offerService = new OfferService();
+            Application.Run(new frmLogin(userService, offerService));
         }
     }
 }
