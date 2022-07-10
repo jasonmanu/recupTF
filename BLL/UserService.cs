@@ -1,6 +1,7 @@
 ﻿using BLL.Contracts;
 using Entities;
 using Entities.Exceptions;
+using FormSupport;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace BLL
                 return null;
 
             // encripta password para comparar con los datos almacenados
-            password = Crypto.Hash(password);
+            password = CryptoHelper.Hash(password);
 
             // retorna usuario si es login valido o null si los datos de login son invalidos
             return users.FirstOrDefault(x => x.Username == username && x.Password == password);
@@ -73,7 +74,7 @@ namespace BLL
                 throw new InvalidLengthException();
 
             // encripta password antes de guardarla
-            password = Crypto.Hash(password);
+            password = CryptoHelper.Hash(password);
 
             // si paso las verificaciones se guarda en almacenamiento
             users.Add(new User(username, password, UserRole.SHOPPER));

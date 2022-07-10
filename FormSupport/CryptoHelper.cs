@@ -5,9 +5,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace FormSupport
 {
-    public static class Crypto
+    public static class CryptoHelper
     {
         public static string Hash(string text)
         {

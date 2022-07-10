@@ -35,6 +35,7 @@ namespace UI
             this.offersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSuggestedOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,9 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSuggestedOffers = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGenerateBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -66,7 +69,8 @@ namespace UI
             this.productsMenu,
             this.reportsMenu,
             this.sellersMenu,
-            this.ordersMenu});
+            this.ordersMenu,
+            this.backupMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1264, 24);
@@ -87,16 +91,23 @@ namespace UI
             // btnCreateOffer
             // 
             this.btnCreateOffer.Name = "btnCreateOffer";
-            this.btnCreateOffer.Size = new System.Drawing.Size(180, 22);
+            this.btnCreateOffer.Size = new System.Drawing.Size(165, 22);
             this.btnCreateOffer.Text = "Crear";
             this.btnCreateOffer.Click += new System.EventHandler(this.btnCreateOffer_Click);
             // 
             // btnGetOffers
             // 
             this.btnGetOffers.Name = "btnGetOffers";
-            this.btnGetOffers.Size = new System.Drawing.Size(180, 22);
+            this.btnGetOffers.Size = new System.Drawing.Size(165, 22);
             this.btnGetOffers.Text = "Ver ofertas";
             this.btnGetOffers.Click += new System.EventHandler(this.btnGetOffers_Click);
+            // 
+            // btnSuggestedOffers
+            // 
+            this.btnSuggestedOffers.Name = "btnSuggestedOffers";
+            this.btnSuggestedOffers.Size = new System.Drawing.Size(165, 22);
+            this.btnSuggestedOffers.Text = "Ofertas sugeridas";
+            this.btnSuggestedOffers.Click += new System.EventHandler(this.btnSuggestedOffers_Click);
             // 
             // productsMenu
             // 
@@ -238,12 +249,27 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // btnSuggestedOffers
+            // backupMenu
             // 
-            this.btnSuggestedOffers.Name = "btnSuggestedOffers";
-            this.btnSuggestedOffers.Size = new System.Drawing.Size(180, 22);
-            this.btnSuggestedOffers.Text = "Ofertas sugeridas";
-            this.btnSuggestedOffers.Click += new System.EventHandler(this.btnSuggestedOffers_Click);
+            this.backupMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnGenerateBackup,
+            this.btnRestoreBackup});
+            this.backupMenu.Name = "backupMenu";
+            this.backupMenu.Size = new System.Drawing.Size(58, 20);
+            this.backupMenu.Text = "Backup";
+            this.backupMenu.Visible = false;
+            // 
+            // btnGenerateBackup
+            // 
+            this.btnGenerateBackup.Name = "btnGenerateBackup";
+            this.btnGenerateBackup.Size = new System.Drawing.Size(180, 22);
+            this.btnGenerateBackup.Text = "Generar";
+            // 
+            // btnRestoreBackup
+            // 
+            this.btnRestoreBackup.Name = "btnRestoreBackup";
+            this.btnRestoreBackup.Size = new System.Drawing.Size(180, 22);
+            this.btnRestoreBackup.Text = "Restaurar";
             // 
             // MDIBase
             // 
@@ -294,6 +320,9 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem btnCreateOffer;
         private System.Windows.Forms.ToolStripMenuItem btnGetOffers;
         private System.Windows.Forms.ToolStripMenuItem btnSuggestedOffers;
+        private System.Windows.Forms.ToolStripMenuItem backupMenu;
+        private System.Windows.Forms.ToolStripMenuItem btnGenerateBackup;
+        private System.Windows.Forms.ToolStripMenuItem btnRestoreBackup;
     }
 }
 

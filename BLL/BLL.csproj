@@ -189,7 +189,6 @@
     <Compile Include="Contracts\IProductService.cs" />
     <Compile Include="Contracts\ISuggestedOfferService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
-    <Compile Include="Crypto.cs" />
     <Compile Include="OfferService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,6 +203,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{A02F04BA-1D94-4DD1-8CC9-C6D7B908CFB3}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FormSupport\Helpers.csproj">
+      <Project>{FFD0B3F0-3BB8-4EB5-95E5-970DCC48935E}</Project>
+      <Name>Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
