@@ -89,5 +89,13 @@ namespace UI
             };
             formCreateOffer.Show();
         }
+
+        private void reportsMenu_Click(object sender, EventArgs e)
+        {
+            new frmReports()
+            {
+                StartPosition = FormStartPosition.CenterScreen
+            }.Show();
+        }
     }
 }

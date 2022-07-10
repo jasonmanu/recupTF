@@ -85,14 +85,14 @@ namespace UI
             // btnCreateOffer
             // 
             this.btnCreateOffer.Name = "btnCreateOffer";
-            this.btnCreateOffer.Size = new System.Drawing.Size(180, 22);
+            this.btnCreateOffer.Size = new System.Drawing.Size(129, 22);
             this.btnCreateOffer.Text = "Crear";
             this.btnCreateOffer.Click += new System.EventHandler(this.btnCreateOffer_Click);
             // 
             // btnGetOffers
             // 
             this.btnGetOffers.Name = "btnGetOffers";
-            this.btnGetOffers.Size = new System.Drawing.Size(180, 22);
+            this.btnGetOffers.Size = new System.Drawing.Size(129, 22);
             this.btnGetOffers.Text = "Ver ofertas";
             this.btnGetOffers.Click += new System.EventHandler(this.btnGetOffers_Click);
             // 
@@ -123,6 +123,7 @@ namespace UI
             this.reportsMenu.Size = new System.Drawing.Size(65, 20);
             this.reportsMenu.Text = "Reportes";
             this.reportsMenu.Visible = false;
+            this.reportsMenu.Click += new System.EventHandler(this.reportsMenu_Click);
             // 
             // sellersMenu
             // 

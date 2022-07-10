@@ -1,6 +1,7 @@
 ﻿using BLL;
 using BLL.Contracts;
 using Entities;
+using Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace UI.forms
         {
             this.offerService = offerService;
             InitializeComponent();
-            cboType.DataSource = Enum.GetValues(typeof(DiscountType));
+            cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
         }
 
         private int? GetCurrentId()
@@ -79,11 +80,11 @@ namespace UI.forms
             {
                 Offer currentDiscount = offers.FirstOrDefault(x => x.Id == id);
                 currentDiscount.Discount = Convert.ToInt32(nudDiscount.Value);
-                currentDiscount.Type = (DiscountType)cboType.SelectedValue;
+                currentDiscount.Type = (DiscountTypeEnum)cboType.SelectedValue;
                 currentDiscount.Name = txtName.Text;
                 currentDiscount.Active = checkActive.Checked;
 
-                offerService.Update(currentDiscount);
+                offerService.Update(currentDiscount);// con ORM va a funcionar, porque los datos se actualizan y leen, ahora solo lee lo no modificado
                 LoadOffers();
             }
         }

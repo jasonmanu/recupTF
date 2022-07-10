@@ -1,5 +1,6 @@
 ﻿using BLL.Contracts;
 using Entities;
+using Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace BLL
                 Discount = 50,
                 Id = 1,
                 Name=$"50 % hasta {DateTime.Now.AddDays(-21).ToShortDateString()}",
-                Type = DiscountType.Percentage
+                Type = DiscountTypeEnum.Percentage
             },
             new Offer()
             {
@@ -28,7 +29,7 @@ namespace BLL
                 Discount = 10,
                 Id = 2,
                 Name = "$10",
-                Type = DiscountType.Amount
+                Type = DiscountTypeEnum.Amount
             },
             new Offer()
             {
@@ -37,7 +38,7 @@ namespace BLL
                 Discount = 33,
                 Name= "33% navidad",
                 Id = 3,
-                Type = DiscountType.Percentage
+                Type = DiscountTypeEnum.Percentage
             }
         };
 
