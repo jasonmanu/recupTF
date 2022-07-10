@@ -21,6 +21,8 @@ namespace UI.forms
         {
             this.offerService = offerService;
             InitializeComponent();
+
+            // valores iniciales de nueva oferta
             dtpStart.Value = DateTime.Now;
             dtpEnd.Value = DateTime.Now.AddDays(7);
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
@@ -53,6 +55,7 @@ namespace UI.forms
 
             try
             {
+                // creacion de oferta con valores del usuario
                 offerService.Create(newOffer);
                 MessageBox.Show("Oferta creada correctamente");
             }

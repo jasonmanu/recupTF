@@ -9,13 +9,13 @@ namespace UI
 {
     public partial class frmProduct : Form
     {
+        private readonly IProductService productService;
         private List<Product> products;
-        private readonly ProductService productService;
 
-        public frmProduct(ProductService productService)
+        public frmProduct(IProductService productService)
         {
-            this.productService = productService;
             InitializeComponent();
+            this.productService = productService;
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
@@ -31,7 +31,6 @@ namespace UI
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

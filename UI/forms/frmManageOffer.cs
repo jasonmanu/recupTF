@@ -17,9 +17,9 @@ namespace UI.forms
 
         public frmManageOffer(IOfferService offerService, ICategoryService categoryService)
         {
+            InitializeComponent();
             this.offerService = offerService;
             this.categoryService = categoryService;
-            InitializeComponent();
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
         }
 
@@ -42,7 +42,6 @@ namespace UI.forms
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
                 }
             }
         }

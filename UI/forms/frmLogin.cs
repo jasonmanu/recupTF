@@ -14,11 +14,11 @@ namespace UI.forms
 
         public frmLogin(IUserService userService, IOfferService offerService, ICategoryService categoryService, ISuggestedOfferService suggestedOfferService)
         {
+            InitializeComponent();
             this.userService = userService;
             this.offerService = offerService;
             this.categoryService = categoryService;
             this.suggestedOfferService = suggestedOfferService;
-            InitializeComponent();
             txtPassword.Text = "admin";
             txtUsername.Text = "admin";
         }
