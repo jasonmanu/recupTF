@@ -186,6 +186,7 @@
     <Compile Include="Contracts\IOfferService.cs" />
     <Compile Include="Contracts\IProductService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="Crypto.cs" />
     <Compile Include="OfferService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

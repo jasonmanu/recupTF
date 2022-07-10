@@ -3,6 +3,7 @@ using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,6 @@ namespace BLL
 {
     public class UserService : IUserService
     {
-        // load from XML
         List<User> users = new List<User>()
         {
             new User("admin","admin", UserRole.ADMIN),
@@ -50,10 +50,18 @@ namespace BLL
 
         public bool Register(string username, string password)
         {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                throw new Exception("Username y/o Password no pueden ser nulos");
+
             username = username.ToLower();
 
             if (users.Any(x => x.Username == username))
-                return false;
+                throw new Exception("Username already exists");
+
+            //TODO change this
+            byte[] data = Encoding.ASCII.GetBytes(password);
+            data = new SHA256Managed().ComputeHash(data);
+            String hash = Encoding.ASCII.GetString(data);
 
             users.Add(new User(username, password, UserRole.SHOPPER));
             return true;

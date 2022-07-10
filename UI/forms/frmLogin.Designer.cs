@@ -114,7 +114,6 @@ namespace UI.forms
             this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpLogin.Size = new System.Drawing.Size(423, 135);
             this.tlpLogin.TabIndex = 3;
-            this.tlpLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpLogin_Paint);
             // 
             // btnForgotPassword
             // 

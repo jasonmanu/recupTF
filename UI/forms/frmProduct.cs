@@ -27,8 +27,8 @@ namespace UI
         {
             products = new List<Product>
             {
-                new Product("Name 1", "desc 1", 1),
-                new Product("Name 2", "desc 2", 2)
+                //new Product("Name 1", "desc 1", 1),
+                //new Product("Name 2", "desc 2", 2)
             };
 
             dgvProducts.DataSource = products;

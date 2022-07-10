@@ -43,23 +43,21 @@ namespace UI.forms
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string password = txtUsername.Text;
 
-            bool registerFinished = userService.Register(username, password);
-
-            if (registerFinished)
+            try
             {
+                userService.Register(username, password);
                 MessageBox.Show("Registrado Correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
-        }
-
-        private void tlpLogin_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
