@@ -29,19 +29,6 @@ namespace UI
             dgvProducts.DataSource = products;
         }
 
-        private void dgvProducts_SelectionChanged(object sender, EventArgs e)
-        {
-            //if (currentRow == null)
-            //{
-            //    MessageBox.Show("Seleccione una columna");
-            //}
-            //else
-            //{
-            //    int productId = 
-            //    string currentRowName = currentRow.Cells["Name"].Value.ToString();
-            //}
-        }
-
         private void btnCreate_Click(object sender, EventArgs e)
         {
 

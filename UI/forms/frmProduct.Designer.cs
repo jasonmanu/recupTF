@@ -57,7 +57,6 @@ namespace UI
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.Size = new System.Drawing.Size(766, 265);
             this.dgvProducts.TabIndex = 0;
-            this.dgvProducts.SelectionChanged += new System.EventHandler(this.dgvProducts_SelectionChanged);
             // 
             // lblPage
             // 
