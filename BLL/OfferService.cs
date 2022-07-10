@@ -16,30 +16,43 @@ namespace BLL
             new Offer()
             {
                 Active=true,
-                CreatedAt=DateTime.Now.AddDays(-21),
-                Discount = 50,
-                Id = 1,
                 Name=$"50 % hasta {DateTime.Now.AddDays(-21).ToShortDateString()}",
-                Type = DiscountTypeEnum.Percentage
+                Discount = 50,
+                Type = DiscountTypeEnum.Percentage,
+                Start = DateTime.Now.AddDays(-20),
+                End = DateTime.Now.AddDays(20),
+                Id = 1
             },
             new Offer()
             {
                 Active=false,
-                CreatedAt=DateTime.Now.AddDays(-1),
-                Discount = 10,
-                Id = 2,
                 Name = "$10",
-                Type = DiscountTypeEnum.Amount
+                Discount = 10,
+                Type = DiscountTypeEnum.Amount,
+                Start = DateTime.Now.AddDays(-10),
+                End = DateTime.Now.AddDays(10),
+                Id = 2,
             },
             new Offer()
             {
                 Active=true,
-                CreatedAt=DateTime.Now.AddDays(4),
-                Discount = 33,
                 Name= "33% navidad",
+                Discount = 33,
+                Start = DateTime.Now.AddDays(10),
+                End = DateTime.Now.AddDays(20),
+                Type = DiscountTypeEnum.Percentage,
                 Id = 3,
-                Type = DiscountTypeEnum.Percentage
-            }
+            },
+            new Offer()
+            {
+                Active=true,
+                Name= "33% navidad",
+                Discount = 33,
+                Start = DateTime.Now.AddDays(10),
+                End = DateTime.Now.AddDays(20),
+                Type = DiscountTypeEnum.Percentage,
+                Id = 3,
+            },
         };
 
         public void Create(Offer entity)

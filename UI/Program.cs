@@ -1,4 +1,6 @@
 ﻿using BLL;
+using BLL.Contracts;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +12,27 @@ namespace UI
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //var productService = IServiceProvider
-            var userService = new UserService();
-            var offerService = new OfferService();
-            Application.Run(new frmLogin(userService, offerService));
+
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                frmLogin mainForm = serviceProvider.GetRequiredService<frmLogin>();
+                Application.Run(mainForm);
+            }
+        }
+
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services.AddScoped<IUserService, UserService>()
+                    .AddScoped<IOfferService, OfferService>();
+            services.AddScoped<frmLogin>();
         }
     }
 }

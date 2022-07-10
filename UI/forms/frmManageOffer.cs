@@ -16,9 +16,8 @@ namespace UI.forms
 {
     public partial class frmManageOffer : Form
     {
-        private List<Offer> offers;
-
         private readonly IOfferService offerService;
+        private List<Offer> offers;
 
         public frmManageOffer(IOfferService offerService)
         {
@@ -105,6 +104,16 @@ namespace UI.forms
                     cboType.SelectedItem = currentOffer.Type;
                 }
             }
+        }
+
+        private void btnCreateDiscount_Click(object sender, EventArgs e)
+        {
+            new frmCreateOffer(offerService)
+            {
+                StartPosition = FormStartPosition.CenterScreen
+            }.Show();
+
+            LoadOffers();
         }
     }
 }

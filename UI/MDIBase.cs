@@ -97,5 +97,10 @@ namespace UI
                 StartPosition = FormStartPosition.CenterScreen
             }.Show();
         }
+
+        private void btnSuggestedOffers_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

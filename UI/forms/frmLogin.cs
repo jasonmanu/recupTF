@@ -15,6 +15,8 @@ namespace UI.forms
             this.userService = userService;
             this.offerService = offerService;
             InitializeComponent();
+            txtPassword.Text = "admin";
+            txtUsername.Text = "admin";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
