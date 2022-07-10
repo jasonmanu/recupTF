@@ -1,5 +1,4 @@
-﻿using BLL;
-using BLL.Contracts;
+﻿using BLL.Contracts;
 using Entities;
 using System;
 using System.Windows.Forms;
@@ -10,11 +9,13 @@ namespace UI.forms
     {
         private readonly IUserService userService;
         private readonly IOfferService offerService;
+        private readonly ICategoryService categoryService;
 
-        public frmLogin(IUserService userService, IOfferService offerService)
+        public frmLogin(IUserService userService, IOfferService offerService, ICategoryService categoryService)
         {
             this.userService = userService;
             this.offerService = offerService;
+            this.categoryService = categoryService;
             InitializeComponent();
             txtPassword.Text = "admin";
             txtUsername.Text = "admin";
@@ -30,10 +31,7 @@ namespace UI.forms
             if (loggedUser != null)
             {
                 Hide();
-                new MDIBase(loggedUser.Role, offerService)
-                {
-                    StartPosition = FormStartPosition.CenterScreen
-                }.Show();
+                new MDIBase(loggedUser.Role, offerService, categoryService).Show();
             }
             else
             {

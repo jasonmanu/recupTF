@@ -184,6 +184,7 @@
     <Compile Include="Brand.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Enums\CategoryEnum.cs" />
     <Compile Include="Enums\DiscountTypeEnum.cs" />
     <Compile Include="Exceptions\InvalidLengthException.cs" />
     <Compile Include="Exceptions\NullLoginException.cs" />

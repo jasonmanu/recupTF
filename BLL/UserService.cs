@@ -14,7 +14,8 @@ namespace BLL
     {
         List<User> users = new List<User>()
         {
-            new User("admin","admin", UserRole.ADMIN),
+            //new User("admin","admin", UserRole.ADMIN),
+            new User("admin","?iv??A???M???g??s?K??o*?H?", UserRole.ADMIN),
             new User("seller","seller", UserRole.SELLER),
             new User("shopper","shopper", UserRole.SHOPPER)
         };

@@ -17,11 +17,13 @@ namespace UI.forms
     public partial class frmManageOffer : Form
     {
         private readonly IOfferService offerService;
+        private readonly ICategoryService categoryService;
         private List<Offer> offers;
 
-        public frmManageOffer(IOfferService offerService)
+        public frmManageOffer(IOfferService offerService, ICategoryService categoryService)
         {
             this.offerService = offerService;
+            this.categoryService = categoryService;
             InitializeComponent();
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
         }
@@ -108,7 +110,7 @@ namespace UI.forms
 
         private void btnCreateDiscount_Click(object sender, EventArgs e)
         {
-            new frmCreateOffer(offerService)
+            new frmCreateOffer(offerService, categoryService)
             {
                 StartPosition = FormStartPosition.CenterScreen
             }.Show();

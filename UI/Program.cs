@@ -33,8 +33,10 @@ namespace UI
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>()
-                    .AddScoped<IOfferService, OfferService>();
-            services.AddScoped<frmLogin>();
+                    .AddScoped<IOfferService, OfferService>()
+                    .AddScoped<ICategoryService, CategoryService>();
+
+             services.AddScoped<frmLogin>();
         }
     }
 }
