@@ -28,7 +28,7 @@ namespace BLL
                 Discount = 10,
                 Id = 2,
                 Name = "$10",
-                Type = DiscountType.Money
+                Type = DiscountType.Amount
             },
             new Offer()
             {
@@ -41,7 +41,7 @@ namespace BLL
             }
         };
 
-        public void Create(Entity entity)
+        public void Create(Offer entity)
         {
             throw new NotImplementedException();
         }
@@ -61,9 +61,10 @@ namespace BLL
             throw new NotImplementedException();
         }
 
-        public void Update(Entity entity)
+        public void Update(Offer entity)
         {
-            throw new NotImplementedException();
+            offers = offers.Where(x => x.Id == entity.Id).Select(o => { o.Discount = entity.Discount; o.Active = entity.Active; o.Name = entity.Name; return o; }).ToList();
+            Console.WriteLine("updated");
         }
     }
 }

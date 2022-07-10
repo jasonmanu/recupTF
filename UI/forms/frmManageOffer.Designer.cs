@@ -36,9 +36,22 @@ namespace UI.forms
             this.btnCreateDiscount = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.nudDiscount = new System.Windows.Forms.NumericUpDown();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.cboType = new System.Windows.Forms.ComboBox();
+            this.checkActive = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffers)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDiscount)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvOffers
@@ -46,17 +59,18 @@ namespace UI.forms
             this.dgvOffers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOffers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOffers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvOffers.Location = new System.Drawing.Point(3, 45);
+            this.dgvOffers.Location = new System.Drawing.Point(3, 46);
             this.dgvOffers.Name = "dgvOffers";
-            this.dgvOffers.Size = new System.Drawing.Size(637, 281);
+            this.dgvOffers.Size = new System.Drawing.Size(653, 255);
             this.dgvOffers.TabIndex = 0;
+            this.dgvOffers.SelectionChanged += new System.EventHandler(this.dgvOffers_SelectionChanged);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(198, 0);
+            this.label1.Location = new System.Drawing.Point(206, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(246, 25);
             this.label1.TabIndex = 1;
@@ -66,16 +80,20 @@ namespace UI.forms
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.dgvOffers, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.72786F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.60548F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(643, 396);
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 436);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -87,19 +105,19 @@ namespace UI.forms
             this.tableLayoutPanel2.Controls.Add(this.btnDelete, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnUpdate, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnCreateDiscount, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 332);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 393);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(637, 61);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(653, 40);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // btnCreateDiscount
             // 
             this.btnCreateDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateDiscount.Location = new System.Drawing.Point(3, 12);
+            this.btnCreateDiscount.Location = new System.Drawing.Point(3, 3);
             this.btnCreateDiscount.Name = "btnCreateDiscount";
-            this.btnCreateDiscount.Size = new System.Drawing.Size(206, 37);
+            this.btnCreateDiscount.Size = new System.Drawing.Size(211, 34);
             this.btnCreateDiscount.TabIndex = 0;
             this.btnCreateDiscount.Text = "Crear nuevo descuento";
             this.btnCreateDiscount.UseVisualStyleBackColor = true;
@@ -107,29 +125,143 @@ namespace UI.forms
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(215, 12);
+            this.btnUpdate.Location = new System.Drawing.Point(220, 3);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(206, 37);
+            this.btnUpdate.Size = new System.Drawing.Size(211, 34);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Actualizar";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(427, 12);
+            this.btnDelete.Location = new System.Drawing.Point(437, 3);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(207, 37);
+            this.btnDelete.Size = new System.Drawing.Size(213, 34);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel3.Controls.Add(this.cboType, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txtName, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.nudDiscount, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.checkActive, 3, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 350);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(653, 37);
+            this.tableLayoutPanel3.TabIndex = 3;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel4.Controls.Add(this.label2, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblType, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblDiscount, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblName, 0, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 307);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(653, 33);
+            this.tableLayoutPanel4.TabIndex = 4;
+            // 
+            // lblName
+            // 
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(108, 20);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(44, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Nombre";
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Location = new System.Drawing.Point(3, 8);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(255, 20);
+            this.txtName.TabIndex = 0;
+            // 
+            // nudDiscount
+            // 
+            this.nudDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudDiscount.Location = new System.Drawing.Point(264, 8);
+            this.nudDiscount.Name = "nudDiscount";
+            this.nudDiscount.Size = new System.Drawing.Size(91, 20);
+            this.nudDiscount.TabIndex = 1;
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.Location = new System.Drawing.Point(280, 20);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(59, 13);
+            this.lblDiscount.TabIndex = 1;
+            this.lblDiscount.Text = "Descuento";
+            // 
+            // lblType
+            // 
+            this.lblType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(441, 20);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(28, 13);
+            this.lblType.TabIndex = 2;
+            this.lblType.Text = "Tipo";
+            // 
+            // cboType
+            // 
+            this.cboType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.FormattingEnabled = true;
+            this.cboType.Location = new System.Drawing.Point(361, 8);
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(189, 21);
+            this.cboType.TabIndex = 3;
+            // 
+            // checkActive
+            // 
+            this.checkActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkActive.AutoSize = true;
+            this.checkActive.Location = new System.Drawing.Point(556, 10);
+            this.checkActive.Name = "checkActive";
+            this.checkActive.Size = new System.Drawing.Size(94, 17);
+            this.checkActive.TabIndex = 4;
+            this.checkActive.Text = "Activo";
+            this.checkActive.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(583, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Estado";
+            // 
             // frmManageOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 424);
+            this.ClientSize = new System.Drawing.Size(684, 461);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmManageOffer";
@@ -140,6 +272,11 @@ namespace UI.forms
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDiscount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,5 +290,15 @@ namespace UI.forms
         private System.Windows.Forms.Button btnCreateDiscount;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblDiscount;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.NumericUpDown nudDiscount;
+        private System.Windows.Forms.ComboBox cboType;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkActive;
     }
 }

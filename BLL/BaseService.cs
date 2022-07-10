@@ -17,9 +17,9 @@ namespace BLL
             //this.repository = repository;
         }
 
-        public void Create(Entity entity)
+        public void Create(TEntity entity)
         {
-            //repository.Create(entity);
+            throw new NotImplementedException();
         }
 
         public void Delete(int id)
@@ -39,9 +39,9 @@ namespace BLL
             //return repository.GetById(id);
         }
 
-        public void Update(Entity entity)
+        public void Update(TEntity entity)
         {
-            //repository.Update(entity);
+            throw new NotImplementedException();
         }
     }
 }

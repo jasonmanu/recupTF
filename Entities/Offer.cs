@@ -8,16 +8,16 @@ namespace Entities
 {
     public enum DiscountType
     {
-        Percentage,
-        Money
+        Amount,
+        Percentage
     }
 
     public class Offer : Entity
     {
-        public int Discount { get; set; }
-        public DiscountType Type { get; set; }
-        public DateTime CreatedAt { get; set; }
         public bool Active { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public int Discount { get; set; }
         public string Name { get; set; }
+        public DiscountType Type { get; set; }
     }
 }

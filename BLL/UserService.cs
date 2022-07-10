@@ -18,7 +18,7 @@ namespace BLL
             new User("shopper","shopper", UserRole.SHOPPER)
         };
 
-        public void Create(Entity entity)
+        public void Create(User entity)
         {
             throw new NotImplementedException();
         }
@@ -59,7 +59,7 @@ namespace BLL
             return true;
         }
 
-        public void Update(Entity entity)
+        public void Update(User entity)
         {
             throw new NotImplementedException();
         }

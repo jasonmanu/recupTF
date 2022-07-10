@@ -33,6 +33,8 @@ namespace UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIBase));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.offersMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +53,6 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -68,7 +68,7 @@ namespace UI
             this.ordersMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -81,6 +81,20 @@ namespace UI
             this.offersMenu.Size = new System.Drawing.Size(57, 20);
             this.offersMenu.Text = "Ofertas";
             this.offersMenu.Visible = false;
+            // 
+            // btnCreateOffer
+            // 
+            this.btnCreateOffer.Name = "btnCreateOffer";
+            this.btnCreateOffer.Size = new System.Drawing.Size(180, 22);
+            this.btnCreateOffer.Text = "Crear";
+            this.btnCreateOffer.Click += new System.EventHandler(this.btnCreateOffer_Click);
+            // 
+            // btnGetOffers
+            // 
+            this.btnGetOffers.Name = "btnGetOffers";
+            this.btnGetOffers.Size = new System.Drawing.Size(180, 22);
+            this.btnGetOffers.Text = "Ver ofertas";
+            this.btnGetOffers.Click += new System.EventHandler(this.btnGetOffers_Click);
             // 
             // productsMenu
             // 
@@ -137,7 +151,7 @@ namespace UI
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(784, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1264, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -210,9 +224,9 @@ namespace UI
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip.Location = new System.Drawing.Point(0, 739);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(784, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1264, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -222,25 +236,11 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // btnCreateOffer
-            // 
-            this.btnCreateOffer.Name = "btnCreateOffer";
-            this.btnCreateOffer.Size = new System.Drawing.Size(180, 22);
-            this.btnCreateOffer.Text = "Crear";
-            this.btnCreateOffer.Click += new System.EventHandler(this.btnCreateOffer_Click);
-            // 
-            // btnGetOffers
-            // 
-            this.btnGetOffers.Name = "btnGetOffers";
-            this.btnGetOffers.Size = new System.Drawing.Size(180, 22);
-            this.btnGetOffers.Text = "Ver ofertas";
-            this.btnGetOffers.Click += new System.EventHandler(this.btnGetOffers_Click);
-            // 
             // MDIBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1264, 761);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);

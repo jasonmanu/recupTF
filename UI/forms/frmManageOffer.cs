@@ -15,12 +15,15 @@ namespace UI.forms
 {
     public partial class frmManageOffer : Form
     {
+        private List<Offer> offers;
+
         private readonly IOfferService offerService;
 
         public frmManageOffer(IOfferService offerService)
         {
             this.offerService = offerService;
             InitializeComponent();
+            cboType.DataSource = Enum.GetValues(typeof(DiscountType));
         }
 
         private int? GetCurrentId()
@@ -40,24 +43,66 @@ namespace UI.forms
 
         private void LoadOffers()
         {
-            List<Offer> offers = offerService.GetAll();
+            offers = offerService.GetAll();
 
             if (offers != null)
             {
-                dgvOffers.DataSource = offers;
-                dgvOffers.Columns["Id"].Visible = false;
-                dgvOffers.Columns["Name"].Width = 150;
+                try
+                {
+                    dgvOffers.DataSource = offers;
+                    dgvOffers.Columns["Id"].Visible = false;
+                    dgvOffers.Columns["Name"].Width = 150;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int? discountId = GetCurrentId();
+            int? id = GetCurrentId();
 
-            if (discountId != null)
+            if (id != null)
             {
-                offerService.Delete((int)discountId);
+                offerService.Delete((int)id);
                 LoadOffers();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int? id = GetCurrentId();
+
+            if (offers != null)
+            {
+                Offer currentDiscount = offers.FirstOrDefault(x => x.Id == id);
+                currentDiscount.Discount = Convert.ToInt32(nudDiscount.Value);
+                currentDiscount.Type = (DiscountType)cboType.SelectedValue;
+                currentDiscount.Name = txtName.Text;
+                currentDiscount.Active = checkActive.Checked;
+
+                offerService.Update(currentDiscount);
+                LoadOffers();
+            }
+        }
+
+        private void dgvOffers_SelectionChanged(object sender, EventArgs e)
+        {
+            int? id = GetCurrentId();
+
+            if (id != null)
+            {
+                Offer currentOffer = offers?.FirstOrDefault(x => x.Id == id);
+
+                if (currentOffer != null)
+                {
+                    txtName.Text = currentOffer.Name;
+                    checkActive.Checked = currentOffer.Active;
+                    nudDiscount.Value = currentOffer.Discount;
+                    cboType.SelectedItem = currentOffer.Type;
+                }
             }
         }
     }
