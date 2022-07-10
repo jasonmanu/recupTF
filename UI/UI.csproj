@@ -217,6 +217,12 @@
     <Compile Include="forms\frmReports.Designer.cs">
       <DependentUpon>frmReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmSuggestedOffers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmSuggestedOffers.Designer.cs">
+      <DependentUpon>frmSuggestedOffers.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmReports.resx">
       <DependentUpon>frmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmSuggestedOffers.resx">
+      <DependentUpon>frmSuggestedOffers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIBase.resx">
       <DependentUpon>MDIBase.cs</DependentUpon>
@@ -274,6 +283,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{A02F04BA-1D94-4DD1-8CC9-C6D7B908CFB3}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FormSupport\Helpers.csproj">
+      <Project>{ffd0b3f0-3bb8-4eb5-95e5-970dcc48935e}</Project>
+      <Name>Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

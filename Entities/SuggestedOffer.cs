@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class SuggestedOffer
+    public class SuggestedOffer : Entity
     {
         public string Reason { get; set; }
         public DateTime Start { get; set; }

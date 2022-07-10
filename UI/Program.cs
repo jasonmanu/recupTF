@@ -34,7 +34,8 @@ namespace UI
         {
             services.AddScoped<IUserService, UserService>()
                     .AddScoped<IOfferService, OfferService>()
-                    .AddScoped<ICategoryService, CategoryService>();
+                    .AddScoped<ICategoryService, CategoryService>()
+                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>();
 
              services.AddScoped<frmLogin>();
         }

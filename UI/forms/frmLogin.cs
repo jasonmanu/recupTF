@@ -10,12 +10,14 @@ namespace UI.forms
         private readonly IUserService userService;
         private readonly IOfferService offerService;
         private readonly ICategoryService categoryService;
+        private readonly ISuggestedOfferService suggestedOfferService;
 
-        public frmLogin(IUserService userService, IOfferService offerService, ICategoryService categoryService)
+        public frmLogin(IUserService userService, IOfferService offerService, ICategoryService categoryService, ISuggestedOfferService suggestedOfferService)
         {
             this.userService = userService;
             this.offerService = offerService;
             this.categoryService = categoryService;
+            this.suggestedOfferService = suggestedOfferService;
             InitializeComponent();
             txtPassword.Text = "admin";
             txtUsername.Text = "admin";
@@ -31,7 +33,7 @@ namespace UI.forms
             if (loggedUser != null)
             {
                 Hide();
-                new MDIBase(loggedUser.Role, offerService, categoryService).Show();
+                new MDIBase(loggedUser.Role, offerService, categoryService, suggestedOfferService).Show();
             }
             else
             {

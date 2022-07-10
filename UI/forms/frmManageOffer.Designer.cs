@@ -31,7 +31,7 @@ namespace UI.forms
         {
             this.dgvOffers = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpOffers = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@ namespace UI.forms
             this.nudDiscount = new System.Windows.Forms.NumericUpDown();
             this.checkActive = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffers)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpOffers.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -56,6 +56,10 @@ namespace UI.forms
             // 
             // dgvOffers
             // 
+            this.dgvOffers.AllowUserToAddRows = false;
+            this.dgvOffers.AllowUserToDeleteRows = false;
+            this.dgvOffers.AllowUserToResizeColumns = false;
+            this.dgvOffers.AllowUserToResizeRows = false;
             this.dgvOffers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOffers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOffers.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -76,25 +80,25 @@ namespace UI.forms
             this.label1.TabIndex = 1;
             this.label1.Text = "Aministrar descuentos";
             // 
-            // tableLayoutPanel1
+            // tlpOffers
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dgvOffers, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(759, 436);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.tlpOffers.ColumnCount = 1;
+            this.tlpOffers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpOffers.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tlpOffers.Controls.Add(this.dgvOffers, 0, 1);
+            this.tlpOffers.Controls.Add(this.label1, 0, 0);
+            this.tlpOffers.Controls.Add(this.tableLayoutPanel2, 0, 4);
+            this.tlpOffers.Controls.Add(this.tableLayoutPanel3, 0, 3);
+            this.tlpOffers.Location = new System.Drawing.Point(13, 13);
+            this.tlpOffers.Name = "tlpOffers";
+            this.tlpOffers.RowCount = 5;
+            this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlpOffers.Size = new System.Drawing.Size(759, 436);
+            this.tlpOffers.TabIndex = 2;
             // 
             // tableLayoutPanel4
             // 
@@ -273,15 +277,15 @@ namespace UI.forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tlpOffers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmManageOffer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage offers";
             this.Load += new System.EventHandler(this.frmManageOffer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffers)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tlpOffers.ResumeLayout(false);
+            this.tlpOffers.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -296,7 +300,7 @@ namespace UI.forms
 
         private System.Windows.Forms.DataGridView dgvOffers;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpOffers;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnCreateDiscount;
         private System.Windows.Forms.Button btnDelete;

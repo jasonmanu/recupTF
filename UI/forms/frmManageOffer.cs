@@ -1,15 +1,10 @@
-﻿using BLL;
-using BLL.Contracts;
+﻿using BLL.Contracts;
 using Entities;
 using Entities.Enums;
+using FormSupport;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.forms
@@ -26,16 +21,6 @@ namespace UI.forms
             this.categoryService = categoryService;
             InitializeComponent();
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
-        }
-
-        private int? GetCurrentId()
-        {
-            DataGridViewRow currentRow = dgvOffers.CurrentRow;
-
-            if (currentRow == null)
-                return null;
-
-            return Convert.ToInt32(currentRow.Cells["Id"]?.Value);
         }
 
         private void frmManageOffer_Load(object sender, EventArgs e)
@@ -64,7 +49,7 @@ namespace UI.forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int? id = GetCurrentId();
+            int? id = FormHelper.GetCurrentRowId(dgvOffers);
 
             if (id != null)
             {
@@ -75,7 +60,7 @@ namespace UI.forms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int? id = GetCurrentId();
+            int? id = FormHelper.GetCurrentRowId(dgvOffers);
 
             if (offers != null)
             {
@@ -92,7 +77,7 @@ namespace UI.forms
 
         private void dgvOffers_SelectionChanged(object sender, EventArgs e)
         {
-            int? id = GetCurrentId();
+            int? id = FormHelper.GetCurrentRowId(dgvOffers);
 
             if (id != null)
             {
@@ -110,11 +95,7 @@ namespace UI.forms
 
         private void btnCreateDiscount_Click(object sender, EventArgs e)
         {
-            new frmCreateOffer(offerService, categoryService)
-            {
-                StartPosition = FormStartPosition.CenterScreen
-            }.Show();
-
+            new frmCreateOffer(offerService, categoryService).Show();
             LoadOffers();
         }
     }

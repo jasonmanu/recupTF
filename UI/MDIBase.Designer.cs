@@ -175,7 +175,6 @@ namespace UI
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.openToolStripButton.Text = "Open";
-            this.openToolStripButton.Click += new System.EventHandler(this.OpenFile);
             // 
             // saveToolStripButton
             // 

@@ -1,13 +1,6 @@
 ﻿using BLL.Contracts;
 using Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.forms;
 
@@ -17,15 +10,18 @@ namespace UI
     {
         private readonly IOfferService offerService;
         private readonly ICategoryService categoryService;
+        private readonly ISuggestedOfferService suggestedOfferService;
 
-        public MDIBase(UserRole userRole, IOfferService offerService, ICategoryService categoryService)
+        public MDIBase(UserRole userRole, IOfferService offerService, ICategoryService categoryService, ISuggestedOfferService suggestedOfferService)
         {
             InitializeComponent();
             LoadRoleButtons(userRole);
             this.offerService = offerService;
             this.categoryService = categoryService;
+            this.suggestedOfferService = suggestedOfferService;
         }
 
+        #region Login
         private void LoadRoleButtons(UserRole userRole)
         {
             switch (userRole)
@@ -47,31 +43,12 @@ namespace UI
                     break;
             }
         }
+        #endregion
 
-        private void OpenFile(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
-        }
-
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
+        #region Offers
         private void createOfferMenu_Click(object sender, EventArgs e)
         {
+            new frmCreateOffer(offerService, categoryService) { MdiParent = this }.Show();
         }
 
         private void btnCreateOffer_Click(object sender, EventArgs e)
@@ -88,14 +65,17 @@ namespace UI
             new frmManageOffer(offerService, categoryService) { MdiParent = this }.Show();
         }
 
+        private void btnSuggestedOffers_Click(object sender, EventArgs e)
+        {
+            new frmSuggestedOffers(suggestedOfferService) { MdiParent = this }.Show();
+        }
+        #endregion
+
+        #region Reports
         private void reportsMenu_Click(object sender, EventArgs e)
         {
             new frmReports() { MdiParent = this }.Show();
         }
-
-        private void btnSuggestedOffers_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion      
     }
 }

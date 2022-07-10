@@ -40,10 +40,9 @@ namespace UI.forms
                 Type = (DiscountTypeEnum)cboType.SelectedValue
             };
 
+            DateTime currentDate = DateTime.Now;
             DateTime startDate = dtpStart.Value;
             DateTime endDate = dtpEnd.Value;
-
-            var currentDate = DateTime.Now;
 
             if (currentDate >= startDate && currentDate <= endDate)
             {
@@ -52,17 +51,15 @@ namespace UI.forms
 
             // select category/product
 
-            offerService.Create(newOffer);
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
-        {
-
+            try
+            {
+                offerService.Create(newOffer);
+                MessageBox.Show("Oferta creada correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

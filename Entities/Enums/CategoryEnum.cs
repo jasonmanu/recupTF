@@ -8,7 +8,8 @@ namespace Entities.Enums
 {
     public enum CategoryEnum
     {
-        Celular,
-        Tablet
+        Celulares,
+        Tablets,
+        Todos
     }
 }

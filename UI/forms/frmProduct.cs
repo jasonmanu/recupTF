@@ -1,13 +1,8 @@
 ﻿using BLL;
 using Entities;
+using FormSupport;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -47,16 +42,6 @@ namespace UI
             //}
         }
 
-        private int? GetCurrentProductId()
-        {
-            DataGridViewRow currentRow = dgvProducts.CurrentRow;
-
-            if (currentRow == null)
-                return null;
-
-            return Convert.ToInt32(currentRow.Cells["Id"].Value);
-        }
-
         private void btnCreate_Click(object sender, EventArgs e)
         {
 
@@ -64,7 +49,7 @@ namespace UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int? productId = GetCurrentProductId();
+            int? productId = FormHelper.GetCurrentRowId(dgvProducts);
 
             if (productId == null)
             {

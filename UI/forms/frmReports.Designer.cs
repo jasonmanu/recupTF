@@ -29,12 +29,12 @@ namespace UI.forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -50,16 +50,16 @@ namespace UI.forms
             // 
             // chartRevenue
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartRevenue.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartRevenue.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartRevenue.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartRevenue.Legends.Add(legend1);
             this.chartRevenue.Location = new System.Drawing.Point(45, 56);
             this.chartRevenue.Name = "chartRevenue";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartRevenue.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartRevenue.Series.Add(series1);
             this.chartRevenue.Size = new System.Drawing.Size(440, 207);
             this.chartRevenue.TabIndex = 0;
             this.chartRevenue.Text = "chart1";
@@ -74,16 +74,16 @@ namespace UI.forms
             // 
             // chartSells
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartSells.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartSells.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chartSells.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartSells.Legends.Add(legend2);
             this.chartSells.Location = new System.Drawing.Point(45, 293);
             this.chartSells.Name = "chartSells";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartSells.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartSells.Series.Add(series2);
             this.chartSells.Size = new System.Drawing.Size(440, 185);
             this.chartSells.TabIndex = 2;
             this.chartSells.Text = "chart1";
@@ -91,9 +91,9 @@ namespace UI.forms
             // dtpDate
             // 
             this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDate.Location = new System.Drawing.Point(223, 3);
+            this.dtpDate.Location = new System.Drawing.Point(179, 3);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(214, 20);
+            this.dtpDate.Size = new System.Drawing.Size(258, 20);
             this.dtpDate.TabIndex = 4;
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
@@ -101,7 +101,7 @@ namespace UI.forms
             // 
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(82, 7);
+            this.lblDate.Location = new System.Drawing.Point(38, 7);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(135, 13);
             this.lblDate.TabIndex = 5;
@@ -110,14 +110,14 @@ namespace UI.forms
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.Controls.Add(this.dtpDate, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblDate, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(45, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(440, 27);
             this.tableLayoutPanel1.TabIndex = 6;
             // 

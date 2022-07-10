@@ -57,7 +57,10 @@ namespace BLL
 
         public void Create(Offer entity)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(entity.Name))
+                throw new Exception("Nombre de la oferta no puede ser nulo");
+
+            offers.Add(entity);
         }
 
         public void Delete(int id)
