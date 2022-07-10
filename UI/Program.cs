@@ -18,9 +18,11 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // crea coleccion de servicios para inyeccion de dependencias
             var services = new ServiceCollection();
             ConfigureServices(services);
 
+            // corre form principal con servicios inyectados
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
                 frmLogin mainForm = serviceProvider.GetRequiredService<frmLogin>();

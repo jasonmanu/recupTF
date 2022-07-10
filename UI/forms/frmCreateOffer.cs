@@ -37,7 +37,6 @@ namespace UI.forms
                 Start = DateTime.Now,
                 End = DateTime.Now,
                 Name = txtName.Text,
-                Suggested = false,
                 Type = (DiscountTypeEnum)cboType.SelectedValue
             };
 

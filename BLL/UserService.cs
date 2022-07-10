@@ -1,5 +1,6 @@
 ﻿using BLL.Contracts;
 using Entities;
+using Entities.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,31 +41,41 @@ namespace BLL
 
         public User Login(string username, string password)
         {
-            username = username.ToLower();
+            // username pasa a minuscula
+            username = username?.ToLower();
 
+            // verifica que datos de login no sean nulos
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
+            // encripta password para comparar con los datos almacenados
+            password = Crypto.Hash(password);
+
+            // retorna usuario si es login valido o null si los datos de login son invalidos
             return users.FirstOrDefault(x => x.Username == username && x.Password == password);
         }
 
-        public bool Register(string username, string password)
+        public void Register(string username, string password)
         {
+            // verifica que datos de regristro no sean nulos
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                throw new Exception("Username y/o Password no pueden ser nulos");
+                throw new NullLoginException();
 
+            // username pasa a minuscula
             username = username.ToLower();
 
+            // verifica que el nombre de usuario no este en uso actualmente
             if (users.Any(x => x.Username == username))
-                throw new Exception("Username already exists");
+                throw new UsernameExistsException();
 
-            //TODO change this
-            byte[] data = Encoding.ASCII.GetBytes(password);
-            data = new SHA256Managed().ComputeHash(data);
-            String hash = Encoding.ASCII.GetString(data);
+            if (username.Length < 6 || password.Length < 6)
+                throw new InvalidLengthException();
 
+            // encripta password antes de guardarla
+            password = Crypto.Hash(password);
+
+            // si paso las verificaciones se guarda en almacenamiento
             users.Add(new User(username, password, UserRole.SHOPPER));
-            return true;
         }
 
         public void Update(User entity)
