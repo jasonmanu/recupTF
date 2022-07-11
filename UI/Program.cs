@@ -37,7 +37,6 @@ namespace UI
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>))
                     .AddScoped<IUserService, UserService>()
                     .AddScoped<IOfferService, OfferService>()
-                    .AddScoped<ICategoryService, CategoryService>()
                     .AddScoped<ISuggestedOfferService, SuggestedOfferService>();
 
             services.AddScoped<frmLogin>();

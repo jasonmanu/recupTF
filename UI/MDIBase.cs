@@ -9,15 +9,14 @@ namespace UI
     public partial class MDIBase : Form
     {
         private readonly IOfferService offerService;
-        private readonly ICategoryService categoryService;
         private readonly ISuggestedOfferService suggestedOfferService;
 
-        public MDIBase(UserRole userRole, IOfferService offerService, ICategoryService categoryService, ISuggestedOfferService suggestedOfferService)
+        public MDIBase(UserRole userRole, IOfferService offerService, ISuggestedOfferService suggestedOfferService)
         {
             InitializeComponent();
+
             LoadRoleButtons(userRole);
             this.offerService = offerService;
-            this.categoryService = categoryService;
             this.suggestedOfferService = suggestedOfferService;
         }
 
@@ -49,12 +48,12 @@ namespace UI
         #region Offers
         private void createOfferMenu_Click(object sender, EventArgs e)
         {
-            new frmCreateOffer(offerService, categoryService) { MdiParent = this }.Show();
+            new frmCreateOffer(offerService) { MdiParent = this }.Show();
         }
 
         private void btnCreateOffer_Click(object sender, EventArgs e)
         {
-            var formCreateOffer = new frmCreateOffer(offerService, categoryService)
+            var formCreateOffer = new frmCreateOffer(offerService)
             {
                 MdiParent = this
             };
@@ -63,7 +62,7 @@ namespace UI
 
         private void btnGetOffers_Click(object sender, EventArgs e)
         {
-            new frmManageOffer(offerService, categoryService) { MdiParent = this }.Show();
+            new frmManageOffer(offerService) { MdiParent = this }.Show();
         }
 
         private void btnSuggestedOffers_Click(object sender, EventArgs e)

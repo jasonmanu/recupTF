@@ -200,11 +200,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Backup\SuggestedOffer.json" />
-    <None Include="Backup\Product.json" />
-    <None Include="Backup\Category.json" />
-    <None Include="Backup\Offer.json" />
-    <None Include="Backup\User.json" />
+    <None Include="Backup\SuggestedOffer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Backup\Product.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Backup\Offer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Backup\User.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

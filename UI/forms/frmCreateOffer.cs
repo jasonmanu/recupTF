@@ -9,13 +9,11 @@ namespace UI.forms
     public partial class frmCreateOffer : Form
     {
         private readonly IOfferService offerService;
-        private readonly ICategoryService categoryService;
 
-        public frmCreateOffer(IOfferService offerService, ICategoryService categoryService)
+        public frmCreateOffer(IOfferService offerService)
         {
             InitializeComponent();
             this.offerService = offerService;
-            this.categoryService = categoryService;
 
             // valores iniciales de nueva oferta
             dtpStart.Value = DateTime.Now;

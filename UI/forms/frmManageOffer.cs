@@ -12,14 +12,12 @@ namespace UI.forms
     public partial class frmManageOffer : Form
     {
         private readonly IOfferService offerService;
-        private readonly ICategoryService categoryService;
         private List<Offer> offers;
 
-        public frmManageOffer(IOfferService offerService, ICategoryService categoryService)
+        public frmManageOffer(IOfferService offerService)
         {
             InitializeComponent();
             this.offerService = offerService;
-            this.categoryService = categoryService;
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
         }
 
@@ -95,7 +93,7 @@ namespace UI.forms
 
         private void btnCreateDiscount_Click(object sender, EventArgs e)
         {
-            new frmCreateOffer(offerService, categoryService).Show();
+            new frmCreateOffer(offerService).Show();
             LoadOffers();
         }
     }
