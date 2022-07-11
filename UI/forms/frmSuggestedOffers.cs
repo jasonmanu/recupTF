@@ -1,12 +1,7 @@
 ﻿using BLL.Contracts;
+using Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.forms
@@ -28,10 +23,11 @@ namespace UI.forms
 
         private void LoadSuggestedOffers()
         {
-            var suggestedOffers = suggestedOfferService.GetAll();
+            List<SuggestedOffer> suggestedOffers = suggestedOfferService.GetAll();
 
             if (suggestedOffers != null)
             {
+                dgvSuggestedOffers.Refresh();
                 dgvSuggestedOffers.DataSource = suggestedOffers;
                 dgvSuggestedOffers.Columns["Id"].Visible = false;
             }

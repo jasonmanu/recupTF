@@ -2,13 +2,6 @@
 using Entities;
 using Entities.Enums;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.forms
@@ -16,11 +9,13 @@ namespace UI.forms
     public partial class frmCreateOffer : Form
     {
         private readonly IOfferService offerService;
+        private readonly ICategoryService categoryService;
 
         public frmCreateOffer(IOfferService offerService, ICategoryService categoryService)
         {
-            this.offerService = offerService;
             InitializeComponent();
+            this.offerService = offerService;
+            this.categoryService = categoryService;
 
             // valores iniciales de nueva oferta
             dtpStart.Value = DateTime.Now;

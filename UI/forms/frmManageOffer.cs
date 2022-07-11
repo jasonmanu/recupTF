@@ -36,6 +36,7 @@ namespace UI.forms
             {
                 try
                 {
+                    dgvOffers.Refresh();
                     dgvOffers.DataSource = offers;
                     dgvOffers.Columns["Id"].Visible = false;
                     dgvOffers.Columns["Name"].Width = 150;
@@ -69,7 +70,7 @@ namespace UI.forms
                 currentDiscount.Name = txtName.Text;
                 currentDiscount.Active = checkActive.Checked;
 
-                offerService.Update(currentDiscount);// con ORM va a funcionar, porque los datos se actualizan y leen, ahora solo lee lo no modificado
+                offerService.Update(currentDiscount);
                 LoadOffers();
             }
         }

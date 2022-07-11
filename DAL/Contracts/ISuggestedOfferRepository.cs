@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Contracts
+namespace DAL.Contracts
 {
-    public interface IUserService : IBaseService<User>
+    public interface ISuggestedOfferRepository : IBaseRepository<SuggestedOffer>
     {
-        User Login(string username, string password);
+
     }
 }

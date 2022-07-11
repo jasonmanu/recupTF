@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entities
 {
@@ -13,8 +16,13 @@ namespace Entities
         SHOPPER
     }
 
+    [Serializable]
     public class User : Entity
     {
+        public User()
+        {
+        }
+
         public User(string username, string password, UserRole role)
         {
             Username = username;
@@ -22,13 +30,11 @@ namespace Entities
             Role = role;
         }
 
-        public string GetFullName() {
-            return Fullname;
-        }
-
-        public string Fullname { get; set; }
         public string Username { get; set; }
+
         public string Password { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public UserRole Role { get; set; }
     }
 }

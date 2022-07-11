@@ -15,12 +15,11 @@ namespace UI.forms
         public frmLogin(IUserService userService, IOfferService offerService, ICategoryService categoryService, ISuggestedOfferService suggestedOfferService)
         {
             InitializeComponent();
+
             this.userService = userService;
             this.offerService = offerService;
             this.categoryService = categoryService;
             this.suggestedOfferService = suggestedOfferService;
-            txtPassword.Text = "admin";
-            txtUsername.Text = "admin";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -48,7 +47,7 @@ namespace UI.forms
 
             try
             {
-                userService.Register(username, password);
+                userService.Create(new User(username, password, UserRole.SHOPPER));
                 MessageBox.Show("Registrado Correctamente");
             }
             catch (Exception ex)

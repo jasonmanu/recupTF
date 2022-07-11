@@ -1,4 +1,5 @@
 ﻿using BLL.Contracts;
+using DAL;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -8,37 +9,10 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class CategoryService : ICategoryService
+    public class CategoryService : BaseService<Category>, ICategoryService
     {
-        private List<Category> categories = new List<Category>()
+        public CategoryService(IBaseRepository<Category> repository) : base(repository)
         {
-            new Category(){Name="Celulares"},
-            new Category(){Name="Tablets"},
-        };
-
-        public void Create(Category entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Category> GetAll()
-        {
-            return categories;
-        }
-
-        public Category GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Category entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

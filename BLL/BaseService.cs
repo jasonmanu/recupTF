@@ -2,46 +2,41 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : Entity
     {
-        //private readonly IBaseRepository<TEntity> repository;
+        private readonly IBaseRepository<TEntity> repository;
 
         public BaseService(IBaseRepository<TEntity> repository)
         {
-            //this.repository = repository;
+            this.repository = repository;
         }
 
-        public void Create(TEntity entity)
+        public virtual void Create(TEntity entity)
         {
-            throw new NotImplementedException();
+            repository.Create(entity);
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
-            //repository.Delete(id);
+            repository.Delete(id);
         }
 
-        public List<TEntity> GetAll()
+        public virtual List<TEntity> GetAll()
         {
-            //return repository.GetAll();
-            return null;
+            return repository.GetAll();
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
-            return null;
-            //return repository.GetById(id);
+            return repository.GetById(id);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            repository.Update(entity);
         }
     }
 }

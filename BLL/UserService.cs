@@ -1,44 +1,49 @@
 ﻿using BLL.Contracts;
+using DAL;
 using Entities;
 using Entities.Exceptions;
 using FormSupport;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class UserService : IUserService
+    public class UserService : BaseService<User>, IUserService
     {
-        List<User> users = new List<User>()
-        {
-            //new User("admin","admin", UserRole.ADMIN),
-            new User("admin","?iv??A???M???g??s?K??o*?H?", UserRole.ADMIN),
-            new User("seller","seller", UserRole.SELLER),
-            new User("shopper","shopper", UserRole.SHOPPER)
-        };
+        private readonly IBaseRepository<User> repository;
 
-        public void Create(User entity)
+        public UserService(IBaseRepository<User> repository) : base(repository)
         {
-            throw new NotImplementedException();
+            this.repository = repository;
         }
 
-        public void Delete(int id)
+        public override void Create(User entity)
         {
-            throw new NotImplementedException();
-        }
+            // verifica que datos de regristro no sean nulos
+            if (string.IsNullOrEmpty(entity.Username) || string.IsNullOrEmpty(entity.Password))
+                throw new NullLoginException();
 
-        public List<User> GetAll()
-        {
-            return users;
-        }
+            // username pasa a minuscula
+            entity.Username = entity.Username.ToLower();
 
-        public User GetById(int id)
-        {
-            return users.FirstOrDefault(x => x.Id == id);
+            var users = repository.GetAll();
+
+            if (users == null)
+                throw new System.Exception("Problema al leer datos");
+
+            // verifica que el nombre de usuario no este en uso actualmente
+            if (users.Any(x => x.Username == entity.Username))
+                throw new UsernameExistsException();
+
+            const int minLength = 5;
+            if (entity.Username.Length < minLength || entity.Username.Length < minLength)
+                throw new InvalidLengthException();
+
+            // encripta password antes de guardarla
+            entity.Password = CryptoHelper.Hash(entity.Password);
+
+            // si paso las verificaciones se guarda en almacenamiento
+            repository.Create(entity);
         }
 
         public User Login(string username, string password)
@@ -54,35 +59,7 @@ namespace BLL
             password = CryptoHelper.Hash(password);
 
             // retorna usuario si es login valido o null si los datos de login son invalidos
-            return users.FirstOrDefault(x => x.Username == username && x.Password == password);
-        }
-
-        public void Register(string username, string password)
-        {
-            // verifica que datos de regristro no sean nulos
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                throw new NullLoginException();
-
-            // username pasa a minuscula
-            username = username.ToLower();
-
-            // verifica que el nombre de usuario no este en uso actualmente
-            if (users.Any(x => x.Username == username))
-                throw new UsernameExistsException();
-
-            if (username.Length < 6 || password.Length < 6)
-                throw new InvalidLengthException();
-
-            // encripta password antes de guardarla
-            password = CryptoHelper.Hash(password);
-
-            // si paso las verificaciones se guarda en almacenamiento
-            users.Add(new User(username, password, UserRole.SHOPPER));
-        }
-
-        public void Update(User entity)
-        {
-            throw new NotImplementedException();
+            return repository.GetAll()?.FirstOrDefault(x => x.Username == username && x.Password == password);
         }
     }
 }

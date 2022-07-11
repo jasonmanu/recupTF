@@ -1,5 +1,7 @@
 ﻿using BLL;
 using BLL.Contracts;
+using DAL;
+using DAL.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -32,12 +34,13 @@ namespace UI
 
         private static void ConfigureServices(ServiceCollection services)
         {
-            services.AddScoped<IUserService, UserService>()
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>))
+                    .AddScoped<IUserService, UserService>()
                     .AddScoped<IOfferService, OfferService>()
                     .AddScoped<ICategoryService, CategoryService>()
                     .AddScoped<ISuggestedOfferService, SuggestedOfferService>();
 
-             services.AddScoped<frmLogin>();
+            services.AddScoped<frmLogin>();
         }
     }
 }
