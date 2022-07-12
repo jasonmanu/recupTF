@@ -39,7 +39,6 @@ namespace UI
                     reportsMenu.Visible = true;
                     productsMenu.Visible = true;
                     offersMenu.Visible = true;
-                    backupMenu.Visible = true;
                     break;
                 case UserRole.SELLER:
                     offersMenu.Visible = true;

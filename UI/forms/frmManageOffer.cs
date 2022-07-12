@@ -37,6 +37,7 @@ namespace UI.forms
                     dgvOffers.Refresh();
                     dgvOffers.DataSource = offers;
                     dgvOffers.Columns["Id"].Visible = false;
+                    dgvOffers.Columns["CreatedAt"].Visible = false;
                     dgvOffers.Columns["Name"].Width = 150;
                 }
                 catch (Exception e)

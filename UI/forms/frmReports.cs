@@ -30,5 +30,10 @@ namespace UI.forms
         {
             selectedDate = dtpDate.Value;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
