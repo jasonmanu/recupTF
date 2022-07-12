@@ -48,12 +48,25 @@ namespace UI.forms
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblOfferDisclaimer = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblBrand = new System.Windows.Forms.Label();
+            this.cboBrand = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblProduct = new System.Windows.Forms.Label();
+            this.cboProduct = new System.Windows.Forms.ComboBox();
+            this.rbtnCategory = new System.Windows.Forms.RadioButton();
+            this.groupOffer = new System.Windows.Forms.GroupBox();
+            this.rbtnBrand = new System.Windows.Forms.RadioButton();
+            this.rbtnProducto = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscount)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.groupOffer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -170,7 +183,7 @@ namespace UI.forms
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(156, 362);
+            this.btnCreate.Location = new System.Drawing.Point(152, 522);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(313, 40);
             this.btnCreate.TabIndex = 1;
@@ -195,7 +208,7 @@ namespace UI.forms
             this.tableLayoutPanel2.Controls.Add(this.dtpStart, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.dtpEnd, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblStart, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 142);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 161);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -235,10 +248,12 @@ namespace UI.forms
             // cboCategory
             // 
             this.cboCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategory.Enabled = false;
             this.cboCategory.FormattingEnabled = true;
             this.cboCategory.Location = new System.Drawing.Point(308, 17);
             this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(300, 21);
+            this.cboCategory.Size = new System.Drawing.Size(299, 21);
             this.cboCategory.TabIndex = 5;
             // 
             // tableLayoutPanel5
@@ -248,11 +263,12 @@ namespace UI.forms
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.lblCategory, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.cboCategory, 1, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(12, 272);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(12, 324);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(611, 55);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(610, 55);
             this.tableLayoutPanel5.TabIndex = 6;
             // 
             // lblCategory
@@ -268,18 +284,142 @@ namespace UI.forms
             // lblOfferDisclaimer
             // 
             this.lblOfferDisclaimer.AutoSize = true;
-            this.lblOfferDisclaimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOfferDisclaimer.Location = new System.Drawing.Point(135, 240);
+            this.lblOfferDisclaimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOfferDisclaimer.Location = new System.Drawing.Point(148, 139);
             this.lblOfferDisclaimer.Name = "lblOfferDisclaimer";
-            this.lblOfferDisclaimer.Size = new System.Drawing.Size(417, 16);
+            this.lblOfferDisclaimer.Size = new System.Drawing.Size(359, 16);
             this.lblOfferDisclaimer.TabIndex = 7;
             this.lblOfferDisclaimer.Text = "*el descuento estara activo entre las fechas seleccionadas";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.lblBrand, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.cboBrand, 1, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(12, 385);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(610, 55);
+            this.tableLayoutPanel6.TabIndex = 8;
+            // 
+            // lblBrand
+            // 
+            this.lblBrand.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblBrand.AutoSize = true;
+            this.lblBrand.Location = new System.Drawing.Point(265, 21);
+            this.lblBrand.Name = "lblBrand";
+            this.lblBrand.Size = new System.Drawing.Size(37, 13);
+            this.lblBrand.TabIndex = 6;
+            this.lblBrand.Text = "Marca";
+            // 
+            // cboBrand
+            // 
+            this.cboBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBrand.Enabled = false;
+            this.cboBrand.FormattingEnabled = true;
+            this.cboBrand.Location = new System.Drawing.Point(308, 17);
+            this.cboBrand.Name = "cboBrand";
+            this.cboBrand.Size = new System.Drawing.Size(299, 21);
+            this.cboBrand.TabIndex = 5;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.lblProduct, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.cboProduct, 1, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(12, 449);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(610, 55);
+            this.tableLayoutPanel7.TabIndex = 9;
+            // 
+            // lblProduct
+            // 
+            this.lblProduct.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblProduct.AutoSize = true;
+            this.lblProduct.Location = new System.Drawing.Point(252, 21);
+            this.lblProduct.Name = "lblProduct";
+            this.lblProduct.Size = new System.Drawing.Size(50, 13);
+            this.lblProduct.TabIndex = 6;
+            this.lblProduct.Text = "Producto";
+            // 
+            // cboProduct
+            // 
+            this.cboProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProduct.Enabled = false;
+            this.cboProduct.FormattingEnabled = true;
+            this.cboProduct.Location = new System.Drawing.Point(308, 17);
+            this.cboProduct.Name = "cboProduct";
+            this.cboProduct.Size = new System.Drawing.Size(299, 21);
+            this.cboProduct.TabIndex = 5;
+            // 
+            // rbtnCategory
+            // 
+            this.rbtnCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.rbtnCategory.AutoSize = true;
+            this.rbtnCategory.Location = new System.Drawing.Point(97, 25);
+            this.rbtnCategory.Name = "rbtnCategory";
+            this.rbtnCategory.Size = new System.Drawing.Size(70, 17);
+            this.rbtnCategory.TabIndex = 10;
+            this.rbtnCategory.TabStop = true;
+            this.rbtnCategory.Text = "Categoria";
+            this.rbtnCategory.UseVisualStyleBackColor = true;
+            this.rbtnCategory.CheckedChanged += new System.EventHandler(this.rbtnCategory_CheckedChanged);
+            // 
+            // groupOffer
+            // 
+            this.groupOffer.Controls.Add(this.rbtnProducto);
+            this.groupOffer.Controls.Add(this.rbtnBrand);
+            this.groupOffer.Controls.Add(this.rbtnCategory);
+            this.groupOffer.Location = new System.Drawing.Point(12, 258);
+            this.groupOffer.Name = "groupOffer";
+            this.groupOffer.Size = new System.Drawing.Size(610, 60);
+            this.groupOffer.TabIndex = 11;
+            this.groupOffer.TabStop = false;
+            this.groupOffer.Text = "Oferta aplicable a:";
+            // 
+            // rbtnBrand
+            // 
+            this.rbtnBrand.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.rbtnBrand.AutoSize = true;
+            this.rbtnBrand.Location = new System.Drawing.Point(279, 25);
+            this.rbtnBrand.Name = "rbtnBrand";
+            this.rbtnBrand.Size = new System.Drawing.Size(55, 17);
+            this.rbtnBrand.TabIndex = 11;
+            this.rbtnBrand.TabStop = true;
+            this.rbtnBrand.Text = "Marca";
+            this.rbtnBrand.UseVisualStyleBackColor = true;
+            this.rbtnBrand.CheckedChanged += new System.EventHandler(this.rbtnBrand_CheckedChanged);
+            // 
+            // rbtnProducto
+            // 
+            this.rbtnProducto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.rbtnProducto.AutoSize = true;
+            this.rbtnProducto.Location = new System.Drawing.Point(427, 25);
+            this.rbtnProducto.Name = "rbtnProducto";
+            this.rbtnProducto.Size = new System.Drawing.Size(68, 17);
+            this.rbtnProducto.TabIndex = 12;
+            this.rbtnProducto.TabStop = true;
+            this.rbtnProducto.Text = "Producto";
+            this.rbtnProducto.UseVisualStyleBackColor = true;
+            this.rbtnProducto.CheckedChanged += new System.EventHandler(this.rbtnProducto_CheckedChanged);
             // 
             // frmCreateOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 414);
+            this.ClientSize = new System.Drawing.Size(633, 574);
+            this.Controls.Add(this.groupOffer);
+            this.Controls.Add(this.tableLayoutPanel7);
+            this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.lblOfferDisclaimer);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -299,6 +439,12 @@ namespace UI.forms
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            this.groupOffer.ResumeLayout(false);
+            this.groupOffer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,5 +471,15 @@ namespace UI.forms
         private System.Windows.Forms.Label lblStart;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblOfferDisclaimer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label lblBrand;
+        private System.Windows.Forms.ComboBox cboBrand;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label lblProduct;
+        private System.Windows.Forms.ComboBox cboProduct;
+        private System.Windows.Forms.RadioButton rbtnCategory;
+        private System.Windows.Forms.GroupBox groupOffer;
+        private System.Windows.Forms.RadioButton rbtnProducto;
+        private System.Windows.Forms.RadioButton rbtnBrand;
     }
 }

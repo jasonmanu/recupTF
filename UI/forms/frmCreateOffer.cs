@@ -1,4 +1,5 @@
-﻿using BLL.Contracts;
+﻿using BLL;
+using BLL.Contracts;
 using Entities;
 using Entities.Enums;
 using System;
@@ -9,22 +10,46 @@ namespace UI.forms
     public partial class frmCreateOffer : Form
     {
         private readonly IOfferService offerService;
+        private readonly IProductService productService;
         private readonly IBrandService brandService;
+        private readonly ICategoryService categoryService;
 
-        public frmCreateOffer(IOfferService offerService, ICategoryService categoryService, IBrandService brandService)
+        public frmCreateOffer(IOfferService offerService, IProductService productService, ICategoryService categoryService, IBrandService brandService)
         {
             InitializeComponent();
             this.offerService = offerService;
+            this.productService = productService;
+            this.categoryService = categoryService;
             this.brandService = brandService;
+            LoadOfferConnections();
+        }
 
-            // valores iniciales de nueva oferta
+        private void LoadOfferConnections()
+        {
             dtpStart.Value = DateTime.Now;
             dtpEnd.Value = DateTime.Now.AddDays(7);
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
-            //TODO cargar cateogiras por db
-            //cboCategory.DataSource = Enum.GetValues(typeof(CategoryEnum));
-        }
 
+            try
+            {
+                cboBrand.DataSource = brandService.GetAll();
+                cboBrand.DisplayMember = "Name";
+                cboBrand.ValueMember = "Id";
+
+                cboCategory.DataSource = categoryService.GetAll();
+                cboCategory.DisplayMember = "Name";
+                cboCategory.ValueMember = "Id";
+
+                cboProduct.DataSource = productService.GetAll();
+                cboProduct.DisplayMember = "Name";
+                cboProduct.ValueMember = "Id";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -38,6 +63,11 @@ namespace UI.forms
                 Type = (DiscountTypeEnum)cboType.SelectedValue
             };
 
+            int brandId = Convert.ToInt32(cboBrand.SelectedValue);
+            int productId = Convert.ToInt32(cboProduct.SelectedValue);
+            int categoryId = Convert.ToInt32(cboCategory.SelectedValue);
+            //TODO crear relacion entre oferta y brand/category/product, solo 1
+
             DateTime currentDate = DateTime.Now;
             DateTime startDate = dtpStart.Value;
             DateTime endDate = dtpEnd.Value;
@@ -47,17 +77,44 @@ namespace UI.forms
                 newOffer.Active = true;
             }
 
-            // select category/product
-
             try
             {
-                // creacion de oferta con valores del usuario
                 offerService.Create(newOffer);
                 MessageBox.Show("Oferta creada correctamente");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void rbtnCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnCategory.Checked)
+            {
+                cboCategory.Enabled = true;
+                cboBrand.Enabled = false;
+                cboProduct.Enabled = false;
+            }
+        }
+
+        private void rbtnBrand_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnBrand.Checked)
+            {
+                cboBrand.Enabled = true;
+                cboCategory.Enabled = false;
+                cboProduct.Enabled = false;
+            }
+        }
+
+        private void rbtnProducto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnProducto.Checked)
+            {
+                cboProduct.Enabled = true;
+                cboCategory.Enabled = false;
+                cboBrand.Enabled = false;
             }
         }
     }

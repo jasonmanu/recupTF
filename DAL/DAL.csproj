@@ -196,8 +196,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Backup\Brand.json" />
-    <None Include="Backup\Category.json" />
+    <None Include="Backup\Brand.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Backup\Category.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Backup\Purchase.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

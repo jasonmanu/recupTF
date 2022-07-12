@@ -37,11 +37,12 @@ namespace UI
             this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSuggestedOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.sellersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ordersMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGenerateBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -54,9 +55,6 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnGenerateBackup = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -111,24 +109,11 @@ namespace UI
             // 
             // productsMenu
             // 
-            this.productsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator8,
-            this.manageToolStripMenuItem});
             this.productsMenu.Name = "productsMenu";
             this.productsMenu.Size = new System.Drawing.Size(73, 20);
             this.productsMenu.Text = "Productos";
             this.productsMenu.Visible = false;
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(114, 6);
-            // 
-            // manageToolStripMenuItem
-            // 
-            this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.manageToolStripMenuItem.Text = "Manage";
+            this.productsMenu.Click += new System.EventHandler(this.productsMenu_Click);
             // 
             // reportsMenu
             // 
@@ -151,6 +136,28 @@ namespace UI
             this.ordersMenu.Size = new System.Drawing.Size(87, 20);
             this.ordersMenu.Text = "Mis compras";
             this.ordersMenu.Visible = false;
+            // 
+            // backupMenu
+            // 
+            this.backupMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnGenerateBackup,
+            this.btnRestoreBackup});
+            this.backupMenu.Name = "backupMenu";
+            this.backupMenu.Size = new System.Drawing.Size(58, 20);
+            this.backupMenu.Text = "Backup";
+            this.backupMenu.Visible = false;
+            // 
+            // btnGenerateBackup
+            // 
+            this.btnGenerateBackup.Name = "btnGenerateBackup";
+            this.btnGenerateBackup.Size = new System.Drawing.Size(123, 22);
+            this.btnGenerateBackup.Text = "Generar";
+            // 
+            // btnRestoreBackup
+            // 
+            this.btnRestoreBackup.Name = "btnRestoreBackup";
+            this.btnRestoreBackup.Size = new System.Drawing.Size(123, 22);
+            this.btnRestoreBackup.Text = "Restaurar";
             // 
             // toolStrip
             // 
@@ -249,28 +256,6 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // backupMenu
-            // 
-            this.backupMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnGenerateBackup,
-            this.btnRestoreBackup});
-            this.backupMenu.Name = "backupMenu";
-            this.backupMenu.Size = new System.Drawing.Size(58, 20);
-            this.backupMenu.Text = "Backup";
-            this.backupMenu.Visible = false;
-            // 
-            // btnGenerateBackup
-            // 
-            this.btnGenerateBackup.Name = "btnGenerateBackup";
-            this.btnGenerateBackup.Size = new System.Drawing.Size(180, 22);
-            this.btnGenerateBackup.Text = "Generar";
-            // 
-            // btnRestoreBackup
-            // 
-            this.btnRestoreBackup.Name = "btnRestoreBackup";
-            this.btnRestoreBackup.Size = new System.Drawing.Size(180, 22);
-            this.btnRestoreBackup.Text = "Restaurar";
-            // 
             // MDIBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +269,7 @@ namespace UI
             this.Name = "MDIBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "e-commerce";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDIBase_FormClosed);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -302,7 +288,6 @@ namespace UI
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem productsMenu;
         private System.Windows.Forms.ToolStripButton newToolStripButton;
@@ -312,7 +297,6 @@ namespace UI
         private System.Windows.Forms.ToolStripButton printPreviewToolStripButton;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offersMenu;
         private System.Windows.Forms.ToolStripMenuItem reportsMenu;
         private System.Windows.Forms.ToolStripMenuItem sellersMenu;

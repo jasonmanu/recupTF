@@ -1,5 +1,6 @@
 ﻿using BLL;
 using Entities;
+using Entities.Enums;
 using FormSupport;
 using System;
 using System.Collections.Generic;
@@ -11,22 +12,50 @@ namespace UI
     {
         private readonly IProductService productService;
         private List<Product> products;
+        private UserRole userRole;
 
-        public frmProduct(IProductService productService)
+        public frmProduct(UserRole userRole, IProductService productService)
         {
             InitializeComponent();
             this.productService = productService;
+            this.userRole = userRole;
+
+            if (userRole == UserRole.SHOPPER)
+            {
+                tlpShopper.Visible = true;
+                tlpAdmin.Visible = false;
+            }
+            else
+            {
+                tlpAdmin.Visible = true;
+                tlpShopper.Visible = false;
+            }
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
         {
-            products = new List<Product>
-            {
-                //new Product("Name 1", "desc 1", 1),
-                //new Product("Name 2", "desc 2", 2)
-            };
+            LoadProducts();
+        }
 
-            dgvProducts.DataSource = products;
+        private void LoadProducts()
+        {
+            List<Product> products = productService.GetAll();
+
+            if (products != null)
+            {
+                try
+                {
+                    dgvProducts.Refresh();
+                    dgvProducts.DataSource = products;
+                    dgvProducts.Columns["Id"].Visible = false;
+                    dgvProducts.Columns["BrandId"].Visible = false;
+                    dgvProducts.Columns["CategoryId"].Visible = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

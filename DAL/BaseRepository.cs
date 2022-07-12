@@ -17,7 +17,7 @@ namespace DAL
 
         public BaseRepository()
         {
-            FilePath = $"Backup\\{typeof(TEntity).Name}.json";
+            FilePath = $"..\\..\\..\\DAL\\Backup\\{typeof(TEntity).Name}.json";// $"Backup\\{typeof(TEntity).Name}.json";
             string dataString = File.ReadAllText(FilePath);
             entities = JsonConvert.DeserializeObject<List<TEntity>>(dataString);
         }

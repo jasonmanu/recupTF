@@ -1,4 +1,5 @@
-﻿using BLL.Contracts;
+﻿using BLL;
+using BLL.Contracts;
 using Entities;
 using Entities.Enums;
 using System;
@@ -13,8 +14,9 @@ namespace UI.forms
         private readonly ISuggestedOfferService suggestedOfferService;
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
+        private readonly IProductService productService;
 
-        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService)
+        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService)
         {
             InitializeComponent();
 
@@ -23,6 +25,7 @@ namespace UI.forms
             this.suggestedOfferService = suggestedOfferService;
             this.categoryService = categoryService;
             this.brandService = brandService;
+            this.productService = productService;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -35,7 +38,7 @@ namespace UI.forms
             if (loggedUser != null)
             {
                 Hide();
-                new MDIBase(loggedUser.Role, offerService, suggestedOfferService, categoryService, brandService).Show();
+                new MDIBase(loggedUser.Role, offerService, suggestedOfferService, categoryService, brandService, productService).Show();
             }
             else
             {

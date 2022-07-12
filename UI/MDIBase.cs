@@ -1,4 +1,5 @@
-﻿using BLL.Contracts;
+﻿using BLL;
+using BLL.Contracts;
 using Entities.Enums;
 using System;
 using System.Windows.Forms;
@@ -12,25 +13,29 @@ namespace UI
         private readonly ISuggestedOfferService suggestedOfferService;
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
+        private readonly IProductService productService;
+        private UserRole userRole;
 
-        public MDIBase(UserRole userRole, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService)
+        public MDIBase(UserRole userRole, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService)
         {
             InitializeComponent();
 
-            LoadRoleButtons(userRole);
             this.offerService = offerService;
             this.suggestedOfferService = suggestedOfferService;
             this.brandService = brandService;
+            this.productService = productService;
             this.categoryService = categoryService;
+            this.userRole = userRole;
+
+            LoadRoleButtons();
         }
 
         #region Login
-        private void LoadRoleButtons(UserRole userRole)
+        private void LoadRoleButtons()
         {
             switch (userRole)
             {
                 case UserRole.ADMIN:
-                    sellersMenu.Visible = true;
                     reportsMenu.Visible = true;
                     productsMenu.Visible = true;
                     offersMenu.Visible = true;
@@ -39,8 +44,10 @@ namespace UI
                 case UserRole.SELLER:
                     offersMenu.Visible = true;
                     productsMenu.Visible = true;
+                    productsMenu.Visible = true;
                     break;
                 case UserRole.SHOPPER:
+                    productsMenu.Visible = true;
                     ordersMenu.Visible = true;
                     break;
                 default:
@@ -50,18 +57,12 @@ namespace UI
         #endregion
 
         #region Offers
-        private void createOfferMenu_Click(object sender, EventArgs e)
-        {
-            new frmCreateOffer(offerService, categoryService, brandService) { MdiParent = this }.Show();
-        }
-
         private void btnCreateOffer_Click(object sender, EventArgs e)
         {
-            var formCreateOffer = new frmCreateOffer(offerService, categoryService, brandService)
+            new frmCreateOffer(offerService, productService, categoryService, brandService)
             {
                 MdiParent = this
-            };
-            formCreateOffer.Show();
+            }.Show();
         }
 
         private void btnGetOffers_Click(object sender, EventArgs e)
@@ -80,6 +81,16 @@ namespace UI
         {
             new frmReports() { MdiParent = this }.Show();
         }
-        #endregion      
+        #endregion
+
+        private void MDIBase_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void productsMenu_Click(object sender, EventArgs e)
+        {
+            new frmProduct(userRole, productService).Show();
+        }
     }
 }

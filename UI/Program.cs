@@ -3,9 +3,6 @@ using BLL.Contracts;
 using DAL;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.forms;
 
@@ -38,7 +35,9 @@ namespace UI
                     .AddScoped<IOfferService, OfferService>()
                     .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
                     .AddScoped<ICategoryService, CategoryService>()
-                    .AddScoped<IBrandService, BrandService>();
+                    .AddScoped<IBrandService, BrandService>()
+                    .AddScoped<IProductService, ProductService>()
+                    .AddScoped<IPurchaseService, PurchaseService>();
 
             services.AddScoped<frmLogin>();
         }
