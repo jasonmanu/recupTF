@@ -40,7 +40,6 @@ namespace UI.forms
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnCreateDiscount = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cboType = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -160,13 +159,11 @@ namespace UI.forms
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnUpdate, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnCreateDiscount, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnUpdate, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 393);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -177,9 +174,9 @@ namespace UI.forms
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(505, 3);
+            this.btnDelete.Location = new System.Drawing.Point(379, 3);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(245, 34);
+            this.btnDelete.Size = new System.Drawing.Size(371, 34);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -188,24 +185,13 @@ namespace UI.forms
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(254, 3);
+            this.btnUpdate.Location = new System.Drawing.Point(3, 3);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(245, 34);
+            this.btnUpdate.Size = new System.Drawing.Size(370, 34);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Actualizar";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnCreateDiscount
-            // 
-            this.btnCreateDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateDiscount.Location = new System.Drawing.Point(3, 3);
-            this.btnCreateDiscount.Name = "btnCreateDiscount";
-            this.btnCreateDiscount.Size = new System.Drawing.Size(245, 34);
-            this.btnCreateDiscount.TabIndex = 0;
-            this.btnCreateDiscount.Text = "Crear nuevo descuento";
-            this.btnCreateDiscount.UseVisualStyleBackColor = true;
-            this.btnCreateDiscount.Click += new System.EventHandler(this.btnCreateDiscount_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -302,7 +288,6 @@ namespace UI.forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tlpOffers;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btnCreateDiscount;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;

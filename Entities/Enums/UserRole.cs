@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Enums
 {
-    public enum CategoryEnum
+    public enum UserRole
     {
-        Celulares,
-        Tablets,
-        Todos
+        ADMIN,
+        SELLER,
+        SHOPPER
     }
 }

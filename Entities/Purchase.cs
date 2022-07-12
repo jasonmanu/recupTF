@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Purchase
+    public class Purchase : Entity
     {
         public DateTime Date { get; set; }
         public List<Product> Products { get; set; }

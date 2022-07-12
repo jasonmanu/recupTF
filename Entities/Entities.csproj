@@ -188,8 +188,8 @@
     <Compile Include="Category.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Entity.cs" />
-    <Compile Include="Enums\CategoryEnum.cs" />
     <Compile Include="Enums\DiscountTypeEnum.cs" />
+    <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Exceptions\InvalidLengthException.cs" />
     <Compile Include="Exceptions\NullLoginException.cs" />
     <Compile Include="Exceptions\UsernameExistsException.cs" />

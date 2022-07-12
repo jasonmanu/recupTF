@@ -9,17 +9,20 @@ namespace UI.forms
     public partial class frmCreateOffer : Form
     {
         private readonly IOfferService offerService;
+        private readonly IBrandService brandService;
 
-        public frmCreateOffer(IOfferService offerService)
+        public frmCreateOffer(IOfferService offerService, ICategoryService categoryService, IBrandService brandService)
         {
             InitializeComponent();
             this.offerService = offerService;
+            this.brandService = brandService;
 
             // valores iniciales de nueva oferta
             dtpStart.Value = DateTime.Now;
             dtpEnd.Value = DateTime.Now.AddDays(7);
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
-            cboCategory.DataSource = Enum.GetValues(typeof(CategoryEnum));
+            //TODO cargar cateogiras por db
+            //cboCategory.DataSource = Enum.GetValues(typeof(CategoryEnum));
         }
 
 

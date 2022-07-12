@@ -186,11 +186,7 @@
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
     <Compile Include="Contracts\IBaseRepository.cs" />
-    <Compile Include="Contracts\ISuggestedOfferRepository.cs" />
-    <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SuggestedOfferRepository.cs" />
-    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
@@ -200,6 +196,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Backup\Brand.json" />
+    <None Include="Backup\Category.json" />
+    <None Include="Backup\Purchase.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Backup\SuggestedOffer.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Contracts
+namespace BLL.Contracts
 {
-    public interface ISuggestedOfferRepository : IBaseRepository<SuggestedOffer>
+    public interface IPurchaseService : IBaseService<Purchase>
     {
-
     }
 }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Contracts
+namespace BLL.Contracts
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IBrandService : IBaseService<Brand>
     {
     }
 }

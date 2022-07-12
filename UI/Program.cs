@@ -1,7 +1,6 @@
 ﻿using BLL;
 using BLL.Contracts;
 using DAL;
-using DAL.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -37,7 +36,9 @@ namespace UI
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>))
                     .AddScoped<IUserService, UserService>()
                     .AddScoped<IOfferService, OfferService>()
-                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>();
+                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
+                    .AddScoped<ICategoryService, CategoryService>()
+                    .AddScoped<IBrandService, BrandService>();
 
             services.AddScoped<frmLogin>();
         }

@@ -1,5 +1,5 @@
 ﻿using BLL.Contracts;
-using Entities;
+using Entities.Enums;
 using System;
 using System.Windows.Forms;
 using UI.forms;
@@ -10,14 +10,18 @@ namespace UI
     {
         private readonly IOfferService offerService;
         private readonly ISuggestedOfferService suggestedOfferService;
+        private readonly ICategoryService categoryService;
+        private readonly IBrandService brandService;
 
-        public MDIBase(UserRole userRole, IOfferService offerService, ISuggestedOfferService suggestedOfferService)
+        public MDIBase(UserRole userRole, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService)
         {
             InitializeComponent();
 
             LoadRoleButtons(userRole);
             this.offerService = offerService;
             this.suggestedOfferService = suggestedOfferService;
+            this.brandService = brandService;
+            this.categoryService = categoryService;
         }
 
         #region Login
@@ -48,12 +52,12 @@ namespace UI
         #region Offers
         private void createOfferMenu_Click(object sender, EventArgs e)
         {
-            new frmCreateOffer(offerService) { MdiParent = this }.Show();
+            new frmCreateOffer(offerService, categoryService, brandService) { MdiParent = this }.Show();
         }
 
         private void btnCreateOffer_Click(object sender, EventArgs e)
         {
-            var formCreateOffer = new frmCreateOffer(offerService)
+            var formCreateOffer = new frmCreateOffer(offerService, categoryService, brandService)
             {
                 MdiParent = this
             };

@@ -9,7 +9,7 @@ namespace Entities
     public class Context
     {
         public List<User> Users { get; set; }
-        public List<Category> Categories { get; set; }
+        //public List<Category> Categories { get; set; }
         public List<Offer> Offers { get; set; }
         public List<SuggestedOffer> SuggestedOffers { get; set; }
         public List<Product> Product { get; set; }

@@ -1,5 +1,6 @@
 ﻿using BLL.Contracts;
 using Entities;
+using Entities.Enums;
 using System;
 using System.Windows.Forms;
 
@@ -10,14 +11,18 @@ namespace UI.forms
         private readonly IUserService userService;
         private readonly IOfferService offerService;
         private readonly ISuggestedOfferService suggestedOfferService;
+        private readonly ICategoryService categoryService;
+        private readonly IBrandService brandService;
 
-        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService)
+        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService)
         {
             InitializeComponent();
 
             this.userService = userService;
             this.offerService = offerService;
             this.suggestedOfferService = suggestedOfferService;
+            this.categoryService = categoryService;
+            this.brandService = brandService;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -30,7 +35,7 @@ namespace UI.forms
             if (loggedUser != null)
             {
                 Hide();
-                new MDIBase(loggedUser.Role, offerService, suggestedOfferService).Show();
+                new MDIBase(loggedUser.Role, offerService, suggestedOfferService, categoryService, brandService).Show();
             }
             else
             {

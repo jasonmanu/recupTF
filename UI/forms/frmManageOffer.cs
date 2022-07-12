@@ -90,11 +90,5 @@ namespace UI.forms
                 }
             }
         }
-
-        private void btnCreateDiscount_Click(object sender, EventArgs e)
-        {
-            new frmCreateOffer(offerService).Show();
-            LoadOffers();
-        }
     }
 }
