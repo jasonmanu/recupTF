@@ -66,15 +66,21 @@ namespace UI.forms
             if (rbtnBrand.Checked)
             {
                 newOffer.BrandId = (int)cboBrand.SelectedValue;
+                newOffer.CategoryId = null;
+                newOffer.ProductId = null;
             }
 
             if (rbtnCategory.Checked)
             {
+                newOffer.BrandId = null;
                 newOffer.CategoryId = (int)cboCategory.SelectedValue;
+                newOffer.ProductId = null;
             }
 
             if (rbtnProducto.Checked)
             {
+                newOffer.BrandId = null;
+                newOffer.CategoryId = null;
                 newOffer.ProductId = (int)cboProduct.SelectedValue;
             }
 
@@ -85,6 +91,10 @@ namespace UI.forms
             if (currentDate >= startDate && currentDate <= endDate)
             {
                 newOffer.Active = true;
+            }
+            else
+            {
+                newOffer.Active = false;
             }
 
             try

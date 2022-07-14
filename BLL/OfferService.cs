@@ -24,9 +24,9 @@ namespace BLL
                 throw new Exception("Nombre de la oferta no puede ser nulo");
 
             if (entity.ProductId == null && entity.CategoryId == null && entity.BrandId == null)
-            {
-                throw new Exception("Seleccione opcion para aplicar oferta");
-            }
+                throw new Exception("Seleccione una opcion para aplicar oferta");
+
+            entity.CreatedAt = DateTime.Now;
 
             repository.Create(entity);
         }
