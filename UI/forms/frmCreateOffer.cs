@@ -63,10 +63,20 @@ namespace UI.forms
                 Type = (DiscountTypeEnum)cboType.SelectedValue
             };
 
-            int brandId = Convert.ToInt32(cboBrand.SelectedValue);
-            int productId = Convert.ToInt32(cboProduct.SelectedValue);
-            int categoryId = Convert.ToInt32(cboCategory.SelectedValue);
-            //TODO crear relacion entre oferta y brand/category/product, solo 1
+            if (rbtnBrand.Checked)
+            {
+                newOffer.BrandId = (int)cboBrand.SelectedValue;
+            }
+
+            if (rbtnCategory.Checked)
+            {
+                newOffer.CategoryId = (int)cboCategory.SelectedValue;
+            }
+
+            if (rbtnProducto.Checked)
+            {
+                newOffer.ProductId = (int)cboProduct.SelectedValue;
+            }
 
             DateTime currentDate = DateTime.Now;
             DateTime startDate = dtpStart.Value;

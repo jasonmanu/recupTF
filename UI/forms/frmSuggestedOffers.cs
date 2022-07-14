@@ -32,5 +32,10 @@ namespace UI.forms
                 dgvSuggestedOffers.Columns["Id"].Visible = false;
             }
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

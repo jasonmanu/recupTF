@@ -1,5 +1,5 @@
-﻿using BLL;
-using BLL.Contracts;
+﻿using BLL.Contracts;
+using Entities;
 using Entities.Enums;
 using System;
 using System.Windows.Forms;
@@ -14,9 +14,10 @@ namespace UI
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IProductService productService;
-        private UserRole userRole;
+        private readonly IPurchaseService purchaseService;
+        private User user;
 
-        public MDIBase(UserRole userRole, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService)
+        public MDIBase(User user, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IPurchaseService purchaseService)
         {
             InitializeComponent();
 
@@ -24,8 +25,9 @@ namespace UI
             this.suggestedOfferService = suggestedOfferService;
             this.brandService = brandService;
             this.productService = productService;
+            this.purchaseService = purchaseService;
             this.categoryService = categoryService;
-            this.userRole = userRole;
+            this.user = user;
 
             LoadRoleButtons();
         }
@@ -33,7 +35,7 @@ namespace UI
         #region Login
         private void LoadRoleButtons()
         {
-            switch (userRole)
+            switch (user.Role)
             {
                 case UserRole.ADMIN:
                     reportsMenu.Visible = true;
@@ -89,7 +91,7 @@ namespace UI
 
         private void productsMenu_Click(object sender, EventArgs e)
         {
-            new frmProduct(userRole, productService).Show();
+            new frmProduct(user, productService, purchaseService, categoryService, brandService, offerService).Show();
         }
     }
 }

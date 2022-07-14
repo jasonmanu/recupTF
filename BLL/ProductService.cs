@@ -1,10 +1,7 @@
-﻿using DAL;
+﻿using BLL.Contracts;
+using DAL;
 using Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
@@ -12,6 +9,26 @@ namespace BLL
     {
         public ProductService(IBaseRepository<Product> repository): base(repository)
         {
+        }
+
+        public override void Create(Product entity)
+        {
+            if(entity.Price <= 0)
+            {
+                throw new Exception("Precio invalido");
+            }
+
+            base.Create(entity);
+        }
+
+        public override void Update(Product entity)
+        {
+            if (entity.Price <= 0)
+            {
+                throw new Exception("Precio invalido");
+            }
+
+            base.Update(entity);
         }
     }
 }

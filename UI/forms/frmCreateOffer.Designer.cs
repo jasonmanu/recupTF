@@ -56,8 +56,8 @@ namespace UI.forms
             this.cboProduct = new System.Windows.Forms.ComboBox();
             this.rbtnCategory = new System.Windows.Forms.RadioButton();
             this.groupOffer = new System.Windows.Forms.GroupBox();
-            this.rbtnBrand = new System.Windows.Forms.RadioButton();
             this.rbtnProducto = new System.Windows.Forms.RadioButton();
+            this.rbtnBrand = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -187,7 +187,7 @@ namespace UI.forms
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(313, 40);
             this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "Create offer";
+            this.btnCreate.Text = "Crear oferta";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
@@ -267,7 +267,7 @@ namespace UI.forms
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(610, 55);
             this.tableLayoutPanel5.TabIndex = 6;
             // 
@@ -386,19 +386,6 @@ namespace UI.forms
             this.groupOffer.TabStop = false;
             this.groupOffer.Text = "Oferta aplicable a:";
             // 
-            // rbtnBrand
-            // 
-            this.rbtnBrand.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.rbtnBrand.AutoSize = true;
-            this.rbtnBrand.Location = new System.Drawing.Point(279, 25);
-            this.rbtnBrand.Name = "rbtnBrand";
-            this.rbtnBrand.Size = new System.Drawing.Size(55, 17);
-            this.rbtnBrand.TabIndex = 11;
-            this.rbtnBrand.TabStop = true;
-            this.rbtnBrand.Text = "Marca";
-            this.rbtnBrand.UseVisualStyleBackColor = true;
-            this.rbtnBrand.CheckedChanged += new System.EventHandler(this.rbtnBrand_CheckedChanged);
-            // 
             // rbtnProducto
             // 
             this.rbtnProducto.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -411,6 +398,19 @@ namespace UI.forms
             this.rbtnProducto.Text = "Producto";
             this.rbtnProducto.UseVisualStyleBackColor = true;
             this.rbtnProducto.CheckedChanged += new System.EventHandler(this.rbtnProducto_CheckedChanged);
+            // 
+            // rbtnBrand
+            // 
+            this.rbtnBrand.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.rbtnBrand.AutoSize = true;
+            this.rbtnBrand.Location = new System.Drawing.Point(279, 25);
+            this.rbtnBrand.Name = "rbtnBrand";
+            this.rbtnBrand.Size = new System.Drawing.Size(55, 17);
+            this.rbtnBrand.TabIndex = 11;
+            this.rbtnBrand.TabStop = true;
+            this.rbtnBrand.Text = "Marca";
+            this.rbtnBrand.UseVisualStyleBackColor = true;
+            this.rbtnBrand.CheckedChanged += new System.EventHandler(this.rbtnBrand_CheckedChanged);
             // 
             // frmCreateOffer
             // 

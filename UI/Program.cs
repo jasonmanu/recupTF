@@ -31,13 +31,13 @@ namespace UI
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>))
-                    .AddScoped<IUserService, UserService>()
-                    .AddScoped<IOfferService, OfferService>()
-                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
-                    .AddScoped<ICategoryService, CategoryService>()
                     .AddScoped<IBrandService, BrandService>()
+                    .AddScoped<ICategoryService, CategoryService>()
+                    .AddScoped<IOfferService, OfferService>()
                     .AddScoped<IProductService, ProductService>()
-                    .AddScoped<IPurchaseService, PurchaseService>();
+                    .AddScoped<IPurchaseService, PurchaseService>()
+                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
+                    .AddScoped<IUserService, UserService>();
 
             services.AddScoped<frmLogin>();
         }

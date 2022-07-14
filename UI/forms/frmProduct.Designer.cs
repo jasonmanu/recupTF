@@ -35,7 +35,8 @@ namespace UI
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.tlpShopper = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnBuy = new System.Windows.Forms.Button();
+            this.lblDiscount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.tlpAdmin.SuspendLayout();
             this.tlpShopper.SuspendLayout();
@@ -51,7 +52,7 @@ namespace UI
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Location = new System.Drawing.Point(22, 12);
             this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.Size = new System.Drawing.Size(766, 265);
+            this.dgvProducts.Size = new System.Drawing.Size(766, 262);
             this.dgvProducts.TabIndex = 0;
             // 
             // tlpAdmin
@@ -63,7 +64,7 @@ namespace UI
             this.tlpAdmin.Controls.Add(this.btnDelete, 2, 0);
             this.tlpAdmin.Controls.Add(this.btnUpdate, 1, 0);
             this.tlpAdmin.Controls.Add(this.btnCreate, 0, 0);
-            this.tlpAdmin.Location = new System.Drawing.Point(22, 340);
+            this.tlpAdmin.Location = new System.Drawing.Point(22, 355);
             this.tlpAdmin.Name = "tlpAdmin";
             this.tlpAdmin.RowCount = 1;
             this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -106,29 +107,40 @@ namespace UI
             // 
             this.tlpShopper.ColumnCount = 1;
             this.tlpShopper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpShopper.Controls.Add(this.button3, 0, 0);
-            this.tlpShopper.Location = new System.Drawing.Point(22, 292);
+            this.tlpShopper.Controls.Add(this.btnBuy, 0, 0);
+            this.tlpShopper.Location = new System.Drawing.Point(22, 307);
             this.tlpShopper.Name = "tlpShopper";
             this.tlpShopper.RowCount = 1;
             this.tlpShopper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpShopper.Size = new System.Drawing.Size(766, 38);
             this.tlpShopper.TabIndex = 4;
             // 
-            // button3
+            // btnBuy
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(760, 30);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Comprar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuy.Location = new System.Drawing.Point(3, 4);
+            this.btnBuy.Name = "btnBuy";
+            this.btnBuy.Size = new System.Drawing.Size(760, 30);
+            this.btnBuy.TabIndex = 0;
+            this.btnBuy.Text = "Comprar";
+            this.btnBuy.UseVisualStyleBackColor = true;
+            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.Location = new System.Drawing.Point(210, 281);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(65, 13);
+            this.lblDiscount.TabIndex = 5;
+            this.lblDiscount.Text = "Descuento: ";
             // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 401);
+            this.ClientSize = new System.Drawing.Size(800, 415);
+            this.Controls.Add(this.lblDiscount);
             this.Controls.Add(this.tlpShopper);
             this.Controls.Add(this.tlpAdmin);
             this.Controls.Add(this.dgvProducts);
@@ -141,6 +153,7 @@ namespace UI
             this.tlpAdmin.ResumeLayout(false);
             this.tlpShopper.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -152,6 +165,7 @@ namespace UI
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.TableLayoutPanel tlpShopper;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBuy;
+        private System.Windows.Forms.Label lblDiscount;
     }
 }

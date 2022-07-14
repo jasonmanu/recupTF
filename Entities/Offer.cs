@@ -15,5 +15,8 @@ namespace Entities
         public string Name { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public DiscountTypeEnum Type { get; set; }
+        public int? BrandId { get; set; }
+        public int? CategoryId { get; set; }
+        public int? ProductId { get; set; }
     }
 }
