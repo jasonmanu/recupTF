@@ -9,5 +9,7 @@ namespace BLL.Contracts
 {
     public interface IPurchaseService : IBaseService<Purchase>
     {
+        List<RevenuePerMonth> GetRevenuePerMonths(int year);
+        List<PurchasePerMonth> GetPurchasesPerMonths(int year);
     }
 }

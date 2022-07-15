@@ -62,11 +62,11 @@ namespace UI.forms
             this.chartRevenue.Name = "chartRevenue";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Ganancias";
             this.chartRevenue.Series.Add(series1);
             this.chartRevenue.Size = new System.Drawing.Size(495, 153);
             this.chartRevenue.TabIndex = 0;
-            this.chartRevenue.Text = "chart1";
+            this.chartRevenue.Text = "Ganancias";
             // 
             // dataGridView1
             // 
@@ -80,13 +80,13 @@ namespace UI.forms
             // 
             chartArea2.Name = "ChartArea1";
             this.chartSells.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
+            legend2.Name = "Ventas";
             this.chartSells.Legends.Add(legend2);
             this.chartSells.Location = new System.Drawing.Point(3, 240);
             this.chartSells.Name = "chartSells";
             series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
+            series2.Legend = "Ventas";
+            series2.Name = "Ventas";
             this.chartSells.Series.Add(series2);
             this.chartSells.Size = new System.Drawing.Size(495, 155);
             this.chartSells.TabIndex = 2;
@@ -118,7 +118,7 @@ namespace UI.forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.Controls.Add(this.dtpDate, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblDate, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(21, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -154,7 +154,7 @@ namespace UI.forms
             this.tableLayoutPanel2.Controls.Add(this.lblPurchases, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.chartRevenue, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.chartSells, 0, 3);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(21, 62);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(18, 54);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));

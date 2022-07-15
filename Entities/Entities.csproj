@@ -200,6 +200,8 @@
     <Compile Include="ProductOffer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase.cs" />
+    <Compile Include="PurchasePerMonth.cs" />
+    <Compile Include="RevenuePerMonth.cs" />
     <Compile Include="ShopperFavorite.cs" />
     <Compile Include="SuggestedOffer.cs" />
     <Compile Include="User.cs" />

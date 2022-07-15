@@ -80,7 +80,7 @@ namespace UI
         #region Reports
         private void reportsMenu_Click(object sender, EventArgs e)
         {
-            new frmReports() { MdiParent = this }.Show();
+            new frmReports(purchaseService) { MdiParent = this }.Show();
         }
         #endregion
 
