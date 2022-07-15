@@ -39,7 +39,7 @@ namespace UI.forms
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(251, 9);
+            this.lblTitle.Location = new System.Drawing.Point(323, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(277, 24);
             this.lblTitle.TabIndex = 0;
@@ -53,14 +53,15 @@ namespace UI.forms
             this.dgvSuggestedOffers.AllowUserToResizeRows = false;
             this.dgvSuggestedOffers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSuggestedOffers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSuggestedOffers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvSuggestedOffers.Location = new System.Drawing.Point(12, 46);
             this.dgvSuggestedOffers.Name = "dgvSuggestedOffers";
-            this.dgvSuggestedOffers.Size = new System.Drawing.Size(776, 337);
+            this.dgvSuggestedOffers.Size = new System.Drawing.Size(925, 337);
             this.dgvSuggestedOffers.TabIndex = 1;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(255, 403);
+            this.btnCreate.Location = new System.Drawing.Point(327, 407);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(292, 32);
             this.btnCreate.TabIndex = 2;
@@ -72,7 +73,7 @@ namespace UI.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(949, 462);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dgvSuggestedOffers);
             this.Controls.Add(this.lblTitle);

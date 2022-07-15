@@ -49,7 +49,6 @@ namespace UI
                     break;
                 case UserRole.SHOPPER:
                     productsMenu.Visible = true;
-                    //ordersMenu.Visible = true;
                     break;
                 default:
                     break;
@@ -73,7 +72,7 @@ namespace UI
 
         private void btnSuggestedOffers_Click(object sender, EventArgs e)
         {
-            new frmSuggestedOffers(suggestedOfferService) { MdiParent = this }.Show();
+            new frmSuggestedOffers(suggestedOfferService, offerService) { MdiParent = this }.Show();
         }
         #endregion
 

@@ -1,7 +1,9 @@
 ﻿using BLL.Contracts;
 using Entities;
+using FormSupport;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI.forms
@@ -9,11 +11,14 @@ namespace UI.forms
     public partial class frmSuggestedOffers : Form
     {
         private readonly ISuggestedOfferService suggestedOfferService;
+        private readonly IOfferService offerService;
+        private List<SuggestedOffer> suggestedOffers;
 
-        public frmSuggestedOffers(ISuggestedOfferService suggestedOfferService)
+        public frmSuggestedOffers(ISuggestedOfferService suggestedOfferService, IOfferService offerService)
         {
             InitializeComponent();
             this.suggestedOfferService = suggestedOfferService;
+            this.offerService = offerService;
         }
 
         private void frmSuggestedOffers_Load(object sender, EventArgs e)
@@ -23,19 +28,47 @@ namespace UI.forms
 
         private void LoadSuggestedOffers()
         {
-            List<SuggestedOffer> suggestedOffers = suggestedOfferService.GetAll();
+            dgvSuggestedOffers.DataSource = null;
+            dgvSuggestedOffers.Refresh();
 
-            if (suggestedOffers != null)
+            suggestedOffers = suggestedOfferService.GetAll();
+            if (suggestedOffers != null && suggestedOffers.Count > 0)
             {
-                dgvSuggestedOffers.Refresh();
                 dgvSuggestedOffers.DataSource = suggestedOffers;
+                //dgvSuggestedOffers.Refresh();
                 dgvSuggestedOffers.Columns["Id"].Visible = false;
+                dgvSuggestedOffers.Columns["BrandId"].Visible = false;
+                dgvSuggestedOffers.Columns["ProductId"].Visible = false;
+                dgvSuggestedOffers.Columns["CategoryId"].Visible = false;
             }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            int? currentId = FormHelper.GetCurrentRowId(dgvSuggestedOffers);
 
+            if (currentId != null)
+            {
+                SuggestedOffer suggestedOffer = suggestedOffers.FirstOrDefault(x => x.Id == currentId);
+                suggestedOfferService.Delete((int)currentId);
+
+                offerService.Create(new Offer()
+                {
+                    Active = DateHelper.GetOfferStatusByCurrentDate(suggestedOffer.Start, suggestedOffer.End),
+                    CreatedAt = DateTime.Now,
+                    Discount = suggestedOffer.Discount,
+                    Start = suggestedOffer.Start,
+                    End = suggestedOffer.End,
+                    Name = suggestedOffer.Name,
+                    Type = suggestedOffer.Type,
+                    CategoryId = suggestedOffer.CategoryId,
+                    BrandId = suggestedOffer.BrandId,
+                    ProductId = suggestedOffer.ProductId
+                });
+
+                MessageBox.Show("Creado correctamente");
+                LoadSuggestedOffers();
+            }
         }
     }
 }

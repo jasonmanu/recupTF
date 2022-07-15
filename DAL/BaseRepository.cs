@@ -1,12 +1,8 @@
 ﻿using Entities;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace DAL
 {
@@ -17,7 +13,7 @@ namespace DAL
 
         public BaseRepository()
         {
-            FilePath = $"..\\..\\..\\DAL\\Backup\\{typeof(TEntity).Name}.json";// $"Backup\\{typeof(TEntity).Name}.json";
+            FilePath = $"..\\..\\..\\DAL\\Backup\\{typeof(TEntity).Name}.json";
             string dataString = File.ReadAllText(FilePath);
             entities = JsonConvert.DeserializeObject<List<TEntity>>(dataString);
         }
