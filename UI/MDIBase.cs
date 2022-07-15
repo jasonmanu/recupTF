@@ -14,10 +14,10 @@ namespace UI
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IProductService productService;
-        private readonly IPurchaseService purchaseService;
+        private readonly IOrderService purchaseService;
         private User user;
 
-        public MDIBase(User user, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IPurchaseService purchaseService)
+        public MDIBase(User user, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService)
         {
             InitializeComponent();
 
@@ -49,7 +49,7 @@ namespace UI
                     break;
                 case UserRole.SHOPPER:
                     productsMenu.Visible = true;
-                    ordersMenu.Visible = true;
+                    //ordersMenu.Visible = true;
                     break;
                 default:
                     break;

@@ -36,7 +36,6 @@ namespace UI.forms
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.chartSells = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
@@ -46,7 +45,6 @@ namespace UI.forms
             this.lblPurchases = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSells)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -58,23 +56,15 @@ namespace UI.forms
             this.chartRevenue.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartRevenue.Legends.Add(legend1);
-            this.chartRevenue.Location = new System.Drawing.Point(3, 42);
+            this.chartRevenue.Location = new System.Drawing.Point(3, 52);
             this.chartRevenue.Name = "chartRevenue";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Ganancias";
             this.chartRevenue.Series.Add(series1);
-            this.chartRevenue.Size = new System.Drawing.Size(495, 153);
+            this.chartRevenue.Size = new System.Drawing.Size(522, 190);
             this.chartRevenue.TabIndex = 0;
             this.chartRevenue.Text = "Ganancias";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 492);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(501, 407);
-            this.dataGridView1.TabIndex = 1;
             // 
             // chartSells
             // 
@@ -82,13 +72,13 @@ namespace UI.forms
             this.chartSells.ChartAreas.Add(chartArea2);
             legend2.Name = "Ventas";
             this.chartSells.Legends.Add(legend2);
-            this.chartSells.Location = new System.Drawing.Point(3, 240);
+            this.chartSells.Location = new System.Drawing.Point(3, 297);
             this.chartSells.Name = "chartSells";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Ventas";
             series2.Name = "Ventas";
             this.chartSells.Series.Add(series2);
-            this.chartSells.Size = new System.Drawing.Size(495, 155);
+            this.chartSells.Size = new System.Drawing.Size(522, 192);
             this.chartSells.TabIndex = 2;
             this.chartSells.Text = "chart1";
             // 
@@ -129,9 +119,9 @@ namespace UI.forms
             // 
             this.lblRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRevenue.AutoSize = true;
-            this.lblRevenue.Location = new System.Drawing.Point(3, 13);
+            this.lblRevenue.Location = new System.Drawing.Point(3, 18);
             this.lblRevenue.Name = "lblRevenue";
-            this.lblRevenue.Size = new System.Drawing.Size(495, 13);
+            this.lblRevenue.Size = new System.Drawing.Size(522, 13);
             this.lblRevenue.TabIndex = 7;
             this.lblRevenue.Text = "Ganancias";
             // 
@@ -139,9 +129,9 @@ namespace UI.forms
             // 
             this.lblPurchases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPurchases.AutoSize = true;
-            this.lblPurchases.Location = new System.Drawing.Point(3, 211);
+            this.lblPurchases.Location = new System.Drawing.Point(3, 263);
             this.lblPurchases.Name = "lblPurchases";
-            this.lblPurchases.Size = new System.Drawing.Size(495, 13);
+            this.lblPurchases.Size = new System.Drawing.Size(522, 13);
             this.lblPurchases.TabIndex = 8;
             this.lblPurchases.Text = "Ventas";
             this.lblPurchases.Click += new System.EventHandler(this.label1_Click);
@@ -161,24 +151,22 @@ namespace UI.forms
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(501, 398);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(528, 492);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 516);
+            this.ClientSize = new System.Drawing.Size(558, 558);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmReports";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes";
             this.Load += new System.EventHandler(this.frmReports_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSells)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -191,7 +179,6 @@ namespace UI.forms
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRevenue;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSells;
         private System.Windows.Forms.DateTimePicker dtpDate;

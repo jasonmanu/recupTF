@@ -39,7 +39,6 @@ namespace UI
             this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.sellersMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGenerateBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +66,6 @@ namespace UI
             this.productsMenu,
             this.reportsMenu,
             this.sellersMenu,
-            this.ordersMenu,
             this.backupMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -130,13 +128,6 @@ namespace UI
             this.sellersMenu.Text = "Vendedores";
             this.sellersMenu.Visible = false;
             // 
-            // ordersMenu
-            // 
-            this.ordersMenu.Name = "ordersMenu";
-            this.ordersMenu.Size = new System.Drawing.Size(87, 20);
-            this.ordersMenu.Text = "Mis compras";
-            this.ordersMenu.Visible = false;
-            // 
             // backupMenu
             // 
             this.backupMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -150,13 +141,13 @@ namespace UI
             // btnGenerateBackup
             // 
             this.btnGenerateBackup.Name = "btnGenerateBackup";
-            this.btnGenerateBackup.Size = new System.Drawing.Size(123, 22);
+            this.btnGenerateBackup.Size = new System.Drawing.Size(180, 22);
             this.btnGenerateBackup.Text = "Generar";
             // 
             // btnRestoreBackup
             // 
             this.btnRestoreBackup.Name = "btnRestoreBackup";
-            this.btnRestoreBackup.Size = new System.Drawing.Size(123, 22);
+            this.btnRestoreBackup.Size = new System.Drawing.Size(180, 22);
             this.btnRestoreBackup.Text = "Restaurar";
             // 
             // toolStrip
@@ -300,7 +291,6 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem offersMenu;
         private System.Windows.Forms.ToolStripMenuItem reportsMenu;
         private System.Windows.Forms.ToolStripMenuItem sellersMenu;
-        private System.Windows.Forms.ToolStripMenuItem ordersMenu;
         private System.Windows.Forms.ToolStripMenuItem btnCreateOffer;
         private System.Windows.Forms.ToolStripMenuItem btnGetOffers;
         private System.Windows.Forms.ToolStripMenuItem btnSuggestedOffers;

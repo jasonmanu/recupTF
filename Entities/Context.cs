@@ -13,7 +13,7 @@ namespace Entities
         public List<Offer> Offers { get; set; }
         public List<SuggestedOffer> SuggestedOffers { get; set; }
         public List<Product> Product { get; set; }
-        public List<Purchase> Purchases { get; set; }
+        public List<Order> Purchases { get; set; }
         public List<ShopperFavorite> ShopperFavorites { get; set; }
     }
 }

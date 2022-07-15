@@ -35,7 +35,7 @@ namespace UI
                     .AddScoped<ICategoryService, CategoryService>()
                     .AddScoped<IOfferService, OfferService>()
                     .AddScoped<IProductService, ProductService>()
-                    .AddScoped<IPurchaseService, PurchaseService>()
+                    .AddScoped<IOrderService, PurchaseService>()
                     .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
                     .AddScoped<IUserService, UserService>();
 

@@ -14,9 +14,9 @@ namespace UI.forms
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IProductService productService;
-        private readonly IPurchaseService purchaseService;
+        private readonly IOrderService purchaseService;
 
-        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IPurchaseService purchaseService)
+        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService)
         {
             InitializeComponent();
 

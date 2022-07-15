@@ -7,9 +7,9 @@ namespace BLL
 {
     public class SuggestedOfferService : BaseService<SuggestedOffer>, ISuggestedOfferService
     {
-        private readonly IPurchaseService purchaseService;
+        private readonly IOrderService purchaseService;
 
-        public SuggestedOfferService(IBaseRepository<SuggestedOffer> repository, IPurchaseService purchaseService) : base(repository)
+        public SuggestedOfferService(IBaseRepository<SuggestedOffer> repository, IOrderService purchaseService) : base(repository)
         {
             this.purchaseService = purchaseService;
         }

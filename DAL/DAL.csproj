@@ -202,7 +202,7 @@
     <None Include="Backup\Category.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Backup\Purchase.json">
+    <None Include="Backup\Order.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Backup\SuggestedOffer.json">

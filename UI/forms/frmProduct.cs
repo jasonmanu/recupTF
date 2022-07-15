@@ -13,13 +13,13 @@ namespace UI
     public partial class frmProduct : Form
     {
         private readonly IProductService productService;
-        private readonly IPurchaseService purchaseService;
+        private readonly IOrderService purchaseService;
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IOfferService offerService;
         private User user;
 
-        public frmProduct(User user, IProductService productService, IPurchaseService purchaseService, ICategoryService categoryService, IBrandService brandService, IOfferService offerService)
+        public frmProduct(User user, IProductService productService, IOrderService purchaseService, ICategoryService categoryService, IBrandService brandService, IOfferService offerService)
         {
             InitializeComponent();
             this.productService = productService;
@@ -151,14 +151,14 @@ namespace UI
 
             if (productId == null)
             {
-                MessageBox.Show("Select a product row");
+                MessageBox.Show("Seleccione una fila");
             }
             else
             {
                 if (productId != null)
                 {
                     productService.Delete(Convert.ToInt32(productId));
-                    MessageBox.Show("deleting");
+                    MessageBox.Show("Eliminado");
                 }
             }
         }
@@ -171,7 +171,7 @@ namespace UI
             {
                 try
                 {
-                    purchaseService.Create(new Purchase() { ProductId = (int)productId, Date = DateTime.Now, UserId = user.Id, TotalPrice = offerService.CalculateFinalPriceForProduct((int)productId) });
+                    purchaseService.Create(new Order() { ProductId = (int)productId, Date = DateTime.Now, UserId = user.Id, TotalPrice = offerService.CalculateFinalPriceForProduct((int)productId) });
                     MessageBox.Show("Producto comprado correctamente");
                 }
                 catch (Exception ex)

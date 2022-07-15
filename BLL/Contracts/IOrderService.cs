@@ -1,13 +1,9 @@
 ﻿using Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
-    public interface IPurchaseService : IBaseService<Purchase>
+    public interface IOrderService : IBaseService<Order>
     {
         List<RevenuePerMonth> GetRevenuePerMonths(int year);
         List<PurchasePerMonth> GetPurchasesPerMonths(int year);

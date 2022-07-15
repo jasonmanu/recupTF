@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class PurchaseService : BaseService<Purchase>, IPurchaseService
+    public class PurchaseService : BaseService<Order>, IOrderService
     {
-        public PurchaseService(IBaseRepository<Purchase> repository) : base(repository)
+        public PurchaseService(IBaseRepository<Order> repository) : base(repository)
         {
         }
 
-        public override void Create(Purchase entity)
+        public override void Create(Order entity)
         {
             base.Create(entity);
         }
 
         public List<RevenuePerMonth> GetRevenuePerMonths(int year)
         {
-            List<Purchase> purchases = base.GetAll().Where(x => x.Date.Year == year).ToList();
+            List<Order> purchases = base.GetAll().Where(x => x.Date.Year == year).ToList();
             if (purchases != null && purchases.Count > 0)
             {
                 List<RevenuePerMonth> revenuePerMonth = purchases.GroupBy(x => x.Date.Month).Select(cl => new RevenuePerMonth() { Revenue = cl.Sum(w => w.TotalPrice), Month = cl.Key }).ToList();
@@ -34,7 +34,7 @@ namespace BLL
 
         public List<PurchasePerMonth> GetPurchasesPerMonths(int year)
         {
-            List<Purchase> purchases = base.GetAll().Where(x => x.Date.Year == year).ToList();
+            List<Order> purchases = base.GetAll().Where(x => x.Date.Year == year).ToList();
 
             if (purchases != null && purchases.Count > 0)
             {

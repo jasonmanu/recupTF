@@ -2,7 +2,7 @@
 
 namespace Entities
 {
-    public class Purchase : Entity
+    public class Order : Entity
     {
         public DateTime Date { get; set; }
         public int ProductId { get; set; }
