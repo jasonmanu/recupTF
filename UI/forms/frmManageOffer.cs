@@ -12,12 +12,18 @@ namespace UI.forms
     public partial class frmManageOffer : Form
     {
         private readonly IOfferService offerService;
+        private readonly ICategoryService categoryService;
+        private readonly IBrandService brandService;
+        private readonly IProductService productService;
         private List<Offer> offers;
 
-        public frmManageOffer(IOfferService offerService)
+        public frmManageOffer(IOfferService offerService, ICategoryService categoryService, IBrandService brandService, IProductService productService)
         {
             InitializeComponent();
             this.offerService = offerService;
+            this.categoryService = categoryService;
+            this.brandService = brandService;
+            this.productService = productService;
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
         }
 
@@ -29,15 +35,44 @@ namespace UI.forms
         private void LoadOffers()
         {
             offers = offerService.GetAll();
+            List<OfferDto> offersDto = new List<OfferDto>();
 
             if (offers != null)
             {
+                foreach (Offer offer in offers)
+                {
+                    offersDto.Add(new OfferDto()
+                    {
+                        Active = DateHelper.GetOfferStatusByCurrentDate(offer.Start, offer.End),
+                        Marca = offer.BrandId != null ? brandService.GetNameById((int)offer.BrandId) : null,
+                        Categoria = offer.CategoryId != null ? categoryService.GetNameById((int)offer.CategoryId) : null,
+                        Producto = offer.ProductId != null ? productService.GetById((int)offer.ProductId).Name : null,
+                        CreatedAt = offer.CreatedAt,
+                        Discount = offer.Discount,
+                        Inicio = offer.Start.ToShortDateString(),
+                        Fin = offer.End.ToShortDateString(),
+                        Id = offer.Id,
+                        BrandId = offer.BrandId,
+                        CategoryId = offer.CategoryId,
+                        End = offer.End,
+                        Start = offer.Start,
+                        Name = offer.Name,
+                        ProductId = offer.ProductId,
+                        Type = offer.Type
+                    });
+                }
+
                 try
                 {
                     dgvOffers.Refresh();
-                    dgvOffers.DataSource = offers;
+                    dgvOffers.DataSource = offersDto;
                     dgvOffers.Columns["Id"].Visible = false;
+                    dgvOffers.Columns["BrandId"].Visible = false;
+                    dgvOffers.Columns["CategoryId"].Visible = false;
+                    dgvOffers.Columns["ProductId"].Visible = false;
                     dgvOffers.Columns["CreatedAt"].Visible = false;
+                    dgvOffers.Columns["Start"].Visible = false;
+                    dgvOffers.Columns["End"].Visible = false;
                     dgvOffers.Columns["Name"].Width = 150;
                 }
                 catch (Exception e)

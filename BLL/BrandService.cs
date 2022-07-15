@@ -22,5 +22,10 @@ namespace BLL
                 base.Create(entity);
             }
         }
+
+        public string GetNameById(int id)
+        {
+            return base.GetById(id).Name;
+        }
     }
 }

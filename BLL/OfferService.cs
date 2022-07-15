@@ -1,6 +1,8 @@
 ﻿using BLL.Contracts;
 using DAL;
 using Entities;
+using Entities.Enums;
+using FormSupport;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,14 +30,54 @@ namespace BLL
 
             entity.CreatedAt = DateTime.Now;
 
+            if (entity.ProductId != null && entity.Type == DiscountTypeEnum.Amount)
+            {
+                Product product = productService.GetById((int)entity.ProductId);
+
+                if (entity.Discount > product.Price)
+                    throw new Exception("El descuento no puede ser mayor al precio del producto");
+            }
+
             repository.Create(entity);
         }
 
-        public List<Offer> GetOffersByProductId(int id)
+        public float CalculateFinalPriceForProduct(int productId)
         {
-            var offers = repository.GetAll();// get by prod id
-            //var productCategory = 
-            return offers;
+            float productPrice = productService.GetById(productId).Price;
+            List<Offer> offersForProduct = GetOffersByProductId(productId);
+
+            if (offersForProduct != null && offersForProduct.Count > 0)
+            {
+                foreach (var offer in offersForProduct)
+                {
+                    if (offer.Type == DiscountTypeEnum.Amount)
+                    {
+                        productPrice = productPrice - offer.Discount;
+                    }
+                    else
+                    {
+                        productPrice = (productPrice * offer.Discount) / 100;
+                    }
+                }
+            }
+
+            return productPrice;
+        }
+
+        public List<Offer> GetOffersByProductId(int productId)
+        {
+            Product product = productService.GetById(productId);
+            int productCategoryId = product.CategoryId;
+            int productBrandId = product.BrandId;
+            List<Offer> offers = repository.GetAll().Where(x => x.BrandId == productBrandId || x.CategoryId == productCategoryId || x.ProductId == productId).ToList();
+
+            if (offers != null && offers.Count > 0)
+            {
+                List<Offer> activeOffers = offers.Where(x => DateHelper.GetOfferStatusByCurrentDate(x.Start, x.End)).ToList();
+                return activeOffers;
+            }
+
+            return null;
         }
     }
 }

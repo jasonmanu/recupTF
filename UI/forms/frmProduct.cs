@@ -18,7 +18,6 @@ namespace UI
         private readonly IBrandService brandService;
         private readonly IOfferService offerService;
         private User user;
-        private List<Product> products;
 
         public frmProduct(User user, IProductService productService, IPurchaseService purchaseService, ICategoryService categoryService, IBrandService brandService, IOfferService offerService)
         {
@@ -45,47 +44,93 @@ namespace UI
         private void frmProduct_Load(object sender, EventArgs e)
         {
             LoadProducts();
-            LoadProductDiscounts();
+            LoadProductOffers();
         }
 
-        private void LoadProductDiscounts()
+        private void LoadProductOffers()
         {
             int productId = (int)FormHelper.GetCurrentRowId(dgvProducts);
             List<Offer> offers = offerService.GetOffersByProductId(productId);
 
-            if (offers != null )// add length
+            lblDiscount.Text = string.Empty;
+
+            if (offers != null && offers.Count > 0)
             {
+                lblDiscount.Text = "Oferta/s\n";
+
+                foreach (Offer offer in offers)
+                {
+                    string discountText;
+
+                    if (offer.Type == DiscountTypeEnum.Amount)
+                    {
+                        discountText = $"${offer.Discount} ";
+                    }
+                    else
+                    {
+                        discountText = $"{offer.Discount}% ";
+                    }
+
+                    lblDiscount.Text += discountText;
+
+                    if (offer.CategoryId != null)
+                    {
+                        lblDiscount.Text += "de descuento por Categoria\n";
+                    }
+
+                    if (offer.BrandId != null)
+                    {
+                        lblDiscount.Text += "de descuento por Marca\n";
+                    }
+
+                    if (offer.ProductId != null)
+                    {
+                        lblDiscount.Text += "de descuento en este producto\n";
+                    }
+                }
             }
-
-            lblDiscount.Text += "\n";
-
-            //if (productId != null)
-            //{
-            //    Offer currentOffer = offers?.FirstOrDefault(x => x.Id == id);
-
-            //    if (currentOffer != null)
-            //    {
-            //        txtName.Text = currentOffer.Name;
-            //        checkActive.Checked = currentOffer.Active;
-            //        nudDiscount.Value = currentOffer.Discount;
-            //        cboType.SelectedItem = currentOffer.Type;
-            //    }
-            //}
+            else
+            {
+                lblDiscount.Text = "No hay ofertas para este producto";
+            }
         }
 
         private void LoadProducts()
         {
             List<Product> products = productService.GetAll();
+            List<ProductDto> productsDto = new List<ProductDto>();
 
-            if (products != null)
+            if (products != null && products.Count > 0)
             {
+                foreach (Product product in products)
+                {
+                    productsDto.Add(new ProductDto()
+                    {
+                        BrandId = product.BrandId,
+                        CategoryId = product.CategoryId,
+                        Id = product.Id,
+                        Name = product.Name,
+                        BrandName = brandService.GetNameById(product.BrandId),
+                        Description = product.Description,
+                        Price = product.Price,
+                        PriceDiscount = offerService.CalculateFinalPriceForProduct(product.Id)
+                    });
+                }
+
                 try
                 {
                     dgvProducts.Refresh();
-                    dgvProducts.DataSource = products;
+                    dgvProducts.DataSource = productsDto;
+
                     dgvProducts.Columns["Id"].Visible = false;
                     dgvProducts.Columns["BrandId"].Visible = false;
                     dgvProducts.Columns["CategoryId"].Visible = false;
+
+                    dgvProducts.Columns["Name"].DisplayIndex = 0;
+                    dgvProducts.Columns["BrandName"].DisplayIndex = 1;
+                    dgvProducts.Columns["Description"].DisplayIndex = 2;
+                    dgvProducts.Columns["Price"].DisplayIndex = 3;
+
                 }
                 catch (Exception ex)
                 {
@@ -124,8 +169,21 @@ namespace UI
 
             if (productId != null)
             {
-                purchaseService.Create(new Purchase() { ProductId = (int)productId, Date = DateTime.Now, UserId = user.Id });
+                try
+                {
+                    purchaseService.Create(new Purchase() { ProductId = (int)productId, Date = DateTime.Now, UserId = user.Id, TotalPrice = offerService.CalculateFinalPriceForProduct((int)productId) });
+                    MessageBox.Show("Producto comprado correctamente");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+        }
+
+        private void dgvProducts_SelectionChanged(object sender, EventArgs e)
+        {
+            LoadProductOffers();
         }
     }
 }

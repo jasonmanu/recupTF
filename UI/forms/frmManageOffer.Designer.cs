@@ -30,19 +30,19 @@ namespace UI.forms
         private void InitializeComponent()
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkActive = new System.Windows.Forms.CheckBox();
-            this.nudDiscount = new System.Windows.Forms.NumericUpDown();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.cboType = new System.Windows.Forms.ComboBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.nudDiscount = new System.Windows.Forms.NumericUpDown();
+            this.checkActive = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.dgvOffers = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblDiscount = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.tlpOffers = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscount)).BeginInit();
@@ -54,6 +54,7 @@ namespace UI.forms
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.ColumnCount = 4;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -67,31 +68,38 @@ namespace UI.forms
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(753, 37);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1033, 37);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
-            // checkActive
+            // cboType
             // 
-            this.checkActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkActive.AutoSize = true;
-            this.checkActive.Location = new System.Drawing.Point(641, 10);
-            this.checkActive.Name = "checkActive";
-            this.checkActive.Size = new System.Drawing.Size(109, 17);
-            this.checkActive.TabIndex = 4;
-            this.checkActive.Text = "Activo";
-            this.checkActive.UseVisualStyleBackColor = true;
+            this.cboType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.FormattingEnabled = true;
+            this.cboType.Location = new System.Drawing.Point(570, 8);
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(303, 21);
+            this.cboType.TabIndex = 3;
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Location = new System.Drawing.Point(3, 8);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(407, 20);
+            this.txtName.TabIndex = 0;
             // 
             // nudDiscount
             // 
             this.nudDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudDiscount.Location = new System.Drawing.Point(304, 8);
+            this.nudDiscount.Location = new System.Drawing.Point(416, 8);
             this.nudDiscount.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudDiscount.Name = "nudDiscount";
-            this.nudDiscount.Size = new System.Drawing.Size(106, 20);
+            this.nudDiscount.Size = new System.Drawing.Size(148, 20);
             this.nudDiscount.TabIndex = 1;
             this.nudDiscount.Value = new decimal(new int[] {
             1,
@@ -99,27 +107,20 @@ namespace UI.forms
             0,
             0});
             // 
-            // txtName
+            // checkActive
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(3, 8);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(295, 20);
-            this.txtName.TabIndex = 0;
-            // 
-            // cboType
-            // 
-            this.cboType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboType.FormattingEnabled = true;
-            this.cboType.Location = new System.Drawing.Point(416, 8);
-            this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(219, 21);
-            this.cboType.TabIndex = 3;
+            this.checkActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkActive.AutoSize = true;
+            this.checkActive.Location = new System.Drawing.Point(879, 10);
+            this.checkActive.Name = "checkActive";
+            this.checkActive.Size = new System.Drawing.Size(151, 17);
+            this.checkActive.TabIndex = 4;
+            this.checkActive.Text = "Activo";
+            this.checkActive.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -129,30 +130,30 @@ namespace UI.forms
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(753, 61);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1033, 61);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(379, 13);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(371, 34);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Eliminar";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.Location = new System.Drawing.Point(3, 13);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(370, 34);
+            this.btnUpdate.Size = new System.Drawing.Size(510, 34);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Actualizar";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Location = new System.Drawing.Point(519, 13);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(511, 34);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dgvOffers
             // 
@@ -160,17 +161,19 @@ namespace UI.forms
             this.dgvOffers.AllowUserToDeleteRows = false;
             this.dgvOffers.AllowUserToResizeColumns = false;
             this.dgvOffers.AllowUserToResizeRows = false;
+            this.dgvOffers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOffers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOffers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOffers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvOffers.Location = new System.Drawing.Point(3, 3);
+            this.dgvOffers.Location = new System.Drawing.Point(3, 6);
             this.dgvOffers.Name = "dgvOffers";
-            this.dgvOffers.Size = new System.Drawing.Size(753, 292);
+            this.dgvOffers.Size = new System.Drawing.Size(1033, 292);
             this.dgvOffers.TabIndex = 0;
             this.dgvOffers.SelectionChanged += new System.EventHandler(this.dgvOffers_SelectionChanged);
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.ColumnCount = 4;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -184,48 +187,48 @@ namespace UI.forms
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(753, 15);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1033, 15);
             this.tableLayoutPanel4.TabIndex = 4;
-            // 
-            // lblName
-            // 
-            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(128, 2);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(44, 13);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Nombre";
-            // 
-            // lblDiscount
-            // 
-            this.lblDiscount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblDiscount.AutoSize = true;
-            this.lblDiscount.Location = new System.Drawing.Point(327, 2);
-            this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(59, 13);
-            this.lblDiscount.TabIndex = 1;
-            this.lblDiscount.Text = "Descuento";
-            // 
-            // lblType
-            // 
-            this.lblType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(511, 2);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(28, 13);
-            this.lblType.TabIndex = 2;
-            this.lblType.Text = "Tipo";
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(675, 2);
+            this.label2.Location = new System.Drawing.Point(934, 2);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Estado";
+            // 
+            // lblType
+            // 
+            this.lblType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(707, 2);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(28, 13);
+            this.lblType.TabIndex = 2;
+            this.lblType.Text = "Tipo";
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.Location = new System.Drawing.Point(460, 2);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(59, 13);
+            this.lblDiscount.TabIndex = 1;
+            this.lblDiscount.Text = "Descuento";
+            // 
+            // lblName
+            // 
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(184, 2);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(44, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Nombre";
             // 
             // tlpOffers
             // 
@@ -242,16 +245,16 @@ namespace UI.forms
             this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tlpOffers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpOffers.Size = new System.Drawing.Size(759, 436);
+            this.tlpOffers.Size = new System.Drawing.Size(1039, 436);
             this.tlpOffers.TabIndex = 2;
             // 
             // frmManageOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(1064, 461);
             this.Controls.Add(this.tlpOffers);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmManageOffer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administras ofertas";

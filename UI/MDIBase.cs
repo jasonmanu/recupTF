@@ -68,7 +68,7 @@ namespace UI
 
         private void btnGetOffers_Click(object sender, EventArgs e)
         {
-            new frmManageOffer(offerService) { MdiParent = this }.Show();
+            new frmManageOffer(offerService, categoryService, brandService, productService) { MdiParent = this }.Show();
         }
 
         private void btnSuggestedOffers_Click(object sender, EventArgs e)
@@ -91,7 +91,7 @@ namespace UI
 
         private void productsMenu_Click(object sender, EventArgs e)
         {
-            new frmProduct(user, productService, purchaseService, categoryService, brandService, offerService).Show();
+            new frmProduct(user, productService, purchaseService, categoryService, brandService, offerService) { MdiParent = this }.Show();
         }
     }
 }

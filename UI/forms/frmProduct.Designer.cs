@@ -50,10 +50,12 @@ namespace UI
             this.dgvProducts.AllowUserToResizeRows = false;
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvProducts.Location = new System.Drawing.Point(22, 12);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.Size = new System.Drawing.Size(766, 262);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.SelectionChanged += new System.EventHandler(this.dgvProducts_SelectionChanged);
             // 
             // tlpAdmin
             // 
@@ -64,7 +66,7 @@ namespace UI
             this.tlpAdmin.Controls.Add(this.btnDelete, 2, 0);
             this.tlpAdmin.Controls.Add(this.btnUpdate, 1, 0);
             this.tlpAdmin.Controls.Add(this.btnCreate, 0, 0);
-            this.tlpAdmin.Location = new System.Drawing.Point(22, 355);
+            this.tlpAdmin.Location = new System.Drawing.Point(22, 391);
             this.tlpAdmin.Name = "tlpAdmin";
             this.tlpAdmin.RowCount = 1;
             this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -108,7 +110,7 @@ namespace UI
             this.tlpShopper.ColumnCount = 1;
             this.tlpShopper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpShopper.Controls.Add(this.btnBuy, 0, 0);
-            this.tlpShopper.Location = new System.Drawing.Point(22, 307);
+            this.tlpShopper.Location = new System.Drawing.Point(22, 343);
             this.tlpShopper.Name = "tlpShopper";
             this.tlpShopper.RowCount = 1;
             this.tlpShopper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -129,17 +131,17 @@ namespace UI
             // lblDiscount
             // 
             this.lblDiscount.AutoSize = true;
-            this.lblDiscount.Location = new System.Drawing.Point(210, 281);
+            this.lblDiscount.Location = new System.Drawing.Point(284, 284);
             this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(65, 13);
+            this.lblDiscount.Size = new System.Drawing.Size(36, 13);
             this.lblDiscount.TabIndex = 5;
-            this.lblDiscount.Text = "Descuento: ";
+            this.lblDiscount.Text = "Oferta";
             // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 415);
+            this.ClientSize = new System.Drawing.Size(800, 447);
             this.Controls.Add(this.lblDiscount);
             this.Controls.Add(this.tlpShopper);
             this.Controls.Add(this.tlpAdmin);

@@ -177,6 +177,7 @@ namespace UI.forms
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar sesion";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.tlpLogin.ResumeLayout(false);
             this.tlpLogin.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

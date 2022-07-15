@@ -57,8 +57,8 @@ namespace UI.forms
             {
                 Active = false,
                 Discount = Convert.ToInt32(nudDiscount.Value),
-                Start = DateTime.Now,
-                End = DateTime.Now,
+                Start = dtpStart.Value,
+                End = dtpEnd.Value,
                 Name = txtName.Text,
                 Type = (DiscountTypeEnum)cboType.SelectedValue
             };

@@ -14,5 +14,10 @@ namespace BLL
         public PurchaseService(IBaseRepository<Purchase> repository) : base(repository)
         {
         }
+
+        public override void Create(Purchase entity)
+        {
+            base.Create(entity);
+        }
     }
 }

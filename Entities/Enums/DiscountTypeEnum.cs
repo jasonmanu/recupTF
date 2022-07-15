@@ -8,7 +8,7 @@ namespace Entities.Enums
 {
     public enum DiscountTypeEnum
     {
-        Amount,
-        Percentage
+        Percentage,
+        Amount
     }
 }

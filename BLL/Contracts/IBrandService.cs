@@ -9,5 +9,6 @@ namespace BLL.Contracts
 {
     public interface IBrandService : IBaseService<Brand>
     {
+        string GetNameById(int id);
     }
 }
