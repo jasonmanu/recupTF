@@ -62,8 +62,8 @@ namespace UI
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.offersMenu,
             this.productsMenu,
+            this.offersMenu,
             this.reportsMenu,
             this.sellersMenu,
             this.backupMenu});
@@ -141,13 +141,13 @@ namespace UI
             // btnGenerateBackup
             // 
             this.btnGenerateBackup.Name = "btnGenerateBackup";
-            this.btnGenerateBackup.Size = new System.Drawing.Size(180, 22);
+            this.btnGenerateBackup.Size = new System.Drawing.Size(123, 22);
             this.btnGenerateBackup.Text = "Generar";
             // 
             // btnRestoreBackup
             // 
             this.btnRestoreBackup.Name = "btnRestoreBackup";
-            this.btnRestoreBackup.Size = new System.Drawing.Size(180, 22);
+            this.btnRestoreBackup.Size = new System.Drawing.Size(123, 22);
             this.btnRestoreBackup.Text = "Restaurar";
             // 
             // toolStrip

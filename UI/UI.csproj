@@ -187,46 +187,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="forms\frmCreateOffer.cs">
+    <Compile Include="frmCreateOffer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmCreateOffer.Designer.cs">
+    <Compile Include="frmCreateOffer.Designer.cs">
       <DependentUpon>frmCreateOffer.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmCreateProduct.cs">
+    <Compile Include="frmCreateProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmCreateProduct.Designer.cs">
+    <Compile Include="frmCreateProduct.Designer.cs">
       <DependentUpon>frmCreateProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmLogin.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmLogin.Designer.cs">
+    <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmManageOffer.cs">
+    <Compile Include="frmManageOffer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmManageOffer.Designer.cs">
+    <Compile Include="frmManageOffer.Designer.cs">
       <DependentUpon>frmManageOffer.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmProduct.cs">
+    <Compile Include="frmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmProduct.Designer.cs">
+    <Compile Include="frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmReports.cs">
+    <Compile Include="frmReports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmReports.Designer.cs">
+    <Compile Include="frmReports.Designer.cs">
       <DependentUpon>frmReports.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmSuggestedOffers.cs">
+    <Compile Include="frmSuggestedOffers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmSuggestedOffers.Designer.cs">
+    <Compile Include="frmSuggestedOffers.Designer.cs">
       <DependentUpon>frmSuggestedOffers.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIBase.cs">
@@ -237,25 +237,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\frmCreateOffer.resx">
+    <EmbeddedResource Include="frmCreateOffer.resx">
       <DependentUpon>frmCreateOffer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmCreateProduct.resx">
+    <EmbeddedResource Include="frmCreateProduct.resx">
       <DependentUpon>frmCreateProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmLogin.resx">
+    <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmManageOffer.resx">
+    <EmbeddedResource Include="frmManageOffer.resx">
       <DependentUpon>frmManageOffer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmProduct.resx">
+    <EmbeddedResource Include="frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmReports.resx">
+    <EmbeddedResource Include="frmReports.resx">
       <DependentUpon>frmReports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmSuggestedOffers.resx">
+    <EmbeddedResource Include="frmSuggestedOffers.resx">
       <DependentUpon>frmSuggestedOffers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIBase.resx">

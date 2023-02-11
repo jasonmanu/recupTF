@@ -8,7 +8,7 @@ namespace Entities.Exceptions
 {
     public class NullLoginException : Exception
     {
-        public NullLoginException() : base("Username y/o Password no pueden ser nulos")
+        public NullLoginException() : base("Ususario y/o contraseña invalida")
         {
         }
     }

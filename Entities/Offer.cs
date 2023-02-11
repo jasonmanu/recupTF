@@ -13,7 +13,6 @@ namespace Entities
         public DateTime End { get; set; }
         public int Discount { get; set; }
         public string Name { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
         public DiscountTypeEnum Type { get; set; }
         public int? BrandId { get; set; }
         public int? CategoryId { get; set; }
