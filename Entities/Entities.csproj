@@ -186,7 +186,7 @@
   <ItemGroup>
     <Compile Include="Brand.cs" />
     <Compile Include="Category.cs" />
-    <Compile Include="Context.cs" />
+    <Compile Include="DataContext.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Enums\DiscountTypeEnum.cs" />
     <Compile Include="Enums\UserRole.cs" />

@@ -1,14 +1,14 @@
 ﻿using Entities.Enums;
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Entities
 {
     [Serializable]
-    //[Serializable, XmlRoot("users")]
     public class User : Entity
     {
+        public User() { }
+
         public User(string username, string password, UserRole role)
         {
             Username = username;
@@ -16,30 +16,13 @@ namespace Entities
             Role = role;
         }
 
-        public User()
-        {
-        }
-
-        //[XmlAttribute("username")]
-        [XmlElement("username")]
+        [XmlElement("Username")]//[XmlAttribute("username")]
         public string Username { get; set; }
 
-        [XmlElement("password")]
+        [XmlElement("Password")]
         public string Password { get; set; }
 
-        [XmlElement("role")]
+        [XmlElement("Role")]
         public UserRole Role { get; set; }
-    }
-
-    [XmlRoot("users")]
-    public class UserRootXml
-    {
-        public UserRootXml()
-        {
-            Users = new List<User>();
-        }
-
-        [XmlElement("user")]
-        public List<User> Users { get; set; }
     }
 }

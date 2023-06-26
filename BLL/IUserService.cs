@@ -10,5 +10,6 @@ namespace BLL.Contracts
     public interface IUserService : IBaseService<User>
     {
         User Login(string username, string password);
+        void Register(User user);
     }
 }

@@ -19,8 +19,17 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // crea coleccion de servicios para inyeccion de dependencias
-            var services = new ServiceCollection();
-            ConfigureServices(services);
+            ServiceCollection services = new ServiceCollection();
+            services.AddScoped<IUserService, UserService>()
+                    .AddScoped<IBrandService, BrandService>()
+                    .AddScoped<ICategoryService, CategoryService>()
+                    .AddScoped<IOfferService, OfferService>()
+                    .AddScoped<IProductService, ProductService>()
+                    .AddScoped<IOrderService, PurchaseService>()
+                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
+                    .AddScoped<IUserRepository, UserRepository>()
+                    .AddScoped<frmLogin>();
+            //.AddScoped(typeof(IBaseRepository<>), typeof(XmlRepository<>))
 
             // corre form principal con servicios inyectados
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
@@ -30,18 +39,20 @@ namespace UI
             }
         }
 
-        private static void ConfigureServices(ServiceCollection services)
-        {
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>))
-                    .AddScoped<IBrandService, BrandService>()
-                    .AddScoped<ICategoryService, CategoryService>()
-                    .AddScoped<IOfferService, OfferService>()
-                    .AddScoped<IProductService, ProductService>()
-                    .AddScoped<IOrderService, PurchaseService>()
-                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
-                    .AddScoped<IUserService, UserService>();
+        //private static void ConfigureServices(ServiceCollection services)
+        //{
+        //    services.AddScoped(typeof(IBaseRepository<>), typeof(XmlRepository<>))
+        //            .AddScoped<IUserRepository, UserRepository>()
+        //            .AddScoped<IBrandService, BrandService>()
+        //            .AddScoped<ICategoryService, CategoryService>()
+        //            .AddScoped<IOfferService, OfferService>()
+        //            .AddScoped<IProductService, ProductService>()
+        //            .AddScoped<IOrderService, PurchaseService>()
+        //            .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
+        //            .AddScoped<IUserService, UserService>()
+        //            .AddScoped<frmLogin>();
 
-            services.AddScoped<frmLogin>();
-        }
+        //    //services.AddScoped<frmLogin>();
+        //}
     }
 }

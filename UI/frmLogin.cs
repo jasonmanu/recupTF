@@ -16,17 +16,16 @@ namespace UI.forms
         private readonly IProductService productService;
         private readonly IOrderService purchaseService;
 
-        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService)
+        public frmLogin(IUserService userService)// IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService)
         {
             InitializeComponent();
-
             this.userService = userService;
-            this.offerService = offerService;
-            this.suggestedOfferService = suggestedOfferService;
-            this.categoryService = categoryService;
-            this.brandService = brandService;
-            this.productService = productService;
-            this.purchaseService = purchaseService;
+            //this.offerService = offerService;
+            //this.suggestedOfferService = suggestedOfferService;
+            //this.categoryService = categoryService;
+            //this.brandService = brandService;
+            //this.productService = productService;
+            //this.purchaseService = purchaseService;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -36,14 +35,15 @@ namespace UI.forms
 
             User loggedUser = userService.Login(username, password);
 
-            if (loggedUser != null)
+            if (loggedUser == null)
             {
-                Hide();
-                new MDIBase(loggedUser, offerService, suggestedOfferService, categoryService, brandService, productService, purchaseService).Show();
+                MessageBox.Show("Usuario y/o contraseña no validos");
             }
             else
             {
-                MessageBox.Show("Usuario y/o contraseña no validos");
+                Hide();
+                Console.WriteLine("success");
+                //new MDIBase(loggedUser, offerService, suggestedOfferService, categoryService, brandService, productService, purchaseService).Show();
             }
         }
 
@@ -54,7 +54,7 @@ namespace UI.forms
 
             try
             {
-                userService.Create(new User(username, password, UserRole.SHOPPER));
+                userService.Register(new User(username, password, UserRole.SHOPPER));
                 MessageBox.Show("Registrado Correctamente");
             }
             catch (Exception ex)
