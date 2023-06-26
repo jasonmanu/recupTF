@@ -17,10 +17,7 @@ namespace DAL
 
         public List<User> GetAll()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(DataContext));
-            DataContext results = (DataContext)serializer.Deserialize(rootDocument.CreateReader());
-            List<User> users = results.UserRoot.Users;
-            return users;
+            return GetContext().UsersRoot.Users;
         }
 
         public void Create(User entity)
@@ -30,7 +27,7 @@ namespace DAL
                                 new XElement("Password", entity.Password),
                                 new XElement("Role", entity.Role));
 
-            rootDocument.Descendants("users").FirstOrDefault().Add(newUser);
+            rootDocument.Descendants("Users").FirstOrDefault().Add(newUser);
             SaveChanges();
         }
 
@@ -43,7 +40,7 @@ namespace DAL
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataContext));
             DataContext results = (DataContext)serializer.Deserialize(rootDocument.CreateReader());
-            User user = results.UserRoot.Users.FirstOrDefault(x => x.Id == id);
+            User user = results.UsersRoot.Users.FirstOrDefault(x => x.Id == id);
             return user;
         }
 

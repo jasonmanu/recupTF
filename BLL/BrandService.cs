@@ -11,7 +11,7 @@ namespace BLL
 {
     public class BrandService : BaseService<Brand>, IBrandService
     {
-        public BrandService(IBaseRepository<Brand> repository) : base(repository)
+        public BrandService(IBrandRepository repository) : base(repository)
         {
         }
 
@@ -25,7 +25,7 @@ namespace BLL
 
         public string GetNameById(int id)
         {
-            return base.GetById(id).Name;
+            return base.GetById(id)?.Name;
         }
     }
 }

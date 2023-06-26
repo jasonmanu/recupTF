@@ -6,9 +6,9 @@ namespace BLL
 {
     public class CategoryService : BaseService<Category>, ICategoryService
     {
-        private readonly IBaseRepository<Category> repository;
+        private readonly ICategoryRepository repository;
 
-        public CategoryService(IBaseRepository<Category> repository) : base(repository)
+        public CategoryService(ICategoryRepository repository) : base(repository)
         {
             this.repository = repository;
         }

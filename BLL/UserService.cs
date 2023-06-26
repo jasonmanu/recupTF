@@ -12,7 +12,6 @@ namespace BLL
         private readonly IUserRepository repository;
         private const int MIN_USERNAME_LENGTH = 5;
 
-
         public UserService(IUserRepository repository) : base(repository)
         {
             this.repository = repository;
@@ -28,7 +27,7 @@ namespace BLL
             password = CryptoHelper.Hash(password);
 
             // retorna usuario si es login valido o null si los datos de login son invalidos
-            User user = repository.GetAll().FirstOrDefault(x => x.Username == username && x.Password == password);
+            User user = repository.GetAll()?.FirstOrDefault(x => x.Username == username && x.Password == password);
             return user;
         }
 

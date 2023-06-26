@@ -7,8 +7,11 @@ namespace BLL
 {
     public class ProductService : BaseService<Product>, IProductService
     {
-        public ProductService(IBaseRepository<Product> repository): base(repository)
+        private readonly IProductRepository repository;
+
+        public ProductService(IProductRepository repository): base(repository)
         {
+            this.repository = repository;
         }
 
         public override void Create(Product entity)

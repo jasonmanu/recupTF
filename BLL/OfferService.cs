@@ -11,10 +11,10 @@ namespace BLL
 {
     public class OfferService : BaseService<Offer>, IOfferService
     {
-        private readonly IBaseRepository<Offer> repository;
+        private readonly IOfferRepository repository;
         private readonly IProductService productService;
 
-        public OfferService(IBaseRepository<Offer> repository, IProductService productService) : base(repository)
+        public OfferService(IOfferRepository repository, IProductService productService) : base(repository)
         {
             this.repository = repository;
             this.productService = productService;

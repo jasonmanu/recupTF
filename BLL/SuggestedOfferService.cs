@@ -8,10 +8,12 @@ namespace BLL
 {
     public class SuggestedOfferService : BaseService<SuggestedOffer>, ISuggestedOfferService
     {
+        private readonly ISuggestedOfferRepository repository;
         private readonly IOrderService orderService;
 
-        public SuggestedOfferService(IBaseRepository<SuggestedOffer> repository, IOrderService orderService) : base(repository)
+        public SuggestedOfferService(ISuggestedOfferRepository repository, IOrderService orderService) : base(repository)
         {
+            this.repository = repository;
             this.orderService = orderService;
         }
 
@@ -20,7 +22,6 @@ namespace BLL
             var orders = orderService.GetAll();
             var currentOffers = base.GetAll();
             var offerForCategoryWithLowSales = orders.GroupBy(x => x.ProductId).Count();
-
             return base.GetAll();
         }
     }

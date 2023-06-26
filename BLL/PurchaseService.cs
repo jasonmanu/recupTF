@@ -11,8 +11,11 @@ namespace BLL
 {
     public class PurchaseService : BaseService<Order>, IOrderService
     {
-        public PurchaseService(IBaseRepository<Order> repository) : base(repository)
+        private readonly IPurchaseRepository repository;
+
+        public PurchaseService(IPurchaseRepository repository) : base(repository)
         {
+            this.repository = repository;
         }
 
         public override void Create(Order entity)
