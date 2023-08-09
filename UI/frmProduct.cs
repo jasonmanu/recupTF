@@ -49,7 +49,7 @@ namespace UI
 
         private void LoadProductOffers()
         {
-            int productId = (int)FormHelper.GetCurrentRowId(dgvProducts);
+            string productId = (string)FormHelper.GetCurrentRowId(dgvProducts);
             List<Offer> offers = offerService.GetOffersByProductId(productId);
 
             lblDiscount.Text = string.Empty;
@@ -147,7 +147,7 @@ namespace UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int? productId = FormHelper.GetCurrentRowId(dgvProducts);
+            string productId = FormHelper.GetCurrentRowId(dgvProducts);
 
             if (productId == null)
             {
@@ -157,7 +157,7 @@ namespace UI
             {
                 if (productId != null)
                 {
-                    productService.Delete(Convert.ToInt32(productId));
+                    productService.Delete(productId);
                     MessageBox.Show("Eliminado");
                 }
             }
@@ -165,13 +165,13 @@ namespace UI
 
         private void btnBuy_Click(object sender, EventArgs e)
         {
-            int? productId = FormHelper.GetCurrentRowId(dgvProducts);
+            string productId = FormHelper.GetCurrentRowId(dgvProducts);
 
             if (productId != null)
             {
                 try
                 {
-                    purchaseService.Create(new Order() { ProductId = (int)productId, Date = DateTime.Now, UserId = user.Id, TotalPrice = offerService.CalculateFinalPriceForProduct((int)productId) });
+                    purchaseService.Create(new Order() { ProductId = productId, Date = DateTime.Now, UserId = user.Id, TotalPrice = offerService.CalculateFinalPriceForProduct(productId) });
                     MessageBox.Show("Producto comprado correctamente");
                 }
                 catch (Exception ex)

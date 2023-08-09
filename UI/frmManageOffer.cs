@@ -44,9 +44,9 @@ namespace UI.forms
                     offersDto.Add(new OfferDto()
                     {
                         Active = DateHelper.GetOfferStatusByCurrentDate(offer.Start, offer.End),
-                        Marca = offer.BrandId != null ? brandService.GetNameById((int)offer.BrandId) : null,
-                        Categoria = offer.CategoryId != null ? categoryService.GetNameById((int)offer.CategoryId) : null,
-                        Producto = offer.ProductId != null ? productService.GetById((int)offer.ProductId).Name : null,
+                        Marca = offer.BrandId != null ? brandService.GetNameById(offer.BrandId) : null,
+                        Categoria = offer.CategoryId != null ? categoryService.GetNameById(offer.CategoryId) : null,
+                        Producto = offer.ProductId != null ? productService.GetById(offer.ProductId).Name : null,
                         CreatedAt = offer.CreatedAt,
                         Discount = offer.Discount,
                         Inicio = offer.Start.ToShortDateString(),
@@ -84,22 +84,22 @@ namespace UI.forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int? id = FormHelper.GetCurrentRowId(dgvOffers);
+            string id = FormHelper.GetCurrentRowId(dgvOffers);
 
             if (id != null)
             {
-                offerService.Delete((int)id);
+                offerService.Delete(id);
                 LoadOffers();
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int? id = FormHelper.GetCurrentRowId(dgvOffers);
+            string id = FormHelper.GetCurrentRowId(dgvOffers);
 
             if (offers != null)
             {
-                Offer currentDiscount = offers.FirstOrDefault(x => x.Id == id);
+                Offer currentDiscount = offers.FirstOrDefault(x => x.Id == Convert.ToString(id));
                 currentDiscount.Discount = Convert.ToInt32(nudDiscount.Value);
                 currentDiscount.Type = (DiscountTypeEnum)cboType.SelectedValue;
                 currentDiscount.Name = txtName.Text;
@@ -112,11 +112,11 @@ namespace UI.forms
 
         private void dgvOffers_SelectionChanged(object sender, EventArgs e)
         {
-            int? id = FormHelper.GetCurrentRowId(dgvOffers);
+            string id = FormHelper.GetCurrentRowId(dgvOffers);
 
             if (id != null)
             {
-                Offer currentOffer = offers?.FirstOrDefault(x => x.Id == id);
+                Offer currentOffer = offers?.FirstOrDefault(x => x.Id == Convert.ToString(id));
 
                 if (currentOffer != null)
                 {

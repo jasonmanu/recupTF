@@ -11,7 +11,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             throw new NotImplementedException();
         }
@@ -21,7 +21,7 @@ namespace DAL
             return GetContext().BrandsRoot.Brands;
         }
 
-        public Brand GetById(int id)
+        public Brand GetById(string id)
         {
             throw new NotImplementedException();
         }

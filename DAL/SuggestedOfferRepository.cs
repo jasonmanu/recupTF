@@ -22,7 +22,7 @@ namespace DAL
             SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             throw new NotImplementedException();
         }
@@ -32,7 +32,7 @@ namespace DAL
             return GetContext().SuggestedOffersRoot.SuggestedOffers;
         }
 
-        public SuggestedOffer GetById(int id)
+        public SuggestedOffer GetById(string id)
         {
             throw new NotImplementedException();
         }

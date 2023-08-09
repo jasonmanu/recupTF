@@ -45,12 +45,12 @@ namespace UI.forms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            int? currentId = FormHelper.GetCurrentRowId(dgvSuggestedOffers);
+            string currentId = FormHelper.GetCurrentRowId(dgvSuggestedOffers);
 
             if (currentId != null)
             {
-                SuggestedOffer suggestedOffer = suggestedOffers.FirstOrDefault(x => x.Id == currentId);
-                suggestedOfferService.Delete((int)currentId);
+                SuggestedOffer suggestedOffer = suggestedOffers.FirstOrDefault(x => x.Id ==  Convert.ToString(currentId));
+                suggestedOfferService.Delete(currentId);
 
                 offerService.Create(new Offer()
                 {
@@ -61,9 +61,9 @@ namespace UI.forms
                     End = suggestedOffer.End,
                     Name = suggestedOffer.Name,
                     Type = suggestedOffer.Type,
-                    CategoryId = suggestedOffer.CategoryId,
-                    BrandId = suggestedOffer.BrandId,
-                    ProductId = suggestedOffer.ProductId
+                    CategoryId = Convert.ToString(suggestedOffer.CategoryId) ,
+                    BrandId = Convert.ToString(suggestedOffer.BrandId),
+                    ProductId = Convert.ToString(suggestedOffer.ProductId)
                 });
 
                 MessageBox.Show("Creado correctamente");

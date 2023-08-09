@@ -9,12 +9,6 @@ namespace DAL
 {
     public class UserRepository : XmlRepository, IUserRepository
     {
-        public User GetByUsername(string username)
-        {
-            User user = GetAll().FirstOrDefault(x => x.Username == username);
-            return user;
-        }
-
         public List<User> GetAll()
         {
             return GetContext().UsersRoot.Users;
@@ -23,6 +17,7 @@ namespace DAL
         public void Create(User entity)
         {
             XElement newUser = new XElement("User",
+                                new XElement("Id", entity.Id),
                                 new XElement("Username", entity.Username),
                                 new XElement("Password", entity.Password),
                                 new XElement("Role", entity.Role));
@@ -31,12 +26,26 @@ namespace DAL
             SaveChanges();
         }
 
-        public void Delete(int id)
+        public User GetByUsername(string username)
         {
-            throw new NotImplementedException();
+            User user = GetAll().FirstOrDefault(x => x.Username == username);
+            return user;
         }
 
-        public User GetById(int id)
+        public void Delete(string id)
+        {
+            try
+            {
+                rootDocument.Descendants("User").FirstOrDefault(user => user.Element("Id")?.Value == id).Remove();
+                SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        public User GetById(string id)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataContext));
             DataContext results = (DataContext)serializer.Deserialize(rootDocument.CreateReader());
@@ -46,7 +55,20 @@ namespace DAL
 
         public void Update(User entity)
         {
-            throw new NotImplementedException();
+            XElement userToUpdate = rootDocument.Descendants("User")
+                                    .FirstOrDefault(user => user.Element("Id")?.Value == entity.Id);
+
+            if (userToUpdate != null)
+            {
+                userToUpdate.Element("Username")?.SetValue(entity.Username);
+                userToUpdate.Element("Password")?.SetValue(entity.Password);
+                userToUpdate.Element("Role")?.SetValue(entity.Role);
+                SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("User not found");
+            }
         }
     }
 }

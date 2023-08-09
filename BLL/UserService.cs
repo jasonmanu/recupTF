@@ -3,6 +3,7 @@ using DAL;
 using Entities;
 using Entities.Exceptions;
 using FormSupport;
+using System;
 using System.Linq;
 
 namespace BLL
@@ -52,8 +53,11 @@ namespace BLL
                 throw new InvalidLengthException();
             }
 
+            user.Id = Guid.NewGuid().ToString();
+
             // encripta password antes de guardarla
             user.Password = CryptoHelper.Hash(user.Password);
+
             repository.Create(user);
         }
     }

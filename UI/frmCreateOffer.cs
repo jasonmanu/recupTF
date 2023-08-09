@@ -65,7 +65,7 @@ namespace UI.forms
 
             if (rbtnBrand.Checked)
             {
-                newOffer.BrandId = (int)cboBrand.SelectedValue;
+                newOffer.BrandId = (string)cboBrand.SelectedValue;
                 newOffer.CategoryId = null;
                 newOffer.ProductId = null;
             }
@@ -73,7 +73,7 @@ namespace UI.forms
             if (rbtnCategory.Checked)
             {
                 newOffer.BrandId = null;
-                newOffer.CategoryId = (int)cboCategory.SelectedValue;
+                newOffer.CategoryId = (string)cboCategory.SelectedValue;
                 newOffer.ProductId = null;
             }
 
@@ -81,7 +81,7 @@ namespace UI.forms
             {
                 newOffer.BrandId = null;
                 newOffer.CategoryId = null;
-                newOffer.ProductId = (int)cboProduct.SelectedValue;
+                newOffer.ProductId = (string)cboProduct.SelectedValue;
             }
 
             DateTime currentDate = DateTime.Now;

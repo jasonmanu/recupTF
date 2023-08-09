@@ -13,7 +13,7 @@ namespace BLL
             this.repository = repository;
         }
 
-        public string GetNameById(int id)
+        public string GetNameById(string id)
         {
             return repository.GetById(id).Name;
         }

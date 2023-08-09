@@ -23,7 +23,7 @@ namespace BLL
             }
         }
 
-        public string GetNameById(int id)
+        public string GetNameById(string id)
         {
             return base.GetById(id)?.Name;
         }

@@ -5,7 +5,7 @@ namespace BLL.Contracts
 {
     public interface IOfferService : IBaseService<Offer>
     {
-        List<Offer> GetOffersByProductId(int id);
-        float CalculateFinalPriceForProduct(int productId);
+        List<Offer> GetOffersByProductId(string id);
+        float CalculateFinalPriceForProduct(string productId);
     }
 }

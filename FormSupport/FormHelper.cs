@@ -9,14 +9,14 @@ namespace FormSupport
 {
     public static class FormHelper
     {
-        public static int? GetCurrentRowId(DataGridView dataGrid)
+        public static string GetCurrentRowId(DataGridView dataGrid)
         {
             DataGridViewRow currentRow = dataGrid?.CurrentRow;
 
             if (currentRow == null)
                 return null;
 
-            int? currentRowId = Convert.ToInt32(currentRow.Cells["Id"]?.Value);
+            string currentRowId = Convert.ToString(currentRow.Cells["Id"]?.Value);
             return currentRowId;
         }
     }

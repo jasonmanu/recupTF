@@ -19,7 +19,7 @@ namespace BLL
             repository.Create(entity);
         }
 
-        public virtual void Delete(int id)
+        public virtual void Delete(string id)
         {
             repository.Delete(id);
         }
@@ -29,7 +29,7 @@ namespace BLL
             return repository.GetAll();
         }
 
-        public virtual TEntity GetById(int id)
+        public virtual TEntity GetById(string id)
         {
             return repository.GetById(id);
         }

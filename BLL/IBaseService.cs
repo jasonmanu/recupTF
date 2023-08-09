@@ -10,9 +10,9 @@ namespace BLL
     public interface IBaseService<TEntity> where TEntity : Entity
     {
         void Create(TEntity entity);
-        void Delete(int id);
+        void Delete(string id);
         List<TEntity> GetAll();
-        TEntity GetById(int id);
+        TEntity GetById(string id);
         void Update(TEntity entity);
     }
 }

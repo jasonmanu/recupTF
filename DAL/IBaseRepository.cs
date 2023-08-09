@@ -11,8 +11,8 @@ namespace DAL
     {
         void Create(TEntity entity);
         void Update(TEntity entity);
-        void Delete(int id);
+        void Delete(string id);
         List<TEntity> GetAll();
-        TEntity GetById(int id);
+        TEntity GetById(string id);
     }
 }

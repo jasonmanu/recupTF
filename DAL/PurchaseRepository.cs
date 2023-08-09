@@ -14,7 +14,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             throw new NotImplementedException();
         }
@@ -24,7 +24,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Order GetById(int id)
+        public Order GetById(string id)
         {
             throw new NotImplementedException();
         }

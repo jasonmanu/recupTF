@@ -32,7 +32,7 @@ namespace BLL
 
             if (entity.ProductId != null && entity.Type == DiscountTypeEnum.Amount)
             {
-                Product product = productService.GetById((int)entity.ProductId);
+                Product product = productService.GetById((string)entity.ProductId);
 
                 if (entity.Discount > product.Price)
                     throw new Exception("El descuento no puede ser mayor al precio del producto");
@@ -41,7 +41,7 @@ namespace BLL
             repository.Create(entity);
         }
 
-        public float CalculateFinalPriceForProduct(int productId)
+        public float CalculateFinalPriceForProduct(string productId)
         {
             float productPrice = productService.GetById(productId).Price;
             List<Offer> offersForProduct = GetOffersByProductId(productId);
@@ -64,11 +64,11 @@ namespace BLL
             return productPrice;
         }
 
-        public List<Offer> GetOffersByProductId(int productId)
+        public List<Offer> GetOffersByProductId(string productId)
         {
             Product product = productService.GetById(productId);
-            int productCategoryId = product.CategoryId;
-            int productBrandId = product.BrandId;
+            string productCategoryId = product.CategoryId;
+            string productBrandId = product.BrandId;
             List<Offer> offers = repository.GetAll().Where(x => x.BrandId == productBrandId || x.CategoryId == productCategoryId || x.ProductId == productId).ToList();
 
             if (offers != null && offers.Count > 0)

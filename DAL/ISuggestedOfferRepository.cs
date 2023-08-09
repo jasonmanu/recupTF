@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public interface ISuggestedOfferRepository:IBaseRepository<SuggestedOffer>
+    public interface ISuggestedOfferRepository : IBaseRepository<SuggestedOffer>
     {
     }
 }

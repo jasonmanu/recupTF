@@ -37,8 +37,8 @@ namespace UI.forms
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 Price = Convert.ToInt32(nudPrice.Value),
-                BrandId = (int)cboBrand.SelectedValue,
-                CategoryId = (int)cboCategory.SelectedValue
+                BrandId = (string)cboBrand.SelectedValue,
+                CategoryId = (string)cboCategory.SelectedValue
             };
 
             try

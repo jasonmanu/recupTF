@@ -2,6 +2,7 @@
 {
     public class Entity
     {
-        public int Id { get; set; }
+        // UUID format
+        public string Id { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace Entities
         public int Discount { get; set; }
         public string Name { get; set; }
         public DiscountTypeEnum Type { get; set; }
-        public int? BrandId { get; set; }
-        public int? CategoryId { get; set; }
-        public int? ProductId { get; set; }
+        public string BrandId { get; set; }
+        public string CategoryId { get; set; }
+        public string ProductId { get; set; }
     }
 }

@@ -5,7 +5,7 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
-        public int CategoryId { get; set; }
-        public int BrandId { get; set; }
+        public string CategoryId { get; set; }
+        public string BrandId { get; set; }
     }
 }
