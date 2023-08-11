@@ -14,7 +14,14 @@ namespace DAL
     {
         public User GetByUsername(string username)
         {
-            return GetAll().FirstOrDefault(x => x.Username == username);
+            XElement element = _xmlDocument.Descendants(typeof(User).Name).FirstOrDefault(e => e.Element("Username").Value == username);
+
+            if (element != null)
+            {
+                return Deserialize<User>(element);
+            }
+
+            return null;
         }
 
         public User Login(LoginDto loginDto)
