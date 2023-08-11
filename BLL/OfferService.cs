@@ -73,7 +73,7 @@ namespace BLL
         {
             Product product = productService.GetById(productId);
 
-            if(product == null)
+            if (product == null)
             {
                 return new List<Offer>();
             }
@@ -84,7 +84,7 @@ namespace BLL
 
             if (offers?.Count > 0)
             {
-                List<Offer> activeOffers = offers.Where(x => DateHelper.GetOfferStatusByCurrentDate(x.Start, x.End)).ToList();
+                List<Offer> activeOffers = offers.Where(x => DateHelper.GetOfferStatusByCurrentDate(x.Start, x.End) && x.Active == true).ToList();
                 return activeOffers;
             }
 
