@@ -10,8 +10,8 @@ namespace DAL
 {
     public class XmlRepository<T> where T : Entity
     {
-        private XDocument _xmlDocument;
         private readonly string _filePath = Path.Combine(Directory.GetCurrentDirectory(), "data.xml");
+        protected XDocument _xmlDocument;
 
         public XmlRepository()
         {
@@ -88,7 +88,7 @@ namespace DAL
             }
         }
 
-        private U Deserialize<U>(XElement element)
+        protected U Deserialize<U>(XElement element)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(U));
             using (var reader = new StringReader(element.ToString()))

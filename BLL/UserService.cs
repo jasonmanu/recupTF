@@ -27,8 +27,7 @@ namespace BLL
 
             password = CryptoHelper.Hash(password);
 
-            // retorna usuario si es login valido o null si los datos de login son invalidos
-            User user = repository.GetAll()?.FirstOrDefault(x => x.Username == username && x.Password == password);
+            User user = repository.Login(new LoginDto() { Username = username, Password = password });
             return user;
         }
 

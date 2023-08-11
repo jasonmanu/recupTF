@@ -10,5 +10,6 @@ namespace DAL
     public interface IUserRepository : IBaseRepository<User>
     {
         User GetByUsername(string username);
+        User Login(LoginDto loginDto);
     }
 }
