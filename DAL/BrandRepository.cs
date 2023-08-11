@@ -4,31 +4,7 @@ using System.Collections.Generic;
 
 namespace DAL
 {
-    public class BrandRepository : XmlRepository, IBrandRepository
+    public class BrandRepository : XmlRepository<Brand>, IBrandRepository
     {
-        public void Create(Brand entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Brand> GetAll()
-        {
-            return GetContext().BrandsRoot.Brands;
-        }
-
-        public Brand GetById(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Brand entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

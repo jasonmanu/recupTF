@@ -43,10 +43,15 @@ namespace BLL
 
         public float CalculateFinalPriceForProduct(string productId)
         {
+            if (productId == null)
+            {
+                return 0;
+            }
+
             float productPrice = productService.GetById(productId).Price;
             List<Offer> offersForProduct = GetOffersByProductId(productId);
 
-            if (offersForProduct != null && offersForProduct.Count > 0)
+            if (offersForProduct?.Count > 0)
             {
                 foreach (var offer in offersForProduct)
                 {
@@ -67,11 +72,17 @@ namespace BLL
         public List<Offer> GetOffersByProductId(string productId)
         {
             Product product = productService.GetById(productId);
+
+            if(product == null)
+            {
+                return new List<Offer>();
+            }
+
             string productCategoryId = product.CategoryId;
             string productBrandId = product.BrandId;
             List<Offer> offers = repository.GetAll().Where(x => x.BrandId == productBrandId || x.CategoryId == productCategoryId || x.ProductId == productId).ToList();
 
-            if (offers != null && offers.Count > 0)
+            if (offers?.Count > 0)
             {
                 List<Offer> activeOffers = offers.Where(x => DateHelper.GetOfferStatusByCurrentDate(x.Start, x.End)).ToList();
                 return activeOffers;

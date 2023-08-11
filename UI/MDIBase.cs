@@ -35,7 +35,9 @@ namespace UI
         #region Login
         private void LoadRoleButtons()
         {
-            switch (user.Role)
+            UserRole userRole = UserRole.SELLER;//user.Role
+
+            switch (userRole)
             {
                 case UserRole.ADMIN:
                     reportsMenu.Visible = true;

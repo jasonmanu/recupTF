@@ -49,12 +49,12 @@ namespace UI
 
         private void LoadProductOffers()
         {
-            string productId = (string)FormHelper.GetCurrentRowId(dgvProducts);
+            string productId = FormHelper.GetCurrentRowId(dgvProducts);
             List<Offer> offers = offerService.GetOffersByProductId(productId);
 
             lblDiscount.Text = string.Empty;
 
-            if (offers != null && offers.Count > 0)
+            if (offers?.Count > 0)
             {
                 lblDiscount.Text = "Oferta/s\n";
 
@@ -100,7 +100,7 @@ namespace UI
             List<Product> products = productService.GetAll();
             List<ProductDto> productsDto = new List<ProductDto>();
 
-            if (products != null && products.Count > 0)
+            if (products?.Count > 0)
             {
                 foreach (Product product in products)
                 {
@@ -184,6 +184,11 @@ namespace UI
         private void dgvProducts_SelectionChanged(object sender, EventArgs e)
         {
             LoadProductOffers();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            LoadProducts();
         }
     }
 }

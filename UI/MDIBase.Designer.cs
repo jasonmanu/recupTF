@@ -32,11 +32,11 @@ namespace UI
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIBase));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.offersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSuggestedOffers = new System.Windows.Forms.ToolStripMenuItem();
-            this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.sellersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +54,7 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -66,12 +67,21 @@ namespace UI
             this.offersMenu,
             this.reportsMenu,
             this.sellersMenu,
-            this.backupMenu});
+            this.backupMenu,
+            this.categoriasToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
+            // 
+            // productsMenu
+            // 
+            this.productsMenu.Name = "productsMenu";
+            this.productsMenu.Size = new System.Drawing.Size(73, 20);
+            this.productsMenu.Text = "Productos";
+            this.productsMenu.Visible = false;
+            this.productsMenu.Click += new System.EventHandler(this.productsMenu_Click);
             // 
             // offersMenu
             // 
@@ -104,14 +114,6 @@ namespace UI
             this.btnSuggestedOffers.Size = new System.Drawing.Size(165, 22);
             this.btnSuggestedOffers.Text = "Ofertas sugeridas";
             this.btnSuggestedOffers.Click += new System.EventHandler(this.btnSuggestedOffers_Click);
-            // 
-            // productsMenu
-            // 
-            this.productsMenu.Name = "productsMenu";
-            this.productsMenu.Size = new System.Drawing.Size(73, 20);
-            this.productsMenu.Text = "Productos";
-            this.productsMenu.Visible = false;
-            this.productsMenu.Click += new System.EventHandler(this.productsMenu_Click);
             // 
             // reportsMenu
             // 
@@ -247,6 +249,13 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.categoriasToolStripMenuItem.Text = "Categorias";
+            this.categoriasToolStripMenuItem.Visible = false;
+            // 
             // MDIBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +306,7 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem backupMenu;
         private System.Windows.Forms.ToolStripMenuItem btnGenerateBackup;
         private System.Windows.Forms.ToolStripMenuItem btnRestoreBackup;
+        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
     }
 }
 

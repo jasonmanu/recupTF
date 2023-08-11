@@ -1,37 +1,8 @@
 ﻿using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class PurchaseRepository : XmlRepository, IPurchaseRepository
+    public class PurchaseRepository : XmlRepository<Order>, IPurchaseRepository
     {
-        public void Create(Order entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Order GetById(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Order entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

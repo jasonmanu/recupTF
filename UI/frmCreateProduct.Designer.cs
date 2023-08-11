@@ -43,16 +43,16 @@ namespace UI.forms
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblPrice = new System.Windows.Forms.Label();
+            this.nudPrice = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.nudPrice = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel5
@@ -67,7 +67,7 @@ namespace UI.forms
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(567, 55);
             this.tableLayoutPanel5.TabIndex = 7;
             // 
@@ -140,7 +140,7 @@ namespace UI.forms
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(567, 55);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
@@ -174,7 +174,7 @@ namespace UI.forms
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(567, 55);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
@@ -221,6 +221,24 @@ namespace UI.forms
             this.lblPrice.TabIndex = 6;
             this.lblPrice.Text = "Precio";
             // 
+            // nudPrice
+            // 
+            this.nudPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudPrice.Location = new System.Drawing.Point(229, 17);
+            this.nudPrice.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudPrice.Name = "nudPrice";
+            this.nudPrice.Size = new System.Drawing.Size(335, 20);
+            this.nudPrice.TabIndex = 7;
+            this.nudPrice.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
@@ -251,19 +269,6 @@ namespace UI.forms
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // nudPrice
-            // 
-            this.nudPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudPrice.Location = new System.Drawing.Point(229, 17);
-            this.nudPrice.Name = "nudPrice";
-            this.nudPrice.Size = new System.Drawing.Size(335, 20);
-            this.nudPrice.TabIndex = 7;
-            this.nudPrice.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // frmCreateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,8 +291,8 @@ namespace UI.forms
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
