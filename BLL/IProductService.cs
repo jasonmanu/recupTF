@@ -9,5 +9,6 @@ namespace BLL.Contracts
 {
     public interface IProductService : IBaseService<Product>
     {
+        List<ProductDto> GetExtendedProducts();
     }
 }

@@ -167,6 +167,7 @@ namespace UI.forms
             this.dgvOffers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvOffers.Location = new System.Drawing.Point(3, 6);
             this.dgvOffers.Name = "dgvOffers";
+            this.dgvOffers.ReadOnly = true;
             this.dgvOffers.Size = new System.Drawing.Size(1033, 292);
             this.dgvOffers.TabIndex = 0;
             this.dgvOffers.SelectionChanged += new System.EventHandler(this.dgvOffers_SelectionChanged);

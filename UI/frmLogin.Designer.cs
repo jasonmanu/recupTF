@@ -34,18 +34,16 @@ namespace UI.forms
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.tlpLogin = new System.Windows.Forms.TableLayoutPanel();
             this.btnForgotPassword = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.tlpLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtPassword
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(3, 138);
+            this.txtPassword.Location = new System.Drawing.Point(12, 149);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(455, 20);
+            this.txtPassword.Size = new System.Drawing.Size(506, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -53,7 +51,7 @@ namespace UI.forms
             // 
             this.lblPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(3, 108);
+            this.lblPassword.Location = new System.Drawing.Point(12, 118);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(61, 13);
             this.lblPassword.TabIndex = 3;
@@ -63,7 +61,7 @@ namespace UI.forms
             // 
             this.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(3, 18);
+            this.lblUsername.Location = new System.Drawing.Point(9, 34);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(98, 13);
             this.lblUsername.TabIndex = 1;
@@ -72,9 +70,9 @@ namespace UI.forms
             // txtUsername
             // 
             this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUsername.Location = new System.Drawing.Point(3, 63);
+            this.txtUsername.Location = new System.Drawing.Point(12, 65);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(455, 20);
+            this.txtUsername.Size = new System.Drawing.Size(506, 20);
             this.txtUsername.TabIndex = 0;
             // 
             // btnLogin
@@ -86,31 +84,13 @@ namespace UI.forms
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(12, 201);
+            this.btnLogin.Location = new System.Drawing.Point(12, 198);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(461, 40);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Size = new System.Drawing.Size(508, 40);
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Iniciar sesion";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // tlpLogin
-            // 
-            this.tlpLogin.ColumnCount = 1;
-            this.tlpLogin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpLogin.Controls.Add(this.txtPassword, 0, 3);
-            this.tlpLogin.Controls.Add(this.lblUsername, 0, 0);
-            this.tlpLogin.Controls.Add(this.txtUsername, 0, 1);
-            this.tlpLogin.Controls.Add(this.lblPassword, 0, 2);
-            this.tlpLogin.Location = new System.Drawing.Point(12, 12);
-            this.tlpLogin.Name = "tlpLogin";
-            this.tlpLogin.RowCount = 4;
-            this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpLogin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpLogin.Size = new System.Drawing.Size(461, 165);
-            this.tlpLogin.TabIndex = 3;
             // 
             // btnForgotPassword
             // 
@@ -121,10 +101,10 @@ namespace UI.forms
             this.btnForgotPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnForgotPassword.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnForgotPassword.Location = new System.Drawing.Point(12, 293);
+            this.btnForgotPassword.Location = new System.Drawing.Point(12, 290);
             this.btnForgotPassword.Name = "btnForgotPassword";
-            this.btnForgotPassword.Size = new System.Drawing.Size(461, 35);
-            this.btnForgotPassword.TabIndex = 1;
+            this.btnForgotPassword.Size = new System.Drawing.Size(508, 35);
+            this.btnForgotPassword.TabIndex = 4;
             this.btnForgotPassword.Text = "Olvide mi Contraseña";
             this.btnForgotPassword.UseVisualStyleBackColor = false;
             this.btnForgotPassword.Click += new System.EventHandler(this.btnForgotPassword_Click);
@@ -138,10 +118,10 @@ namespace UI.forms
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(12, 247);
+            this.btnRegister.Location = new System.Drawing.Point(12, 244);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(461, 40);
-            this.btnRegister.TabIndex = 2;
+            this.btnRegister.Size = new System.Drawing.Size(508, 40);
+            this.btnRegister.TabIndex = 3;
             this.btnRegister.Text = "Registrar";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -150,8 +130,11 @@ namespace UI.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 349);
-            this.Controls.Add(this.tlpLogin);
+            this.ClientSize = new System.Drawing.Size(530, 342);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnForgotPassword);
@@ -159,9 +142,8 @@ namespace UI.forms
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
-            this.tlpLogin.ResumeLayout(false);
-            this.tlpLogin.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -172,7 +154,6 @@ namespace UI.forms
         private System.Windows.Forms.Button btnForgotPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TableLayoutPanel tlpLogin;
         private System.Windows.Forms.Button btnRegister;
     }
 }

@@ -17,6 +17,8 @@ namespace UI
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IOfferService offerService;
+        //private List<ProductDto> dgvDataSource = new List<ProductDto>();
+        //private bool updateButtonEnabled = false;
         private User user;
 
         public frmProduct(User user, IProductService productService, IOrderService purchaseService, ICategoryService categoryService, IBrandService brandService, IOfferService offerService)
@@ -43,8 +45,17 @@ namespace UI
 
         private void frmProduct_Load(object sender, EventArgs e)
         {
-            LoadProducts();
+            LoadData();
             LoadProductOffers();
+            cboBrand.DataSource = brandService.GetAll();
+            cboBrand.DisplayMember = "Name";
+            cboBrand.ValueMember = "Id";
+
+            cboCategory.DataSource = categoryService.GetAll();
+            cboCategory.DisplayMember = "Name";
+            cboCategory.ValueMember = "Id";
+
+            //btnUpdate.Enabled = updateButtonEnabled;
         }
 
         private void LoadProductOffers()
@@ -95,72 +106,73 @@ namespace UI
             }
         }
 
-        private void LoadProducts()
+        private void LoadData()
         {
-            List<Product> products = productService.GetAll();
-            List<ProductDto> productsDto = new List<ProductDto>();
-
-            if (products?.Count > 0)
+            try
             {
-                foreach (Product product in products)
+                dgvProducts.Refresh();
+                var products = productService.GetExtendedProducts();
+
+                if (products?.Count > 0)
                 {
-                    productsDto.Add(new ProductDto()
+                    foreach (var product in products)
                     {
-                        BrandId = product.BrandId,
-                        CategoryId = product.CategoryId,
-                        Id = product.Id,
-                        Name = product.Name,
-                        BrandName = brandService.GetNameById(product.BrandId),
-                        Description = product.Description,
-                        Price = product.Price,
-                        PriceDiscount = offerService.CalculateFinalPriceForProduct(product.Id)
-                    });
+                        product.PriceDiscount = offerService.CalculateFinalPriceForProduct(product.Id);
+                    }
                 }
 
-                try
-                {
-                    dgvProducts.Refresh();
-                    dgvProducts.DataSource = productsDto;
+                dgvProducts.DataSource = products;
 
-                    dgvProducts.Columns["Id"].Visible = false;
-                    dgvProducts.Columns["BrandId"].Visible = false;
-                    dgvProducts.Columns["CategoryId"].Visible = false;
+                dgvProducts.Columns["Id"].Visible = false;
+                dgvProducts.Columns["BrandId"].Visible = false;
+                dgvProducts.Columns["CategoryId"].Visible = false;
 
-                    dgvProducts.Columns["Name"].DisplayIndex = 0;
-                    dgvProducts.Columns["BrandName"].DisplayIndex = 1;
-                    dgvProducts.Columns["Description"].DisplayIndex = 2;
-                    dgvProducts.Columns["Price"].DisplayIndex = 3;
+                dgvProducts.Columns["Name"].DisplayIndex = 0;
+                dgvProducts.Columns["Description"].DisplayIndex = 1;
+                dgvProducts.Columns["Price"].DisplayIndex = 2;
+                dgvProducts.Columns["BrandName"].DisplayIndex = 3;
+                dgvProducts.Columns["CategoryName"].DisplayIndex = 4;
 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            new frmCreateProduct(categoryService, brandService, productService).ShowDialog();
-            LoadProducts();
+            try
+            {
+                Product newProduct = new Product()
+                {
+                    Name = txtName.Text,
+                    Description = txtDescription.Text,
+                    Price = Convert.ToInt32(nudPrice.Value),
+                    BrandId = (string)cboBrand.SelectedValue,
+                    CategoryId = (string)cboCategory.SelectedValue
+                };
+
+                productService.Create(newProduct);
+                MessageBox.Show("Producto creado");
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string productId = FormHelper.GetCurrentRowId(dgvProducts);
-
-            if (productId == null)
+            try
             {
-                MessageBox.Show("Seleccione una fila");
+                string id = FormHelper.GetCurrentRowId(dgvProducts);
+                productService.Delete(id);
+                MessageBox.Show("Eliminado");
+                LoadData();
             }
-            else
-            {
-                if (productId != null)
-                {
-                    productService.Delete(productId);
-                    MessageBox.Show("Eliminado");
-                }
-            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void btnBuy_Click(object sender, EventArgs e)
@@ -183,12 +195,57 @@ namespace UI
 
         private void dgvProducts_SelectionChanged(object sender, EventArgs e)
         {
+            //updateButtonEnabled = true;
             LoadProductOffers();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            LoadProducts();
+            try
+            {
+                string id = FormHelper.GetCurrentRowId(dgvProducts);
+                Product toUpdate = new Product()
+                {
+                    Id = id,
+                    Name = txtName.Text,
+                    BrandId = (string)cboBrand.SelectedValue,
+                    CategoryId = (string)cboCategory.SelectedValue,
+                    Description = txtDescription.Text,
+                    Price = Convert.ToInt32(nudPrice.Value)
+                };
+                productService.Update(toUpdate);
+                MessageBox.Show("Actualizado");
+                LoadData();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //updateButtonEnabled = true;
+                string id = FormHelper.GetCurrentRowId(dgvProducts);
+                productService.Delete(id);
+                MessageBox.Show("Eliminado");
+                LoadData();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void dgvProducts_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                string id = FormHelper.GetCurrentRowId(dgvProducts);
+                Product product = productService.GetById(id);
+                txtDescription.Text = product.Description;
+                txtName.Text = product.Name;
+                cboBrand.SelectedValue = product.BrandId;
+                cboCategory.SelectedValue = product.CategoryId;
+                nudPrice.Value = decimal.Parse(product.Price.ToString());
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

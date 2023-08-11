@@ -72,12 +72,12 @@ namespace UI
             new frmCreateOffer(offerService, productService, categoryService, brandService)
             {
                 MdiParent = this
-            }.Show();
+            }.ShowDialog();
         }
 
         private void btnGetOffers_Click(object sender, EventArgs e)
         {
-            new frmManageOffer(offerService, categoryService, brandService, productService) { MdiParent = this }.Show();
+            new frmManageOffer(offerService, categoryService, brandService, productService) { MdiParent = this }.ShowDialog();
         }
 
         private void btnSuggestedOffers_Click(object sender, EventArgs e)
@@ -107,5 +107,15 @@ namespace UI
             MessageBox.Show("Backup restaurado");
         }
         #endregion
+
+        private void categoriesMenu_Click(object sender, EventArgs e)
+        {
+            new frmCategories(categoryService).Show();
+        }
+
+        private void brandMenu_Click(object sender, EventArgs e)
+        {
+            new frmBrand(brandService).Show();
+        }
     }
 }

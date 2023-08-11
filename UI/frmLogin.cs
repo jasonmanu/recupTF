@@ -24,8 +24,8 @@ namespace UI.forms
             this.suggestedOfferService = suggestedOfferService;
             this.categoryService = categoryService;
             this.brandService = brandService;
-            this.productService = productService;
             this.purchaseService = purchaseService;
+            this.productService = productService;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

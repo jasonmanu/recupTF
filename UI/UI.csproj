@@ -187,17 +187,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBrand.Designer.cs">
+      <DependentUpon>frmBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategories.Designer.cs">
+      <DependentUpon>frmCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCreateOffer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCreateOffer.Designer.cs">
       <DependentUpon>frmCreateOffer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCreateProduct.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCreateProduct.Designer.cs">
-      <DependentUpon>frmCreateProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -231,11 +237,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBrand.resx">
+      <DependentUpon>frmBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategories.resx">
+      <DependentUpon>frmCategories.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCreateOffer.resx">
       <DependentUpon>frmCreateOffer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateProduct.resx">
-      <DependentUpon>frmCreateProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

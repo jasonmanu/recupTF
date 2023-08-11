@@ -33,7 +33,7 @@ namespace DAL
 
         public T GetById(string entityId)
         {
-            if(entityId == null)
+            if (entityId == null)
             {
                 return null;
             }
@@ -77,9 +77,12 @@ namespace DAL
             }
         }
 
-        private XElement CreateElement<U>(U entity) where U: Entity
+        private XElement CreateElement<U>(U entity) where U : Entity
         {
-            entity.Id = Guid.NewGuid().ToString();
+            if (entity.Id == null)
+            {
+                entity.Id = Guid.NewGuid().ToString();
+            }
             XmlSerializer serializer = new XmlSerializer(typeof(U));
             using (var writer = new StringWriter())
             {

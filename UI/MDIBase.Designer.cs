@@ -54,6 +54,7 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.brandMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -66,7 +67,8 @@ namespace UI
             this.categoriesMenu,
             this.offersMenu,
             this.sellersMenu,
-            this.backupMenu});
+            this.backupMenu,
+            this.brandMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1264, 24);
@@ -85,6 +87,7 @@ namespace UI
             this.categoriesMenu.Name = "categoriesMenu";
             this.categoriesMenu.Size = new System.Drawing.Size(75, 20);
             this.categoriesMenu.Text = "Categorias";
+            this.categoriesMenu.Click += new System.EventHandler(this.categoriesMenu_Click);
             // 
             // offersMenu
             // 
@@ -135,14 +138,14 @@ namespace UI
             // btnGenerateBackup
             // 
             this.btnGenerateBackup.Name = "btnGenerateBackup";
-            this.btnGenerateBackup.Size = new System.Drawing.Size(180, 22);
+            this.btnGenerateBackup.Size = new System.Drawing.Size(123, 22);
             this.btnGenerateBackup.Text = "Generar";
             this.btnGenerateBackup.Click += new System.EventHandler(this.btnGenerateBackup_Click);
             // 
             // btnRestoreBackup
             // 
             this.btnRestoreBackup.Name = "btnRestoreBackup";
-            this.btnRestoreBackup.Size = new System.Drawing.Size(180, 22);
+            this.btnRestoreBackup.Size = new System.Drawing.Size(123, 22);
             this.btnRestoreBackup.Text = "Restaurar";
             this.btnRestoreBackup.Click += new System.EventHandler(this.btnRestoreBackup_Click);
             // 
@@ -243,6 +246,13 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // brandMenu
+            // 
+            this.brandMenu.Name = "brandMenu";
+            this.brandMenu.Size = new System.Drawing.Size(52, 20);
+            this.brandMenu.Text = "Marca";
+            this.brandMenu.Click += new System.EventHandler(this.brandMenu_Click);
+            // 
             // MDIBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +303,7 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem btnGenerateBackup;
         private System.Windows.Forms.ToolStripMenuItem btnRestoreBackup;
         private System.Windows.Forms.ToolStripMenuItem categoriesMenu;
+        private System.Windows.Forms.ToolStripMenuItem brandMenu;
     }
 }
 

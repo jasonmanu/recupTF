@@ -56,6 +56,7 @@ namespace UI.forms
             this.dgvSuggestedOffers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvSuggestedOffers.Location = new System.Drawing.Point(12, 46);
             this.dgvSuggestedOffers.Name = "dgvSuggestedOffers";
+            this.dgvSuggestedOffers.ReadOnly = true;
             this.dgvSuggestedOffers.Size = new System.Drawing.Size(925, 337);
             this.dgvSuggestedOffers.TabIndex = 1;
             // 

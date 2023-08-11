@@ -57,7 +57,7 @@ namespace BLL
                 {
                     if (offer.Type == DiscountTypeEnum.Amount)
                     {
-                        productPrice = productPrice - offer.Discount;
+                        productPrice -= offer.Discount;
                     }
                     else
                     {
