@@ -33,11 +33,11 @@ namespace UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIBase));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriesMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.offersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSuggestedOffers = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.sellersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGenerateBackup = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +54,6 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -64,11 +63,10 @@ namespace UI
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productsMenu,
+            this.categoriesMenu,
             this.offersMenu,
-            this.reportsMenu,
             this.sellersMenu,
-            this.backupMenu,
-            this.categoriasToolStripMenuItem});
+            this.backupMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1264, 24);
@@ -80,8 +78,13 @@ namespace UI
             this.productsMenu.Name = "productsMenu";
             this.productsMenu.Size = new System.Drawing.Size(73, 20);
             this.productsMenu.Text = "Productos";
-            this.productsMenu.Visible = false;
             this.productsMenu.Click += new System.EventHandler(this.productsMenu_Click);
+            // 
+            // categoriesMenu
+            // 
+            this.categoriesMenu.Name = "categoriesMenu";
+            this.categoriesMenu.Size = new System.Drawing.Size(75, 20);
+            this.categoriesMenu.Text = "Categorias";
             // 
             // offersMenu
             // 
@@ -92,7 +95,6 @@ namespace UI
             this.offersMenu.Name = "offersMenu";
             this.offersMenu.Size = new System.Drawing.Size(57, 20);
             this.offersMenu.Text = "Ofertas";
-            this.offersMenu.Visible = false;
             // 
             // btnCreateOffer
             // 
@@ -115,20 +117,11 @@ namespace UI
             this.btnSuggestedOffers.Text = "Ofertas sugeridas";
             this.btnSuggestedOffers.Click += new System.EventHandler(this.btnSuggestedOffers_Click);
             // 
-            // reportsMenu
-            // 
-            this.reportsMenu.Name = "reportsMenu";
-            this.reportsMenu.Size = new System.Drawing.Size(65, 20);
-            this.reportsMenu.Text = "Reportes";
-            this.reportsMenu.Visible = false;
-            this.reportsMenu.Click += new System.EventHandler(this.reportsMenu_Click);
-            // 
             // sellersMenu
             // 
             this.sellersMenu.Name = "sellersMenu";
             this.sellersMenu.Size = new System.Drawing.Size(80, 20);
             this.sellersMenu.Text = "Vendedores";
-            this.sellersMenu.Visible = false;
             // 
             // backupMenu
             // 
@@ -138,19 +131,20 @@ namespace UI
             this.backupMenu.Name = "backupMenu";
             this.backupMenu.Size = new System.Drawing.Size(58, 20);
             this.backupMenu.Text = "Backup";
-            this.backupMenu.Visible = false;
             // 
             // btnGenerateBackup
             // 
             this.btnGenerateBackup.Name = "btnGenerateBackup";
-            this.btnGenerateBackup.Size = new System.Drawing.Size(123, 22);
+            this.btnGenerateBackup.Size = new System.Drawing.Size(180, 22);
             this.btnGenerateBackup.Text = "Generar";
+            this.btnGenerateBackup.Click += new System.EventHandler(this.btnGenerateBackup_Click);
             // 
             // btnRestoreBackup
             // 
             this.btnRestoreBackup.Name = "btnRestoreBackup";
-            this.btnRestoreBackup.Size = new System.Drawing.Size(123, 22);
+            this.btnRestoreBackup.Size = new System.Drawing.Size(180, 22);
             this.btnRestoreBackup.Text = "Restaurar";
+            this.btnRestoreBackup.Click += new System.EventHandler(this.btnRestoreBackup_Click);
             // 
             // toolStrip
             // 
@@ -249,13 +243,6 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // categoriasToolStripMenuItem
-            // 
-            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.categoriasToolStripMenuItem.Text = "Categorias";
-            this.categoriasToolStripMenuItem.Visible = false;
-            // 
             // MDIBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,7 +285,6 @@ namespace UI
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem offersMenu;
-        private System.Windows.Forms.ToolStripMenuItem reportsMenu;
         private System.Windows.Forms.ToolStripMenuItem sellersMenu;
         private System.Windows.Forms.ToolStripMenuItem btnCreateOffer;
         private System.Windows.Forms.ToolStripMenuItem btnGetOffers;
@@ -306,7 +292,7 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem backupMenu;
         private System.Windows.Forms.ToolStripMenuItem btnGenerateBackup;
         private System.Windows.Forms.ToolStripMenuItem btnRestoreBackup;
-        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoriesMenu;
     }
 }
 

@@ -32,25 +32,33 @@ namespace UI
             LoadRoleButtons();
         }
 
-        #region Login
+        #region Role
         private void LoadRoleButtons()
         {
-            UserRole userRole = UserRole.SELLER;//user.Role
+            UserRole userRole = user.Role;//UserRole.SELLER
 
             switch (userRole)
             {
                 case UserRole.ADMIN:
-                    reportsMenu.Visible = true;
+                    backupMenu.Visible = true;
+                    sellersMenu.Visible = true;
+                    categoriesMenu.Visible = true;
                     productsMenu.Visible = true;
                     offersMenu.Visible = true;
                     break;
                 case UserRole.SELLER:
+                    backupMenu.Visible = true;
+                    sellersMenu.Visible = false;
+                    categoriesMenu.Visible = true;
+                    productsMenu.Visible = true;
                     offersMenu.Visible = true;
-                    productsMenu.Visible = true;
-                    productsMenu.Visible = true;
                     break;
                 case UserRole.SHOPPER:
                     productsMenu.Visible = true;
+                    backupMenu.Visible = false;
+                    sellersMenu.Visible = false;
+                    categoriesMenu.Visible = false;
+                    offersMenu.Visible = false;
                     break;
                 default:
                     break;
@@ -78,13 +86,6 @@ namespace UI
         }
         #endregion
 
-        #region Reports
-        private void reportsMenu_Click(object sender, EventArgs e)
-        {
-            new frmReports(purchaseService) { MdiParent = this }.Show();
-        }
-        #endregion
-
         private void MDIBase_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
@@ -94,5 +95,17 @@ namespace UI
         {
             new frmProduct(user, productService, purchaseService, categoryService, brandService, offerService) { MdiParent = this }.Show();
         }
+
+        #region Backup
+        private void btnGenerateBackup_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Backup generado");
+        }
+
+        private void btnRestoreBackup_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Backup restaurado");
+        }
+        #endregion
     }
 }

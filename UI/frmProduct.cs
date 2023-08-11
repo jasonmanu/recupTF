@@ -141,7 +141,7 @@ namespace UI
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            new frmCreateProduct(categoryService, brandService, productService).Show();
+            new frmCreateProduct(categoryService, brandService, productService).ShowDialog();
             LoadProducts();
         }
 
