@@ -72,12 +72,12 @@ namespace UI
             new frmCreateOffer(offerService, productService, categoryService, brandService)
             {
                 MdiParent = this
-            }.ShowDialog();
+            }.Show();
         }
 
         private void btnGetOffers_Click(object sender, EventArgs e)
         {
-            new frmManageOffer(offerService, categoryService, brandService, productService) { MdiParent = this }.ShowDialog();
+            new frmManageOffer(offerService, categoryService, brandService, productService) { MdiParent = this }.Show();
         }
 
         private void btnSuggestedOffers_Click(object sender, EventArgs e)
