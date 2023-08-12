@@ -34,7 +34,7 @@ namespace DAL
 
         public T GetById(string entityId)
         {
-            if (entityId == null)
+            if (string.IsNullOrEmpty(entityId))
             {
                 return null;
             }
@@ -57,13 +57,21 @@ namespace DAL
             return entities;
         }
 
+        //public void Update(T entity)
+        //{
+        //    XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entity.Id);
+        //    if (element != null)
+        //    {
+        //        element.ReplaceWith(CreateElement(entity));
+        //        _xmlDocument.Save(_filePath);
+        //    }
+        //}
         public void Update(T entity)
         {
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entity.Id);
             if (element != null)
             {
-                element.Remove();
-                _xmlDocument.Element("root").Add(CreateElement(entity));
+                element.ReplaceWith(CreateElement(entity));
                 _xmlDocument.Save(_filePath);
             }
         }
@@ -80,10 +88,6 @@ namespace DAL
 
         private XElement CreateElement<U>(U entity) where U : Entity
         {
-            if (entity.Id == null)
-            {
-                entity.Id = Guid.NewGuid().ToString();
-            }
             XmlSerializer serializer = new XmlSerializer(typeof(U));
             using (var writer = new StringWriter())
             {
@@ -103,12 +107,15 @@ namespace DAL
 
         public void ExportBackup(string currentDateString)
         {
+            _xmlDocument.Save(_filePath);
             string backupFilePath = Path.Combine(currentDirectory, "backup" + currentDateString + ".xml");
             File.Copy(_filePath, backupFilePath, true);
+            //File.Copy(backupFilePath, _filePath, true);
         }
 
         public void ImportBackup(string fileName)
         {
+            _xmlDocument.Save(_filePath);
             string backupFilePath = Path.Combine(currentDirectory, "backup" + fileName + ".xml");
             File.Copy(backupFilePath, _filePath, true);
         }

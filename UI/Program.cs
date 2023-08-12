@@ -34,6 +34,7 @@ namespace UI
                     .AddScoped<IPurchaseRepository, PurchaseRepository>()
                     .AddScoped<ISuggestedOfferRepository, SuggestedOfferRepository>()
                     .AddScoped<IBackupRepository, BackupRepository>()
+                    .AddSingleton(typeof(XmlRepository<>))
                     .AddScoped<frmLogin>();
 
             // corre form principal con servicios inyectados

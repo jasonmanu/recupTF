@@ -222,30 +222,10 @@ namespace UI
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                //updateButtonEnabled = true;
-                string id = FormHelper.GetCurrentRowId(dgvProducts);
-                productService.Delete(id);
-                MessageBox.Show("Eliminado");
-                LoadData();
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void dgvProducts_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            try
-            {
-                string id = FormHelper.GetCurrentRowId(dgvProducts);
-                Product product = productService.GetById(id);
-                txtDescription.Text = product.Description;
-                txtName.Text = product.Name;
-                cboBrand.SelectedValue = product.BrandId;
-                cboCategory.SelectedValue = product.CategoryId;
-                nudPrice.Value = decimal.Parse(product.Price.ToString());
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

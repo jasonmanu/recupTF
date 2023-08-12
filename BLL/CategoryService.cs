@@ -26,7 +26,7 @@ namespace BLL
 
         public string GetNameById(string id)
         {
-            return repository.GetById(id).Name;
+            return repository.GetById(id)?.Name;
         }
     }
 }

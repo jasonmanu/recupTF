@@ -55,6 +55,8 @@ namespace UI.forms
         {
             Offer newOffer = new Offer()
             {
+                Id = Guid.NewGuid().ToString(),
+                CreatedAt = DateTime.Now,
                 Active = false,
                 Discount = Convert.ToInt32(nudDiscount.Value),
                 Start = dtpStart.Value,

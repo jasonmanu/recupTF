@@ -62,9 +62,9 @@ namespace UI
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productsMenu,
             this.categoriesMenu,
+            this.brandMenu,
             this.offersMenu,
-            this.backupMenu,
-            this.brandMenu});
+            this.backupMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1264, 24);

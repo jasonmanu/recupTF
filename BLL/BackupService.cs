@@ -23,7 +23,7 @@ namespace BLL
 
             backupRepository.ExportBackup(currentDateString);
 
-            Backup backup = new Backup() { Name = currentDateString, Date = DateTime.Now };
+            Backup backup = new Backup() { Id= Guid.NewGuid().ToString(), Name = currentDateString, Date = DateTime.Now };
             backupRepository.Create(backup);
         }
 

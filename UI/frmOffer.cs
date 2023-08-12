@@ -46,7 +46,7 @@ namespace UI.forms
                         Active = DateHelper.GetOfferStatusByCurrentDate(offer.Start, offer.End),
                         Marca = offer.BrandId != null ? brandService.GetNameById(offer.BrandId) : null,
                         Categoria = offer.CategoryId != null ? categoryService.GetNameById(offer.CategoryId) : null,
-                        Producto = offer.ProductId != null ? productService.GetById(offer.ProductId).Name : null,
+                        Producto = offer.ProductId != null ? productService.GetById(offer.ProductId)?.Name : null,
                         CreatedAt = offer.CreatedAt,
                         Discount = offer.Discount,
                         Inicio = offer.Start.ToShortDateString(),
@@ -66,7 +66,7 @@ namespace UI.forms
                 {
                     dgvOffers.Refresh();
                     dgvOffers.DataSource = offersDto;
-                    dgvOffers.Columns["Id"].Visible = false;
+                    //dgvOffers.Columns["Id"].Visible = true;
                     dgvOffers.Columns["BrandId"].Visible = false;
                     dgvOffers.Columns["CategoryId"].Visible = false;
                     dgvOffers.Columns["ProductId"].Visible = false;
@@ -97,9 +97,13 @@ namespace UI.forms
         {
             string id = FormHelper.GetCurrentRowId(dgvOffers);
 
-            if (offers != null)
+            if (string.IsNullOrEmpty(id))
             {
-                Offer currentDiscount = offers.FirstOrDefault(x => x.Id == Convert.ToString(id));
+                MessageBox.Show("Seleccione fila a actualizar");
+            }
+            else
+            {
+                Offer currentDiscount = offerService.GetById(id);
                 currentDiscount.Discount = Convert.ToInt32(nudDiscount.Value);
                 currentDiscount.Type = (DiscountTypeEnum)cboType.SelectedValue;
                 currentDiscount.Name = txtName.Text;
@@ -112,20 +116,6 @@ namespace UI.forms
 
         private void dgvOffers_SelectionChanged(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvOffers);
-
-            if (id != null)
-            {
-                Offer currentOffer = offers?.FirstOrDefault(x => x.Id == Convert.ToString(id));
-
-                if (currentOffer != null)
-                {
-                    txtName.Text = currentOffer.Name;
-                    checkActive.Checked = currentOffer.Active;
-                    nudDiscount.Value = currentOffer.Discount;
-                    cboType.SelectedItem = currentOffer.Type;
-                }
-            }
         }
     }
 }

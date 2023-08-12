@@ -16,6 +16,11 @@ namespace BLL
 
         public virtual void Create(TEntity entity)
         {
+            if(entity.Id == null)
+            {
+                entity.Id = Guid.NewGuid().ToString();
+            }
+
             repository.Create(entity);
         }
 
