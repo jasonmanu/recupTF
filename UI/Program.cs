@@ -25,6 +25,7 @@ namespace UI
                     .AddScoped<IProductService, ProductService>()
                     .AddScoped<IOrderService, PurchaseService>()
                     .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
+                    .AddScoped<IBackupService, BackupService>()
                     .AddScoped<IUserRepository, UserRepository>()
                     .AddScoped<IBrandRepository, BrandRepository>()
                     .AddScoped<ICategoryRepository, CategoryRepository>()
@@ -32,6 +33,7 @@ namespace UI
                     .AddScoped<IProductRepository, ProductRepository>()
                     .AddScoped<IPurchaseRepository, PurchaseRepository>()
                     .AddScoped<ISuggestedOfferRepository, SuggestedOfferRepository>()
+                    .AddScoped<IBackupRepository, BackupRepository>()
                     .AddScoped<frmLogin>();
 
             // corre form principal con servicios inyectados

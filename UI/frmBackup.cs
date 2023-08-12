@@ -1,0 +1,52 @@
+﻿using BLL;
+using FormSupport;
+using System;
+using System.Windows.Forms;
+
+namespace UI
+{
+    public partial class frmBackup : Form
+    {
+        private readonly IBackupService backupService;
+
+        public frmBackup(IBackupService backupService)
+        {
+            InitializeComponent();
+            this.backupService = backupService;
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            dgvData.DataSource = backupService.GetAll();
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            string id = FormHelper.GetCurrentRowId(dgvData);
+
+            try
+            {
+                backupService.ImportById(id);
+                MessageBox.Show("Backup importado correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                backupService.Export();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+    }
+}

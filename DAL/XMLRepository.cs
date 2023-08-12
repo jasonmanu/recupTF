@@ -8,9 +8,10 @@ using System.Xml.Serialization;
 
 namespace DAL
 {
-    public class XmlRepository<T> where T : Entity
+    public class XmlRepository<T> : IBaseRepository<T> where T : Entity
     {
-        private readonly string _filePath = Path.Combine(Directory.GetCurrentDirectory(), "data.xml");
+        private static string currentDirectory = Directory.GetCurrentDirectory();
+        private string _filePath = Path.Combine(currentDirectory, "data.xml");
         protected XDocument _xmlDocument;
 
         public XmlRepository()
@@ -98,6 +99,18 @@ namespace DAL
             {
                 return (U)serializer.Deserialize(reader);
             }
+        }
+
+        public void ExportBackup(string currentDateString)
+        {
+            string backupFilePath = Path.Combine(currentDirectory, "backup" + currentDateString + ".xml");
+            File.Copy(_filePath, backupFilePath, true);
+        }
+
+        public void ImportBackup(string fileName)
+        {
+            string backupFilePath = Path.Combine(currentDirectory, "backup" + fileName + ".xml");
+            File.Copy(backupFilePath, _filePath, true);
         }
     }
 }

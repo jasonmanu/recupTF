@@ -184,8 +184,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupRepository.cs" />
     <Compile Include="BrandRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="IBackupRepository.cs" />
     <Compile Include="IBrandRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
     <Compile Include="IOfferRepository.cs" />

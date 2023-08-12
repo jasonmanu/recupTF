@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Enums
+namespace Entities
 {
-    public enum UserRole
+    public class Backup: Entity
     {
-        ADMIN,
-        SHOPPER
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
     }
 }

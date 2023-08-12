@@ -181,9 +181,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="BrandService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="IBackupService.cs" />
     <Compile Include="IBaseService.cs" />
     <Compile Include="IBrandService.cs" />
     <Compile Include="ICategoryService.cs" />

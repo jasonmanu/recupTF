@@ -38,10 +38,8 @@ namespace UI
             this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSuggestedOffers = new System.Windows.Forms.ToolStripMenuItem();
-            this.sellersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnGenerateBackup = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRestoreBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.brandMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -54,7 +52,6 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.brandMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -66,7 +63,6 @@ namespace UI
             this.productsMenu,
             this.categoriesMenu,
             this.offersMenu,
-            this.sellersMenu,
             this.backupMenu,
             this.brandMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -120,34 +116,19 @@ namespace UI
             this.btnSuggestedOffers.Text = "Ofertas sugeridas";
             this.btnSuggestedOffers.Click += new System.EventHandler(this.btnSuggestedOffers_Click);
             // 
-            // sellersMenu
-            // 
-            this.sellersMenu.Name = "sellersMenu";
-            this.sellersMenu.Size = new System.Drawing.Size(80, 20);
-            this.sellersMenu.Text = "Vendedores";
-            // 
             // backupMenu
             // 
-            this.backupMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnGenerateBackup,
-            this.btnRestoreBackup});
             this.backupMenu.Name = "backupMenu";
             this.backupMenu.Size = new System.Drawing.Size(58, 20);
             this.backupMenu.Text = "Backup";
+            this.backupMenu.Click += new System.EventHandler(this.backupMenu_Click);
             // 
-            // btnGenerateBackup
+            // brandMenu
             // 
-            this.btnGenerateBackup.Name = "btnGenerateBackup";
-            this.btnGenerateBackup.Size = new System.Drawing.Size(123, 22);
-            this.btnGenerateBackup.Text = "Generar";
-            this.btnGenerateBackup.Click += new System.EventHandler(this.btnGenerateBackup_Click);
-            // 
-            // btnRestoreBackup
-            // 
-            this.btnRestoreBackup.Name = "btnRestoreBackup";
-            this.btnRestoreBackup.Size = new System.Drawing.Size(123, 22);
-            this.btnRestoreBackup.Text = "Restaurar";
-            this.btnRestoreBackup.Click += new System.EventHandler(this.btnRestoreBackup_Click);
+            this.brandMenu.Name = "brandMenu";
+            this.brandMenu.Size = new System.Drawing.Size(52, 20);
+            this.brandMenu.Text = "Marca";
+            this.brandMenu.Click += new System.EventHandler(this.brandMenu_Click);
             // 
             // toolStrip
             // 
@@ -246,13 +227,6 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // brandMenu
-            // 
-            this.brandMenu.Name = "brandMenu";
-            this.brandMenu.Size = new System.Drawing.Size(52, 20);
-            this.brandMenu.Text = "Marca";
-            this.brandMenu.Click += new System.EventHandler(this.brandMenu_Click);
-            // 
             // MDIBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,13 +269,10 @@ namespace UI
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem offersMenu;
-        private System.Windows.Forms.ToolStripMenuItem sellersMenu;
         private System.Windows.Forms.ToolStripMenuItem btnCreateOffer;
         private System.Windows.Forms.ToolStripMenuItem btnGetOffers;
         private System.Windows.Forms.ToolStripMenuItem btnSuggestedOffers;
         private System.Windows.Forms.ToolStripMenuItem backupMenu;
-        private System.Windows.Forms.ToolStripMenuItem btnGenerateBackup;
-        private System.Windows.Forms.ToolStripMenuItem btnRestoreBackup;
         private System.Windows.Forms.ToolStripMenuItem categoriesMenu;
         private System.Windows.Forms.ToolStripMenuItem brandMenu;
     }

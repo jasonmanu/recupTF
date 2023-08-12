@@ -16,7 +16,7 @@ namespace Entities
             Role = role;
         }
 
-        [XmlElement("Username")]//[XmlAttribute("username")]
+        [XmlElement("Username")]
         public string Username { get; set; }
 
         [XmlElement("Password")]

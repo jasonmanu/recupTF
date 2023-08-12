@@ -1,4 +1,5 @@
-﻿using BLL.Contracts;
+﻿using BLL;
+using BLL.Contracts;
 using Entities;
 using Entities.Enums;
 using System;
@@ -15,8 +16,9 @@ namespace UI.forms
         private readonly IBrandService brandService;
         private readonly IProductService productService;
         private readonly IOrderService purchaseService;
+        private readonly IBackupService backupService;
 
-        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService)
+        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService, IBackupService backupService)
         {
             InitializeComponent();
             this.userService = userService;
@@ -26,6 +28,7 @@ namespace UI.forms
             this.brandService = brandService;
             this.purchaseService = purchaseService;
             this.productService = productService;
+            this.backupService = backupService;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -42,7 +45,7 @@ namespace UI.forms
             else
             {
                 Hide();
-                new MDIBase(loggedUser, offerService, suggestedOfferService, categoryService, brandService, productService, purchaseService).Show();
+                new MDIBase(loggedUser, offerService, suggestedOfferService, categoryService, brandService, productService, purchaseService, backupService).Show();
             }
         }
 
@@ -60,10 +63,6 @@ namespace UI.forms
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void btnForgotPassword_Click(object sender, EventArgs e)
-        {
         }
     }
 }

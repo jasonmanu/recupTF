@@ -184,6 +184,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup.cs" />
     <Compile Include="Brand.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="DataContext.cs" />
