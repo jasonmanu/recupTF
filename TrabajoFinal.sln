@@ -23,14 +23,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-Support", "05-Support", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "FormSupport\Helpers.csproj", "{FFD0B3F0-3BB8-4EB5-95E5-970DCC48935E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TrabajoFinalAlvaradoInstaller", "TrabajoFinalAlvaradoInstaller\TrabajoFinalAlvaradoInstaller.vdproj", "{4D917F02-7FCD-406B-9FDD-7D412556C61F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BE6B9B26-CD62-41A4-8463-F84D9C4D9FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE6B9B26-CD62-41A4-8463-F84D9C4D9FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6B9B26-CD62-41A4-8463-F84D9C4D9FAF}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6B9B26-CD62-41A4-8463-F84D9C4D9FAF}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{BE6B9B26-CD62-41A4-8463-F84D9C4D9FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE6B9B26-CD62-41A4-8463-F84D9C4D9FAF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A0B19AF-22B8-49D5-80A4-432D43DFF273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,6 +51,8 @@ Global
 		{FFD0B3F0-3BB8-4EB5-95E5-970DCC48935E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD0B3F0-3BB8-4EB5-95E5-970DCC48935E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD0B3F0-3BB8-4EB5-95E5-970DCC48935E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D917F02-7FCD-406B-9FDD-7D412556C61F}.Debug|Any CPU.ActiveCfg = Debug
+		{4D917F02-7FCD-406B-9FDD-7D412556C61F}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
