@@ -104,5 +104,10 @@ namespace UI
         {
             new frmBackup(backupService).Show();
         }
+
+        private void myOffersMenu_Click(object sender, EventArgs e)
+        {
+            new frmMyOffers(orderService, user).Show();
+        }
     }
 }

@@ -31,7 +31,6 @@ namespace UI.forms
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvSuggestedOffers = new System.Windows.Forms.DataGridView();
-            this.btnCreate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuggestedOffers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,22 +59,11 @@ namespace UI.forms
             this.dgvSuggestedOffers.Size = new System.Drawing.Size(925, 337);
             this.dgvSuggestedOffers.TabIndex = 1;
             // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(327, 407);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(292, 32);
-            this.btnCreate.TabIndex = 2;
-            this.btnCreate.Text = "Crear oferta sugerida";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
             // frmSuggestedOffers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 462);
-            this.Controls.Add(this.btnCreate);
+            this.ClientSize = new System.Drawing.Size(949, 403);
             this.Controls.Add(this.dgvSuggestedOffers);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -93,6 +81,5 @@ namespace UI.forms
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgvSuggestedOffers;
-        private System.Windows.Forms.Button btnCreate;
     }
 }

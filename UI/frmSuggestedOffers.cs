@@ -32,43 +32,38 @@ namespace UI.forms
             dgvSuggestedOffers.Refresh();
 
             suggestedOffers = suggestedOfferService.GetAll();
-            if (suggestedOffers != null && suggestedOffers.Count > 0)
+            if (suggestedOffers?.Count > 0)
             {
                 dgvSuggestedOffers.DataSource = suggestedOffers;
-                //dgvSuggestedOffers.Refresh();
-                dgvSuggestedOffers.Columns["Id"].Visible = false;
-                dgvSuggestedOffers.Columns["BrandId"].Visible = false;
-                dgvSuggestedOffers.Columns["ProductId"].Visible = false;
-                dgvSuggestedOffers.Columns["CategoryId"].Visible = false;
             }
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            string currentId = FormHelper.GetCurrentRowId(dgvSuggestedOffers);
+        //private void btnCreate_Click(object sender, EventArgs e)
+        //{
+        //    string currentId = FormHelper.GetCurrentRowId(dgvSuggestedOffers);
 
-            if (currentId != null)
-            {
-                SuggestedOffer suggestedOffer = suggestedOffers.FirstOrDefault(x => x.Id ==  Convert.ToString(currentId));
-                suggestedOfferService.Delete(currentId);
+        //    if (currentId != null)
+        //    {
+        //        SuggestedOffer suggestedOffer = suggestedOffers.FirstOrDefault(x => x.Id ==  Convert.ToString(currentId));
+        //        suggestedOfferService.Delete(currentId);
 
-                offerService.Create(new Offer()
-                {
-                    Active = DateHelper.GetOfferStatusByCurrentDate(suggestedOffer.Start, suggestedOffer.End),
-                    CreatedAt = DateTime.Now,
-                    Discount = suggestedOffer.Discount,
-                    Start = suggestedOffer.Start,
-                    End = suggestedOffer.End,
-                    Name = suggestedOffer.Name,
-                    Type = suggestedOffer.Type,
-                    CategoryId = Convert.ToString(suggestedOffer.CategoryId) ,
-                    BrandId = Convert.ToString(suggestedOffer.BrandId),
-                    ProductId = Convert.ToString(suggestedOffer.ProductId)
-                });
+        //        offerService.Create(new Offer()
+        //        {
+        //            Active = DateHelper.GetOfferStatusByCurrentDate(suggestedOffer.Start, suggestedOffer.End),
+        //            CreatedAt = DateTime.Now,
+        //            Discount = suggestedOffer.Discount,
+        //            Start = suggestedOffer.Start,
+        //            End = suggestedOffer.End,
+        //            Name = suggestedOffer.Name,
+        //            Type = suggestedOffer.Type,
+        //            CategoryId = Convert.ToString(suggestedOffer.CategoryId) ,
+        //            BrandId = Convert.ToString(suggestedOffer.BrandId),
+        //            ProductId = Convert.ToString(suggestedOffer.ProductId)
+        //        });
 
-                MessageBox.Show("Creado correctamente");
-                LoadSuggestedOffers();
-            }
-        }
+        //        MessageBox.Show("Creado correctamente");
+        //        LoadSuggestedOffers();
+        //    }
+        //}
     }
 }

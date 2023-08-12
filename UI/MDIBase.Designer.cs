@@ -34,12 +34,12 @@ namespace UI
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.productsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriesMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.brandMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.offersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCreateOffer = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGetOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSuggestedOffers = new System.Windows.Forms.ToolStripMenuItem();
             this.backupMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.brandMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -52,6 +52,7 @@ namespace UI
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.myOffersMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -64,7 +65,8 @@ namespace UI
             this.categoriesMenu,
             this.brandMenu,
             this.offersMenu,
-            this.backupMenu});
+            this.backupMenu,
+            this.myOffersMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1264, 24);
@@ -84,6 +86,13 @@ namespace UI
             this.categoriesMenu.Size = new System.Drawing.Size(75, 20);
             this.categoriesMenu.Text = "Categorias";
             this.categoriesMenu.Click += new System.EventHandler(this.categoriesMenu_Click);
+            // 
+            // brandMenu
+            // 
+            this.brandMenu.Name = "brandMenu";
+            this.brandMenu.Size = new System.Drawing.Size(52, 20);
+            this.brandMenu.Text = "Marca";
+            this.brandMenu.Click += new System.EventHandler(this.brandMenu_Click);
             // 
             // offersMenu
             // 
@@ -122,13 +131,6 @@ namespace UI
             this.backupMenu.Size = new System.Drawing.Size(58, 20);
             this.backupMenu.Text = "Backup";
             this.backupMenu.Click += new System.EventHandler(this.backupMenu_Click);
-            // 
-            // brandMenu
-            // 
-            this.brandMenu.Name = "brandMenu";
-            this.brandMenu.Size = new System.Drawing.Size(52, 20);
-            this.brandMenu.Text = "Marca";
-            this.brandMenu.Click += new System.EventHandler(this.brandMenu_Click);
             // 
             // toolStrip
             // 
@@ -227,6 +229,13 @@ namespace UI
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // myOffersMenu
+            // 
+            this.myOffersMenu.Name = "myOffersMenu";
+            this.myOffersMenu.Size = new System.Drawing.Size(79, 20);
+            this.myOffersMenu.Text = "Mis Ofertas";
+            this.myOffersMenu.Click += new System.EventHandler(this.myOffersMenu_Click);
+            // 
             // MDIBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +284,7 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem backupMenu;
         private System.Windows.Forms.ToolStripMenuItem categoriesMenu;
         private System.Windows.Forms.ToolStripMenuItem brandMenu;
+        private System.Windows.Forms.ToolStripMenuItem myOffersMenu;
     }
 }
 
