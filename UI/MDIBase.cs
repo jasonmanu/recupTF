@@ -15,7 +15,7 @@ namespace UI
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IProductService productService;
-        private readonly IOrderService purchaseService;
+        private readonly IOrderService orderService;
         private readonly IBackupService backupService;
         private User user;
 
@@ -26,7 +26,7 @@ namespace UI
             this.suggestedOfferService = suggestedOfferService;
             this.brandService = brandService;
             this.productService = productService;
-            this.purchaseService = purchaseService;
+            this.orderService = purchaseService;
             this.backupService = backupService;
             this.categoryService = categoryService;
             this.user = user;
@@ -75,7 +75,7 @@ namespace UI
 
         private void productsMenu_Click(object sender, EventArgs e)
         {
-            new frmProduct(user, productService, purchaseService, categoryService, brandService, offerService) { MdiParent = this }.Show();
+            new frmProduct(user, productService, orderService, categoryService, brandService, offerService) { MdiParent = this }.Show();
         }
 
         #region Backup
@@ -107,7 +107,7 @@ namespace UI
 
         private void myOffersMenu_Click(object sender, EventArgs e)
         {
-            new frmMyOffers(orderService, user).Show();
+            new frmMyOffers(orderService, offerService, productService, user).Show();
         }
     }
 }
