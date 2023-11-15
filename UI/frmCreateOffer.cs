@@ -139,5 +139,10 @@ namespace UI.forms
                 cboBrand.Enabled = false;
             }
         }
+
+        private void frmCreateOffer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -22,11 +22,11 @@ namespace UI
         public frmMyOffers(IOrderService orderService, IOfferService offerService, IProductService productService, User user)
         {
             InitializeComponent();
-            LoadMyOffers();
             this.orderService = orderService;
             this.offerService = offerService;
             this.productService = productService;
             this.user = user;
+            LoadMyOffers();
         }
 
         private void LoadMyOffers()

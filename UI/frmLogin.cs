@@ -64,5 +64,10 @@ namespace UI.forms
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void lblHome_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

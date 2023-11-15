@@ -42,6 +42,7 @@ namespace UI
             {
                 backupService.Export();
                 LoadData();
+                MessageBox.Show("Backup generado");
             }
             catch (Exception ex)
             {
