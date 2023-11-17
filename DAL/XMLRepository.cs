@@ -10,8 +10,8 @@ namespace DAL
 {
     public class XmlRepository<T> : IBaseRepository<T> where T : Entity
     {
-        private static string currentDirectory = Directory.GetCurrentDirectory();
-        private string _filePath = Path.Combine(currentDirectory, "data.xml");
+        private static readonly string currentDirectory = Directory.GetCurrentDirectory();
+        private readonly string _filePath = Path.Combine(currentDirectory, "data.xml");
         protected XDocument _xmlDocument;
 
         public XmlRepository()
@@ -57,15 +57,6 @@ namespace DAL
             return entities;
         }
 
-        //public void Update(T entity)
-        //{
-        //    XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entity.Id);
-        //    if (element != null)
-        //    {
-        //        element.ReplaceWith(CreateElement(entity));
-        //        _xmlDocument.Save(_filePath);
-        //    }
-        //}
         public void Update(T entity)
         {
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entity.Id);

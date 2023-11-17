@@ -10,15 +10,11 @@ namespace BLL
     {
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
-        //private readonly IOfferService offerService;
-        private readonly IProductRepository repository;
 
         public ProductService(IProductRepository repository, ICategoryService categoryService, IBrandService brandService) : base(repository)
         {
-            this.repository = repository;
             this.categoryService = categoryService;
             this.brandService = brandService;
-            //this.offerService = offerService;
         }
 
         public override void Create(Product entity)

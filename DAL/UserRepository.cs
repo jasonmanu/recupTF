@@ -23,17 +23,5 @@ namespace DAL
 
             return null;
         }
-
-        public User Login(LoginDto loginDto)
-        {
-            XElement element = _xmlDocument.Descendants(typeof(User).Name).FirstOrDefault(e => e.Element("Username").Value == loginDto.Username && e.Element("Password").Value == loginDto.Password);
-
-            if (element != null)
-            {
-                return Deserialize<User>(element);
-            }
-
-            return null;
-        }
     }
 }

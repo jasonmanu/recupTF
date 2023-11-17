@@ -4,7 +4,6 @@ using Entities;
 using Entities.Exceptions;
 using FormSupport;
 using System;
-using System.Linq;
 
 namespace BLL
 {
@@ -25,37 +24,41 @@ namespace BLL
                 return null;
             }
 
-            password = CryptoHelper.Hash(password);
+            User user = repository.GetByUsername(username);
 
-            User user = repository.Login(new LoginDto() { Username = username, Password = password });
-            return user;
+            if (user != null)
+            {
+                string decryptedPassword = CryptoHelper.Decrypt(user.Password);
+
+                if (password == decryptedPassword)
+                {
+                    return user;
+                }
+            }
+
+            return null;
         }
 
         public void Register(User user)
         {
-            // verifica que datos de registro no sean nulos
             if (string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
             {
                 throw new NullLoginException();
             }
 
-            // verifica que el nombre de usuario no este en uso actualmente
             bool usernameAlreadyExists = repository.GetByUsername(user.Username) != null;
             if (usernameAlreadyExists)
             {
                 throw new UsernameExistsException();
             }
 
-            // valida el tamaño minimo del username
             if (user.Username.Length < MIN_USERNAME_LENGTH || user.Username.Length < MIN_USERNAME_LENGTH)
             {
                 throw new InvalidLengthException();
             }
 
             user.Id = Guid.NewGuid().ToString();
-
-            // encripta password antes de guardarla
-            user.Password = CryptoHelper.Hash(user.Password);
+            user.Password = CryptoHelper.Encrypt(user.Password);
 
             repository.Create(user);
         }
