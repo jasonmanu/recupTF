@@ -10,8 +10,8 @@ namespace DAL
 {
     public class XmlRepository<T> : IBaseRepository<T> where T : Entity
     {
-        private static readonly string currentDirectory = Directory.GetCurrentDirectory();
-        private readonly string _filePath = Path.Combine(currentDirectory, "data.xml");
+        protected static readonly string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+        protected readonly string _filePath = Path.Combine(appFolderPath, "data.xml");
         protected XDocument _xmlDocument;
 
         public XmlRepository()
@@ -28,12 +28,16 @@ namespace DAL
 
         public void Create(T entity)
         {
+            _xmlDocument = XDocument.Load(_filePath);
+
             _xmlDocument.Element("root").Add(CreateElement(entity));
             _xmlDocument.Save(_filePath);
         }
 
         public T GetById(string entityId)
         {
+            _xmlDocument = XDocument.Load(_filePath);
+
             if (string.IsNullOrEmpty(entityId))
             {
                 return null;
@@ -44,21 +48,27 @@ namespace DAL
             {
                 return Deserialize<T>(element);
             }
+
             return null;
         }
 
         public List<T> GetAll()
         {
+            _xmlDocument = XDocument.Load(_filePath);
+
             List<T> entities = new List<T>();
             foreach (XElement element in _xmlDocument.Descendants(typeof(T).Name))
             {
                 entities.Add(Deserialize<T>(element));
             }
+
             return entities;
         }
 
         public void Update(T entity)
         {
+            _xmlDocument = XDocument.Load(_filePath);
+
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entity.Id);
             if (element != null)
             {
@@ -69,6 +79,8 @@ namespace DAL
 
         public void Delete(string entityId)
         {
+            _xmlDocument = XDocument.Load(_filePath);
+
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entityId);
             if (element != null)
             {
@@ -94,21 +106,6 @@ namespace DAL
             {
                 return (U)serializer.Deserialize(reader);
             }
-        }
-
-        public void ExportBackup(string currentDateString)
-        {
-            _xmlDocument.Save(_filePath);
-            string backupFilePath = Path.Combine(currentDirectory, "backup" + currentDateString + ".xml");
-            File.Copy(_filePath, backupFilePath, true);
-            //File.Copy(backupFilePath, _filePath, true);
-        }
-
-        public void ImportBackup(string fileName)
-        {
-            _xmlDocument.Save(_filePath);
-            string backupFilePath = Path.Combine(currentDirectory, "backup" + fileName + ".xml");
-            File.Copy(backupFilePath, _filePath, true);
         }
     }
 }

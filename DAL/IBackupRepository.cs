@@ -9,7 +9,5 @@ namespace DAL
 {
     public interface IBackupRepository : IBaseRepository<Backup>
     {
-        void ExportBackup(string currentDateString);
-        void ImportBackup(string fileName);
     }
 }

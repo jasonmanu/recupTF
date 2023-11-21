@@ -2,6 +2,7 @@
 using Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,11 @@ namespace BLL
     public class BackupService : BaseService<Backup>, IBackupService
     {
         private readonly IBackupRepository backupRepository;
+        static string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+        static readonly string xmlFileName = "data.xml";
+        static readonly string xmlFilePath = Path.Combine(appFolderPath, xmlFileName);
+        static readonly string backupFolderName = "Backup";
+        static readonly string backupFolderPath = Path.Combine(appFolderPath, backupFolderName);
 
         public BackupService(IBackupRepository backupRepository) : base(backupRepository)
         {
@@ -19,21 +25,21 @@ namespace BLL
 
         public void Export()
         {
-            string currentDateString = DateTime.Now.ToString("yyyy-MM-ddTHH-mm-ss");
+            Directory.CreateDirectory(backupFolderPath);
 
-            backupRepository.ExportBackup(currentDateString);
+            DateTime currentDatetime = DateTime.Now;
+            string timestamp = currentDatetime.ToString("yyyyMMddHHmmss");
+            string backupFileName = $"backup_{timestamp}.xml";
+            string backupFilePath = Path.Combine(backupFolderPath, backupFileName);
 
-            Backup backup = new Backup() { Id= Guid.NewGuid().ToString(), Name = currentDateString, Date = DateTime.Now };
+            File.Copy(xmlFilePath, backupFilePath);
+
+            Backup backup = new Backup() { Id = Guid.NewGuid().ToString(), Name = backupFileName, Date = currentDatetime };
             backupRepository.Create(backup);
         }
 
         public void ImportById(string id)
         {
-            if (id == null)
-            {
-                throw new Exception("Backup no encontrado");
-            }
-
             Backup backup = GetById(id);
 
             if (backup == null)
@@ -41,7 +47,8 @@ namespace BLL
                 throw new Exception("Backup no encontrado");
             }
 
-            backupRepository.ImportBackup(backup.Name);
+            string backupFilePath = Path.Combine(backupFolderPath, backup.Name);
+            File.Copy(backupFilePath, xmlFilePath, true);
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using BLL;
+using Entities;
 using FormSupport;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI
@@ -28,6 +31,7 @@ namespace UI
             try
             {
                 backupService.ImportById(id);
+                LoadData();
                 MessageBox.Show("Backup importado correctamente");
             }
             catch (Exception ex)
