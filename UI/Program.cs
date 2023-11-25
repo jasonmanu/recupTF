@@ -23,7 +23,7 @@ namespace UI
                     .AddScoped<ICategoryService, CategoryService>()
                     .AddScoped<IOfferService, OfferService>()
                     .AddScoped<IProductService, ProductService>()
-                    .AddScoped<IOrderService, PurchaseService>()
+                    .AddScoped<IOrderService, OrderService>()
                     .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
                     .AddScoped<IBackupService, BackupService>()
                     .AddScoped<IUserRepository, UserRepository>()
@@ -31,18 +31,14 @@ namespace UI
                     .AddScoped<ICategoryRepository, CategoryRepository>()
                     .AddScoped<IOfferRepository, OfferRepository>()
                     .AddScoped<IProductRepository, ProductRepository>()
-                    .AddScoped<IPurchaseRepository, PurchaseRepository>()
+                    .AddScoped<IOrderRepository, OrderRepository>()
                     .AddScoped<ISuggestedOfferRepository, SuggestedOfferRepository>()
                     .AddScoped<IBackupRepository, BackupRepository>()
                     .AddSingleton(typeof(XmlRepository<>))
                     .AddScoped<frmLogin>();
 
-            // corre form principal con servicios inyectados
-            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
-            {
-                frmLogin mainForm = serviceProvider.GetRequiredService<frmLogin>();
-                Application.Run(mainForm);
-            }
+            var serviceProvider = services.BuildServiceProvider();
+            Application.Run(new frmLogin(serviceProvider));
         }
     }
 }

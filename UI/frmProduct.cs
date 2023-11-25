@@ -3,6 +3,7 @@ using BLL.Contracts;
 using Entities;
 using Entities.Enums;
 using FormSupport;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -13,22 +14,24 @@ namespace UI
     public partial class frmProduct : Form
     {
         private readonly IProductService productService;
-        private readonly IOrderService purchaseService;
+        private readonly IOrderService orderService;
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IOfferService offerService;
         //private List<ProductDto> dgvDataSource = new List<ProductDto>();
         //private bool updateButtonEnabled = false;
         private User user;
+        private readonly IServiceProvider serviceProvider;
 
-        public frmProduct(User user, IProductService productService, IOrderService purchaseService, ICategoryService categoryService, IBrandService brandService, IOfferService offerService)
+        public frmProduct(User user, IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.productService = productService;
-            this.purchaseService = purchaseService;
-            this.categoryService = categoryService;
-            this.brandService = brandService;
-            this.offerService = offerService;
+            this.serviceProvider = serviceProvider;
+            this.productService = serviceProvider.GetRequiredService<IProductService>();
+            this.orderService = serviceProvider.GetRequiredService<IOrderService>();
+            this.categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+            this.brandService = serviceProvider.GetRequiredService<IBrandService>();
+            this.offerService = serviceProvider.GetRequiredService<IOfferService>();
             this.user = user;
 
             if (user.Role == UserRole.SHOPPER)
@@ -183,7 +186,7 @@ namespace UI
             {
                 try
                 {
-                    purchaseService.Create(new Order() { ProductId = productId, Date = DateTime.Now, UserId = user.Id, TotalPrice = offerService.CalculateFinalPriceForProduct(productId) });
+                    orderService.Create(new Order() { ProductId = productId, Date = DateTime.Now, UserId = user.Id, TotalPrice = offerService.CalculateFinalPriceForProduct(productId) });
                     MessageBox.Show("Producto comprado correctamente");
                 }
                 catch (Exception ex)

@@ -192,12 +192,12 @@
     <Compile Include="ICategoryRepository.cs" />
     <Compile Include="IOfferRepository.cs" />
     <Compile Include="IProductRepository.cs" />
-    <Compile Include="IPurchaseRepository.cs" />
+    <Compile Include="IOrderRepository.cs" />
     <Compile Include="ISuggestedOfferRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="OfferRepository.cs" />
     <Compile Include="ProductRepository.cs" />
-    <Compile Include="PurchaseRepository.cs" />
+    <Compile Include="OrderRepository.cs" />
     <Compile Include="SuggestedOfferRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="XMLRepository.cs" />

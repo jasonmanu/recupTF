@@ -1,9 +1,7 @@
 ﻿using BLL;
-using Entities;
 using FormSupport;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace UI
@@ -11,11 +9,13 @@ namespace UI
     public partial class frmBackup : Form
     {
         private readonly IBackupService backupService;
+        private readonly IServiceProvider serviceProvider;
 
-        public frmBackup(IBackupService backupService)
+        public frmBackup(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.backupService = backupService;
+            this.serviceProvider = serviceProvider;
+            this.backupService = serviceProvider.GetRequiredService<IBackupService>();
             LoadData();
         }
 

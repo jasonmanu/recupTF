@@ -1,6 +1,7 @@
 ﻿using BLL.Contracts;
 using Entities;
 using FormSupport;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 
@@ -9,11 +10,13 @@ namespace UI
     public partial class frmBrand : Form
     {
         private readonly IBrandService brandService;
+        private readonly IServiceProvider serviceProvider;
 
-        public frmBrand(IBrandService brandService)
+        public frmBrand(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.brandService = brandService;
+            this.serviceProvider = serviceProvider;
+            this.brandService = serviceProvider.GetRequiredService<IBrandService>();
             LoadData();
         }
 

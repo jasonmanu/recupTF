@@ -1,19 +1,16 @@
 ﻿using BLL.Contracts;
 using DAL;
 using Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class PurchaseService : BaseService<Order>, IOrderService
+    public class OrderService : BaseService<Order>, IOrderService
     {
-        private readonly IPurchaseRepository repository;
+        private readonly IOrderRepository repository;
 
-        public PurchaseService(IPurchaseRepository repository) : base(repository)
+        public OrderService(IOrderRepository repository) : base(repository)
         {
             this.repository = repository;
         }

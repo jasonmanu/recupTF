@@ -1,5 +1,6 @@
 ﻿using BLL.Contracts;
 using Entities;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,12 +20,12 @@ namespace UI
         private readonly IProductService productService;
         private readonly User user;
 
-        public frmMyOffers(IOrderService orderService, IOfferService offerService, IProductService productService, User user)
+        public frmMyOffers(IServiceProvider serviceProvider, User user)
         {
             InitializeComponent();
-            this.orderService = orderService;
-            this.offerService = offerService;
-            this.productService = productService;
+            this.orderService = serviceProvider.GetRequiredService<IOrderService>();
+            this.offerService = serviceProvider.GetRequiredService<IOfferService>();
+            this.productService = serviceProvider.GetRequiredService<IProductService>();
             this.user = user;
             LoadMyOffers();
         }

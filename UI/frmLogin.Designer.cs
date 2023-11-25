@@ -146,7 +146,6 @@ namespace UI.forms
             this.lblHome.TabIndex = 5;
             this.lblHome.Text = "Bienvenido a shopping online";
             this.lblHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblHome.Click += new System.EventHandler(this.lblHome_Click);
             // 
             // frmLogin
             // 

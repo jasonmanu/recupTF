@@ -2,6 +2,7 @@
 using BLL.Contracts;
 using Entities;
 using Entities.Enums;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 
@@ -13,14 +14,16 @@ namespace UI.forms
         private readonly IProductService productService;
         private readonly IBrandService brandService;
         private readonly ICategoryService categoryService;
+        private readonly IServiceProvider serviceProvider;
 
-        public frmCreateOffer(IOfferService offerService, IProductService productService, ICategoryService categoryService, IBrandService brandService)
+        public frmCreateOffer(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.offerService = offerService;
-            this.productService = productService;
-            this.categoryService = categoryService;
-            this.brandService = brandService;
+            this.serviceProvider = serviceProvider;
+            this.offerService = serviceProvider.GetRequiredService<IOfferService>();
+            this.productService = serviceProvider.GetRequiredService<IProductService>();
+            this.categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+            this.brandService = serviceProvider.GetRequiredService<IBrandService>();
             LoadOfferConnections();
         }
 

@@ -2,6 +2,7 @@
 using Entities;
 using Entities.Enums;
 using FormSupport;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,17 @@ namespace UI.forms
         private readonly ICategoryService categoryService;
         private readonly IBrandService brandService;
         private readonly IProductService productService;
+        private readonly IServiceProvider serviceProvider;
         private List<Offer> offers;
 
-        public frmManageOffer(IOfferService offerService, ICategoryService categoryService, IBrandService brandService, IProductService productService)
+        public frmManageOffer(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.offerService = offerService;
-            this.categoryService = categoryService;
-            this.brandService = brandService;
-            this.productService = productService;
+            this.serviceProvider = serviceProvider;
+            this.offerService = serviceProvider.GetRequiredService<IOfferService>();
+            this.categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+            this.brandService = serviceProvider.GetRequiredService<IBrandService>();
+            this.productService = serviceProvider.GetRequiredService<IProductService>();
             cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
         }
 

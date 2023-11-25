@@ -1,6 +1,7 @@
 ﻿using BLL.Contracts;
 using Entities;
 using FormSupport;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,15 @@ namespace UI.forms
     {
         private readonly ISuggestedOfferService suggestedOfferService;
         private readonly IOfferService offerService;
+        private readonly IServiceProvider serviceProvider;
         private List<SuggestedOffer> suggestedOffers;
 
-        public frmSuggestedOffers(ISuggestedOfferService suggestedOfferService, IOfferService offerService)
+        public frmSuggestedOffers(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.suggestedOfferService = suggestedOfferService;
-            this.offerService = offerService;
+            this.serviceProvider = serviceProvider;
+            this.suggestedOfferService = serviceProvider.GetRequiredService<ISuggestedOfferService>();
+            this.offerService = serviceProvider.GetRequiredService<IOfferService>();
         }
 
         private void frmSuggestedOffers_Load(object sender, EventArgs e)

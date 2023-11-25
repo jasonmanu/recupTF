@@ -2,6 +2,7 @@
 using BLL.Contracts;
 using Entities;
 using Entities.Enums;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 using UI.forms;
@@ -10,6 +11,7 @@ namespace UI
 {
     public partial class MDIBase : Form
     {
+        private readonly IServiceProvider serviceProvider;
         private readonly IOfferService offerService;
         private readonly ISuggestedOfferService suggestedOfferService;
         private readonly ICategoryService categoryService;
@@ -19,16 +21,17 @@ namespace UI
         private readonly IBackupService backupService;
         private User user;
 
-        public MDIBase(User user, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService, IBackupService backupService)
+        public MDIBase(User user, IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.offerService = offerService;
-            this.suggestedOfferService = suggestedOfferService;
-            this.brandService = brandService;
-            this.productService = productService;
-            this.orderService = purchaseService;
-            this.backupService = backupService;
-            this.categoryService = categoryService;
+            this.serviceProvider = serviceProvider;
+            this.offerService = serviceProvider.GetRequiredService<IOfferService>();
+            this.suggestedOfferService = serviceProvider.GetRequiredService<ISuggestedOfferService>();
+            this.categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+            this.brandService = serviceProvider.GetRequiredService<IBrandService>();
+            this.orderService = serviceProvider.GetRequiredService<IOrderService>();
+            this.productService = serviceProvider.GetRequiredService<IProductService>();
+            this.backupService = serviceProvider.GetRequiredService<IBackupService>();
             this.user = user;
             LoadRoleButtons();
         }
@@ -51,7 +54,7 @@ namespace UI
         #region Offers
         private void btnCreateOffer_Click(object sender, EventArgs e)
         {
-            new frmCreateOffer(offerService, productService, categoryService, brandService)
+            new frmCreateOffer(serviceProvider)
             {
                 MdiParent = this
             }.Show();
@@ -59,12 +62,12 @@ namespace UI
 
         private void btnGetOffers_Click(object sender, EventArgs e)
         {
-            new frmManageOffer(offerService, categoryService, brandService, productService) { MdiParent = this }.Show();
+            new frmManageOffer(serviceProvider) { MdiParent = this }.Show();
         }
 
         private void btnSuggestedOffers_Click(object sender, EventArgs e)
         {
-            new frmSuggestedOffers(suggestedOfferService, offerService) { MdiParent = this }.Show();
+            new frmSuggestedOffers(serviceProvider) { MdiParent = this }.Show();
         }
         #endregion
 
@@ -75,7 +78,7 @@ namespace UI
 
         private void productsMenu_Click(object sender, EventArgs e)
         {
-            new frmProduct(user, productService, orderService, categoryService, brandService, offerService) { MdiParent = this }.Show();
+            new frmProduct(user, serviceProvider) { MdiParent = this }.Show();
         }
 
         #region Backup
@@ -92,22 +95,22 @@ namespace UI
 
         private void categoriesMenu_Click(object sender, EventArgs e)
         {
-            new frmCategories(categoryService).Show();
+            new frmCategories(serviceProvider).Show();
         }
 
         private void brandMenu_Click(object sender, EventArgs e)
         {
-            new frmBrand(brandService).Show();
+            new frmBrand(serviceProvider).Show();
         }
 
         private void backupMenu_Click(object sender, EventArgs e)
         {
-            new frmBackup(backupService).Show();
+            new frmBackup(serviceProvider).Show();
         }
 
         private void myOffersMenu_Click(object sender, EventArgs e)
         {
-            new frmMyOffers(orderService, offerService, productService, user).Show();
+            new frmMyOffers(serviceProvider, user).Show();
         }
     }
 }

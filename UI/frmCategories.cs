@@ -1,6 +1,7 @@
 ﻿using BLL.Contracts;
 using Entities;
 using FormSupport;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 
@@ -9,11 +10,13 @@ namespace UI
     public partial class frmCategories : Form
     {
         private readonly ICategoryService categoriesService;
+        private readonly IServiceProvider serviceProvider;
 
-        public frmCategories(ICategoryService categoriesService)
+        public frmCategories(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.categoriesService = categoriesService;
+            this.serviceProvider = serviceProvider;
+            this.categoriesService = serviceProvider.GetRequiredService<ICategoryService>();
             LoadData();
         }
 

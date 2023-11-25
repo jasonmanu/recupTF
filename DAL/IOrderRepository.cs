@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public interface IPurchaseRepository : IBaseRepository<Order>
+    public interface IOrderRepository : IBaseRepository<Order>
     {
     }
 }

@@ -1,7 +1,7 @@
-﻿using BLL;
-using BLL.Contracts;
+﻿using BLL.Contracts;
 using Entities;
 using Entities.Enums;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 
@@ -9,26 +9,14 @@ namespace UI.forms
 {
     public partial class frmLogin : Form
     {
+        private readonly IServiceProvider serviceProvider;
         private readonly IUserService userService;
-        private readonly IOfferService offerService;
-        private readonly ISuggestedOfferService suggestedOfferService;
-        private readonly ICategoryService categoryService;
-        private readonly IBrandService brandService;
-        private readonly IProductService productService;
-        private readonly IOrderService purchaseService;
-        private readonly IBackupService backupService;
 
-        public frmLogin(IUserService userService, IOfferService offerService, ISuggestedOfferService suggestedOfferService, ICategoryService categoryService, IBrandService brandService, IProductService productService, IOrderService purchaseService, IBackupService backupService)
+        public frmLogin(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.userService = userService;
-            this.offerService = offerService;
-            this.suggestedOfferService = suggestedOfferService;
-            this.categoryService = categoryService;
-            this.brandService = brandService;
-            this.purchaseService = purchaseService;
-            this.productService = productService;
-            this.backupService = backupService;
+            this.serviceProvider = serviceProvider;
+            this.userService = serviceProvider.GetRequiredService<IUserService>();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -45,7 +33,7 @@ namespace UI.forms
             else
             {
                 Hide();
-                new MDIBase(loggedUser, offerService, suggestedOfferService, categoryService, brandService, productService, purchaseService, backupService).Show();
+                new MDIBase(loggedUser, serviceProvider).Show();
             }
         }
 
@@ -63,11 +51,6 @@ namespace UI.forms
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void lblHome_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
