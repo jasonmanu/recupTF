@@ -32,10 +32,10 @@ namespace BLL
             string backupFileName = $"backup_{timestamp}.xml";
             string backupFilePath = Path.Combine(backupFolderPath, backupFileName);
 
-            File.Copy(xmlFilePath, backupFilePath);
-
             Backup backup = new Backup() { Id = Guid.NewGuid().ToString(), Name = backupFileName, Date = currentDatetime };
             backupRepository.Create(backup);
+
+            File.Copy(xmlFilePath, backupFilePath);
         }
 
         public void ImportById(string id)

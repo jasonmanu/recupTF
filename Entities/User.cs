@@ -24,5 +24,14 @@ namespace Entities
 
         [XmlElement("Role")]
         public UserRole Role { get; set; }
+        
+        [XmlElement("Address")]
+        public string Address { get; set; }
+
+        [XmlElement("LastLoginAt")]
+        public DateTime? LastLoginAt { get; set; }
+
+        //[XmlElement("Rol")]
+        //public Rol Rol { get; set; }
     }
 }

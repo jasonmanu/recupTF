@@ -184,24 +184,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorRepository.cs" />
     <Compile Include="BackupRepository.cs" />
-    <Compile Include="BrandRepository.cs" />
+    <Compile Include="BookRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
-    <Compile Include="IBackupRepository.cs" />
-    <Compile Include="IBrandRepository.cs" />
-    <Compile Include="ICategoryRepository.cs" />
-    <Compile Include="IOfferRepository.cs" />
-    <Compile Include="IProductRepository.cs" />
-    <Compile Include="IOrderRepository.cs" />
-    <Compile Include="ISuggestedOfferRepository.cs" />
-    <Compile Include="IUserRepository.cs" />
-    <Compile Include="OfferRepository.cs" />
-    <Compile Include="ProductRepository.cs" />
-    <Compile Include="OrderRepository.cs" />
-    <Compile Include="SuggestedOfferRepository.cs" />
+    <Compile Include="CollectionRepository.cs" />
+    <Compile Include="Interfaces\IAuthorRepository.cs" />
+    <Compile Include="Interfaces\IBackupRepository.cs" />
+    <Compile Include="Interfaces\IBookRepository.cs" />
+    <Compile Include="Interfaces\ICategoryRepository.cs" />
+    <Compile Include="Interfaces\ICollectionRepository.cs" />
+    <Compile Include="Interfaces\IEditorialRepository.cs" />
+    <Compile Include="Interfaces\ILoanRepository.cs" />
+    <Compile Include="Interfaces\ISubscriptionService.cs" />
+    <Compile Include="Interfaces\ISubscriptionTypeRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="LoanRepository.cs" />
+    <Compile Include="NotificationRepository.cs" />
+    <Compile Include="SubscriptionRepository.cs" />
+    <Compile Include="SubscriptionTypeRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="XMLRepository.cs" />
-    <Compile Include="IBaseRepository.cs" />
+    <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

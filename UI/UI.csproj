@@ -187,41 +187,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AnalyticsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AnalyticsControl.Designer.cs">
+      <DependentUpon>AnalyticsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AuthorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AuthorControl.Designer.cs">
+      <DependentUpon>AuthorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BackupControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BackupControl.Designer.cs">
+      <DependentUpon>BackupControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BibliotecariosControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BibliotecariosControl.Designer.cs">
+      <DependentUpon>BibliotecariosControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BookControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BookControl.Designer.cs">
+      <DependentUpon>BookControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CategoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CategoryControl.Designer.cs">
+      <DependentUpon>CategoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CollectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CollectionControl.Designer.cs">
+      <DependentUpon>CollectionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HomeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HomeControl.Designer.cs">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultasControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MultasControl.Designer.cs">
+      <DependentUpon>MultasControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RolsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RolsControl.Designer.cs">
+      <DependentUpon>RolsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubscriptionTypeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SubscriptionTypeControl.Designer.cs">
+      <DependentUpon>SubscriptionTypeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UsuariosControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UsuariosControl.Designer.cs">
+      <DependentUpon>UsuariosControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBackup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBackup.Designer.cs">
       <DependentUpon>frmBackup.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBrand.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBrand.Designer.cs">
-      <DependentUpon>frmBrand.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCategories.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCategories.Designer.cs">
-      <DependentUpon>frmCategories.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmCreateOffer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCreateOffer.Designer.cs">
       <DependentUpon>frmCreateOffer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMyOffers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMyOffers.Designer.cs">
-      <DependentUpon>frmMyOffers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmOffer.cs">
       <SubType>Form</SubType>
@@ -235,37 +283,61 @@
     <Compile Include="frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSuggestedOffers.cs">
+    <Compile Include="Controls\LoanControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LoanControl.Designer.cs">
+      <DependentUpon>LoanControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSuggestedOffers.Designer.cs">
-      <DependentUpon>frmSuggestedOffers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MDIBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MDIBase.Designer.cs">
-      <DependentUpon>MDIBase.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\AnalyticsControl.resx">
+      <DependentUpon>AnalyticsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AuthorControl.resx">
+      <DependentUpon>AuthorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BackupControl.resx">
+      <DependentUpon>BackupControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BibliotecariosControl.resx">
+      <DependentUpon>BibliotecariosControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BookControl.resx">
+      <DependentUpon>BookControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CategoryControl.resx">
+      <DependentUpon>CategoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CollectionControl.resx">
+      <DependentUpon>CollectionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HomeControl.resx">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MultasControl.resx">
+      <DependentUpon>MultasControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RolsControl.resx">
+      <DependentUpon>RolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SubscriptionTypeControl.resx">
+      <DependentUpon>SubscriptionTypeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UsuariosControl.resx">
+      <DependentUpon>UsuariosControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBackup.resx">
       <DependentUpon>frmBackup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBrand.resx">
-      <DependentUpon>frmBrand.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCategories.resx">
-      <DependentUpon>frmCategories.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCreateOffer.resx">
       <DependentUpon>frmCreateOffer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMyOffers.resx">
-      <DependentUpon>frmMyOffers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOffer.resx">
       <DependentUpon>frmOffer.cs</DependentUpon>
@@ -274,11 +346,11 @@
     <EmbeddedResource Include="frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSuggestedOffers.resx">
-      <DependentUpon>frmSuggestedOffers.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\LoanControl.resx">
+      <DependentUpon>LoanControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDIBase.resx">
-      <DependentUpon>MDIBase.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

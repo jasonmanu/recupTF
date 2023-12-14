@@ -1,5 +1,4 @@
-﻿using BLL.Contracts;
-using DAL;
+﻿using DAL;
 using Entities;
 using Entities.Exceptions;
 using FormSupport;
@@ -39,7 +38,7 @@ namespace BLL
             return null;
         }
 
-        public void Register(User user)
+        public override void Create(User user)
         {
             if (string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
             {
@@ -54,13 +53,30 @@ namespace BLL
 
             if (user.Username.Length < MIN_USERNAME_LENGTH || user.Username.Length < MIN_USERNAME_LENGTH)
             {
-                throw new InvalidLengthException();
+                throw new InvalidPassLengthException();
             }
 
             user.Id = Guid.NewGuid().ToString();
             user.Password = CryptoHelper.Encrypt(user.Password);
 
             repository.Create(user);
+        }
+
+        public override void Update(User user)
+        {
+            if (string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
+            {
+                throw new NullLoginException();
+            }
+
+            if (user.Username.Length < MIN_USERNAME_LENGTH || user.Username.Length < MIN_USERNAME_LENGTH)
+            {
+                throw new InvalidPassLengthException();
+            }
+
+            user.Password = CryptoHelper.Encrypt(user.Password);
+
+            repository.Update(user);
         }
     }
 }

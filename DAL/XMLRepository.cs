@@ -23,12 +23,13 @@ namespace DAL
             else
             {
                 _xmlDocument = new XDocument(new XElement("root"));
+                _xmlDocument.Save(_filePath);
             }
         }
 
         public void Create(T entity)
         {
-            _xmlDocument = XDocument.Load(_filePath);
+            //_xmlDocument = XDocument.Load(_filePath);
 
             _xmlDocument.Element("root").Add(CreateElement(entity));
             _xmlDocument.Save(_filePath);
@@ -36,12 +37,12 @@ namespace DAL
 
         public T GetById(string entityId)
         {
-            _xmlDocument = XDocument.Load(_filePath);
-
             if (string.IsNullOrEmpty(entityId))
             {
                 return null;
             }
+
+            //_xmlDocument = XDocument.Load(_filePath);
 
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entityId);
             if (element != null)
@@ -54,7 +55,10 @@ namespace DAL
 
         public List<T> GetAll()
         {
+            //if (File.Exists(_filePath))
+            //{
             _xmlDocument = XDocument.Load(_filePath);
+            //}
 
             List<T> entities = new List<T>();
             foreach (XElement element in _xmlDocument.Descendants(typeof(T).Name))
@@ -67,7 +71,7 @@ namespace DAL
 
         public void Update(T entity)
         {
-            _xmlDocument = XDocument.Load(_filePath);
+            //_xmlDocument = XDocument.Load(_filePath);
 
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entity.Id);
             if (element != null)
@@ -79,7 +83,7 @@ namespace DAL
 
         public void Delete(string entityId)
         {
-            _xmlDocument = XDocument.Load(_filePath);
+            //_xmlDocument = XDocument.Load(_filePath);
 
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entityId);
             if (element != null)
@@ -92,7 +96,7 @@ namespace DAL
         private XElement CreateElement<U>(U entity) where U : Entity
         {
             XmlSerializer serializer = new XmlSerializer(typeof(U));
-            using (var writer = new StringWriter())
+            using (StringWriter writer = new StringWriter())
             {
                 serializer.Serialize(writer, entity);
                 return XElement.Parse(writer.ToString());

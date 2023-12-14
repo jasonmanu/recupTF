@@ -1,10 +1,9 @@
 ﻿using BLL;
-using BLL.Contracts;
 using DAL;
+using DAL.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
-using UI.forms;
 
 namespace UI
 {
@@ -18,27 +17,32 @@ namespace UI
 
             // crea coleccion de servicios para inyeccion de dependencias
             ServiceCollection services = new ServiceCollection();
-            services.AddScoped<IUserService, UserService>()
-                    .AddScoped<IBrandService, BrandService>()
-                    .AddScoped<ICategoryService, CategoryService>()
-                    .AddScoped<IOfferService, OfferService>()
-                    .AddScoped<IProductService, ProductService>()
-                    .AddScoped<IOrderService, OrderService>()
-                    .AddScoped<ISuggestedOfferService, SuggestedOfferService>()
+            services.AddScoped<IAuthorService, AuthorService>()
+                    .AddScoped<IAuthorRepository, AuthorRepository>()
                     .AddScoped<IBackupService, BackupService>()
-                    .AddScoped<IUserRepository, UserRepository>()
-                    .AddScoped<IBrandRepository, BrandRepository>()
-                    .AddScoped<ICategoryRepository, CategoryRepository>()
-                    .AddScoped<IOfferRepository, OfferRepository>()
-                    .AddScoped<IProductRepository, ProductRepository>()
-                    .AddScoped<IOrderRepository, OrderRepository>()
-                    .AddScoped<ISuggestedOfferRepository, SuggestedOfferRepository>()
                     .AddScoped<IBackupRepository, BackupRepository>()
-                    .AddSingleton(typeof(XmlRepository<>))
-                    .AddScoped<frmLogin>();
+                    .AddScoped<IBookService, BookService>()
+                    .AddScoped<IBookRepository, BookRepository>()
+                    .AddScoped<ICategoryService, CategoryService>()
+                    .AddScoped<ICategoryRepository, CategoryRepository>()
+                    .AddScoped<ICollectionService, CollectionService>()
+                    .AddScoped<ICollectionRepository, CollectionRepository>()
+                    .AddScoped<IUserRepository, UserRepository>()
+                    .AddScoped<IUserService, UserService>()
+                    .AddScoped<IUserRepository, UserRepository>()
+                    .AddScoped<ISubscriptionService, SubscriptionService>()
+                    .AddScoped<ISubscriptionRepository, SubscriptionRepository>()
+                    .AddScoped<ISubscriptionTypeService, SubscriptionTypeService>()
+                    .AddScoped<ISubscriptionTypeRepository, SubscriptionTypeRepository>()
+                    .AddScoped<ILoanService, LoanService>()
+                    .AddScoped<ILoanRepository, LoanRepository>()
+                    .AddSingleton(typeof(XmlRepository<>));
+            //.AddScoped<IEditorialService, EditorialService>()
+            //.AddScoped<IEditorialRepository, EditorialRepository>()
+            //TODO: Multa
 
-            var serviceProvider = services.BuildServiceProvider();
-            Application.Run(new frmLogin(serviceProvider));
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
+            Application.Run(new MainForm(serviceProvider));
         }
     }
 }

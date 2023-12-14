@@ -11,35 +11,93 @@ namespace Entities
             UsersRoot = new UsersRoot();
         }
 
-        [XmlElement("Users")]
-        public UsersRoot UsersRoot { get; set; }
+        [XmlElement("Authors")]
+        public AuthorsRoot AuthorsRoot { get; set; }
 
-        [XmlElement("Products")]
-        public ProductsRoot ProductsRoot { get; set; }
+        [XmlElement("Backups")]
+        public BackupsRoot BackupsRoot { get; set; }
 
-        [XmlElement("Brands")]
-        public BrandsRoot BrandsRoot { get; set; }
-
-        [XmlElement("Offers")]
-        public OffersRoot OffersRoot { get; set; }
-
-        [XmlElement("SuggestedOffers")]
-        public SuggestedOffersRoot SuggestedOffersRoot { get; set; }
-
-        [XmlElement("Purchases")]
-        public PurchasesRoot PurchasesRoot { get; set; }
-
-        [XmlElement("ShopperFavorites")]
-        public ShopperFavoritesRoot ShopperFavoritesRoot { get; set; }
+        [XmlElement("Books")]
+        public BooksRoot BooksRoot { get; set; }
 
         [XmlElement("Categories")]
         public CategoriesRoot CategoriesRoot { get; set; }
+
+        [XmlElement("Collections")]
+        public CollectionsRoot CollectionsRoot { get; set; }
+
+        [XmlElement("Editorials")]
+        public EditorialsRoot EditorialsRoot { get; set; }
+
+        [XmlElement("Loans")]
+        public LoansRoot LoansRoot { get; set; }
+
+        // Multas ????
+
+        [XmlElement("Users")]
+        public UsersRoot UsersRoot { get; set; }
     }
 
-    public class BrandsRoot
+    // TODO: revisar si la lectura de "Users"."User" esta bien hecha
+
+    public class LoansRoot
     {
-        [XmlElement("Brand")]
-        public List<Brand> Brands { get; set; }
+        public LoansRoot()
+        {
+        }
+
+        [XmlElement("Loan")]
+        public List<Loan> Loans { get; set; }
+    }
+
+    public class EditorialsRoot
+    {
+        public EditorialsRoot()
+        {
+        }
+
+        [XmlElement("Editorial")]
+        public List<Editorial> Editorials { get; set; }
+    }
+
+    public class CollectionsRoot
+    {
+        public CollectionsRoot()
+        {
+        }
+
+        [XmlElement("Collection")]
+        public List<Collection> Collections { get; set; }
+    }
+
+    public class BackupsRoot
+    {
+        public BackupsRoot()
+        {
+        }
+
+        [XmlElement("Backup")]
+        public List<Backup> Backups { get; set; }
+    }
+
+    public class AuthorsRoot
+    {
+        public AuthorsRoot()
+        {
+        }
+
+        [XmlElement("Author")]
+        public List<Author> Authors { get; set; }
+    }
+
+    public class BooksRoot
+    {
+        public BooksRoot()
+        {
+        }
+
+        [XmlElement("Book")]
+        public List<Book> Books { get; set; }
     }
 
     public class CategoriesRoot
@@ -52,26 +110,6 @@ namespace Entities
         public List<Category> Categories { get; set; }
     }
 
-    public class ShopperFavoritesRoot
-    {
-        public ShopperFavoritesRoot()
-        {
-        }
-
-        [XmlElement("ShopperFavorite")]
-        public List<ShopperFavorite> ShopperFavorites { get; set; }
-    }
-
-    public class PurchasesRoot
-    {
-        public PurchasesRoot()
-        {
-        }
-
-        [XmlElement("Purchase")]
-        public List<Order> Purchases { get; set; }
-    }
-
     public class UsersRoot
     {
         public UsersRoot()
@@ -80,35 +118,5 @@ namespace Entities
 
         [XmlElement("User")]
         public List<User> Users { get; set; }
-    }
-
-    public class OffersRoot
-    {
-        public OffersRoot()
-        {
-        }
-
-        [XmlElement("Offer")]
-        public List<Offer> Offers { get; set; }
-    }
-
-    public class ProductsRoot
-    {
-        public ProductsRoot()
-        {
-        }
-
-        [XmlElement("Product")]
-        public List<Product> Products { get; set; }
-    }
-
-    public class SuggestedOffersRoot
-    {
-        public SuggestedOffersRoot()
-        {
-        }
-
-        [XmlElement("SuggestedOffer")]
-        public List<SuggestedOffer> SuggestedOffers { get; set; }
     }
 }

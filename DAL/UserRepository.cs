@@ -2,12 +2,6 @@
 using System.Linq;
 using System.Xml.Linq;
 
-public class LoginDto
-{
-    public string Username { get; set; }
-    public string Password { get; set; }
-}
-
 namespace DAL
 {
     public class UserRepository : XmlRepository<User>, IUserRepository
