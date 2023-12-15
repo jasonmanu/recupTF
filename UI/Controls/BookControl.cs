@@ -111,7 +111,7 @@ namespace UI.Controls
                 Title = txtTitle.Text,
                 Description = txtDescription.Text,
                 ISBN = txtISBN.Text,
-                Stock = (int)nudPrice.Value,
+                Stock = (int)nudStock.Value,
                 CategoryId = (string)cboCategory.SelectedValue ?? null,
                 AuthorId = (string)cboAuthor.SelectedValue ?? null,
                 //CollectionId = (string)cboCollection.SelectedValue ?? null,
@@ -151,7 +151,7 @@ namespace UI.Controls
                 {
                     Description = txtDescription.Text,
                     ISBN = txtISBN.Text,
-                    Stock = (int)nudPrice.Value,
+                    Stock = (int)nudStock.Value,
                     CategoryId = (string)cboCategory.SelectedValue,
                     AuthorId = (string)cboAuthor.SelectedValue,
                     Title = txtTitle.Text,
@@ -178,6 +178,7 @@ namespace UI.Controls
                 txtDescription.Text = book.Description;
                 txtISBN.Text = book.ISBN;
                 txtTitle.Text = book.Title;
+                nudStock.Value = book.Stock;
 
                 if (book.AuthorId != null)
                 {
@@ -188,11 +189,6 @@ namespace UI.Controls
                 {
                     cboCategory.SelectedValue = book.CategoryId;
                 }
-
-                //if (book.CollectionId != null)
-                //{
-                //    cboCollection.SelectedValue = book.CollectionId;
-                //}
             }
         }
 

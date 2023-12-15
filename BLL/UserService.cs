@@ -3,19 +3,20 @@ using Entities;
 using Entities.Exceptions;
 using FormSupport;
 using System;
+using System.Linq;
 
 namespace BLL
 {
     public class UserService : BaseService<User>, IUserService
     {
         private readonly IUserRepository repository;
-        //private readonly IRoleService roleService;
+        private readonly IRoleService roleService;
         private const int MIN_USERNAME_LENGTH = 5;
 
-        public UserService(IUserRepository repository) : base(repository)
+        public UserService(IUserRepository repository, IRoleService roleService) : base(repository)
         {
             this.repository = repository;
-            //this.roleService = roleService;
+            this.roleService = roleService;
         }
 
         public User Login(string username, string password)
@@ -33,6 +34,8 @@ namespace BLL
 
                 if (password == decryptedPassword)
                 {
+                    Role rol = roleService.GetAll().FirstOrDefault(x => x.Name == user.RoleName);
+                    user.Permisos = roleService.GetAllPermissions(rol);
                     return user;
                 }
             }

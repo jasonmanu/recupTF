@@ -42,7 +42,7 @@ namespace UI.Controls
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.nudPrice = new System.Windows.Forms.NumericUpDown();
+            this.nudStock = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtISBN = new System.Windows.Forms.TextBox();
@@ -67,7 +67,7 @@ namespace UI.Controls
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tlpAdmin.SuspendLayout();
@@ -215,7 +215,7 @@ namespace UI.Controls
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel3.Controls.Add(this.lblPrice, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.nudPrice, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.nudStock, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 257);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -233,19 +233,19 @@ namespace UI.Controls
             this.lblPrice.TabIndex = 6;
             this.lblPrice.Text = "Stock";
             // 
-            // nudPrice
+            // nudStock
             // 
-            this.nudPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudPrice.Location = new System.Drawing.Point(86, 16);
-            this.nudPrice.Maximum = new decimal(new int[] {
+            this.nudStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudStock.Location = new System.Drawing.Point(86, 16);
+            this.nudStock.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.nudPrice.Name = "nudPrice";
-            this.nudPrice.Size = new System.Drawing.Size(244, 20);
-            this.nudPrice.TabIndex = 7;
-            this.nudPrice.Value = new decimal(new int[] {
+            this.nudStock.Name = "nudStock";
+            this.nudStock.Size = new System.Drawing.Size(244, 20);
+            this.nudStock.TabIndex = 7;
+            this.nudStock.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -486,7 +486,7 @@ namespace UI.Controls
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudStock)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -520,7 +520,7 @@ namespace UI.Controls
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nudPrice;
+        private System.Windows.Forms.NumericUpDown nudStock;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboAuthor;

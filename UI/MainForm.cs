@@ -2,6 +2,7 @@
 using Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using UI.Controls;
@@ -20,9 +21,7 @@ namespace UI
         private readonly ISubscriptionTypeService subscriptionTypeService;
         private readonly IRoleService roleService;
 
-        private User loggedUser;
-        //private HomeControl homeControl;
-        //private CollectionControl collectionControl;
+        private User user;
         private BookControl bookControl;
         private LoanControl loanControl;
         private UsuariosControl usersControl;
@@ -86,7 +85,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnLibros.BackColor = Color.LightBlue;
-            bookControl = new BookControl(bookService, authorService, categoryService, loanService, loggedUser);
+            bookControl = new BookControl(bookService, authorService, categoryService, loanService, user);
             mainPanel.Controls.Add(bookControl);
             bookControl.BringToFront();
         }
@@ -217,42 +216,53 @@ namespace UI
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            loggedUser = userService.Login(username, password);
+            user = userService.Login(username, password);
 
-            if (loggedUser == null)
+            if (user == null)
             {
                 MessageBox.Show("Usuario y/o contraseña no validos");
             }
             else
             {
-                HabilitarBotonesPorRol();
                 txtUsername.Text = username;
                 lblPassword.Visible = false;
                 txtPassword.Visible = false;
                 btnLogin.Visible = false;
                 btnRegister.Visible = false;
-                btnLogout.Visible = true;
+
+                HabilitarBotonesPorRol();
             }
         }
 
         private void HabilitarBotonesPorRol()
         {
-            RoleManager rolManager = new RoleManager();
-            rolManager.DisplayRolePermissions(loggedUser.Rol);
+            List<string> permisosGenerales = new List<string>();
 
-            if (true)//contienePermisoLibro)
+            foreach (var permiso in user.Permisos)
             {
-                btnMultas.Visible = true;
-                btnLibros.Visible = true;
-                btnPrestamos.Visible = true;
-                btnMultas.Visible = true;
-                btnUsuarios.Visible = true;
-                btnRoles.Visible = true;
-                btnAuthors.Visible = true;
-                btnCategories.Visible = true;
-                btnSubscriptionTypes.Visible = true;
-                btnBackup.Visible = true;
+                permisosGenerales.Add(permiso.Split('.')?[0]);
             }
+
+            if (permisosGenerales.Contains("Libro"))
+            {
+                btnLibros.Visible = true;
+            }
+
+            if (permisosGenerales.Contains("TipoSubscripcion"))
+            {
+                btnSubscriptionTypes.Visible = true;
+            }
+
+            //TODO
+            //btnLibros.Visible = true;
+            //btnMultas.Visible = true;
+            //btnPrestamos.Visible = true;
+            //btnMultas.Visible = true;
+            //btnUsuarios.Visible = true;
+            //btnRoles.Visible = true;
+            //btnAuthors.Visible = true;
+            //btnCategories.Visible = true;
+            //btnBackup.Visible = true;
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

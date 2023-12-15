@@ -19,9 +19,10 @@ namespace UI.Controls
             CargarRolesExistentes();
             //selectedTreeNode = new TreeNode();
         }
+
         private void CargarPermisosPredefinidos()
         {
-            List<string> features = new List<string>() { "Libro", "Usuario", "Autor" };
+            List<string> features = new List<string>() { "Libro", "Usuario", "Autor", "Backup", "Categoria", "Prestamo", "Notification", "Subscripcion", "TipoSubscripcion" };
             List<string> permisos = new List<string>() { "Crear", "Leer", "Editar", "Eliminar" };
             List<string> permisosSueltos = new List<string>();
             List<SimpleRole> entidadesPermisos = new List<SimpleRole>();

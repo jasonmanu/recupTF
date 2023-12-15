@@ -1,7 +1,6 @@
 ﻿using Entities;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Xml.Serialization;
 
 [XmlInclude(typeof(SimpleRole))]
@@ -15,6 +14,11 @@ public class Role : Entity
     public Role()
     {
         Permissions = new List<string>();
+    }
+
+    public virtual List<string> GetAllPermissions()
+    {
+        return new List<string>(Permissions);
     }
 }
 
@@ -30,63 +34,17 @@ public class CompositeRole : Role
     {
         SubRoles = new List<Role>();
     }
-}
 
-// Clase para gestionar los roles y la serialización XML
-public class RoleManager
-{
-    private List<Role> roles;
-
-    public RoleManager()
+    public override List<string> GetAllPermissions()
     {
-        roles = new List<Role>();
-    }
+        List<string> allPermissions = base.GetAllPermissions();
 
-    public void AddRole(Role role)
-    {
-        roles.Add(role);
-    }
-
-    public void SaveRolesToXml(string filePath = "roles.xml")
-    {
-        using (var writer = new StreamWriter(filePath))
+        foreach (Role subRole in SubRoles)
         {
-            var serializer = new XmlSerializer(typeof(List<Role>), new Type[] { typeof(SimpleRole), typeof(CompositeRole) });
-            serializer.Serialize(writer, roles);
-        }
-    }
-
-    public void LoadRolesFromXml(string filePath = "roles.xml")
-    {
-        using (var reader = new StreamReader(filePath))
-        {
-            var serializer = new XmlSerializer(typeof(List<Role>), new Type[] { typeof(SimpleRole), typeof(CompositeRole) });
-            roles = (List<Role>)serializer.Deserialize(reader);
-        }
-    }
-
-    private void DisplayRolePermissionsRecursive(Role role, int depth)
-    {
-        return;
-        //fix
-        Console.WriteLine(new string('-', depth) + $"Permissions for role '{role.Name}':");
-
-        foreach (var permission in role.Permissions)
-        {
-            Console.WriteLine(new string('-', depth + 1) + $"- {permission}");
+            List<string> subRolePermissions = subRole.GetAllPermissions();
+            allPermissions.AddRange(subRolePermissions);
         }
 
-        if (role is CompositeRole compositeRole)
-        {
-            foreach (var subRole in compositeRole.SubRoles)
-            {
-                DisplayRolePermissionsRecursive(subRole, depth + 1);
-            }
-        }
-    }
-
-    public void DisplayRolePermissions(Role role)
-    {
-        DisplayRolePermissionsRecursive(role, 0);
+        return allPermissions;
     }
 }

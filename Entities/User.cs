@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Entities
@@ -30,6 +31,6 @@ namespace Entities
         [XmlElement("LastLoginAt")]
         public DateTime? LastLoginAt { get; set; }
 
-        public Role Rol { get; set; }
+        public List<string> Permisos { get; set; }
     }
 }
