@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -9,90 +10,96 @@ namespace UI.Controls
     {
         //protected static readonly string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
         //protected readonly string _filePath = Path.Combine(appFolderPath, "roles.xml");
-        private CompositeRole newCompositeRole;
-        private TreeNode selectedTreeNode;
+        //private CompositeRole newCompositeRole;
+        //private TreeNode selectedTreeNode;
+        //private RoleManager rolManager;
+        private Role selectedRole;
+        private readonly IRoleService roleService;
 
-        public RolsControl()
+        public RolsControl(IRoleService roleService)
         {
             InitializeComponent();
+            this.roleService = roleService;
             CargarPermisosPredefinidos();
             CargarRolesExistentes();
-            selectedTreeNode = new TreeNode();
+            //selectedTreeNode = new TreeNode();
         }
 
         private void CargarRolesExistentes()
         {
-            RoleManager rolManager = new RoleManager();
-            //rolManager.LoadRolesFromXml();
-            // hacer que rolManager sea el rol service, asi lo puedo usar en cada form, hago getPermissions() y despues habilito ó no segun roles
+            var roles = this.roleService.GetAll();
+            cboRoles.DataSource = roles;
+            cboRoles.DisplayMember = "Name";
         }
 
         private void CargarPermisosPredefinidos()
         {
-            List<string> entidades = new List<string>() { "Libro", "Usuario", "Autor" };
-            List<string> permisosCrud = new List<string>() { "Crear", "Leer", "Editar", "Eliminar" };
-            List<string> permisosDisponibles = new List<string>();
-            List<SimpleRole> entityManagementList = new List<SimpleRole>();
+            List<string> features = new List<string>() { "Libro", "Usuario", "Autor" };
+            List<string> permisos = new List<string>() { "Crear", "Leer", "Editar", "Eliminar" };
+            List<string> permisosSueltos = new List<string>();
+            List<SimpleRole> entidadesPermisos = new List<SimpleRole>();
 
-            foreach (string entidad in entidades)
+            foreach (string feature in features)
             {
-                SimpleRole entityManagement = new SimpleRole() { Name = $"Gestion.{entidad}" };
+                SimpleRole rolFeature = new SimpleRole() { Name = $"Gestion.{feature}" };
+                TreeNode treeNode = new TreeNode($"Gestion.{feature}");
 
-                foreach (string permiso in permisosCrud)
+                foreach (string permiso in permisos)
                 {
-                    string entidadPermiso = $"{entidad}.{permiso}";
+                    string permisoSuelto = $"{feature}.{permiso}";
 
-                    // agregar permisos individuales
-                    permisosDisponibles.Add(entidadPermiso);
+                    // agregar a todos los roles disponibles
+                    permisosSueltos.Add(permisoSuelto);
+                    treeViewAvailable.Nodes.Add(permisoSuelto);
 
-                    // agregar a rol simple
-                    entityManagement.Permissions.Add(entidadPermiso);
+                    // agregar a rol compuesto sin agregar al arbol
+                    rolFeature.Permissions.Add(permisoSuelto);
+                    entidadesPermisos.Add(rolFeature);
+                    treeNode.Nodes.Add(permisoSuelto);
                 }
 
-                // agregar a lista general de permisos compuestos
-                entityManagementList.Add(entityManagement);
-            }
-
-            foreach (SimpleRole rol in entityManagementList)
-            {
-                TreeNode treeNode = new TreeNode(rol.Name);
-
-                foreach (string permiso in rol.Permissions)
-                {
-                    treeNode.Nodes.Add(permiso);
-                }
-
+                // agregar rol compuesto al arbol
                 treeViewAvailable.Nodes.Add(treeNode);
-            }
-
-            foreach (string permiso in permisosDisponibles)
-            {
-                treeViewAvailable.Nodes.Add(permiso);
             }
         }
 
         private void btnAsignar_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = treeViewAvailable.SelectedNode;
+            TreeNode clonedNode = (TreeNode)selectedNode.Clone();
 
-            if (selectedNode != null)
+            bool nodoSeleccionadoEsRol = clonedNode.Nodes.Count > 0;
+            if (nodoSeleccionadoEsRol)
             {
-                string nombrePermiso = selectedNode.Text;
-
-                foreach (TreeNode item in treeViewAssigned.Nodes)
+                CompositeRole nuevoRolCompuesto = new CompositeRole
                 {
-                    if (item.Text == nombrePermiso)
-                    {
-                        return;
-                    }
-                }
+                    Name = txtNewRoleName.Text,
+                    Permissions = selectedRole?.Permissions ?? new List<string>(),
+                };
 
-                TreeNode clonedNode = (TreeNode)selectedNode.Clone();
-                treeViewAssigned.Nodes.Add(clonedNode);
+                //TODO update
+                nuevoRolCompuesto.SubRoles.Add(GetSelectedRole(selectedNode));
 
-                // agregarlo al rol seleccionado del combobox
-                // bloquear botones si no existe rol elegido
+                selectedRole = nuevoRolCompuesto;
             }
+            else
+            {
+                if (selectedRole is null)
+                {
+                    selectedRole = new SimpleRole() { Name = txtNewRoleName.Text };
+                    selectedRole.Permissions.Add(clonedNode.Text);
+                }
+                else
+                {
+                    selectedRole.Permissions.Add(clonedNode.Text);
+                }
+            }
+
+            treeViewAssigned.Nodes.Add(clonedNode);
+
+            //rolManager = new RoleManager();
+            //rolManager.AddRole(selectedRole);
+            //rolManager.SaveRolesToXml();
         }
 
         private void btnDesasignar_Click(object sender, EventArgs e)
@@ -105,9 +112,86 @@ namespace UI.Controls
 
         private void btnCreateRole_Click(object sender, EventArgs e)
         {
-            newCompositeRole = new CompositeRole() { Name = txtNewRoleName.Text };
-            // agregar nuevo rol al XML
-            //cboRoles.SelectedItem = elegirlo en comboBox
+            treeViewAssigned.Nodes.Clear();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (treeViewAssigned.Nodes.Count == 0)
+            {
+                MessageBox.Show("no se puede guardar rol vacio");
+            }
+            else
+            {
+                roleService.Create(selectedRole);
+                MessageBox.Show("Rol creado");
+                // TODO: usar ese rol por si quiere hacer update
+            }
+        }
+
+        #region test
+        private void PrintNode(TreeNode node)
+        {
+            Console.WriteLine(node.Text);
+        }
+
+        private void PrintNodeAndChildren(TreeNode node)
+        {
+            PrintNode(node);
+
+            // Si el nodo tiene nodos hijos, recorrerlos recursivamente
+            foreach (TreeNode childNode in node.Nodes)
+            {
+                PrintNodeAndChildren(childNode);
+            }
+        }
+
+        private void PrintTreeView()
+        {
+            // Recorrer todos los nodos del TreeView
+            //foreach (TreeNode node in treeView.Nodes)
+            //{
+            //    // Si el nodo no tiene nodos hijos, imprimir solo el nombre
+            //    if (node.Nodes.Count == 0)
+            //    {
+            //        PrintNode(node);
+            //    }
+            //    else
+            //    {
+            //        // Si el nodo tiene nodos hijos, imprimir el nombre y recorrer recursivamente los hijos
+            //        PrintNodeAndChildren(node);
+            //    }
+            //}
+        }
+
+
+        private Role GetSelectedRole(TreeNode selectedNode)
+        {
+            return null;
+
+            if (selectedNode != null)
+            {
+                var esRol = selectedNode.Nodes.Count > 0;
+                if (esRol)
+                {
+                    foreach (TreeNode node in selectedNode.Nodes)
+                    {
+                        // Si el nodo no tiene nodos hijos, imprimir solo el nombre
+                        if (node.Nodes.Count == 0)
+                        {
+                            PrintNode(node);
+                        }
+                        else
+                        {
+                            // Si el nodo tiene nodos hijos, imprimir el nombre y recorrer recursivamente los hijos
+                            PrintNodeAndChildren(node);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        #endregion
     }
 }

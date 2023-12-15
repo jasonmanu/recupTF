@@ -3,12 +3,8 @@ using Entities;
 using FormSupport;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Controls
@@ -17,32 +13,49 @@ namespace UI.Controls
     {
         private readonly IBookService bookService;
         private readonly IAuthorService authorService;
-        private readonly ICollectionService collectionService;
         private readonly ICategoryService categoryService;
         private readonly ILoanService loanService;
+        private readonly User loggedUser;
 
-        public BookControl(IBookService bookService, IAuthorService authorService, ICollectionService collectionService, ICategoryService categoryService, ILoanService loanService)//, Rol rol = null)
+        public BookControl(IBookService bookService, IAuthorService authorService, ICategoryService categoryService, ILoanService loanService, User loggedUser)//, Rol rol = null)
         {
-            this.Dock = DockStyle.Fill;
+            Dock = DockStyle.Fill;
             this.bookService = bookService;
             this.authorService = authorService;
-            this.collectionService = collectionService;
             this.categoryService = categoryService;
             this.loanService = loanService;
-
+            this.loggedUser = loggedUser;
             InitializeComponent();
             LoadBooks();
-            //btnCreate.Visible = TienePermiso(rol, TipoPermiso.Crear);
-            //btnUpdate.Visible = TienePermiso(rol, TipoPermiso.Editar);
-            //btnDelete.Visible = TienePermiso(rol, TipoPermiso.Eliminar);
+            HabilitarBotones();
         }
 
-        //private bool TienePermiso(Rol rol, TipoPermiso tipoPermiso)
-        //{
-        //    return rol.Permisos.Any(p => p.TipoPermiso == tipoPermiso) ||
-        //        (rol is RolCompuesto rolCompuesto &&
-        //         rolCompuesto.Roles.Any(subRol => TienePermiso(subRol, tipoPermiso)));
-        //}
+        private void HabilitarBotones()
+        {
+            //private bool TienePermiso(Rol rol, TipoPermiso tipoPermiso)
+            //{
+            //    return rol.Permisos.Any(p => p.TipoPermiso == tipoPermiso) ||
+            //        (rol is RolCompuesto rolCompuesto &&
+            //         rolCompuesto.Roles.Any(subRol => TienePermiso(subRol, tipoPermiso)));
+            //}
+
+            if ("rol tiene " == "Libros.Crear")
+            {
+                btnCreate.Visible = false;
+            }
+
+            if ("rol tiene " == "Libros.Editar")
+            {
+                btnUpdate.Visible = false;
+            }
+
+            if ("rol tiene " == "Libros.Eliminar")
+            {
+                btnDelete.Visible = false;
+            }
+        }
+
+
 
         private void LoadBooks()
         {
@@ -65,13 +78,7 @@ namespace UI.Controls
             cboCategory.DisplayMember = "Name";
             cboCategory.ValueMember = "Id";
 
-            cboCollection.DataSource = collectionService.GetAll();
-            cboCollection.DisplayMember = "Name";
-            cboCollection.ValueMember = "Id";
-
-            var userId = "1";
-            var loanBooks = loanService.GetAll().Where(x => x.UserId == userId).ToList();
-
+            var loanBooks = loanService.GetAll().Where(x => x.UserId == loggedUser.Id).ToList();
 
             var categories = new List<string>();
             foreach (var item in loanBooks)

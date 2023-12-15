@@ -259,30 +259,6 @@
     <Compile Include="Controls\UsuariosControl.Designer.cs">
       <DependentUpon>UsuariosControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBackup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBackup.Designer.cs">
-      <DependentUpon>frmBackup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCreateOffer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCreateOffer.Designer.cs">
-      <DependentUpon>frmCreateOffer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmOffer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmOffer.Designer.cs">
-      <DependentUpon>frmOffer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmProduct.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProduct.Designer.cs">
-      <DependentUpon>frmProduct.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\LoanControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -332,19 +308,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UsuariosControl.resx">
       <DependentUpon>UsuariosControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBackup.resx">
-      <DependentUpon>frmBackup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateOffer.resx">
-      <DependentUpon>frmCreateOffer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmOffer.resx">
-      <DependentUpon>frmOffer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmProduct.resx">
-      <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\LoanControl.resx">
       <DependentUpon>LoanControl.cs</DependentUpon>

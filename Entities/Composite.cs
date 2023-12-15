@@ -1,4 +1,4 @@
-﻿// Clase base para roles
+﻿using Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 [XmlInclude(typeof(SimpleRole))]
 [XmlInclude(typeof(CompositeRole))]
 [Serializable]
-public class Role
+public class Role : Entity
 {
     public string Name { get; set; }
     public List<string> Permissions { get; set; }
@@ -18,11 +18,9 @@ public class Role
     }
 }
 
-// Clase para roles simples
 [Serializable]
 public class SimpleRole : Role { }
 
-// Clase para roles compuestos
 [Serializable]
 public class CompositeRole : Role
 {
@@ -69,6 +67,8 @@ public class RoleManager
 
     private void DisplayRolePermissionsRecursive(Role role, int depth)
     {
+        return;
+        //fix
         Console.WriteLine(new string('-', depth) + $"Permissions for role '{role.Name}':");
 
         foreach (var permission in role.Permissions)

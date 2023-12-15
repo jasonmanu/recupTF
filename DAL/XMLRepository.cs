@@ -29,8 +29,6 @@ namespace DAL
 
         public void Create(T entity)
         {
-            //_xmlDocument = XDocument.Load(_filePath);
-
             _xmlDocument.Element("root").Add(CreateElement(entity));
             _xmlDocument.Save(_filePath);
         }

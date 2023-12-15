@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Drawing;
@@ -11,15 +12,17 @@ namespace UI
     {
         private readonly IUserService userService;
         private readonly ICategoryService categoryService;
-        private readonly ICollectionService collectionService;
         private readonly IBackupService backupService;
         private readonly IBookService bookService;
+        private readonly ILoanService loanService;
         private readonly IAuthorService authorService;
         private readonly ISubscriptionService subscriptionService;
         private readonly ISubscriptionTypeService subscriptionTypeService;
-        private readonly ILoanService loanService;
+        private readonly IRoleService roleService;
 
-        private HomeControl homeControl;
+        private User loggedUser;
+        //private HomeControl homeControl;
+        //private CollectionControl collectionControl;
         private BookControl bookControl;
         private LoanControl loanControl;
         private UsuariosControl usersControl;
@@ -28,44 +31,62 @@ namespace UI
         private AuthorControl authorControl;
         private BackupControl backupControl;
         private CategoryControl categoryControl;
-        private CollectionControl collectionControl;
         private SubscriptionTypeControl subscriptionTypesControl;
 
         public MainForm(IServiceProvider serviceProvider)
         {
             this.userService = serviceProvider.GetRequiredService<IUserService>();
             this.categoryService = serviceProvider.GetRequiredService<ICategoryService>();
-            this.collectionService = serviceProvider.GetRequiredService<ICollectionService>();
             this.backupService = serviceProvider.GetRequiredService<IBackupService>();
             this.bookService = serviceProvider.GetRequiredService<IBookService>();
             this.authorService = serviceProvider.GetRequiredService<IAuthorService>();
             this.subscriptionService = serviceProvider.GetRequiredService<ISubscriptionService>();
             this.subscriptionTypeService = serviceProvider.GetRequiredService<ISubscriptionTypeService>();
             this.loanService = serviceProvider.GetRequiredService<ILoanService>();
+            this.roleService = serviceProvider.GetRequiredService<IRoleService>();
 
             InitializeComponent();
 
-            homeControl = new HomeControl(userService);
-            mainPanel.Controls.Add(homeControl);
-            homeControl.BringToFront();
-            btnInicio.BackColor = Color.LightBlue;
+            btnMultas.Visible = false;
+            btnLibros.Visible = false;
+            btnPrestamos.Visible = false;
+            btnMultas.Visible = false;
+            btnUsuarios.Visible = false;
+            btnRoles.Visible = false;
+            btnAuthors.Visible = false;
+            btnCategories.Visible = false;
+            btnSubscriptionTypes.Visible = false;
+            btnBackup.Visible = false;
+
+            //homeControl = new HomeControl(userService);
+            //mainPanel.Controls.Add(homeControl);
+            //homeControl.BringToFront();
+            //btnInicio.BackColor = Color.LightBlue;
         }
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
             btnInicio.BackColor = Color.LightBlue;
-            homeControl = new HomeControl(userService);
-            mainPanel.Controls.Add(homeControl);
-            homeControl.BringToFront();
-            btnInicio.BackColor = Color.LightBlue;
+            this.mainPanel.Controls.Clear();
+            //foreach (Control control in this.mainPanel.Controls.Clear())
+            //{
+            //    if (control is UserControl)
+            //    {
+            //        control.Visible = false;
+            //    }
+            //}
+            //btnInicio.BackColor = Color.LightBlue;
+            //homeControl = new HomeControl(userService);
+            //mainPanel.Controls.Add(homeControl);
+            //homeControl.BringToFront();
         }
 
         private void btnLibros_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
             btnLibros.BackColor = Color.LightBlue;
-            bookControl = new BookControl(bookService, authorService, collectionService, categoryService, loanService);
+            bookControl = new BookControl(bookService, authorService, categoryService, loanService, loggedUser);
             mainPanel.Controls.Add(bookControl);
             bookControl.BringToFront();
         }
@@ -137,9 +158,8 @@ namespace UI
         {
             ResetButtonsColors();
             //btnCollection.BackColor = Color.LightBlue;
-            collectionControl = new CollectionControl(collectionService);
-            mainPanel.Controls.Add(collectionControl);
-            collectionControl.BringToFront();
+            //mainPanel.Controls.Add(collectionControl);
+            //collectionControl.BringToFront();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -187,9 +207,63 @@ namespace UI
         {
             ResetButtonsColors();
             btnRoles.BackColor = Color.LightBlue;
-            RolsControl rolsControl = new RolsControl();
+            RolsControl rolsControl = new RolsControl(roleService);
             mainPanel.Controls.Add(rolsControl);
             rolsControl.BringToFront();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            loggedUser = userService.Login(username, password);
+
+            if (loggedUser == null)
+            {
+                MessageBox.Show("Usuario y/o contraseña no validos");
+            }
+            else
+            {
+                MessageBox.Show("Bienvenido");
+                HabilitarBotonesPorRol();
+            }
+        }
+
+        private void HabilitarBotonesPorRol()
+        {
+            RoleManager rolManager = new RoleManager();
+            rolManager.DisplayRolePermissions(loggedUser.Rol);
+
+            if (true)//contienePermisoLibro)
+            {
+                btnMultas.Visible = true;
+                btnLibros.Visible = true;
+                btnPrestamos.Visible = true;
+                btnMultas.Visible = true;
+                btnUsuarios.Visible = true;
+                btnRoles.Visible = true;
+                btnAuthors.Visible = true;
+                btnCategories.Visible = true;
+                btnSubscriptionTypes.Visible = true;
+                btnBackup.Visible = true;
+            }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtUsername.Text;
+
+            try
+            {
+                userService.Create(new User(username, password, "Cliente"));
+                MessageBox.Show("Registrado Correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

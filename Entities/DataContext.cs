@@ -23,22 +23,12 @@ namespace Entities
         [XmlElement("Categories")]
         public CategoriesRoot CategoriesRoot { get; set; }
 
-        [XmlElement("Collections")]
-        public CollectionsRoot CollectionsRoot { get; set; }
-
-        [XmlElement("Editorials")]
-        public EditorialsRoot EditorialsRoot { get; set; }
-
         [XmlElement("Loans")]
         public LoansRoot LoansRoot { get; set; }
-
-        // Multas ????
 
         [XmlElement("Users")]
         public UsersRoot UsersRoot { get; set; }
     }
-
-    // TODO: revisar si la lectura de "Users"."User" esta bien hecha
 
     public class LoansRoot
     {
@@ -48,26 +38,6 @@ namespace Entities
 
         [XmlElement("Loan")]
         public List<Loan> Loans { get; set; }
-    }
-
-    public class EditorialsRoot
-    {
-        public EditorialsRoot()
-        {
-        }
-
-        [XmlElement("Editorial")]
-        public List<Editorial> Editorials { get; set; }
-    }
-
-    public class CollectionsRoot
-    {
-        public CollectionsRoot()
-        {
-        }
-
-        [XmlElement("Collection")]
-        public List<Collection> Collections { get; set; }
     }
 
     public class BackupsRoot

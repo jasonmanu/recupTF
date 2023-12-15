@@ -1,17 +1,9 @@
 ﻿using BLL;
 using Entities;
-using Entities.Enums;
 using FormSupport;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace UI.Controls
 {
@@ -19,35 +11,12 @@ namespace UI.Controls
     {
         private readonly IUserService userService;
 
-        public UsuariosControl(IUserService userService)// IRoleService
+        public UsuariosControl(IUserService userService)
         {
             this.Dock = DockStyle.Fill;
             InitializeComponent();
             this.userService = userService;
             LoadData();
-
-            //Series series = new Series("Sample Series");
-
-            //// Add data points to the series
-            //series.Points.AddXY("Category A", 10);
-            //series.Points.AddXY("Category B", 20);
-            //series.Points.AddXY("Category C", 15);
-            //series.Points.AddXY("Category D", 25);
-
-            //// Add the series to the chart
-            //chart.Series.Add(series);
-
-            //// Set chart title
-            //chart.Titles.Add("Sample Chart");
-
-            //// Set chart area axis labels
-            //chart.ChartAreas[0].AxisX.Title = "Categories";
-            //chart.ChartAreas[0].AxisY.Title = "Values";
-
-            //// Customize the chart appearance as needed
-            //// For example, you can set the chart type, colors, etc.
-            //series.ChartType = SeriesChartType.Column;
-            //series.Color = System.Drawing.Color.Blue;
         }
 
         private void LoadData()
@@ -74,8 +43,8 @@ namespace UI.Controls
                     Username = txtName.Text,
                     Password = txtPassword.Text,
                     Address = txtAddress.Text,
-                    Role = UserRole.ADMIN,
                     LastLoginAt = DateTime.Now,
+                    RoleName = "Cliente"
                 });
 
                 MessageBox.Show("Creado correctamente");
@@ -104,8 +73,8 @@ namespace UI.Controls
                     Username = txtName.Text,
                     Password = txtPassword.Text,
                     Address = txtAddress.Text,
-                    Role = UserRole.ADMIN,
                     LastLoginAt = DateTime.Now,
+                    RoleName = "Cliente"
                 };
 
                 userService.Update(user);

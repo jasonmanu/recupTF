@@ -25,8 +25,6 @@ namespace UI
                     .AddScoped<IBookRepository, BookRepository>()
                     .AddScoped<ICategoryService, CategoryService>()
                     .AddScoped<ICategoryRepository, CategoryRepository>()
-                    .AddScoped<ICollectionService, CollectionService>()
-                    .AddScoped<ICollectionRepository, CollectionRepository>()
                     .AddScoped<IUserRepository, UserRepository>()
                     .AddScoped<IUserService, UserService>()
                     .AddScoped<IUserRepository, UserRepository>()
@@ -36,10 +34,9 @@ namespace UI
                     .AddScoped<ISubscriptionTypeRepository, SubscriptionTypeRepository>()
                     .AddScoped<ILoanService, LoanService>()
                     .AddScoped<ILoanRepository, LoanRepository>()
+                    .AddScoped<IRoleService, RoleService>()
+                    .AddScoped<IRoleRepository, RoleRepository>()
                     .AddSingleton(typeof(XmlRepository<>));
-            //.AddScoped<IEditorialService, EditorialService>()
-            //.AddScoped<IEditorialRepository, EditorialRepository>()
-            //TODO: Multa
 
             ServiceProvider serviceProvider = services.BuildServiceProvider();
             Application.Run(new MainForm(serviceProvider));

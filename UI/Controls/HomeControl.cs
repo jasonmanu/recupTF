@@ -24,7 +24,7 @@ namespace UI.Controls
 
             try
             {
-                userService.Create(new User(username, password, UserRole.SHOPPER));
+                userService.Create(new User(username, password, "Cliente"));
                 MessageBox.Show("Registrado Correctamente");
             }
             catch (Exception ex)
@@ -47,6 +47,7 @@ namespace UI.Controls
             else
             {
                 MessageBox.Show("Bienvenido");
+                
                 //TODO: guardar user en session para toda la app y habilitar botones
                 //TODO: habilitar los botones segun roles
 

@@ -9,11 +9,13 @@ namespace BLL
     public class UserService : BaseService<User>, IUserService
     {
         private readonly IUserRepository repository;
+        //private readonly IRoleService roleService;
         private const int MIN_USERNAME_LENGTH = 5;
 
         public UserService(IUserRepository repository) : base(repository)
         {
             this.repository = repository;
+            //this.roleService = roleService;
         }
 
         public User Login(string username, string password)

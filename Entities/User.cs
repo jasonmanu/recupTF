@@ -1,5 +1,4 @@
-﻿using Entities.Enums;
-using System;
+﻿using System;
 using System.Xml.Serialization;
 
 namespace Entities
@@ -9,11 +8,11 @@ namespace Entities
     {
         public User() { }
 
-        public User(string username, string password, UserRole role)
+        public User(string username, string password, string roleName)
         {
             Username = username;
             Password = password;
-            Role = role;
+            RoleName = roleName;
         }
 
         [XmlElement("Username")]
@@ -22,16 +21,15 @@ namespace Entities
         [XmlElement("Password")]
         public string Password { get; set; }
 
-        [XmlElement("Role")]
-        public UserRole Role { get; set; }
-        
+        [XmlElement("RoleName")]
+        public string RoleName { get; set; }
+
         [XmlElement("Address")]
         public string Address { get; set; }
 
         [XmlElement("LastLoginAt")]
         public DateTime? LastLoginAt { get; set; }
 
-        //[XmlElement("Rol")]
-        //public Rol Rol { get; set; }
+        public Role Rol { get; set; }
     }
 }

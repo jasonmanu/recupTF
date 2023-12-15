@@ -40,6 +40,7 @@ namespace UI.Controls
             this.lblRole = new System.Windows.Forms.Label();
             this.txtNewRoleName = new System.Windows.Forms.TextBox();
             this.btnCreateRole = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // treeViewAvailable
@@ -137,10 +138,21 @@ namespace UI.Controls
             this.btnCreateRole.UseVisualStyleBackColor = true;
             this.btnCreateRole.Click += new System.EventHandler(this.btnCreateRole_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(714, 21);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(146, 23);
+            this.btnSave.TabIndex = 11;
+            this.btnSave.Text = "Guardar cambios en rol";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // RolsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCreateRole);
             this.Controls.Add(this.txtNewRoleName);
             this.Controls.Add(this.lblRole);
@@ -172,5 +184,6 @@ namespace UI.Controls
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.TextBox txtNewRoleName;
         private System.Windows.Forms.Button btnCreateRole;
+        private System.Windows.Forms.Button btnSave;
     }
 }
