@@ -24,14 +24,6 @@ namespace UI.Controls
             CargarRolesExistentes();
             //selectedTreeNode = new TreeNode();
         }
-
-        private void CargarRolesExistentes()
-        {
-            var roles = this.roleService.GetAll();
-            cboRoles.DataSource = roles;
-            cboRoles.DisplayMember = "Name";
-        }
-
         private void CargarPermisosPredefinidos()
         {
             List<string> features = new List<string>() { "Libro", "Usuario", "Autor" };
@@ -62,52 +54,65 @@ namespace UI.Controls
                 treeViewAvailable.Nodes.Add(treeNode);
             }
         }
+        private void CargarRolesExistentes()
+        {
+            //var roles = roleService.GetAll();
+            //cboRoles.DataSource = roles;
+            //cboRoles.DisplayMember = "Name";
+
+            var roles = new List<Role>() { new Role() { Name = "Nodo1", Permissions = new List<string>() { "D", "A" } }, new SimpleRole() { Name = "Simple Rol", Permissions = new List<string>() { "A", "B", "C" } } };
+            var compositeRole = new CompositeRole() { Name = "CompositeRole", Permissions = new List<string>() { "Nodo1.1" }, SubRoles = new List<Role>() { new SimpleRole() { Name = "SimpleRole", Permissions = new List<string>() { "A", "B", "C" } } } };
+            roles.Add(compositeRole);
+
+            // TODO: roles a arbol
+            foreach (var rol in roles)
+            {
+                treeViewAvailable.Nodes.Add(ConvertToTreeNode(rol));
+            }
+        }
+
 
         private void btnAsignar_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = treeViewAvailable.SelectedNode;
             TreeNode clonedNode = (TreeNode)selectedNode.Clone();
 
-            bool nodoSeleccionadoEsRol = clonedNode.Nodes.Count > 0;
-            if (nodoSeleccionadoEsRol)
-            {
-                CompositeRole nuevoRolCompuesto = new CompositeRole
-                {
-                    Name = txtNewRoleName.Text,
-                    Permissions = selectedRole?.Permissions ?? new List<string>(),
-                };
+            //bool nodoSeleccionadoEsRol = clonedNode.Nodes.Count > 0;
+            //if (nodoSeleccionadoEsRol)
+            //{
+            //    CompositeRole nuevoRolCompuesto = new CompositeRole
+            //    {
+            //        Name = txtNewRoleName.Text,
+            //        Permissions = selectedRole?.Permissions ?? new List<string>(),
+            //    };
 
-                //TODO update
-                nuevoRolCompuesto.SubRoles.Add(GetSelectedRole(selectedNode));
+            //    var 
+            //    //nuevoRolCompuesto.SubRoles.Add(GetSelectedRole(selectedNode));
 
-                selectedRole = nuevoRolCompuesto;
-            }
-            else
-            {
-                if (selectedRole is null)
-                {
-                    selectedRole = new SimpleRole() { Name = txtNewRoleName.Text };
-                    selectedRole.Permissions.Add(clonedNode.Text);
-                }
-                else
-                {
-                    selectedRole.Permissions.Add(clonedNode.Text);
-                }
-            }
+            //    selectedRole = nuevoRolCompuesto;
+            //}
+            //else
+            //{
+            //    if (selectedRole is null)
+            //    {
+            //        selectedRole = new SimpleRole() { Name = txtNewRoleName.Text };
+            //        selectedRole.Permissions.Add(clonedNode.Text);
+            //    }
+            //    else
+            //    {
+            //        selectedRole.Permissions.Add(clonedNode.Text);
+            //    }
+            //}
 
             treeViewAssigned.Nodes.Add(clonedNode);
-
-            //rolManager = new RoleManager();
-            //rolManager.AddRole(selectedRole);
-            //rolManager.SaveRolesToXml();
         }
 
         private void btnDesasignar_Click(object sender, EventArgs e)
         {
+            // sacar del arbol
             TreeNode selectedNode = treeViewAssigned.SelectedNode;
             selectedNode.Remove();
-
-            // actualizar el rol selected
+            // guardar en XML con update by ID, no es necesario si solo uso un metodo de arbol a rol
         }
 
         private void btnCreateRole_Click(object sender, EventArgs e)
@@ -117,81 +122,121 @@ namespace UI.Controls
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (treeViewAssigned.Nodes.Count == 0)
+            // Crear el rol principal (puede ser CompositeRole o SimpleRole según tu estructura)
+            var rootRole = new CompositeRole
             {
-                MessageBox.Show("no se puede guardar rol vacio");
+                Name = "Root"
+            };
+
+            // Llamar al método recursivo para convertir el TreeView a roles
+            ConvertirTreeViewARoles(treeViewAssigned.Nodes, rootRole);
+
+            //List<Role> roles = new List<Role>();
+            //// pasa de arbol a rol
+            //ConvertTreeViewToRoles(treeViewAssigned.Nodes, roles);
+            //var rol = TreeViewRoleConverter.ConvertTreeViewToRole(treeViewAssigned);
+            // guarda rol en XML
+            treeViewAssigned.Nodes.Clear();
+
+            treeViewAssigned.Nodes.Add(ConvertToTreeNode(rootRole));
+        }
+
+        private void cboRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TODO: mostrar rol como arbol
+        }
+
+        //private void ConvertTreeViewToRoles(TreeNodeCollection nodes, List<Role> roles)
+        //{
+        //    foreach (TreeNode node in nodes)
+        //    {
+        //        if (node.Nodes.Count == 0)
+        //        {
+        //            // Nodo sin hijos, es un permiso
+        //            var permission = new Role { Name = node.Text };
+        //            roles.Add(permission);
+        //        }
+        //        else if (node.Nodes.Count == 1 && node.Nodes[0].Nodes.Count == 0)
+        //        {
+        //            // Nodo con un hijo sin hijos, es un rol simple
+        //            var simpleRole = new SimpleRole { Name = node.Text };
+        //            var permission = new Role { Name = node.Nodes[0].Text };
+        //            simpleRole.Permissions.Add(permission);
+        //            roles.Add(simpleRole);
+        //        }
+        //        else
+        //        {
+        //            // Nodo con dos o más subniveles, es un rol compuesto
+        //            var compositeRole = new CompositeRole { Name = node.Text };
+        //            ConvertTreeViewToRoles(node.Nodes, compositeRole.SubRoles);
+        //            roles.Add(compositeRole);
+        //        }
+        //    }
+        //}
+
+        public static TreeNode ConvertToTreeNode(Role role)
+        {
+            TreeNode node = new TreeNode(role.Name);
+
+            foreach (string permission in role.Permissions)
+            {
+                node.Nodes.Add(permission);
             }
-            else
+
+            if (role is CompositeRole compositeRole)
             {
-                roleService.Create(selectedRole);
-                MessageBox.Show("Rol creado");
-                // TODO: usar ese rol por si quiere hacer update
-            }
-        }
-
-        #region test
-        private void PrintNode(TreeNode node)
-        {
-            Console.WriteLine(node.Text);
-        }
-
-        private void PrintNodeAndChildren(TreeNode node)
-        {
-            PrintNode(node);
-
-            // Si el nodo tiene nodos hijos, recorrerlos recursivamente
-            foreach (TreeNode childNode in node.Nodes)
-            {
-                PrintNodeAndChildren(childNode);
-            }
-        }
-
-        private void PrintTreeView()
-        {
-            // Recorrer todos los nodos del TreeView
-            //foreach (TreeNode node in treeView.Nodes)
-            //{
-            //    // Si el nodo no tiene nodos hijos, imprimir solo el nombre
-            //    if (node.Nodes.Count == 0)
-            //    {
-            //        PrintNode(node);
-            //    }
-            //    else
-            //    {
-            //        // Si el nodo tiene nodos hijos, imprimir el nombre y recorrer recursivamente los hijos
-            //        PrintNodeAndChildren(node);
-            //    }
-            //}
-        }
-
-
-        private Role GetSelectedRole(TreeNode selectedNode)
-        {
-            return null;
-
-            if (selectedNode != null)
-            {
-                var esRol = selectedNode.Nodes.Count > 0;
-                if (esRol)
+                foreach (Role subRole in compositeRole.SubRoles)
                 {
-                    foreach (TreeNode node in selectedNode.Nodes)
-                    {
-                        // Si el nodo no tiene nodos hijos, imprimir solo el nombre
-                        if (node.Nodes.Count == 0)
-                        {
-                            PrintNode(node);
-                        }
-                        else
-                        {
-                            // Si el nodo tiene nodos hijos, imprimir el nombre y recorrer recursivamente los hijos
-                            PrintNodeAndChildren(node);
-                        }
-                    }
+                    node.Nodes.Add(ConvertToTreeNode(subRole));
                 }
+            }
 
+            return node;
+        }
+
+        private void ConvertirTreeViewARoles(TreeNodeCollection nodes, CompositeRole parentRole)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Nodes.Count == 0)
+                {
+                    // Nodo sin nodos hijos, crear SimpleRole
+                    var simpleRole = new SimpleRole
+                    {
+                        Name = node.Text
+                    };
+
+                    parentRole.SubRoles.Add(simpleRole);
+                }
+                else
+                {
+                    // Nodo con nodos hijos, crear CompositeRole y llamar recursivamente
+                    var compositeRole = new CompositeRole
+                    {
+                        Name = node.Text
+                    };
+
+                    parentRole.SubRoles.Add(compositeRole);
+
+                    // Llamada recursiva para procesar los nodos hijos
+                    ConvertirTreeViewARoles(node.Nodes, compositeRole);
+                }
             }
         }
 
-        #endregion
+        //private void btnConvertir_Click(object sender, EventArgs e)
+        //{
+        //    // Crear el rol principal (puede ser CompositeRole o SimpleRole según tu estructura)
+        //    var rootRole = new CompositeRole
+        //    {
+        //        Name = "Root"
+        //    };
+
+        //    // Llamar al método recursivo para convertir el TreeView a roles
+        //    ConvertirTreeViewARoles(treeViewAssigned.Nodes, rootRole);
+
+        //    // Ahora, el rol principal (rootRole) contiene la estructura convertida
+        //    // Puedes hacer lo que quieras con rootRole, como almacenarlo o procesarlo de alguna manera.
+        //}
     }
 }

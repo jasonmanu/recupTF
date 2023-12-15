@@ -106,11 +106,13 @@ namespace UI.Controls
             // 
             // cboRoles
             // 
+            this.cboRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoles.FormattingEnabled = true;
             this.cboRoles.Location = new System.Drawing.Point(313, 111);
             this.cboRoles.Name = "cboRoles";
             this.cboRoles.Size = new System.Drawing.Size(349, 21);
             this.cboRoles.TabIndex = 7;
+            this.cboRoles.SelectedIndexChanged += new System.EventHandler(this.cboRoles_SelectedIndexChanged);
             // 
             // lblRole
             // 

@@ -114,7 +114,7 @@ namespace UI.Controls
                 Stock = (int)nudPrice.Value,
                 CategoryId = (string)cboCategory.SelectedValue ?? null,
                 AuthorId = (string)cboAuthor.SelectedValue ?? null,
-                CollectionId = (string)cboCollection.SelectedValue ?? null,
+                //CollectionId = (string)cboCollection.SelectedValue ?? null,
             };
 
             bookService.Create(book);
@@ -152,7 +152,6 @@ namespace UI.Controls
                     Description = txtDescription.Text,
                     ISBN = txtISBN.Text,
                     Stock = (int)nudPrice.Value,
-                    CollectionId = (string)cboCollection.SelectedValue,
                     CategoryId = (string)cboCategory.SelectedValue,
                     AuthorId = (string)cboAuthor.SelectedValue,
                     Title = txtTitle.Text,
@@ -190,10 +189,10 @@ namespace UI.Controls
                     cboCategory.SelectedValue = book.CategoryId;
                 }
 
-                if (book.CollectionId != null)
-                {
-                    cboCollection.SelectedValue = book.CollectionId;
-                }
+                //if (book.CollectionId != null)
+                //{
+                //    cboCollection.SelectedValue = book.CollectionId;
+                //}
             }
         }
 
@@ -223,6 +222,16 @@ namespace UI.Controls
         private void btnReserve_Click(object sender, EventArgs e)
         {
             // reserva si no hay libros libres para prestar, como hacer si no devolvieron el libro y vien alguien a buscarlo? solo puede reservar si el libro esta disponible
+        }
+
+        private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboAuthor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

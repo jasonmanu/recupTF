@@ -49,9 +49,6 @@ namespace UI.Controls
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.cboAuthor = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboCollection = new System.Windows.Forms.ComboBox();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.tlpAdmin = new System.Windows.Forms.TableLayoutPanel();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -73,7 +70,6 @@ namespace UI.Controls
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
             this.tlpAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -98,11 +94,9 @@ namespace UI.Controls
             this.tlpCrud.Controls.Add(this.tableLayoutPanel3, 0, 3);
             this.tlpCrud.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tlpCrud.Controls.Add(this.tableLayoutPanel8, 0, 5);
-            this.tlpCrud.Controls.Add(this.tableLayoutPanel7, 0, 6);
             this.tlpCrud.Location = new System.Drawing.Point(9, 11);
             this.tlpCrud.Name = "tlpCrud";
-            this.tlpCrud.RowCount = 7;
-            this.tlpCrud.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tlpCrud.RowCount = 6;
             this.tlpCrud.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tlpCrud.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tlpCrud.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -120,7 +114,7 @@ namespace UI.Controls
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel9.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.txtDescription, 1, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 146);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 176);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -153,7 +147,7 @@ namespace UI.Controls
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtTitle, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 8);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 14);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -186,7 +180,7 @@ namespace UI.Controls
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel5.Controls.Add(this.lblCategory, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.cboCategory, 1, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 284);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 338);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -212,6 +206,7 @@ namespace UI.Controls
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(244, 21);
             this.cboCategory.TabIndex = 5;
+            this.cboCategory.SelectedIndexChanged += new System.EventHandler(this.cboCategory_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -221,7 +216,7 @@ namespace UI.Controls
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel3.Controls.Add(this.lblPrice, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.nudPrice, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 215);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 257);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -264,7 +259,7 @@ namespace UI.Controls
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel2.Controls.Add(this.lblDescription, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtISBN, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 77);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 95);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -297,7 +292,7 @@ namespace UI.Controls
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel8.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.cboAuthor, 1, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 352);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 419);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -323,41 +318,7 @@ namespace UI.Controls
             this.cboAuthor.Name = "cboAuthor";
             this.cboAuthor.Size = new System.Drawing.Size(244, 21);
             this.cboAuthor.TabIndex = 5;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel7.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.cboCollection, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 423);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(333, 55);
-            this.tableLayoutPanel7.TabIndex = 13;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 26);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Coleccion (Opcional)";
-            // 
-            // cboCollection
-            // 
-            this.cboCollection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboCollection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCollection.FormattingEnabled = true;
-            this.cboCollection.Location = new System.Drawing.Point(86, 17);
-            this.cboCollection.Name = "cboCollection";
-            this.cboCollection.Size = new System.Drawing.Size(244, 21);
-            this.cboCollection.TabIndex = 5;
+            this.cboAuthor.SelectedIndexChanged += new System.EventHandler(this.cboAuthor_SelectedIndexChanged);
             // 
             // lblDiscount
             // 
@@ -530,8 +491,6 @@ namespace UI.Controls
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
             this.tlpAdmin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
@@ -565,9 +524,6 @@ namespace UI.Controls
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboAuthor;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboCollection;
         private System.Windows.Forms.Button btnLoan;
         private System.Windows.Forms.Button btnReserve;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;

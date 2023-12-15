@@ -225,8 +225,13 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Bienvenido");
                 HabilitarBotonesPorRol();
+                txtUsername.Text = username;
+                lblPassword.Visible = false;
+                txtPassword.Visible = false;
+                btnLogin.Visible = false;
+                btnRegister.Visible = false;
+                btnLogout.Visible = true;
             }
         }
 
