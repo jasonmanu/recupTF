@@ -199,15 +199,13 @@ namespace UI.Controls
         private void btnLoan_Click(object sender, EventArgs e)
         {
             string id = FormHelper.GetCurrentRowId(dgvData);
-            //TODO: get user id
-            string userId = "1";
 
             try
             {
                 loanService.Create(new Loan()
                 {
                     BookId = id,
-                    UserId = userId
+                    UserId = loggedUser.Id,
                 });
 
                 //TODO: crear notificacion
@@ -226,12 +224,10 @@ namespace UI.Controls
 
         private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void cboAuthor_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

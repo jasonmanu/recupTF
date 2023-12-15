@@ -2,18 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI.Controls
 {
     public partial class RolsControl : UserControl
     {
-        //protected static readonly string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
-        //protected readonly string _filePath = Path.Combine(appFolderPath, "roles.xml");
-        //private CompositeRole newCompositeRole;
-        //private TreeNode selectedTreeNode;
-        //private RoleManager rolManager;
-        private Role selectedRole;
         private readonly IRoleService roleService;
 
         public RolsControl(IRoleService roleService)
@@ -56,15 +51,10 @@ namespace UI.Controls
         }
         private void CargarRolesExistentes()
         {
-            //var roles = roleService.GetAll();
-            //cboRoles.DataSource = roles;
-            //cboRoles.DisplayMember = "Name";
+            var roles = roleService.GetAll().Where(x => x.Id != null).ToList();
+            cboRoles.DataSource = roles;
+            cboRoles.DisplayMember = "Name";
 
-            var roles = new List<Role>() { new Role() { Name = "Nodo1", Permissions = new List<string>() { "D", "A" } }, new SimpleRole() { Name = "Simple Rol", Permissions = new List<string>() { "A", "B", "C" } } };
-            var compositeRole = new CompositeRole() { Name = "CompositeRole", Permissions = new List<string>() { "Nodo1.1" }, SubRoles = new List<Role>() { new SimpleRole() { Name = "SimpleRole", Permissions = new List<string>() { "A", "B", "C" } } } };
-            roles.Add(compositeRole);
-
-            // TODO: roles a arbol
             foreach (var rol in roles)
             {
                 treeViewAvailable.Nodes.Add(ConvertToTreeNode(rol));
@@ -76,43 +66,13 @@ namespace UI.Controls
         {
             TreeNode selectedNode = treeViewAvailable.SelectedNode;
             TreeNode clonedNode = (TreeNode)selectedNode.Clone();
-
-            //bool nodoSeleccionadoEsRol = clonedNode.Nodes.Count > 0;
-            //if (nodoSeleccionadoEsRol)
-            //{
-            //    CompositeRole nuevoRolCompuesto = new CompositeRole
-            //    {
-            //        Name = txtNewRoleName.Text,
-            //        Permissions = selectedRole?.Permissions ?? new List<string>(),
-            //    };
-
-            //    var 
-            //    //nuevoRolCompuesto.SubRoles.Add(GetSelectedRole(selectedNode));
-
-            //    selectedRole = nuevoRolCompuesto;
-            //}
-            //else
-            //{
-            //    if (selectedRole is null)
-            //    {
-            //        selectedRole = new SimpleRole() { Name = txtNewRoleName.Text };
-            //        selectedRole.Permissions.Add(clonedNode.Text);
-            //    }
-            //    else
-            //    {
-            //        selectedRole.Permissions.Add(clonedNode.Text);
-            //    }
-            //}
-
             treeViewAssigned.Nodes.Add(clonedNode);
         }
 
         private void btnDesasignar_Click(object sender, EventArgs e)
         {
-            // sacar del arbol
             TreeNode selectedNode = treeViewAssigned.SelectedNode;
             selectedNode.Remove();
-            // guardar en XML con update by ID, no es necesario si solo uso un metodo de arbol a rol
         }
 
         private void btnCreateRole_Click(object sender, EventArgs e)
@@ -122,57 +82,39 @@ namespace UI.Controls
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Crear el rol principal (puede ser CompositeRole o SimpleRole según tu estructura)
-            var rootRole = new CompositeRole
+            var rolDeArbolAsignado = new CompositeRole
             {
-                Name = "Root"
+                Name = txtNewRoleName.Text,
             };
 
             // Llamar al método recursivo para convertir el TreeView a roles
-            ConvertirTreeViewARoles(treeViewAssigned.Nodes, rootRole);
+            ConvertirTreeViewARoles(treeViewAssigned.Nodes, rolDeArbolAsignado);
 
-            //List<Role> roles = new List<Role>();
-            //// pasa de arbol a rol
-            //ConvertTreeViewToRoles(treeViewAssigned.Nodes, roles);
-            //var rol = TreeViewRoleConverter.ConvertTreeViewToRole(treeViewAssigned);
+            if (((Role)cboRoles.SelectedValue)?.Name == txtNewRoleName.Text)
+            {
+                roleService.Delete(((Role)cboRoles.SelectedValue).Id);
+            }
+
             // guarda rol en XML
-            treeViewAssigned.Nodes.Clear();
-
-            treeViewAssigned.Nodes.Add(ConvertToTreeNode(rootRole));
+            roleService.Create(rolDeArbolAsignado);
+            treeViewAvailable.Nodes.Clear();
+            CargarPermisosPredefinidos();
+            CargarRolesExistentes();
         }
 
         private void cboRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TODO: mostrar rol como arbol
-        }
+            treeViewAssigned.Nodes.Clear();
 
-        //private void ConvertTreeViewToRoles(TreeNodeCollection nodes, List<Role> roles)
-        //{
-        //    foreach (TreeNode node in nodes)
-        //    {
-        //        if (node.Nodes.Count == 0)
-        //        {
-        //            // Nodo sin hijos, es un permiso
-        //            var permission = new Role { Name = node.Text };
-        //            roles.Add(permission);
-        //        }
-        //        else if (node.Nodes.Count == 1 && node.Nodes[0].Nodes.Count == 0)
-        //        {
-        //            // Nodo con un hijo sin hijos, es un rol simple
-        //            var simpleRole = new SimpleRole { Name = node.Text };
-        //            var permission = new Role { Name = node.Nodes[0].Text };
-        //            simpleRole.Permissions.Add(permission);
-        //            roles.Add(simpleRole);
-        //        }
-        //        else
-        //        {
-        //            // Nodo con dos o más subniveles, es un rol compuesto
-        //            var compositeRole = new CompositeRole { Name = node.Text };
-        //            ConvertTreeViewToRoles(node.Nodes, compositeRole.SubRoles);
-        //            roles.Add(compositeRole);
-        //        }
-        //    }
-        //}
+            if (cboRoles.SelectedValue != null)
+            {
+                var rolId = ((Role)cboRoles.SelectedValue).Id;
+                txtNewRoleName.Text = ((Role)cboRoles.SelectedValue).Name;
+
+                var rol = roleService.GetById(rolId);
+                treeViewAssigned.Nodes.Add(ConvertToTreeNode(rol));
+            }
+        }
 
         public static TreeNode ConvertToTreeNode(Role role)
         {
@@ -223,20 +165,5 @@ namespace UI.Controls
                 }
             }
         }
-
-        //private void btnConvertir_Click(object sender, EventArgs e)
-        //{
-        //    // Crear el rol principal (puede ser CompositeRole o SimpleRole según tu estructura)
-        //    var rootRole = new CompositeRole
-        //    {
-        //        Name = "Root"
-        //    };
-
-        //    // Llamar al método recursivo para convertir el TreeView a roles
-        //    ConvertirTreeViewARoles(treeViewAssigned.Nodes, rootRole);
-
-        //    // Ahora, el rol principal (rootRole) contiene la estructura convertida
-        //    // Puedes hacer lo que quieras con rootRole, como almacenarlo o procesarlo de alguna manera.
-        //}
     }
 }

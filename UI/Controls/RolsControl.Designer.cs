@@ -31,7 +31,6 @@ namespace UI.Controls
         {
             this.treeViewAvailable = new System.Windows.Forms.TreeView();
             this.treeViewAssigned = new System.Windows.Forms.TreeView();
-            this.labelSelectedNode = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAsignar = new System.Windows.Forms.Button();
@@ -41,35 +40,27 @@ namespace UI.Controls
             this.txtNewRoleName = new System.Windows.Forms.TextBox();
             this.btnCreateRole = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // treeViewAvailable
             // 
-            this.treeViewAvailable.Location = new System.Drawing.Point(58, 181);
+            this.treeViewAvailable.Location = new System.Drawing.Point(58, 112);
             this.treeViewAvailable.Name = "treeViewAvailable";
-            this.treeViewAvailable.Size = new System.Drawing.Size(348, 458);
+            this.treeViewAvailable.Size = new System.Drawing.Size(348, 419);
             this.treeViewAvailable.TabIndex = 0;
             // 
             // treeViewAssigned
             // 
-            this.treeViewAssigned.Location = new System.Drawing.Point(576, 181);
+            this.treeViewAssigned.Location = new System.Drawing.Point(576, 112);
             this.treeViewAssigned.Name = "treeViewAssigned";
-            this.treeViewAssigned.Size = new System.Drawing.Size(348, 458);
+            this.treeViewAssigned.Size = new System.Drawing.Size(348, 419);
             this.treeViewAssigned.TabIndex = 2;
-            // 
-            // labelSelectedNode
-            // 
-            this.labelSelectedNode.AutoSize = true;
-            this.labelSelectedNode.Location = new System.Drawing.Point(479, 471);
-            this.labelSelectedNode.Name = "labelSelectedNode";
-            this.labelSelectedNode.Size = new System.Drawing.Size(35, 13);
-            this.labelSelectedNode.TabIndex = 1;
-            this.labelSelectedNode.Text = "label1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(195, 154);
+            this.label1.Location = new System.Drawing.Point(194, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 3;
@@ -78,7 +69,7 @@ namespace UI.Controls
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(702, 154);
+            this.label2.Location = new System.Drawing.Point(618, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 4;
@@ -86,7 +77,7 @@ namespace UI.Controls
             // 
             // btnAsignar
             // 
-            this.btnAsignar.Location = new System.Drawing.Point(455, 278);
+            this.btnAsignar.Location = new System.Drawing.Point(455, 239);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(92, 23);
             this.btnAsignar.TabIndex = 5;
@@ -96,7 +87,7 @@ namespace UI.Controls
             // 
             // btnDesasignar
             // 
-            this.btnDesasignar.Location = new System.Drawing.Point(455, 357);
+            this.btnDesasignar.Location = new System.Drawing.Point(455, 318);
             this.btnDesasignar.Name = "btnDesasignar";
             this.btnDesasignar.Size = new System.Drawing.Size(92, 23);
             this.btnDesasignar.TabIndex = 6;
@@ -108,16 +99,16 @@ namespace UI.Controls
             // 
             this.cboRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoles.FormattingEnabled = true;
-            this.cboRoles.Location = new System.Drawing.Point(313, 111);
+            this.cboRoles.Location = new System.Drawing.Point(58, 43);
             this.cboRoles.Name = "cboRoles";
-            this.cboRoles.Size = new System.Drawing.Size(349, 21);
+            this.cboRoles.Size = new System.Drawing.Size(348, 21);
             this.cboRoles.TabIndex = 7;
             this.cboRoles.SelectedIndexChanged += new System.EventHandler(this.cboRoles_SelectedIndexChanged);
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(451, 95);
+            this.lblRole.Location = new System.Drawing.Point(184, 6);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(79, 13);
             this.lblRole.TabIndex = 8;
@@ -125,35 +116,45 @@ namespace UI.Controls
             // 
             // txtNewRoleName
             // 
-            this.txtNewRoleName.Location = new System.Drawing.Point(313, 21);
+            this.txtNewRoleName.Location = new System.Drawing.Point(576, 565);
             this.txtNewRoleName.Name = "txtNewRoleName";
-            this.txtNewRoleName.Size = new System.Drawing.Size(268, 20);
+            this.txtNewRoleName.Size = new System.Drawing.Size(348, 20);
             this.txtNewRoleName.TabIndex = 9;
             // 
             // btnCreateRole
             // 
-            this.btnCreateRole.Location = new System.Drawing.Point(587, 21);
+            this.btnCreateRole.Location = new System.Drawing.Point(763, 78);
             this.btnCreateRole.Name = "btnCreateRole";
-            this.btnCreateRole.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateRole.Size = new System.Drawing.Size(161, 26);
             this.btnCreateRole.TabIndex = 10;
-            this.btnCreateRole.Text = "Crear rol";
+            this.btnCreateRole.Text = "Vaciar Roles asignados";
             this.btnCreateRole.UseVisualStyleBackColor = true;
             this.btnCreateRole.Click += new System.EventHandler(this.btnCreateRole_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(714, 21);
+            this.btnSave.Location = new System.Drawing.Point(576, 591);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(146, 23);
+            this.btnSave.Size = new System.Drawing.Size(348, 23);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Guardar cambios en rol";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(671, 539);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(165, 13);
+            this.lblInfo.TabIndex = 12;
+            this.lblInfo.Text = "Cambie titulo para crear nuevo rol";
+            // 
             // RolsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCreateRole);
             this.Controls.Add(this.txtNewRoleName);
@@ -164,7 +165,6 @@ namespace UI.Controls
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.treeViewAssigned);
-            this.Controls.Add(this.labelSelectedNode);
             this.Controls.Add(this.treeViewAvailable);
             this.Name = "RolsControl";
             this.Size = new System.Drawing.Size(970, 665);
@@ -177,7 +177,6 @@ namespace UI.Controls
 
         private System.Windows.Forms.TreeView treeViewAvailable;
         private System.Windows.Forms.TreeView treeViewAssigned;
-        private System.Windows.Forms.Label labelSelectedNode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAsignar;
@@ -187,5 +186,6 @@ namespace UI.Controls
         private System.Windows.Forms.TextBox txtNewRoleName;
         private System.Windows.Forms.Button btnCreateRole;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblInfo;
     }
 }
