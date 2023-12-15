@@ -36,6 +36,8 @@ namespace UI
                     .AddScoped<ILoanRepository, LoanRepository>()
                     .AddScoped<IRoleService, RoleService>()
                     .AddScoped<IRoleRepository, RoleRepository>()
+                    .AddScoped<INotificationService, NotificationService>()
+                    .AddScoped<INotificationRepository, NotificationRepository>()
                     .AddSingleton(typeof(XmlRepository<>));
 
             ServiceProvider serviceProvider = services.BuildServiceProvider();

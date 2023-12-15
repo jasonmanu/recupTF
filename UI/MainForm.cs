@@ -20,6 +20,7 @@ namespace UI
         private readonly ISubscriptionService subscriptionService;
         private readonly ISubscriptionTypeService subscriptionTypeService;
         private readonly IRoleService roleService;
+        private readonly INotificationService notificationService;
 
         private User user;
         private BookControl bookControl;
@@ -43,49 +44,33 @@ namespace UI
             this.subscriptionTypeService = serviceProvider.GetRequiredService<ISubscriptionTypeService>();
             this.loanService = serviceProvider.GetRequiredService<ILoanService>();
             this.roleService = serviceProvider.GetRequiredService<IRoleService>();
+            this.notificationService = serviceProvider.GetRequiredService<INotificationService>();
 
             InitializeComponent();
 
-            btnMultas.Visible = false;
+            btnNotificaciones.Visible = false;
             btnLibros.Visible = false;
-            btnPrestamos.Visible = false;
-            btnMultas.Visible = false;
+            btnEstadisticas.Visible = false;
+            btnNotificaciones.Visible = false;
             btnUsuarios.Visible = false;
             btnRoles.Visible = false;
             btnAuthors.Visible = false;
             btnCategories.Visible = false;
             btnSubscriptionTypes.Visible = false;
             btnBackup.Visible = false;
-
-            //homeControl = new HomeControl(userService);
-            //mainPanel.Controls.Add(homeControl);
-            //homeControl.BringToFront();
-            //btnInicio.BackColor = Color.LightBlue;
         }
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
             btnInicio.BackColor = Color.LightBlue;
-            this.mainPanel.Controls.Clear();
-            //foreach (Control control in this.mainPanel.Controls.Clear())
-            //{
-            //    if (control is UserControl)
-            //    {
-            //        control.Visible = false;
-            //    }
-            //}
-            //btnInicio.BackColor = Color.LightBlue;
-            //homeControl = new HomeControl(userService);
-            //mainPanel.Controls.Add(homeControl);
-            //homeControl.BringToFront();
         }
 
         private void btnLibros_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
             btnLibros.BackColor = Color.LightBlue;
-            bookControl = new BookControl(bookService, authorService, categoryService, loanService, user);
+            bookControl = new BookControl(bookService, authorService, categoryService, loanService, subscriptionService, subscriptionTypeService, notificationService, user);
             mainPanel.Controls.Add(bookControl);
             bookControl.BringToFront();
         }
@@ -93,16 +78,16 @@ namespace UI
         private void btnPrestamos_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
-            btnPrestamos.BackColor = Color.LightBlue;
-            loanControl = new LoanControl();
+            btnEstadisticas.BackColor = Color.LightBlue;
+            loanControl = new LoanControl(loanService, user);
             mainPanel.Controls.Add(loanControl);
             loanControl.BringToFront();
         }
 
-        private void btnMultas_Click(object sender, EventArgs e)
+        private void btnNotificaciones_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
-            btnMultas.BackColor = Color.LightBlue;
+            btnNotificaciones.BackColor = Color.LightBlue;
             multasControl = new MultasControl();
             mainPanel.Controls.Add(multasControl);
             multasControl.BringToFront();
@@ -189,12 +174,12 @@ namespace UI
         {
             btnInicio.BackColor = Color.LightGray;
             btnLibros.BackColor = Color.LightGray;
-            btnMultas.BackColor = Color.LightGray;
+            btnNotificaciones.BackColor = Color.LightGray;
             //btnSubscription.BackColor = Color.LightGray;
             //btnCollection.BackColor = Color.LightGray;
             //btnBibliotecarios.BackColor = Color.LightGray;
             btnUsuarios.BackColor = Color.LightGray;
-            btnPrestamos.BackColor = Color.LightGray;
+            btnEstadisticas.BackColor = Color.LightGray;
             btnSubscriptionTypes.BackColor = Color.LightGray;
             btnBackup.BackColor = Color.LightGray;
             btnAuthors.BackColor = Color.LightGray;
@@ -234,6 +219,22 @@ namespace UI
             }
         }
 
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtUsername.Text;
+
+            try
+            {
+                userService.Create(new User(username, password, "Cliente"));
+                MessageBox.Show("Registrado Correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void HabilitarBotonesPorRol()
         {
             List<string> permisosGenerales = new List<string>();
@@ -253,32 +254,42 @@ namespace UI
                 btnSubscriptionTypes.Visible = true;
             }
 
-            //TODO
-            //btnLibros.Visible = true;
-            //btnMultas.Visible = true;
-            //btnPrestamos.Visible = true;
-            //btnMultas.Visible = true;
-            //btnUsuarios.Visible = true;
-            //btnRoles.Visible = true;
-            //btnAuthors.Visible = true;
-            //btnCategories.Visible = true;
-            //btnBackup.Visible = true;
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            string username = txtUsername.Text;
-            string password = txtUsername.Text;
-
-            try
+            if (permisosGenerales.Contains("Usuario"))
             {
-                userService.Create(new User(username, password, "Cliente"));
-                MessageBox.Show("Registrado Correctamente");
+                btnUsuarios.Visible = true;
             }
-            catch (Exception ex)
+
+            if (permisosGenerales.Contains("Autor"))
             {
-                MessageBox.Show(ex.Message);
+                btnAuthors.Visible = true;
             }
+
+            if (permisosGenerales.Contains("Backup"))
+            {
+                btnBackup.Visible = true;
+            }
+
+            if (permisosGenerales.Contains("Categoria"))
+            {
+                btnCategories.Visible = true;
+            }
+
+            if (permisosGenerales.Contains("Prestamo"))
+            {
+                btnEstadisticas.Visible = true;
+            }
+
+            if (permisosGenerales.Contains("Notificacion"))
+            {
+                btnNotificaciones.Visible = true;
+            }
+
+            if (permisosGenerales.Contains("Subscripcion"))
+            {
+                btnSubscriptionTypes.Visible = true;
+            }
+
+            btnRoles.Visible = true;
         }
     }
 }

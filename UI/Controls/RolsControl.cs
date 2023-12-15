@@ -22,7 +22,7 @@ namespace UI.Controls
 
         private void CargarPermisosPredefinidos()
         {
-            List<string> features = new List<string>() { "Libro", "Usuario", "Autor", "Backup", "Categoria", "Prestamo", "Notification", "Subscripcion", "TipoSubscripcion" };
+            List<string> features = new List<string>() { "Libro", "Usuario", "Autor", "Backup", "Categoria", "Prestamo", "Notificacion", "TipoSubscripcion" };
             List<string> permisos = new List<string>() { "Crear", "Leer", "Editar", "Eliminar" };
             List<string> permisosSueltos = new List<string>();
             List<SimpleRole> entidadesPermisos = new List<SimpleRole>();
@@ -49,6 +49,8 @@ namespace UI.Controls
                 // agregar rol compuesto al arbol
                 treeViewAvailable.Nodes.Add(treeNode);
             }
+
+            treeViewAvailable.Nodes.Add("Estadisticas");
         }
         private void CargarRolesExistentes()
         {

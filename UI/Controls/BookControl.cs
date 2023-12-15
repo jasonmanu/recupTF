@@ -15,47 +15,67 @@ namespace UI.Controls
         private readonly IAuthorService authorService;
         private readonly ICategoryService categoryService;
         private readonly ILoanService loanService;
+        private readonly ISubscriptionService subscriptionService;
+        private readonly ISubscriptionTypeService subscriptionTypeService;
+        private readonly INotificationService notificationService;
         private readonly User loggedUser;
+        private readonly Subscription userSubscription;
+        private readonly SubscriptionType userSubscriptionType;
 
-        public BookControl(IBookService bookService, IAuthorService authorService, ICategoryService categoryService, ILoanService loanService, User loggedUser)//, Rol rol = null)
+        public BookControl(IBookService bookService, IAuthorService authorService, ICategoryService categoryService, ILoanService loanService, ISubscriptionService subscriptionService, ISubscriptionTypeService subscriptionTypeService, INotificationService notificationService, User loggedUser)
         {
             Dock = DockStyle.Fill;
             this.bookService = bookService;
             this.authorService = authorService;
             this.categoryService = categoryService;
             this.loanService = loanService;
-            this.loggedUser = loggedUser;
+            this.subscriptionService = subscriptionService;
+            this.subscriptionTypeService = subscriptionTypeService;
+            this.notificationService = notificationService;
+            this.loggedUser = new User() { Permisos = new List<string>() };// loggedUser;
             InitializeComponent();
+
+            userSubscription = subscriptionService.GetAll().FirstOrDefault(x => x.UserId == loggedUser?.Id);
+            userSubscriptionType = subscriptionTypeService.GetById(userSubscription?.SubscriptionTypeId);
+
             LoadBooks();
             HabilitarBotones();
         }
 
         private void HabilitarBotones()
         {
-            //private bool TienePermiso(Rol rol, TipoPermiso tipoPermiso)
-            //{
-            //    return rol.Permisos.Any(p => p.TipoPermiso == tipoPermiso) ||
-            //        (rol is RolCompuesto rolCompuesto &&
-            //         rolCompuesto.Roles.Any(subRol => TienePermiso(subRol, tipoPermiso)));
-            //}
+            //tlpCrud.Visible = true;
+            //tlpCrud.Enabled = true;
+            //tlpCrudBotones.Visible = true;
+            //tlpCrudBotones.Enabled = true;
 
-            if ("rol tiene " == "Libros.Crear")
+            if (loggedUser.Permisos.Contains("Libro.Leer"))
             {
-                btnCreate.Visible = false;
+                tlpCrud.Enabled = false;
+                tlpCrudBotones.Visible = false;
             }
 
-            if ("rol tiene " == "Libros.Editar")
+            if (loggedUser.Permisos.Contains("Libro.Crear"))
             {
-                btnUpdate.Visible = false;
+                tlpCrud.Enabled = true;
+                tlpCrudBotones.Visible = true;
+                btnCreate.Visible = true;
             }
 
-            if ("rol tiene " == "Libros.Eliminar")
+            if (loggedUser.Permisos.Contains("Libro.Editar"))
             {
-                btnDelete.Visible = false;
+                tlpCrud.Enabled = true;
+                tlpCrudBotones.Visible = true;
+                btnUpdate.Visible = true;
+            }
+
+            if (loggedUser.Permisos.Contains("Libro.Eliminar"))
+            {
+                tlpCrud.Enabled = true;
+                tlpCrudBotones.Visible = true;
+                btnDelete.Visible = true;
             }
         }
-
-
 
         private void LoadBooks()
         {
@@ -97,12 +117,6 @@ namespace UI.Controls
 
             //var myReservations = reservationService.GetAll();
         }
-
-        // Load Cbo in Enum
-        // cboType.DataSource = Enum.GetValues(typeof(DiscountTypeEnum));
-        // currentDiscount.Type = (DiscountTypeEnum)cboType.SelectedValue;
-        // read checbox: currentDiscount.Active = checkActive.Checked;
-
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -189,23 +203,65 @@ namespace UI.Controls
                 {
                     cboCategory.SelectedValue = book.CategoryId;
                 }
+
+                if (book.Stock == 0)
+                {
+                    btnLoan.Text = "Crear reserva";
+                }
+                else
+                {
+                    btnLoan.Text = "Iniciar prestamo";
+                }
             }
         }
 
         private void btnLoan_Click(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvData);
+            string bookId = FormHelper.GetCurrentRowId(dgvData);
 
             try
             {
-                loanService.Create(new Loan()
-                {
-                    BookId = id,
-                    UserId = loggedUser.Id,
-                });
+                Book book = bookService.GetById(bookId);
 
-                //TODO: crear notificacion
-                MessageBox.Show($"Prestamo confirmado");
+                if (book.Stock == 0)
+                {
+                    //crea reserva
+                    loanService.Create(new Loan()
+                    {
+                        BookId = bookId,
+                        UserId = loggedUser.Id,
+                        EndDate = null,
+                        StartDate = DateTime.Now,
+                        PuedeRetirar = false,
+                        ReturnDate = null,
+                    });
+
+                    MessageBox.Show($"Reserva creada. Recibira una notificacion cuando el libro este disponible para retirar");
+                }
+                else
+                {
+                    DateTime loanEndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
+
+                    // crea prestamo
+                    loanService.Create(new Loan()
+                    {
+                        BookId = bookId,
+                        UserId = loggedUser.Id,
+                        StartDate = DateTime.Now,
+                        EndDate = loanEndDate,
+                        PuedeRetirar = true,
+                        ReturnDate = null,
+                    });
+
+                    book.Stock = book.Stock - 1;
+                    bookService.Update(book);
+
+                    notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Puede retirar su libro {book.Title}", UserId = loggedUser.Id });
+                    notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Debe devolver el libro {book.Title} antes de {loanEndDate}", UserId = loggedUser.Id });
+                    MessageBox.Show($"Prestamo creado. Puede retirar el libro en la biblioteca.");
+                }
+
+
             }
             catch (Exception ex)
             {

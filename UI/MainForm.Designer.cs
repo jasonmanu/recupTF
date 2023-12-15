@@ -34,8 +34,8 @@ namespace UI
             this.leftPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnInicio = new System.Windows.Forms.Button();
-            this.btnPrestamos = new System.Windows.Forms.Button();
-            this.btnMultas = new System.Windows.Forms.Button();
+            this.btnEstadisticas = new System.Windows.Forms.Button();
+            this.btnNotificaciones = new System.Windows.Forms.Button();
             this.btnLibros = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnRoles = new System.Windows.Forms.Button();
@@ -76,15 +76,15 @@ namespace UI
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnInicio, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnPrestamos, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnMultas, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnLibros, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnUsuarios, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnRoles, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnAuthors, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnSubscriptionTypes, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnCategories, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnEstadisticas, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnUsuarios, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnBackup, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnAuthors, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnSubscriptionTypes, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnRoles, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnCategories, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnNotificaciones, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnLibros, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -108,34 +108,34 @@ namespace UI
             this.btnInicio.UseVisualStyleBackColor = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
-            // btnPrestamos
+            // btnEstadisticas
             // 
-            this.btnPrestamos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrestamos.Location = new System.Drawing.Point(3, 188);
-            this.btnPrestamos.Name = "btnPrestamos";
-            this.btnPrestamos.Size = new System.Drawing.Size(106, 40);
-            this.btnPrestamos.TabIndex = 2;
-            this.btnPrestamos.Text = "Prestamos";
-            this.btnPrestamos.UseVisualStyleBackColor = true;
-            this.btnPrestamos.Click += new System.EventHandler(this.btnPrestamos_Click);
+            this.btnEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEstadisticas.Location = new System.Drawing.Point(115, 188);
+            this.btnEstadisticas.Name = "btnEstadisticas";
+            this.btnEstadisticas.Size = new System.Drawing.Size(107, 40);
+            this.btnEstadisticas.TabIndex = 2;
+            this.btnEstadisticas.Text = "Estadisticas";
+            this.btnEstadisticas.UseVisualStyleBackColor = true;
+            this.btnEstadisticas.Click += new System.EventHandler(this.btnPrestamos_Click);
             // 
-            // btnMultas
+            // btnNotificaciones
             // 
-            this.btnMultas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMultas.Location = new System.Drawing.Point(115, 188);
-            this.btnMultas.Name = "btnMultas";
-            this.btnMultas.Size = new System.Drawing.Size(107, 40);
-            this.btnMultas.TabIndex = 3;
-            this.btnMultas.Text = "Multas";
-            this.btnMultas.UseVisualStyleBackColor = true;
-            this.btnMultas.Click += new System.EventHandler(this.btnMultas_Click);
+            this.btnNotificaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNotificaciones.Location = new System.Drawing.Point(115, 49);
+            this.btnNotificaciones.Name = "btnNotificaciones";
+            this.btnNotificaciones.Size = new System.Drawing.Size(107, 40);
+            this.btnNotificaciones.TabIndex = 3;
+            this.btnNotificaciones.Text = "Notificaciones";
+            this.btnNotificaciones.UseVisualStyleBackColor = true;
+            this.btnNotificaciones.Click += new System.EventHandler(this.btnNotificaciones_Click);
             // 
             // btnLibros
             // 
             this.btnLibros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLibros.Location = new System.Drawing.Point(115, 49);
+            this.btnLibros.Location = new System.Drawing.Point(3, 188);
             this.btnLibros.Name = "btnLibros";
-            this.btnLibros.Size = new System.Drawing.Size(107, 40);
+            this.btnLibros.Size = new System.Drawing.Size(106, 40);
             this.btnLibros.TabIndex = 1;
             this.btnLibros.Text = "Libros";
             this.btnLibros.UseVisualStyleBackColor = true;
@@ -144,9 +144,9 @@ namespace UI
             // btnUsuarios
             // 
             this.btnUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUsuarios.Location = new System.Drawing.Point(3, 327);
+            this.btnUsuarios.Location = new System.Drawing.Point(115, 466);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(106, 40);
+            this.btnUsuarios.Size = new System.Drawing.Size(107, 40);
             this.btnUsuarios.TabIndex = 4;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = true;
@@ -155,9 +155,9 @@ namespace UI
             // btnRoles
             // 
             this.btnRoles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRoles.Location = new System.Drawing.Point(115, 327);
+            this.btnRoles.Location = new System.Drawing.Point(3, 466);
             this.btnRoles.Name = "btnRoles";
-            this.btnRoles.Size = new System.Drawing.Size(107, 40);
+            this.btnRoles.Size = new System.Drawing.Size(106, 40);
             this.btnRoles.TabIndex = 9;
             this.btnRoles.Text = "Roles";
             this.btnRoles.UseVisualStyleBackColor = true;
@@ -166,7 +166,7 @@ namespace UI
             // btnAuthors
             // 
             this.btnAuthors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAuthors.Location = new System.Drawing.Point(3, 466);
+            this.btnAuthors.Location = new System.Drawing.Point(3, 606);
             this.btnAuthors.Name = "btnAuthors";
             this.btnAuthors.Size = new System.Drawing.Size(106, 40);
             this.btnAuthors.TabIndex = 6;
@@ -177,7 +177,7 @@ namespace UI
             // btnSubscriptionTypes
             // 
             this.btnSubscriptionTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubscriptionTypes.Location = new System.Drawing.Point(3, 606);
+            this.btnSubscriptionTypes.Location = new System.Drawing.Point(3, 327);
             this.btnSubscriptionTypes.Name = "btnSubscriptionTypes";
             this.btnSubscriptionTypes.Size = new System.Drawing.Size(106, 40);
             this.btnSubscriptionTypes.TabIndex = 11;
@@ -188,7 +188,7 @@ namespace UI
             // btnCategories
             // 
             this.btnCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategories.Location = new System.Drawing.Point(115, 466);
+            this.btnCategories.Location = new System.Drawing.Point(115, 327);
             this.btnCategories.Name = "btnCategories";
             this.btnCategories.Size = new System.Drawing.Size(107, 40);
             this.btnCategories.TabIndex = 7;
@@ -367,12 +367,12 @@ namespace UI
         #endregion
 
         private System.Windows.Forms.Panel leftPanel;
-        private System.Windows.Forms.Button btnPrestamos;
+        private System.Windows.Forms.Button btnEstadisticas;
         private System.Windows.Forms.Button btnLibros;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.Button btnUsuarios;
-        private System.Windows.Forms.Button btnMultas;
+        private System.Windows.Forms.Button btnNotificaciones;
         private System.Windows.Forms.Button btnInicio;
         private System.Windows.Forms.Button btnAuthors;
         private System.Windows.Forms.Button btnExit;

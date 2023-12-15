@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +14,15 @@ namespace UI
 {
     public partial class LoanControl : UserControl
     {
-        public LoanControl()
+        private ILoanService loanService;
+        private User user;
+
+        public LoanControl(ILoanService loanService, User user)
         {
             this.Dock = DockStyle.Fill;
-
             InitializeComponent();
+            this.loanService = loanService;
+            this.user = user;
         }
     }
 }

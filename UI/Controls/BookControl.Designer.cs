@@ -50,14 +50,13 @@ namespace UI.Controls
             this.label5 = new System.Windows.Forms.Label();
             this.cboAuthor = new System.Windows.Forms.ComboBox();
             this.lblDiscount = new System.Windows.Forms.Label();
-            this.tlpAdmin = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpCrudBotones = new System.Windows.Forms.TableLayoutPanel();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.btnLoan = new System.Windows.Forms.Button();
-            this.btnReserve = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -70,7 +69,7 @@ namespace UI.Controls
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.tlpAdmin.SuspendLayout();
+            this.tlpCrudBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +93,7 @@ namespace UI.Controls
             this.tlpCrud.Controls.Add(this.tableLayoutPanel3, 0, 3);
             this.tlpCrud.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tlpCrud.Controls.Add(this.tableLayoutPanel8, 0, 5);
+            this.tlpCrud.Enabled = false;
             this.tlpCrud.Location = new System.Drawing.Point(9, 11);
             this.tlpCrud.Name = "tlpCrud";
             this.tlpCrud.RowCount = 6;
@@ -329,21 +329,22 @@ namespace UI.Controls
             this.lblDiscount.TabIndex = 18;
             this.lblDiscount.Text = "Oferta";
             // 
-            // tlpAdmin
+            // tlpCrudBotones
             // 
-            this.tlpAdmin.ColumnCount = 1;
-            this.tlpAdmin.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpAdmin.Controls.Add(this.btnCreate, 0, 0);
-            this.tlpAdmin.Controls.Add(this.btnUpdate, 0, 1);
-            this.tlpAdmin.Controls.Add(this.btnDelete, 0, 2);
-            this.tlpAdmin.Location = new System.Drawing.Point(9, 500);
-            this.tlpAdmin.Name = "tlpAdmin";
-            this.tlpAdmin.RowCount = 3;
-            this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpAdmin.Size = new System.Drawing.Size(339, 123);
-            this.tlpAdmin.TabIndex = 16;
+            this.tlpCrudBotones.ColumnCount = 1;
+            this.tlpCrudBotones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpCrudBotones.Controls.Add(this.btnCreate, 0, 0);
+            this.tlpCrudBotones.Controls.Add(this.btnUpdate, 0, 1);
+            this.tlpCrudBotones.Controls.Add(this.btnDelete, 0, 2);
+            this.tlpCrudBotones.Location = new System.Drawing.Point(9, 500);
+            this.tlpCrudBotones.Name = "tlpCrudBotones";
+            this.tlpCrudBotones.RowCount = 3;
+            this.tlpCrudBotones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpCrudBotones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpCrudBotones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpCrudBotones.Size = new System.Drawing.Size(339, 123);
+            this.tlpCrudBotones.TabIndex = 16;
+            this.tlpCrudBotones.Visible = false;
             // 
             // btnCreate
             // 
@@ -390,7 +391,7 @@ namespace UI.Controls
             this.dgvData.Location = new System.Drawing.Point(379, 74);
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(694, 299);
+            this.dgvData.Size = new System.Drawing.Size(694, 338);
             this.dgvData.TabIndex = 15;
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvBooks_SelectionChanged);
             // 
@@ -405,23 +406,13 @@ namespace UI.Controls
             // 
             // btnLoan
             // 
-            this.btnLoan.Location = new System.Drawing.Point(379, 404);
+            this.btnLoan.Location = new System.Drawing.Point(379, 430);
             this.btnLoan.Name = "btnLoan";
-            this.btnLoan.Size = new System.Drawing.Size(349, 62);
+            this.btnLoan.Size = new System.Drawing.Size(694, 36);
             this.btnLoan.TabIndex = 21;
             this.btnLoan.Text = "Iniciar prestamo";
             this.btnLoan.UseVisualStyleBackColor = true;
             this.btnLoan.Click += new System.EventHandler(this.btnLoan_Click);
-            // 
-            // btnReserve
-            // 
-            this.btnReserve.Location = new System.Drawing.Point(734, 404);
-            this.btnReserve.Name = "btnReserve";
-            this.btnReserve.Size = new System.Drawing.Size(339, 62);
-            this.btnReserve.TabIndex = 22;
-            this.btnReserve.Text = "Crear Reserva";
-            this.btnReserve.UseVisualStyleBackColor = true;
-            this.btnReserve.Click += new System.EventHandler(this.btnReserve_Click);
             // 
             // label7
             // 
@@ -464,14 +455,13 @@ namespace UI.Controls
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listBoxRecommendations);
-            this.Controls.Add(this.btnReserve);
             this.Controls.Add(this.btnLoan);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tlpCrud);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblDiscount);
-            this.Controls.Add(this.tlpAdmin);
+            this.Controls.Add(this.tlpCrudBotones);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.label1);
@@ -491,7 +481,7 @@ namespace UI.Controls
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
-            this.tlpAdmin.ResumeLayout(false);
+            this.tlpCrudBotones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -514,7 +504,7 @@ namespace UI.Controls
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label lblDiscount;
-        private System.Windows.Forms.TableLayoutPanel tlpAdmin;
+        private System.Windows.Forms.TableLayoutPanel tlpCrudBotones;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
@@ -525,7 +515,6 @@ namespace UI.Controls
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboAuthor;
         private System.Windows.Forms.Button btnLoan;
-        private System.Windows.Forms.Button btnReserve;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDescription;

@@ -82,8 +82,7 @@ namespace DAL
         public void Delete(string entityId)
         {
             //_xmlDocument = XDocument.Load(_filePath);
-
-            XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entityId);
+            XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id")?.Value == entityId);
             if (element != null)
             {
                 element.Remove();
