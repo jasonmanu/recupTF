@@ -69,7 +69,7 @@ namespace DAL
 
         public void Update(T entity)
         {
-            //_xmlDocument = XDocument.Load(_filePath);
+            _xmlDocument = XDocument.Load(_filePath);
 
             XElement element = _xmlDocument.Descendants(typeof(T).Name).FirstOrDefault(e => e.Element("Id").Value == entity.Id);
             if (element != null)

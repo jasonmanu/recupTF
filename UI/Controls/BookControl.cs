@@ -103,9 +103,19 @@ namespace UI.Controls
                 btnDelete.Visible = true;
             }
 
-            if (user.Permisos.Contains("Libro.Eliminar"))
+            if (user.Permisos.Contains("Prestamo.Crear"))
             {
                 btnLoan.Enabled = true;
+            }
+
+            if (user.RoleName == "Cliente")
+            {
+                lblLibroCbo.Visible = false;
+                lblUserCbo.Visible = false;
+                btnEntregar.Visible = false;
+                cboUsuario.Visible = false;
+                cboLibro.Visible = false;
+                btnRecibirLibro.Visible = false;
             }
         }
 
@@ -274,6 +284,7 @@ namespace UI.Controls
                     if (userSubscription == null)
                     {
                         MessageBox.Show("No se puede prestar/reservar libro sin subscripcion");
+                        return;
                     }
 
                     if (book.Stock == 0)
@@ -316,6 +327,7 @@ namespace UI.Controls
                             notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Puede retirar su libro {book.Title}", UserId = user.Id });
                             notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Debe devolver el libro {book.Title} antes de {loanEndDate}", UserId = user.Id });
                             MessageBox.Show($"Prestamo creado. Puede retirar el libro en la biblioteca.");
+                            LoadBooks();
                         }
                         else
                         {
@@ -336,7 +348,7 @@ namespace UI.Controls
 
         private void btnReserve_Click(object sender, EventArgs e)
         {
-            // reserva si no hay libros libres para prestar, como hacer si no devolvieron el libro y vien alguien a buscarlo? solo puede reservar si el libro esta disponible
+            // deprecado
         }
 
         private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)

@@ -61,8 +61,8 @@ namespace UI.Controls
             this.label8 = new System.Windows.Forms.Label();
             this.listBoxRecommendations = new System.Windows.Forms.ListBox();
             this.cboUsuario = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblUserCbo = new System.Windows.Forms.Label();
+            this.lblLibroCbo = new System.Windows.Forms.Label();
             this.cboLibro = new System.Windows.Forms.ComboBox();
             this.btnEntregar = new System.Windows.Forms.Button();
             this.btnRecibirLibro = new System.Windows.Forms.Button();
@@ -450,43 +450,43 @@ namespace UI.Controls
             // 
             this.cboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUsuario.FormattingEnabled = true;
-            this.cboUsuario.Location = new System.Drawing.Point(379, 517);
+            this.cboUsuario.Location = new System.Drawing.Point(419, 517);
             this.cboUsuario.Name = "cboUsuario";
-            this.cboUsuario.Size = new System.Drawing.Size(252, 21);
+            this.cboUsuario.Size = new System.Drawing.Size(260, 21);
             this.cboUsuario.TabIndex = 25;
             // 
-            // label4
+            // lblUserCbo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(476, 500);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Usuario";
+            this.lblUserCbo.AutoSize = true;
+            this.lblUserCbo.Location = new System.Drawing.Point(526, 500);
+            this.lblUserCbo.Name = "lblUserCbo";
+            this.lblUserCbo.Size = new System.Drawing.Size(43, 13);
+            this.lblUserCbo.TabIndex = 26;
+            this.lblUserCbo.Text = "Usuario";
             // 
-            // label9
+            // lblLibroCbo
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(819, 500);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Libro";
+            this.lblLibroCbo.AutoSize = true;
+            this.lblLibroCbo.Location = new System.Drawing.Point(927, 500);
+            this.lblLibroCbo.Name = "lblLibroCbo";
+            this.lblLibroCbo.Size = new System.Drawing.Size(30, 13);
+            this.lblLibroCbo.TabIndex = 28;
+            this.lblLibroCbo.Text = "Libro";
             // 
             // cboLibro
             // 
             this.cboLibro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLibro.FormattingEnabled = true;
-            this.cboLibro.Location = new System.Drawing.Point(722, 517);
+            this.cboLibro.Location = new System.Drawing.Point(818, 517);
             this.cboLibro.Name = "cboLibro";
-            this.cboLibro.Size = new System.Drawing.Size(252, 21);
+            this.cboLibro.Size = new System.Drawing.Size(223, 21);
             this.cboLibro.TabIndex = 27;
             // 
             // btnEntregar
             // 
-            this.btnEntregar.Location = new System.Drawing.Point(379, 555);
+            this.btnEntregar.Location = new System.Drawing.Point(567, 557);
             this.btnEntregar.Name = "btnEntregar";
-            this.btnEntregar.Size = new System.Drawing.Size(270, 38);
+            this.btnEntregar.Size = new System.Drawing.Size(165, 42);
             this.btnEntregar.TabIndex = 29;
             this.btnEntregar.Text = "Entregar libro a cliente";
             this.btnEntregar.UseVisualStyleBackColor = true;
@@ -494,9 +494,9 @@ namespace UI.Controls
             // 
             // btnRecibirLibro
             // 
-            this.btnRecibirLibro.Location = new System.Drawing.Point(700, 555);
+            this.btnRecibirLibro.Location = new System.Drawing.Point(768, 559);
             this.btnRecibirLibro.Name = "btnRecibirLibro";
-            this.btnRecibirLibro.Size = new System.Drawing.Size(270, 38);
+            this.btnRecibirLibro.Size = new System.Drawing.Size(169, 38);
             this.btnRecibirLibro.TabIndex = 30;
             this.btnRecibirLibro.Text = "Recibir libro de Cliente";
             this.btnRecibirLibro.UseVisualStyleBackColor = true;
@@ -506,15 +506,15 @@ namespace UI.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblUserCbo);
             this.Controls.Add(this.btnRecibirLibro);
-            this.Controls.Add(this.btnEntregar);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.cboLibro);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cboUsuario);
             this.Controls.Add(this.listBoxRecommendations);
+            this.Controls.Add(this.cboUsuario);
+            this.Controls.Add(this.btnEntregar);
             this.Controls.Add(this.btnLoan);
+            this.Controls.Add(this.cboLibro);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblLibroCbo);
             this.Controls.Add(this.tlpCrud);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblDiscount);
@@ -579,8 +579,8 @@ namespace UI.Controls
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox listBoxRecommendations;
         private System.Windows.Forms.ComboBox cboUsuario;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblUserCbo;
+        private System.Windows.Forms.Label lblLibroCbo;
         private System.Windows.Forms.ComboBox cboLibro;
         private System.Windows.Forms.Button btnEntregar;
         private System.Windows.Forms.Button btnRecibirLibro;

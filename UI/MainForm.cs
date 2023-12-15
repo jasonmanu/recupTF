@@ -25,7 +25,7 @@ namespace UI
         private User user;
         private BookControl bookControl;
         private UsuariosControl usersControl;
-        private NotifsControl multasControl;
+        private NotifsControl notifsControl;
         private BibliotecariosControl bibliotecariosControl;
         private AuthorControl authorControl;
         private BackupControl backupControl;
@@ -77,9 +77,9 @@ namespace UI
         {
             ResetButtonsColors();
             btnNotificaciones.BackColor = Color.LightBlue;
-            multasControl = new NotifsControl(notificationService, user);
-            mainPanel.Controls.Add(multasControl);
-            multasControl.BringToFront();
+            notifsControl = new NotifsControl(notificationService, user);
+            mainPanel.Controls.Add(notifsControl);
+            notifsControl.BringToFront();
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)

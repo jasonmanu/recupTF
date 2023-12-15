@@ -29,7 +29,7 @@ namespace UI.Controls
 
         private void LoadData()
         {
-            var myNotifs = notificationService.GetAll().Where(x => x.UserId == user.Id);
+            var myNotifs = notificationService.GetAll().Where(x => x.UserId == user.Id).ToList();
             dgvData.DataSource = myNotifs;
         }
     }
