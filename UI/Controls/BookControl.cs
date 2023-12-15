@@ -18,7 +18,7 @@ namespace UI.Controls
         private readonly ISubscriptionService subscriptionService;
         private readonly ISubscriptionTypeService subscriptionTypeService;
         private readonly INotificationService notificationService;
-        private readonly User loggedUser;
+        private readonly User user;
         private readonly Subscription userSubscription;
         private readonly SubscriptionType userSubscriptionType;
 
@@ -32,7 +32,7 @@ namespace UI.Controls
             this.subscriptionService = subscriptionService;
             this.subscriptionTypeService = subscriptionTypeService;
             this.notificationService = notificationService;
-            this.loggedUser = new User() { Permisos = new List<string>() };// loggedUser;
+            this.user = new User() { Permisos = new List<string>() };// loggedUser;
             InitializeComponent();
 
             userSubscription = subscriptionService.GetAll().FirstOrDefault(x => x.UserId == loggedUser?.Id);
@@ -51,34 +51,34 @@ namespace UI.Controls
 
             btnLoan.Enabled = false;
 
-            if (loggedUser.Permisos.Contains("Libro.Leer"))
+            if (user.Permisos.Contains("Libro.Leer"))
             {
                 tlpCrud.Enabled = false;
                 tlpCrudBotones.Visible = false;
             }
 
-            if (loggedUser.Permisos.Contains("Libro.Crear"))
+            if (user.Permisos.Contains("Libro.Crear"))
             {
                 tlpCrud.Enabled = true;
                 tlpCrudBotones.Visible = true;
                 btnCreate.Visible = true;
             }
 
-            if (loggedUser.Permisos.Contains("Libro.Editar"))
+            if (user.Permisos.Contains("Libro.Editar"))
             {
                 tlpCrud.Enabled = true;
                 tlpCrudBotones.Visible = true;
                 btnUpdate.Visible = true;
             }
 
-            if (loggedUser.Permisos.Contains("Libro.Eliminar"))
+            if (user.Permisos.Contains("Libro.Eliminar"))
             {
                 tlpCrud.Enabled = true;
                 tlpCrudBotones.Visible = true;
                 btnDelete.Visible = true;
             }
 
-            if (loggedUser.Permisos.Contains("Libro.Eliminar"))
+            if (user.Permisos.Contains("Libro.Eliminar"))
             {
                 btnLoan.Enabled = true;
             }
@@ -88,14 +88,6 @@ namespace UI.Controls
         {
             dgvData.Refresh();
             dgvData.DataSource = bookService.GetAll();
-            //dgvBooks.Columns["Id"].Visible = false;
-            //dgvBooks.Columns["BrandId"].Visible = false;
-            //dgvBooks.Columns["CategoryId"].Visible = false;
-            //dgvBooks.Columns["Name"].DisplayIndex = 0;
-            //dgvBooks.Columns["Description"].DisplayIndex = 1;
-            //dgvBooks.Columns["Price"].DisplayIndex = 2;
-            //dgvBooks.Columns["BrandName"].DisplayIndex = 3;
-            //dgvBooks.Columns["CategoryName"].DisplayIndex = 4;
 
             cboAuthor.DataSource = authorService.GetAll();
             cboAuthor.DisplayMember = "Name";
@@ -105,24 +97,43 @@ namespace UI.Controls
             cboCategory.DisplayMember = "Name";
             cboCategory.ValueMember = "Id";
 
-            var loanBooks = loanService.GetAll().Where(x => x.UserId == loggedUser.Id).ToList();
+            List<Loan> misPrestamos = loanService.GetAll().Where(x => x.UserId == user.Id).ToList();
+            List<string> misCategorias = new List<string>();
+            List<string> misAutores = new List<string>();
 
-            var categories = new List<string>();
-            foreach (var item in loanBooks)
+            foreach (var prestamo in misPrestamos)
             {
-                var book = bookService.GetById(item.BookId);
-                var category = categoryService.GetById(book.CategoryId);
+                Book book = bookService.GetById(prestamo.BookId);
+                misCategorias.Add(book.CategoryId);
+                Category category = categoryService.GetById(book.CategoryId);
+                misAutores.Add(book.AuthorId);
             }
 
             List<Book> recommendedBooks = new List<Book>();
-            listBoxRecommendations.Items.Add($"Basado en tus prestamos, reservas, colecciones y autores te recomendamos los libros");
+            var todosLosLibros = bookService.GetAll();
+
+            foreach (var libro in todosLosLibros)
+            {
+                if (misCategorias.Contains(libro.CategoryId))
+                {
+                    recommendedBooks.Add(libro);
+                }
+            }
+
+            foreach (var libro in todosLosLibros)
+            {
+                if (misAutores.Contains(libro.AuthorId))
+                {
+                    recommendedBooks.Add(libro);
+                }
+            }
+
+            listBoxRecommendations.Items.Add($"Basado en tus prestamos, reservas y autores te recomendamos los libros");
+
             foreach (var book in recommendedBooks)
             {
                 listBoxRecommendations.Items.Add($"- {book.Title}");
             }
-
-
-            //var myReservations = reservationService.GetAll();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -224,55 +235,70 @@ namespace UI.Controls
 
         private void btnLoan_Click(object sender, EventArgs e)
         {
-            string bookId = FormHelper.GetCurrentRowId(dgvData);
-
-            try
+            DialogResult result = MessageBox.Show("Confirmar prestamo/reserva", "Confirmar", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                Book book = bookService.GetById(bookId);
+                string bookId = FormHelper.GetCurrentRowId(dgvData);
 
-                if (book.Stock == 0)
+                try
                 {
-                    //crea reserva
-                    loanService.Create(new Loan()
-                    {
-                        BookId = bookId,
-                        UserId = loggedUser.Id,
-                        EndDate = null,
-                        StartDate = DateTime.Now,
-                        PuedeRetirar = false,
-                        ReturnDate = null,
-                    });
+                    Book book = bookService.GetById(bookId);
 
-                    MessageBox.Show($"Reserva creada. Recibira una notificacion cuando el libro este disponible para retirar");
+                    if (book.Stock == 0)
+                    {
+                        //crea reserva
+                        loanService.Create(new Loan()
+                        {
+                            BookId = bookId,
+                            UserId = user.Id,
+                            EndDate = null,
+                            StartDate = DateTime.Now,
+                            PuedeRetirar = false,
+                            ReturnDate = null,
+                        });
+
+                        MessageBox.Show($"Reserva creada. Recibira una notificacion cuando el libro este disponible para retirar");
+                    }
+                    else
+                    {
+                        int cantidadPrestamosDelUsuario = loanService.GetAll().Count(x => x.ReturnDate != null && x.UserId == user.Id);
+
+                        if(cantidadPrestamosDelUsuario < userSubscriptionType.MaxLoanBooks)
+                        {
+                            DateTime loanEndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
+
+                            // crea prestamo
+                            loanService.Create(new Loan()
+                            {
+                                BookId = bookId,
+                                UserId = user.Id,
+                                StartDate = DateTime.Now,
+                                EndDate = loanEndDate,
+                                PuedeRetirar = true,
+                                ReturnDate = null,
+                            });
+
+                            book.Stock = book.Stock - 1;
+                            bookService.Update(book);
+
+                            notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Puede retirar su libro {book.Title}", UserId = user.Id });
+                            notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Debe devolver el libro {book.Title} antes de {loanEndDate}", UserId = user.Id });
+                            MessageBox.Show($"Prestamo creado. Puede retirar el libro en la biblioteca.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No puedes superar tu maximo de libros prestados por tu tipo de subscripcion");
+                        }
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    DateTime loanEndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
-
-                    // crea prestamo
-                    loanService.Create(new Loan()
-                    {
-                        BookId = bookId,
-                        UserId = loggedUser.Id,
-                        StartDate = DateTime.Now,
-                        EndDate = loanEndDate,
-                        PuedeRetirar = true,
-                        ReturnDate = null,
-                    });
-
-                    book.Stock = book.Stock - 1;
-                    bookService.Update(book);
-
-                    notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Puede retirar su libro {book.Title}", UserId = loggedUser.Id });
-                    notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Debe devolver el libro {book.Title} antes de {loanEndDate}", UserId = loggedUser.Id });
-                    MessageBox.Show($"Prestamo creado. Puede retirar el libro en la biblioteca.");
+                    MessageBox.Show(ex.Message);
                 }
-
-
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Prestamo/Reserva cancelado");
             }
         }
 

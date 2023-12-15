@@ -30,24 +30,36 @@ namespace UI.Controls
         private void InitializeComponent()
         {
             this.lblInfo = new System.Windows.Forms.Label();
+            this.dgvData = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(228, 48);
+            this.lblInfo.Location = new System.Drawing.Point(497, 33);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(74, 13);
             this.lblInfo.TabIndex = 0;
             this.lblInfo.Text = "Notificaciones";
             // 
-            // MultasControl
+            // dgvData
+            // 
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Location = new System.Drawing.Point(107, 92);
+            this.dgvData.Name = "dgvData";
+            this.dgvData.Size = new System.Drawing.Size(901, 410);
+            this.dgvData.TabIndex = 1;
+            // 
+            // NotifsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvData);
             this.Controls.Add(this.lblInfo);
-            this.Name = "MultasControl";
-            this.Size = new System.Drawing.Size(600, 500);
+            this.Name = "NotifsControl";
+            this.Size = new System.Drawing.Size(1100, 640);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,5 +68,6 @@ namespace UI.Controls
         #endregion
 
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.DataGridView dgvData;
     }
 }

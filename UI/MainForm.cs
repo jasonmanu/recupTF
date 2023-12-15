@@ -88,7 +88,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnNotificaciones.BackColor = Color.LightBlue;
-            multasControl = new NotifsControl();
+            multasControl = new NotifsControl(notificationService, user);
             mainPanel.Controls.Add(multasControl);
             multasControl.BringToFront();
         }
@@ -255,8 +255,7 @@ namespace UI
             }
 
 
-            // TODO delete comments
-            if (true)//permisosGenerales.Contains("Usuario"))
+            if (permisosGenerales.Contains("Usuario"))
             {
                 btnUsuarios.Visible = true;
             }
@@ -291,8 +290,7 @@ namespace UI
                 btnSubscriptionTypes.Visible = true;
             }
 
-            // TODO
-            if (true)//permisosGenerales.Contains("Roles"))
+            if (permisosGenerales.Contains("Roles"))
             {
                 btnRoles.Visible = true;
             }
