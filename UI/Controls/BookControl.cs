@@ -32,7 +32,7 @@ namespace UI.Controls
             this.subscriptionService = subscriptionService;
             this.subscriptionTypeService = subscriptionTypeService;
             this.notificationService = notificationService;
-            this.user = new User() { Permisos = new List<string>() };// loggedUser;
+            this.user = loggedUser;
             InitializeComponent();
 
             userSubscription = subscriptionService.GetAll().FirstOrDefault(x => x.UserId == loggedUser?.Id);
@@ -44,6 +44,13 @@ namespace UI.Controls
 
         private void HabilitarBotones()
         {
+            listBoxRecommendations.Visible = false;
+
+            if (user.RoleName == "Cliente")
+            {
+                listBoxRecommendations.Visible = true;
+            }
+
             //tlpCrud.Visible = true;
             //tlpCrud.Enabled = true;
             //tlpCrudBotones.Visible = true;
@@ -96,6 +103,8 @@ namespace UI.Controls
             cboCategory.DataSource = categoryService.GetAll();
             cboCategory.DisplayMember = "Name";
             cboCategory.ValueMember = "Id";
+
+            listBoxRecommendations.Items.Clear();
 
             List<Loan> misPrestamos = loanService.GetAll().Where(x => x.UserId == user.Id).ToList();
             List<string> misCategorias = new List<string>();
@@ -263,7 +272,7 @@ namespace UI.Controls
                     {
                         int cantidadPrestamosDelUsuario = loanService.GetAll().Count(x => x.ReturnDate != null && x.UserId == user.Id);
 
-                        if(cantidadPrestamosDelUsuario < userSubscriptionType.MaxLoanBooks)
+                        if (cantidadPrestamosDelUsuario < userSubscriptionType.MaxLoanBooks)
                         {
                             DateTime loanEndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
 
