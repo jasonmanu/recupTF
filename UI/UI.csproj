@@ -229,17 +229,11 @@
     <Compile Include="Controls\CollectionControl.Designer.cs">
       <DependentUpon>CollectionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HomeControl.cs">
+    <Compile Include="Controls\NotifsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\HomeControl.Designer.cs">
-      <DependentUpon>HomeControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MultasControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\MultasControl.Designer.cs">
-      <DependentUpon>MultasControl.cs</DependentUpon>
+    <Compile Include="Controls\NotifsControl.Designer.cs">
+      <DependentUpon>NotifsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\RolsControl.cs">
       <SubType>UserControl</SubType>
@@ -294,11 +288,8 @@
     <EmbeddedResource Include="Controls\CollectionControl.resx">
       <DependentUpon>CollectionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\HomeControl.resx">
-      <DependentUpon>HomeControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\MultasControl.resx">
-      <DependentUpon>MultasControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\NotifsControl.resx">
+      <DependentUpon>NotifsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RolsControl.resx">
       <DependentUpon>RolsControl.cs</DependentUpon>

@@ -26,7 +26,7 @@ namespace UI
         private BookControl bookControl;
         private LoanControl loanControl;
         private UsuariosControl usersControl;
-        private MultasControl multasControl;
+        private NotifsControl multasControl;
         private BibliotecariosControl bibliotecariosControl;
         private AuthorControl authorControl;
         private BackupControl backupControl;
@@ -88,7 +88,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnNotificaciones.BackColor = Color.LightBlue;
-            multasControl = new MultasControl();
+            multasControl = new NotifsControl();
             mainPanel.Controls.Add(multasControl);
             multasControl.BringToFront();
         }
@@ -97,7 +97,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnUsuarios.BackColor = Color.LightBlue;
-            usersControl = new UsuariosControl(userService);
+            usersControl = new UsuariosControl(userService, roleService, user);
             mainPanel.Controls.Add(usersControl);
             usersControl.BringToFront();
         }
@@ -115,7 +115,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnAuthors.BackColor = Color.LightBlue;
-            authorControl = new AuthorControl(authorService);
+            authorControl = new AuthorControl(authorService, user);
             mainPanel.Controls.Add(authorControl);
             authorControl.BringToFront();
         }
@@ -124,7 +124,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnCategories.BackColor = Color.LightBlue;
-            categoryControl = new CategoryControl(categoryService);
+            categoryControl = new CategoryControl(categoryService, user);
             mainPanel.Controls.Add(categoryControl);
             categoryControl.BringToFront();
         }
@@ -133,7 +133,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnBackup.BackColor = Color.LightBlue;
-            backupControl = new BackupControl(backupService);
+            backupControl = new BackupControl(backupService, user);
             mainPanel.Controls.Add(backupControl);
             backupControl.BringToFront();
         }
@@ -165,7 +165,7 @@ namespace UI
         {
             ResetButtonsColors();
             btnSubscriptionTypes.BackColor = Color.LightBlue;
-            subscriptionTypesControl = new SubscriptionTypeControl(subscriptionTypeService, subscriptionService);
+            subscriptionTypesControl = new SubscriptionTypeControl(subscriptionTypeService, subscriptionService, user);
             mainPanel.Controls.Add(subscriptionTypesControl);
             subscriptionTypesControl.BringToFront();
         }
@@ -254,7 +254,9 @@ namespace UI
                 btnSubscriptionTypes.Visible = true;
             }
 
-            if (permisosGenerales.Contains("Usuario"))
+
+            // TODO delete comments
+            if (true)//permisosGenerales.Contains("Usuario"))
             {
                 btnUsuarios.Visible = true;
             }
@@ -289,7 +291,12 @@ namespace UI
                 btnSubscriptionTypes.Visible = true;
             }
 
-            btnRoles.Visible = true;
+            // TODO
+            if (true)//permisosGenerales.Contains("Roles"))
+            {
+                btnRoles.Visible = true;
+            }
+
         }
     }
 }

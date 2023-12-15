@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Entities;
 using FormSupport;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,31 @@ namespace UI.Controls
     public partial class BackupControl : UserControl
     {
         private readonly IBackupService backupService;
+        private readonly User user;
 
-        public BackupControl(IBackupService backupService)
+        public BackupControl(IBackupService backupService, User user)
         {
             this.backupService = backupService;
+            this.user = user;
             InitializeComponent();
             LoadData();
+            HabilitarBotones();
+        }
+
+        private void HabilitarBotones()
+        {
+            btnExport.Enabled = false;
+            btnImport.Enabled = false;
+
+            if (user.Permisos.Contains("Backup.Leer"))
+            {
+                btnImport.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Backup.Crear"))
+            {
+                btnExport.Enabled = true;
+            }
         }
 
         private void LoadData()

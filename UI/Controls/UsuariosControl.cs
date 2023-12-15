@@ -3,6 +3,7 @@ using Entities;
 using FormSupport;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI.Controls
@@ -10,28 +11,55 @@ namespace UI.Controls
     public partial class UsuariosControl : UserControl
     {
         private readonly IUserService userService;
+        private readonly IRoleService roleService;
+        private readonly User user;
 
-        public UsuariosControl(IUserService userService)
+        public UsuariosControl(IUserService userService, IRoleService roleService, User user)
         {
             this.Dock = DockStyle.Fill;
             InitializeComponent();
             this.userService = userService;
+            this.roleService = roleService;
+            this.user = user;
             LoadData();
+            HabilitarBotones();
+        }
+
+        private void HabilitarBotones()
+        {
+            if (user.Permisos.Contains("Usuario.Leer"))
+            {
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+
+            if (user.Permisos.Contains("Usuario.Crear"))
+            {
+                btnCreate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Usuario.Editar"))
+            {
+                btnUpdate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Usuario.Eliminar"))
+            {
+                btnDelete.Enabled = true;
+            }
         }
 
         private void LoadData()
         {
-            var roles = new List<Role>
-            {
-                new Role() { Name = "ROL A" },
-                new Role() { Name = "ROL B" }
-            };
+            List<Role> roles = roleService.GetAll().Where(x => x.Id != null).ToList();
             cboRole.DataSource = roles;
             cboRole.DisplayMember = "Name";
+            cboRole.ValueMember = "Name";
+
             dgvData.Refresh();
-            var users = userService.GetAll();
+            List<User> users = userService.GetAll();
             dgvData.DataSource = users;
-            //cboRole.ValueMember = "Id";// TODO add
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -44,7 +72,7 @@ namespace UI.Controls
                     Password = txtPassword.Text,
                     Address = txtAddress.Text,
                     LastLoginAt = DateTime.Now,
-                    RoleName = "Cliente"
+                    RoleName = ((Role)cboRole.SelectedItem).Name,
                 });
 
                 MessageBox.Show("Creado correctamente");
@@ -53,7 +81,7 @@ namespace UI.Controls
                 txtName.ResetText();
                 txtAddress.ResetText();
                 txtPassword.ResetText();
-                txtUsername.ResetText();
+                lblUsername.ResetText();
             }
             catch (Exception ex)
             {
@@ -74,7 +102,7 @@ namespace UI.Controls
                     Password = txtPassword.Text,
                     Address = txtAddress.Text,
                     LastLoginAt = DateTime.Now,
-                    RoleName = "Cliente"
+                    RoleName = ((Role)cboRole.SelectedItem).Name,
                 };
 
                 userService.Update(user);
@@ -105,21 +133,28 @@ namespace UI.Controls
 
         private void dgvData_SelectionChanged(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvData);
-            var user = userService.GetById(id);
+            string userId = FormHelper.GetCurrentRowId(dgvData);
+            var user = userService.GetById(userId);
 
             if (user != null)
             {
                 txtName.Text = user.Username;
                 txtAddress.Text = user.Address;
-                txtPassword.Text = user.Password;//TODO ocultar
-                txtUsername.Text = user.Username;
-
-                //if (user.Role != null)
-                //{
-                //    cboRole.SelectedValue = user.Role;//TODO elegir Id;
-                //}
+                txtPassword.Text = CryptoHelper.Decrypt(user.Password);
+                cboRole.SelectedValue = user.RoleName;
             }
+        }
+
+        private void cboRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (cboRole.SelectedValue != null)
+            //{
+            //    string rolId = ((Role)cboRole.SelectedValue).Id;
+            //    txtNewRoleName.Text = ((Role)cboRole.SelectedValue).Name;
+
+            //    var rol = roleService.GetById(rolId);
+            //    treeViewAssigned.Nodes.Add(ConvertToTreeNode(rol));
+            //}
         }
     }
 }

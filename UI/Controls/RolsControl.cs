@@ -22,7 +22,7 @@ namespace UI.Controls
 
         private void CargarPermisosPredefinidos()
         {
-            List<string> features = new List<string>() { "Libro", "Usuario", "Autor", "Backup", "Categoria", "Prestamo", "Notificacion", "TipoSubscripcion" };
+            List<string> features = new List<string>() { "Libro", "Usuario", "Autor", "Backup", "Categoria", "Prestamo", "Notificacion", "TipoSubscripcion", "Roles" };
             List<string> permisos = new List<string>() { "Crear", "Leer", "Editar", "Eliminar" };
             List<string> permisosSueltos = new List<string>();
             List<SimpleRole> entidadesPermisos = new List<SimpleRole>();
@@ -54,7 +54,7 @@ namespace UI.Controls
         }
         private void CargarRolesExistentes()
         {
-            var roles = roleService.GetAll().Where(x => x.Id != null).ToList();
+            List<Role> roles = roleService.GetAll().Where(x => x.Id != null).ToList();
             cboRoles.DataSource = roles;
             cboRoles.DisplayMember = "Name";
 

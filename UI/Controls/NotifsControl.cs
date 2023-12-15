@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI.Controls
 {
-    public partial class MultasControl : UserControl
+    public partial class NotifsControl : UserControl
     {
-        public MultasControl()
+        public NotifsControl()
         {
             this.Dock = DockStyle.Fill;
 

@@ -32,6 +32,7 @@ namespace UI.Controls
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblPrice = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCategory = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@ namespace UI.Controls
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtUsername = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.tlpAdmin = new System.Windows.Forms.TableLayoutPanel();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@ namespace UI.Controls
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -101,6 +101,14 @@ namespace UI.Controls
             this.tableLayoutPanel3.Size = new System.Drawing.Size(333, 53);
             this.tableLayoutPanel3.TabIndex = 12;
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAddress.Location = new System.Drawing.Point(86, 16);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(244, 20);
+            this.txtAddress.TabIndex = 30;
+            // 
             // lblPrice
             // 
             this.lblPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -145,6 +153,7 @@ namespace UI.Controls
             this.cboRole.Name = "cboRole";
             this.cboRole.Size = new System.Drawing.Size(244, 21);
             this.cboRole.TabIndex = 5;
+            this.cboRole.SelectedIndexChanged += new System.EventHandler(this.cboRole_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -186,7 +195,7 @@ namespace UI.Controls
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.Controls.Add(this.txtUsername, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblUsername, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtName, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -195,15 +204,15 @@ namespace UI.Controls
             this.tableLayoutPanel1.Size = new System.Drawing.Size(333, 53);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
-            // txtUsername
+            // lblUsername
             // 
-            this.txtUsername.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txtUsername.AutoSize = true;
-            this.txtUsername.Location = new System.Drawing.Point(18, 13);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(62, 26);
-            this.txtUsername.TabIndex = 6;
-            this.txtUsername.Text = "Nombre de usuario";
+            this.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(18, 13);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(62, 26);
+            this.lblUsername.TabIndex = 6;
+            this.lblUsername.Text = "Nombre de usuario";
             // 
             // txtName
             // 
@@ -288,14 +297,6 @@ namespace UI.Controls
             this.label6.TabIndex = 23;
             this.label6.Text = "Usuarios";
             // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.Location = new System.Drawing.Point(86, 16);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(244, 20);
-            this.txtAddress.TabIndex = 30;
-            // 
             // UsuariosControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,7 +336,7 @@ namespace UI.Controls
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label txtUsername;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TableLayoutPanel tlpAdmin;
         private System.Windows.Forms.Button btnCreate;

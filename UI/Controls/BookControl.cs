@@ -49,6 +49,8 @@ namespace UI.Controls
             //tlpCrudBotones.Visible = true;
             //tlpCrudBotones.Enabled = true;
 
+            btnLoan.Enabled = false;
+
             if (loggedUser.Permisos.Contains("Libro.Leer"))
             {
                 tlpCrud.Enabled = false;
@@ -74,6 +76,11 @@ namespace UI.Controls
                 tlpCrud.Enabled = true;
                 tlpCrudBotones.Visible = true;
                 btnDelete.Visible = true;
+            }
+
+            if (loggedUser.Permisos.Contains("Libro.Eliminar"))
+            {
+                btnLoan.Enabled = true;
             }
         }
 

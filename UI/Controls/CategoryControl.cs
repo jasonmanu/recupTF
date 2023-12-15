@@ -2,13 +2,6 @@
 using Entities;
 using FormSupport;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Controls
@@ -16,12 +9,40 @@ namespace UI.Controls
     public partial class CategoryControl : UserControl
     {
         private readonly ICategoryService categoryService;
+        private readonly User user;
 
-        public CategoryControl(ICategoryService categoryService)
+        public CategoryControl(ICategoryService categoryService, User user)
         {
             this.categoryService = categoryService;
+            this.user = user;
             InitializeComponent();
             LoadData();
+            HabilitarBotones();
+        }
+
+        private void HabilitarBotones()
+        {
+            if (user.Permisos.Contains("Categoria.Leer"))
+            {
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+
+            if (user.Permisos.Contains("Categoria.Crear"))
+            {
+                btnCreate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Categoria.Editar"))
+            {
+                btnUpdate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Categoria.Eliminar"))
+            {
+                btnDelete.Enabled = true;
+            }
         }
 
         private void LoadData()

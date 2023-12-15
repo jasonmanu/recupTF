@@ -16,12 +16,40 @@ namespace UI.Controls
     public partial class AuthorControl : UserControl
     {
         private readonly IAuthorService authorService;
+        private readonly User user;
 
-        public AuthorControl(IAuthorService authorService)
+        public AuthorControl(IAuthorService authorService, User user)
         {
             InitializeComponent();
             this.authorService = authorService;
+            this.user = user;
             LoadData();
+            HabilitarBotones();
+        }
+
+        private void HabilitarBotones()
+        {
+            if (user.Permisos.Contains("Autor.Leer"))
+            {
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+
+            if (user.Permisos.Contains("Autor.Crear"))
+            {
+                btnCreate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Autor.Editar"))
+            {
+                btnUpdate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Autor.Eliminar"))
+            {
+                btnDelete.Enabled = true;
+            }
         }
 
         private void LoadData()

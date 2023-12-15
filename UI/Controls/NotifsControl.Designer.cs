@@ -1,7 +1,7 @@
 ﻿
 namespace UI.Controls
 {
-    partial class MultasControl
+    partial class NotifsControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,23 +29,23 @@ namespace UI.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Multas";
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(228, 48);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(74, 13);
+            this.lblInfo.TabIndex = 0;
+            this.lblInfo.Text = "Notificaciones";
             // 
             // MultasControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblInfo);
             this.Name = "MultasControl";
             this.Size = new System.Drawing.Size(600, 500);
             this.ResumeLayout(false);
@@ -55,6 +55,6 @@ namespace UI.Controls
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

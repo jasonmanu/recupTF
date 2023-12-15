@@ -17,14 +17,59 @@ namespace UI.Controls
     {
         private readonly ISubscriptionTypeService subscriptionTypeService;
         private readonly ISubscriptionService subscriptionService;
-        private readonly string userId = "";// TODO read from other side
+        private readonly User user;
 
-        public SubscriptionTypeControl(ISubscriptionTypeService subscriptionTypeService, ISubscriptionService subscriptionService)
+        public SubscriptionTypeControl(ISubscriptionTypeService subscriptionTypeService, ISubscriptionService subscriptionService, User user)
         {
             this.subscriptionTypeService = subscriptionTypeService;
             this.subscriptionService = subscriptionService;
+            this.user = user;
             InitializeComponent();
             LoadData();
+            HabilitarBotones();
+        }
+
+        private void HabilitarBotones()
+        {
+            btnBuySubscription.Enabled = false;
+            btnCancelSubscription.Enabled = false;
+
+            if (user.Permisos.Contains("TipoSubscripcion.Leer"))
+            {
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+
+            if (user.Permisos.Contains("TipoSubscripcion.Crear"))
+            {
+                btnCreate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("TipoSubscripcion.Editar"))
+            {
+                btnUpdate.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("TipoSubscripcion.Eliminar"))
+            {
+                btnDelete.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Prestamo.Crear"))
+            {
+                btnBuySubscription.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Prestamo.Editar"))
+            {
+                btnCancelSubscription.Enabled = true;
+            }
+
+            if (user.Permisos.Contains("Prestamo.Eliminar"))
+            {
+                btnCancelSubscription.Enabled = true;
+            }
         }
 
         private void LoadData()
@@ -113,19 +158,18 @@ namespace UI.Controls
         private void btnBuySubscription_Click(object sender, EventArgs e)
         {
             string subTypeId = FormHelper.GetCurrentRowId(dgvData);
-            Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == userId).FirstOrDefault();
+            Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == user.Id).FirstOrDefault();
 
             if (userSubscription == null)
             {
-                subscriptionService.Create(new Subscription() { SubscriptionTypeId = subTypeId, UserId = userId, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
+                subscriptionService.Create(new Subscription() { SubscriptionTypeId = subTypeId, UserId = user.Id, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
                 MessageBox.Show("Subscripcion creada");
             }
             else
             {
-                //TODO: verify
-                if (userSubscription.Id != subTypeId)
+                if (userSubscription.SubscriptionTypeId != subTypeId)
                 {
-                    subscriptionService.Update(new Subscription() { Id = userSubscription.Id, SubscriptionTypeId = subTypeId, UserId = userId, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
+                    subscriptionService.Update(new Subscription() { Id = userSubscription.Id, SubscriptionTypeId = subTypeId, UserId = user.Id, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
                 }
             }
         }
@@ -133,7 +177,7 @@ namespace UI.Controls
         private void btnCancelSubscription_Click(object sender, EventArgs e)
         {
             string subTypeId = FormHelper.GetCurrentRowId(dgvData);
-            Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == userId).FirstOrDefault();
+            Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == user.Id).FirstOrDefault();
 
             if (userSubscription != null)
             {
