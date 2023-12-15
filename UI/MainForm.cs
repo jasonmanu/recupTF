@@ -24,7 +24,6 @@ namespace UI
 
         private User user;
         private BookControl bookControl;
-        private LoanControl loanControl;
         private UsuariosControl usersControl;
         private NotifsControl multasControl;
         private BibliotecariosControl bibliotecariosControl;
@@ -50,7 +49,6 @@ namespace UI
 
             btnNotificaciones.Visible = false;
             btnLibros.Visible = false;
-            btnEstadisticas.Visible = false;
             btnNotificaciones.Visible = false;
             btnUsuarios.Visible = false;
             btnRoles.Visible = false;
@@ -70,18 +68,9 @@ namespace UI
         {
             ResetButtonsColors();
             btnLibros.BackColor = Color.LightBlue;
-            bookControl = new BookControl(bookService, authorService, categoryService, loanService, subscriptionService, subscriptionTypeService, notificationService, user);
+            bookControl = new BookControl(bookService, authorService, categoryService, loanService, subscriptionService, subscriptionTypeService, notificationService, userService, user);
             mainPanel.Controls.Add(bookControl);
             bookControl.BringToFront();
-        }
-
-        private void btnPrestamos_Click(object sender, EventArgs e)
-        {
-            ResetButtonsColors();
-            btnEstadisticas.BackColor = Color.LightBlue;
-            loanControl = new LoanControl(loanService, user);
-            mainPanel.Controls.Add(loanControl);
-            loanControl.BringToFront();
         }
 
         private void btnNotificaciones_Click(object sender, EventArgs e)
@@ -175,11 +164,7 @@ namespace UI
             btnInicio.BackColor = Color.LightGray;
             btnLibros.BackColor = Color.LightGray;
             btnNotificaciones.BackColor = Color.LightGray;
-            //btnSubscription.BackColor = Color.LightGray;
-            //btnCollection.BackColor = Color.LightGray;
-            //btnBibliotecarios.BackColor = Color.LightGray;
             btnUsuarios.BackColor = Color.LightGray;
-            btnEstadisticas.BackColor = Color.LightGray;
             btnSubscriptionTypes.BackColor = Color.LightGray;
             btnBackup.BackColor = Color.LightGray;
             btnAuthors.BackColor = Color.LightGray;
@@ -273,11 +258,6 @@ namespace UI
             if (permisosGenerales.Contains("Categoria"))
             {
                 btnCategories.Visible = true;
-            }
-
-            if (permisosGenerales.Contains("Prestamo"))
-            {
-                btnEstadisticas.Visible = true;
             }
 
             if (permisosGenerales.Contains("Notificacion"))

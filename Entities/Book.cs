@@ -29,8 +29,5 @@ namespace Entities
 
         [XmlElement("CollectionId")]
         public string CollectionId { get; set; }
-
-        //[XmlElement("EditorialId")]
-        //public string EditorialId { get; set; }
     }
 }

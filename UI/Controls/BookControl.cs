@@ -18,11 +18,12 @@ namespace UI.Controls
         private readonly ISubscriptionService subscriptionService;
         private readonly ISubscriptionTypeService subscriptionTypeService;
         private readonly INotificationService notificationService;
+        private readonly IUserService userService;
         private readonly User user;
         private readonly Subscription userSubscription;
         private readonly SubscriptionType userSubscriptionType;
 
-        public BookControl(IBookService bookService, IAuthorService authorService, ICategoryService categoryService, ILoanService loanService, ISubscriptionService subscriptionService, ISubscriptionTypeService subscriptionTypeService, INotificationService notificationService, User loggedUser)
+        public BookControl(IBookService bookService, IAuthorService authorService, ICategoryService categoryService, ILoanService loanService, ISubscriptionService subscriptionService, ISubscriptionTypeService subscriptionTypeService, INotificationService notificationService, IUserService userService, User loggedUser)
         {
             Dock = DockStyle.Fill;
             this.bookService = bookService;
@@ -32,6 +33,7 @@ namespace UI.Controls
             this.subscriptionService = subscriptionService;
             this.subscriptionTypeService = subscriptionTypeService;
             this.notificationService = notificationService;
+            this.userService = userService;
             this.user = loggedUser;
             InitializeComponent();
 
@@ -40,6 +42,22 @@ namespace UI.Controls
 
             LoadBooks();
             HabilitarBotones();
+            LoadUsers();
+            LoadBooksCombobox();
+        }
+
+        private void LoadBooksCombobox()
+        {
+            cboLibro.DataSource = bookService.GetAll();
+            cboLibro.DisplayMember = "Title";
+            cboLibro.ValueMember = "Id";
+        }
+
+        private void LoadUsers()
+        {
+            cboUsuario.DataSource = userService.GetAll();
+            cboUsuario.DisplayMember = "Username";
+            cboUsuario.ValueMember = "Id";
         }
 
         private void HabilitarBotones()
@@ -253,6 +271,11 @@ namespace UI.Controls
                 {
                     Book book = bookService.GetById(bookId);
 
+                    if (userSubscription == null)
+                    {
+                        MessageBox.Show("No se puede prestar/reservar libro sin subscripcion");
+                    }
+
                     if (book.Stock == 0)
                     {
                         //crea reserva
@@ -322,6 +345,74 @@ namespace UI.Controls
 
         private void cboAuthor_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void btnEntregar_Click(object sender, EventArgs e)
+        {
+            //entregar a cliente
+            string selectedBookId = (string)cboLibro.SelectedValue;
+            string selectedUserId = (string)cboLibro.SelectedValue;
+            Loan prestamoParaRetirar = loanService.GetAll().FirstOrDefault(x => x.UserId == selectedUserId && x.BookId == selectedBookId && x.PuedeRetirar == true);
+
+            if (prestamoParaRetirar != null)
+            {
+                prestamoParaRetirar.PuedeRetirar = false;
+                loanService.Update(prestamoParaRetirar);
+                MessageBox.Show("Retirado correcto, puede entregar libro");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró prestamo para retirar");
+            }
+        }
+
+        private void btnRecibirLibro_Click(object sender, EventArgs e)
+        {
+            // recibir de cliente
+            string selectedBookId = (string)cboLibro.SelectedValue;
+            string selectedUserId = (string)cboLibro.SelectedValue;
+            Book book = bookService.GetById(selectedBookId);
+            Loan prestamoARecibir = loanService.GetAll().FirstOrDefault(x => x.UserId == selectedUserId && x.BookId == selectedBookId && x.ReturnDate == null);
+
+            if (prestamoARecibir != null)
+            {
+                DateTime currentDate = DateTime.Now;
+
+                if (currentDate > prestamoARecibir.EndDate)
+                {
+                    // cobrar multa
+                    TimeSpan diferencia = (TimeSpan)(currentDate - prestamoARecibir.EndDate);
+                    int diferenciaEnDias = (int)diferencia.TotalDays;
+                    int multaPorDia = 5;
+                    MessageBox.Show($"Multa es de ${diferenciaEnDias * multaPorDia}");
+                }
+
+                // setear return date
+                prestamoARecibir.ReturnDate = DateTime.Now;
+                loanService.Update(prestamoARecibir);
+                MessageBox.Show("Libro devuelto correctamente");
+            }
+
+            // aumentar stock
+            book.Stock = book.Stock + 1;
+            bookService.Update(book);
+
+            // avisar a reserva
+            Loan reservaDelLibro = loanService.GetAll().Where(x => x.BookId == selectedBookId).OrderBy(x => x.StartDate).FirstOrDefault();
+
+            if (reservaDelLibro != null)
+            {
+                reservaDelLibro.StartDate = DateTime.Now;
+                reservaDelLibro.EndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
+                reservaDelLibro.PuedeRetirar = true;
+
+                loanService.Update(reservaDelLibro);
+
+                book.Stock = book.Stock - 1;
+                bookService.Update(book);
+
+                notificationService.Create(new Notification() { Date = DateTime.Now, UserId = reservaDelLibro.UserId, Message = $"El libro reservado {book.Title} ya esta disponible para retirar" });
+            }
         }
     }
 }

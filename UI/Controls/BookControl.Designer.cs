@@ -59,8 +59,13 @@ namespace UI.Controls
             this.btnLoan = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.listBoxRecommendations = new System.Windows.Forms.ListBox();
+            this.cboUsuario = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboLibro = new System.Windows.Forms.ComboBox();
+            this.btnEntregar = new System.Windows.Forms.Button();
+            this.btnRecibirLibro = new System.Windows.Forms.Button();
             this.tlpCrud.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -388,17 +393,17 @@ namespace UI.Controls
             this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvData.Location = new System.Drawing.Point(379, 74);
+            this.dgvData.Location = new System.Drawing.Point(379, 64);
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(694, 338);
+            this.dgvData.Size = new System.Drawing.Size(694, 258);
             this.dgvData.TabIndex = 15;
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvBooks_SelectionChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(625, 53);
+            this.label3.Location = new System.Drawing.Point(632, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(194, 13);
             this.label3.TabIndex = 20;
@@ -406,7 +411,7 @@ namespace UI.Controls
             // 
             // btnLoan
             // 
-            this.btnLoan.Location = new System.Drawing.Point(379, 430);
+            this.btnLoan.Location = new System.Drawing.Point(379, 328);
             this.btnLoan.Name = "btnLoan";
             this.btnLoan.Size = new System.Drawing.Size(694, 36);
             this.btnLoan.TabIndex = 21;
@@ -433,30 +438,82 @@ namespace UI.Controls
             this.label8.TabIndex = 18;
             this.label8.Text = "Oferta";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(625, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(194, 13);
-            this.label17.TabIndex = 20;
-            this.label17.Text = "Seleccione fila para actualizar / eliminar";
-            // 
             // listBoxRecommendations
             // 
             this.listBoxRecommendations.FormattingEnabled = true;
-            this.listBoxRecommendations.Location = new System.Drawing.Point(379, 503);
+            this.listBoxRecommendations.Location = new System.Drawing.Point(379, 389);
             this.listBoxRecommendations.Name = "listBoxRecommendations";
             this.listBoxRecommendations.Size = new System.Drawing.Size(694, 95);
             this.listBoxRecommendations.TabIndex = 24;
+            // 
+            // cboUsuario
+            // 
+            this.cboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUsuario.FormattingEnabled = true;
+            this.cboUsuario.Location = new System.Drawing.Point(379, 517);
+            this.cboUsuario.Name = "cboUsuario";
+            this.cboUsuario.Size = new System.Drawing.Size(252, 21);
+            this.cboUsuario.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(476, 500);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Usuario";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(819, 500);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Libro";
+            // 
+            // cboLibro
+            // 
+            this.cboLibro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLibro.FormattingEnabled = true;
+            this.cboLibro.Location = new System.Drawing.Point(722, 517);
+            this.cboLibro.Name = "cboLibro";
+            this.cboLibro.Size = new System.Drawing.Size(252, 21);
+            this.cboLibro.TabIndex = 27;
+            // 
+            // btnEntregar
+            // 
+            this.btnEntregar.Location = new System.Drawing.Point(379, 555);
+            this.btnEntregar.Name = "btnEntregar";
+            this.btnEntregar.Size = new System.Drawing.Size(270, 38);
+            this.btnEntregar.TabIndex = 29;
+            this.btnEntregar.Text = "Entregar libro a cliente";
+            this.btnEntregar.UseVisualStyleBackColor = true;
+            this.btnEntregar.Click += new System.EventHandler(this.btnEntregar_Click);
+            // 
+            // btnRecibirLibro
+            // 
+            this.btnRecibirLibro.Location = new System.Drawing.Point(700, 555);
+            this.btnRecibirLibro.Name = "btnRecibirLibro";
+            this.btnRecibirLibro.Size = new System.Drawing.Size(270, 38);
+            this.btnRecibirLibro.TabIndex = 30;
+            this.btnRecibirLibro.Text = "Recibir libro de Cliente";
+            this.btnRecibirLibro.UseVisualStyleBackColor = true;
+            this.btnRecibirLibro.Click += new System.EventHandler(this.btnRecibirLibro_Click);
             // 
             // BookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRecibirLibro);
+            this.Controls.Add(this.btnEntregar);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.cboLibro);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cboUsuario);
             this.Controls.Add(this.listBoxRecommendations);
             this.Controls.Add(this.btnLoan);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tlpCrud);
             this.Controls.Add(this.label8);
@@ -520,7 +577,12 @@ namespace UI.Controls
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ListBox listBoxRecommendations;
+        private System.Windows.Forms.ComboBox cboUsuario;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cboLibro;
+        private System.Windows.Forms.Button btnEntregar;
+        private System.Windows.Forms.Button btnRecibirLibro;
     }
 }
