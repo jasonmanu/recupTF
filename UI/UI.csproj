@@ -205,12 +205,6 @@
     <Compile Include="Controls\BackupControl.Designer.cs">
       <DependentUpon>BackupControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\BibliotecariosControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\BibliotecariosControl.Designer.cs">
-      <DependentUpon>BibliotecariosControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\BookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,12 +216,6 @@
     </Compile>
     <Compile Include="Controls\CategoryControl.Designer.cs">
       <DependentUpon>CategoryControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CollectionControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CollectionControl.Designer.cs">
-      <DependentUpon>CollectionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\NotifsControl.cs">
       <SubType>UserControl</SubType>
@@ -259,12 +247,6 @@
     <Compile Include="Controls\UsuariosControl.Designer.cs">
       <DependentUpon>UsuariosControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LoanControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\LoanControl.Designer.cs">
-      <DependentUpon>LoanControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,17 +264,11 @@
     <EmbeddedResource Include="Controls\BackupControl.resx">
       <DependentUpon>BackupControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\BibliotecariosControl.resx">
-      <DependentUpon>BibliotecariosControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookControl.resx">
       <DependentUpon>BookControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CategoryControl.resx">
       <DependentUpon>CategoryControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\CollectionControl.resx">
-      <DependentUpon>CollectionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\NotifsControl.resx">
       <DependentUpon>NotifsControl.cs</DependentUpon>
@@ -308,9 +284,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UsuariosControl.resx">
       <DependentUpon>UsuariosControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\LoanControl.resx">
-      <DependentUpon>LoanControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

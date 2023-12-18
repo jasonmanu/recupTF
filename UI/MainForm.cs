@@ -280,7 +280,7 @@ namespace UI
                 ResetButtonsColors();
                 btnEstadisticas.BackColor = Color.LightBlue;
 
-                statsControl = new StatsControl();
+                statsControl = new StatsControl(subscriptionService);
                 mainPanel.Controls.Add(statsControl);
                 statsControl.BringToFront();
             }

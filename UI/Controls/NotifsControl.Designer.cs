@@ -45,6 +45,7 @@ namespace UI.Controls
             // 
             // dgvData
             // 
+            this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Location = new System.Drawing.Point(107, 92);
             this.dgvData.Name = "dgvData";

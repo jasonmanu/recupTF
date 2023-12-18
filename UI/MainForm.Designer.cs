@@ -77,13 +77,13 @@ namespace UI
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnEstadisticas, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnUsuarios, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnCategories, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnAuthors, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnLibros, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnSubscriptionTypes, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnNotificaciones, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnCategories, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnRoles, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnBackup, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnSubscriptionTypes, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -142,9 +142,9 @@ namespace UI
             // btnSubscriptionTypes
             // 
             this.btnSubscriptionTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubscriptionTypes.Location = new System.Drawing.Point(115, 191);
+            this.btnSubscriptionTypes.Location = new System.Drawing.Point(3, 191);
             this.btnSubscriptionTypes.Name = "btnSubscriptionTypes";
-            this.btnSubscriptionTypes.Size = new System.Drawing.Size(107, 40);
+            this.btnSubscriptionTypes.Size = new System.Drawing.Size(106, 40);
             this.btnSubscriptionTypes.TabIndex = 11;
             this.btnSubscriptionTypes.Text = "Suscripciones";
             this.btnSubscriptionTypes.UseVisualStyleBackColor = true;
@@ -164,9 +164,9 @@ namespace UI
             // btnCategories
             // 
             this.btnCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategories.Location = new System.Drawing.Point(3, 191);
+            this.btnCategories.Location = new System.Drawing.Point(115, 191);
             this.btnCategories.Name = "btnCategories";
-            this.btnCategories.Size = new System.Drawing.Size(106, 40);
+            this.btnCategories.Size = new System.Drawing.Size(107, 40);
             this.btnCategories.TabIndex = 7;
             this.btnCategories.Text = "Categorias";
             this.btnCategories.UseVisualStyleBackColor = true;
