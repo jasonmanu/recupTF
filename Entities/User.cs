@@ -31,6 +31,9 @@ namespace Entities
         [XmlElement("LastLoginAt")]
         public DateTime? LastLoginAt { get; set; }
 
+        [XmlElement("IsActive")]
+        public bool IsActive { get; set; }
+
         public List<string> Permisos { get; set; }
     }
 }

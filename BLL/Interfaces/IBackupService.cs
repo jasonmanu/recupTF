@@ -9,7 +9,7 @@ namespace BLL
 {
     public interface IBackupService : IBaseService<Backup>
     {
-        void ImportById(string id);
-        void Export();
+        void Export(User user);
+        void ImportById(string id, User user);
     }
 }

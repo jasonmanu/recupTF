@@ -3,6 +3,7 @@ using Entities;
 using Entities.Exceptions;
 using FormSupport;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BLL
@@ -82,6 +83,11 @@ namespace BLL
             user.Password = CryptoHelper.Encrypt(user.Password);
 
             repository.Update(user);
+        }
+
+        public override List<User> GetAll()
+        {
+            return base.GetAll().Where(x => x.IsActive == true).ToList();
         }
     }
 }

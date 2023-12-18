@@ -9,5 +9,8 @@ namespace DAL
 {
     public class BackupRepository : XmlRepository<Backup>, IBackupRepository
     {
+        public BackupRepository() : base("backup.xml")
+        {
+        }
     }
 }

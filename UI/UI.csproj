@@ -241,6 +241,12 @@
     <Compile Include="Controls\RolsControl.Designer.cs">
       <DependentUpon>RolsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\StatsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StatsControl.Designer.cs">
+      <DependentUpon>StatsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SubscriptionTypeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -293,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RolsControl.resx">
       <DependentUpon>RolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StatsControl.resx">
+      <DependentUpon>StatsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SubscriptionTypeControl.resx">
       <DependentUpon>SubscriptionTypeControl.cs</DependentUpon>

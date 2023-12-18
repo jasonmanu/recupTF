@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using UI.Controls;
 
@@ -21,47 +22,32 @@ namespace UI
         private readonly ISubscriptionTypeService subscriptionTypeService;
         private readonly IRoleService roleService;
         private readonly INotificationService notificationService;
-
-        private User user;
         private BookControl bookControl;
         private UsuariosControl usersControl;
         private NotifsControl notifsControl;
-        private BibliotecariosControl bibliotecariosControl;
         private AuthorControl authorControl;
         private BackupControl backupControl;
         private CategoryControl categoryControl;
         private SubscriptionTypeControl subscriptionTypesControl;
+        private RolsControl rolsControl;
+        private StatsControl statsControl;
+        private User user;
 
         public MainForm(IServiceProvider serviceProvider)
         {
-            this.userService = serviceProvider.GetRequiredService<IUserService>();
-            this.categoryService = serviceProvider.GetRequiredService<ICategoryService>();
-            this.backupService = serviceProvider.GetRequiredService<IBackupService>();
-            this.bookService = serviceProvider.GetRequiredService<IBookService>();
-            this.authorService = serviceProvider.GetRequiredService<IAuthorService>();
-            this.subscriptionService = serviceProvider.GetRequiredService<ISubscriptionService>();
-            this.subscriptionTypeService = serviceProvider.GetRequiredService<ISubscriptionTypeService>();
-            this.loanService = serviceProvider.GetRequiredService<ILoanService>();
-            this.roleService = serviceProvider.GetRequiredService<IRoleService>();
-            this.notificationService = serviceProvider.GetRequiredService<INotificationService>();
-
+            userService = serviceProvider.GetRequiredService<IUserService>();
+            categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+            backupService = serviceProvider.GetRequiredService<IBackupService>();
+            bookService = serviceProvider.GetRequiredService<IBookService>();
+            authorService = serviceProvider.GetRequiredService<IAuthorService>();
+            subscriptionService = serviceProvider.GetRequiredService<ISubscriptionService>();
+            subscriptionTypeService = serviceProvider.GetRequiredService<ISubscriptionTypeService>();
+            loanService = serviceProvider.GetRequiredService<ILoanService>();
+            roleService = serviceProvider.GetRequiredService<IRoleService>();
+            notificationService = serviceProvider.GetRequiredService<INotificationService>();
+            user = null;
             InitializeComponent();
-
-            btnNotificaciones.Visible = false;
-            btnLibros.Visible = false;
-            btnNotificaciones.Visible = false;
-            btnUsuarios.Visible = false;
-            btnRoles.Visible = false;
-            btnAuthors.Visible = false;
-            btnCategories.Visible = false;
-            btnSubscriptionTypes.Visible = false;
-            btnBackup.Visible = false;
-        }
-
-        private void btnInicio_Click(object sender, EventArgs e)
-        {
-            ResetButtonsColors();
-            btnInicio.BackColor = Color.LightBlue;
+            HabilitarBotonesPorRol();
         }
 
         private void btnLibros_Click(object sender, EventArgs e)
@@ -91,15 +77,6 @@ namespace UI
             usersControl.BringToFront();
         }
 
-        private void btnBibliotecarios_Click(object sender, EventArgs e)
-        {
-            ResetButtonsColors();
-            //btnBibliotecarios.BackColor = Color.LightBlue;
-            bibliotecariosControl = new BibliotecariosControl();
-            mainPanel.Controls.Add(bibliotecariosControl);
-            bibliotecariosControl.BringToFront();
-        }
-
         private void btnAuthors_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
@@ -127,27 +104,20 @@ namespace UI
             backupControl.BringToFront();
         }
 
-        private void btnCollection_Click(object sender, EventArgs e)
-        {
-            ResetButtonsColors();
-            //btnCollection.BackColor = Color.LightBlue;
-            //mainPanel.Controls.Add(collectionControl);
-            //collectionControl.BringToFront();
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Salir de la aplicacion?", "Confirmar", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                Environment.Exit(0);
+                try
+                {
+                    Application.Exit();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("App finalizada");
+                }
             }
-        }
-
-        private void btnSubscription_Click(object sender, EventArgs e)
-        {
-            ResetButtonsColors();
-            //btnSubscription.BackColor = Color.LightBlue;
         }
 
         private void btnSubsInfo_Click(object sender, EventArgs e)
@@ -159,24 +129,11 @@ namespace UI
             subscriptionTypesControl.BringToFront();
         }
 
-        private void ResetButtonsColors()
-        {
-            btnInicio.BackColor = Color.LightGray;
-            btnLibros.BackColor = Color.LightGray;
-            btnNotificaciones.BackColor = Color.LightGray;
-            btnUsuarios.BackColor = Color.LightGray;
-            btnSubscriptionTypes.BackColor = Color.LightGray;
-            btnBackup.BackColor = Color.LightGray;
-            btnAuthors.BackColor = Color.LightGray;
-            btnCategories.BackColor = Color.LightGray;
-            btnRoles.BackColor = Color.LightGray;
-        }
-
         private void btnRoles_Click(object sender, EventArgs e)
         {
             ResetButtonsColors();
             btnRoles.BackColor = Color.LightBlue;
-            RolsControl rolsControl = new RolsControl(roleService);
+            rolsControl = new RolsControl(roleService);
             mainPanel.Controls.Add(rolsControl);
             rolsControl.BringToFront();
         }
@@ -194,11 +151,12 @@ namespace UI
             }
             else
             {
-                txtUsername.Text = username;
-                lblPassword.Visible = false;
-                txtPassword.Visible = false;
-                btnLogin.Visible = false;
-                btnRegister.Visible = false;
+                txtUsername.Enabled = false;
+                txtPassword.Enabled = false;
+                txtPassword.ResetText();
+
+                btnLogin.Enabled = false;
+                btnRegister.Enabled = false;
 
                 HabilitarBotonesPorRol();
             }
@@ -220,14 +178,70 @@ namespace UI
             }
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            user = null;
+            HabilitarBotonesPorRol();
+
+            foreach (Control control in mainPanel.Controls.OfType<UserControl>())
+            {
+                control.Visible = false;
+            }
+
+            txtUsername.Enabled = true;
+            txtPassword.Enabled = true;
+            txtUsername.ResetText();
+
+            btnLogin.Enabled = true;
+            btnRegister.Enabled = true;
+        }
+
+        private void btnEstadisticas_Click(object sender, EventArgs e)
+        {
+            ResetButtonsColors();
+            btnEstadisticas.BackColor = Color.LightBlue;
+
+            statsControl = new StatsControl();
+            mainPanel.Controls.Add(statsControl);
+            statsControl.BringToFront();
+        }
+
+        private void ResetButtonsColors()
+        {
+            btnLibros.BackColor = Color.LightGray;
+            btnNotificaciones.BackColor = Color.LightGray;
+            btnUsuarios.BackColor = Color.LightGray;
+            btnSubscriptionTypes.BackColor = Color.LightGray;
+            btnBackup.BackColor = Color.LightGray;
+            btnAuthors.BackColor = Color.LightGray;
+            btnCategories.BackColor = Color.LightGray;
+            btnRoles.BackColor = Color.LightGray;
+            btnEstadisticas.BackColor = Color.LightGray;
+        }
+
         private void HabilitarBotonesPorRol()
         {
-            List<string> permisosGenerales = new List<string>();
+            btnNotificaciones.Visible = false;
+            btnLibros.Visible = false;
+            btnNotificaciones.Visible = false;
+            btnUsuarios.Visible = false;
+            btnRoles.Visible = false;
+            btnAuthors.Visible = false;
+            btnCategories.Visible = false;
+            btnSubscriptionTypes.Visible = false;
+            btnBackup.Visible = false;
+            btnEstadisticas.Visible = false;
+            btnLogout.Visible = false;
+            btnEstadisticas.Visible = false;
 
-            foreach (var permiso in user.Permisos)
+            if (user == null)
             {
-                permisosGenerales.Add(permiso.Split('.')?[0]);
+                return;
             }
+
+            btnLogout.Visible = true;
+
+            List<string> permisosGenerales = user?.Permisos?.Select(x => x.Split('.')?[0])?.Distinct()?.ToList() ?? new List<string>();
 
             if (permisosGenerales.Contains("Libro"))
             {
@@ -238,7 +252,6 @@ namespace UI
             {
                 btnSubscriptionTypes.Visible = true;
             }
-
 
             if (permisosGenerales.Contains("Usuario"))
             {
@@ -275,6 +288,14 @@ namespace UI
                 btnRoles.Visible = true;
             }
 
+            if (permisosGenerales.Contains("Estadisticas"))
+            {
+                btnEstadisticas.Visible = true;
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

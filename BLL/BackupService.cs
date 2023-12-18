@@ -11,7 +11,6 @@ namespace BLL
 {
     public class BackupService : BaseService<Backup>, IBackupService
     {
-        private readonly IBackupRepository backupRepository;
         static string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
         static readonly string xmlFileName = "data.xml";
         static readonly string xmlFilePath = Path.Combine(appFolderPath, xmlFileName);
@@ -20,10 +19,9 @@ namespace BLL
 
         public BackupService(IBackupRepository backupRepository) : base(backupRepository)
         {
-            this.backupRepository = backupRepository;
         }
 
-        public void Export()
+        public void Export(User user)
         {
             Directory.CreateDirectory(backupFolderPath);
 
@@ -32,13 +30,13 @@ namespace BLL
             string backupFileName = $"backup_{timestamp}.xml";
             string backupFilePath = Path.Combine(backupFolderPath, backupFileName);
 
-            Backup backup = new Backup() { Id = Guid.NewGuid().ToString(), Name = backupFileName, Date = currentDatetime };
-            backupRepository.Create(backup);
+            Backup backup = new Backup() { Action = "Export", Timestamp = timestamp, UserId = user.Id, Username = user.Username, Date = currentDatetime, File = backupFileName };
+            base.Create(backup);
 
             File.Copy(xmlFilePath, backupFilePath);
         }
 
-        public void ImportById(string id)
+        public void ImportById(string id, User user)
         {
             Backup backup = GetById(id);
 
@@ -47,8 +45,14 @@ namespace BLL
                 throw new Exception("Backup no encontrado");
             }
 
-            string backupFilePath = Path.Combine(backupFolderPath, backup.Name);
+            string backupFilePath = Path.Combine(backupFolderPath, backup.File);
             File.Copy(backupFilePath, xmlFilePath, true);
+
+            DateTime currentDatetime = DateTime.Now;
+            string timestamp = currentDatetime.ToString("yyyyMMddHHmmss");
+
+            Backup backupRegistry = new Backup() {Action = "Import", Timestamp = timestamp, UserId = user.Id, Username = user.Username, Date = currentDatetime, File = backup.File };
+            base.Create(backupRegistry);
         }
     }
 }

@@ -19,9 +19,9 @@ namespace UI.Controls
         private readonly ISubscriptionTypeService subscriptionTypeService;
         private readonly INotificationService notificationService;
         private readonly IUserService userService;
-        private readonly User user;
         private readonly Subscription userSubscription;
         private readonly SubscriptionType userSubscriptionType;
+        private readonly User user;
 
         public BookControl(IBookService bookService, IAuthorService authorService, ICategoryService categoryService, ILoanService loanService, ISubscriptionService subscriptionService, ISubscriptionTypeService subscriptionTypeService, INotificationService notificationService, IUserService userService, User loggedUser)
         {

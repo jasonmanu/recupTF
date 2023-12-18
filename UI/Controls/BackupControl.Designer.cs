@@ -81,6 +81,7 @@ namespace UI.Controls
             this.dgvData.ReadOnly = true;
             this.dgvData.Size = new System.Drawing.Size(776, 248);
             this.dgvData.TabIndex = 5;
+            this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
             // 
             // BackupControl
             // 

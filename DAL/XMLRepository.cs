@@ -11,11 +11,13 @@ namespace DAL
     public class XmlRepository<T> : IBaseRepository<T> where T : Entity
     {
         protected static readonly string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
-        protected readonly string _filePath = Path.Combine(appFolderPath, "data.xml");
+        protected string _filePath;
         protected XDocument _xmlDocument;
 
-        public XmlRepository()
+        public XmlRepository(string fileName = "data.xml")
         {
+            _filePath = Path.Combine(appFolderPath, fileName);
+
             if (File.Exists(_filePath))
             {
                 _xmlDocument = XDocument.Load(_filePath);

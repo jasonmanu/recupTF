@@ -73,6 +73,7 @@ namespace UI.Controls
                     Address = txtAddress.Text,
                     LastLoginAt = DateTime.Now,
                     RoleName = ((Role)cboRole.SelectedItem).Name,
+                    IsActive = true,
                 });
 
                 MessageBox.Show("Creado correctamente");
@@ -121,7 +122,9 @@ namespace UI.Controls
 
             try
             {
-                userService.Delete(id);
+                User user = userService.GetById(id);
+                user.IsActive = false;
+                userService.Update(user);
                 MessageBox.Show("Eliminado correctamente");
                 LoadData();
             }

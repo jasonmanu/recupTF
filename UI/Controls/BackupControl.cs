@@ -2,13 +2,6 @@
 using Entities;
 using FormSupport;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Controls
@@ -25,6 +18,7 @@ namespace UI.Controls
             InitializeComponent();
             LoadData();
             HabilitarBotones();
+            btnImport.Enabled = false;
         }
 
         private void HabilitarBotones()
@@ -54,7 +48,7 @@ namespace UI.Controls
 
             try
             {
-                backupService.ImportById(id);
+                backupService.ImportById(id, user);
                 LoadData();
                 MessageBox.Show("Backup importado correctamente");
             }
@@ -68,13 +62,28 @@ namespace UI.Controls
         {
             try
             {
-                backupService.Export();
+                backupService.Export(user);
                 LoadData();
                 MessageBox.Show("Backup generado");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error generando backup.");
+            }
+        }
+
+        private void dgvData_SelectionChanged(object sender, EventArgs e)
+        {
+            string id = FormHelper.GetCurrentRowId(dgvData);
+
+            if (id != null)
+            {
+                Backup selectBackup = backupService.GetById(id);
+
+                if (selectBackup.Action.Contains("Export"))
+                {
+                    btnImport.Enabled = true;
+                }
             }
         }
     }
