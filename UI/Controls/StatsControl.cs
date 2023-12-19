@@ -21,9 +21,16 @@ namespace UI.Controls
         {
             InitializeComponent();
             this.subscriptionService = subscriptionService;
-            LoadChart1();
-            LoadChart2();
-            LoadChart3();
+            try
+            {
+                LoadChart1();
+                LoadChart2();
+                LoadChart3();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando datos");
+            }
         }
 
         private void LoadChart2()
@@ -130,7 +137,6 @@ namespace UI.Controls
 
         private void StatsControl_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
