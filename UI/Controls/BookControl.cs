@@ -76,15 +76,22 @@ namespace UI.Controls
             listBoxRecommendations.Items.Clear();
 
             List<Loan> misPrestamos = loanService.GetAll().Where(x => x.UserId == user.Id).ToList();
-            List<string> misCategorias = new List<string>();
-            List<string> misAutores = new List<string>();
+            List<string> misCategoriasIds = new List<string>();
+            //List<string> misCategorias = new List<string>();
+            List<string> misAutoresIds = new List<string>();
 
             foreach (var prestamo in misPrestamos)
             {
+                // get libro
                 Book book = bookService.GetById(prestamo.BookId);
-                misCategorias.Add(book.CategoryId);
-                Category category = categoryService.GetById(book.CategoryId);
-                misAutores.Add(book.AuthorId);
+                misCategoriasIds.Add(book.CategoryId);
+
+                // get category
+                //Category category = categoryService.GetById(book.CategoryId);
+                //misCategorias.Add(category.Name);
+
+                // get autor
+                misAutoresIds.Add(book.AuthorId);
             }
 
             List<Book> recommendedBooks = new List<Book>();
@@ -92,7 +99,8 @@ namespace UI.Controls
 
             foreach (Book libro in todosLosLibros)
             {
-                if (misCategorias.Contains(libro.CategoryId))
+                // agrega libros con categoria igual a mis prestamos previos que no sean los que ya tengo
+                if (misCategoriasIds.Contains(libro.CategoryId) && misPrestamos.Select(x => x.BookId).Contains(libro.Id) == false)
                 {
                     recommendedBooks.Add(libro);
                 }
@@ -100,7 +108,7 @@ namespace UI.Controls
 
             foreach (Book libro in todosLosLibros)
             {
-                if (misAutores.Contains(libro.AuthorId))
+                if (misAutoresIds.Contains(libro.AuthorId) && misPrestamos.Select(x => x.BookId).Contains(libro.Id) == false)
                 {
                     recommendedBooks.Add(libro);
                 }
