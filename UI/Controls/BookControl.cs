@@ -153,9 +153,12 @@ namespace UI.Controls
 
             listBoxRecommendations.Items.Add($"Basado en tus prestamos, reservas y autores te recomendamos los libros");
 
-            foreach (Book book in recommendedBooks)
+            if (recommendedBooks.Count > 0)
             {
-                listBoxRecommendations.Items.Add($"- {book.Title}");
+                foreach (string bookTitle in recommendedBooks?.Select(x => x.Title)?.Distinct()?.ToList())
+                {
+                    listBoxRecommendations.Items.Add($"- {bookTitle}");
+                }
             }
         }
 
