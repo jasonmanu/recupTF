@@ -14,12 +14,16 @@ namespace UI.Controls
     {
         private readonly ISubscriptionService subscriptionService;
         private readonly ISubscriptionTypeService subscriptionTypeService;
+        private readonly ILoanService loanService;
+        private readonly IBookService bookService;
 
-        public StatsControl(ISubscriptionService subscriptionService, ISubscriptionTypeService subscriptionTypeService)
+        public StatsControl(ISubscriptionService subscriptionService, ISubscriptionTypeService subscriptionTypeService, ILoanService loanService, IBookService bookService)
         {
             InitializeComponent();
             this.subscriptionService = subscriptionService;
             this.subscriptionTypeService = subscriptionTypeService;
+            this.loanService = loanService;
+            this.bookService = bookService;
             try
             {
                 int currentYear = DateTime.Now.Year;
@@ -67,7 +71,6 @@ namespace UI.Controls
 
         private void LoadChartMasReservas()
         {
-            // Configurar el área del gráfico
             ChartArea chartArea = new ChartArea();
             chartArea.AxisX.Title = "Valores";
             chartArea.AxisY.Title = "Categorías";
@@ -76,18 +79,21 @@ namespace UI.Controls
 
             chartMasReservas.ChartAreas.Add(chartArea);
 
-            // Crear una serie para el gráfico de barras
             Series series = new Series
             {
-                ChartType = SeriesChartType.Bar
+                ChartType = SeriesChartType.Bar,
+                Name = "Mas reservas"
             };
 
-            // Añadir datos a la serie
-            series.Points.Add(new DataPoint(0, 5) { AxisLabel = "A" });
-            series.Points.Add(new DataPoint(0, 7) { AxisLabel = "B" });
-            series.Points.Add(new DataPoint(0, 11) { AxisLabel = "C" });
+            var reservas = loanService.GetAll();
+            var reservasAgrupadas = loanService.GetAll().GroupBy(x => x.BookId);
 
-            // Añadir la serie al gráfico
+            foreach (var item in reservasAgrupadas)
+            {
+                Book book = bookService.GetById(item.Key);
+                series.Points.Add(new DataPoint(0, item.Count()) { AxisLabel = book.Title });
+            }
+
             chartMasReservas.Series.Add(series);
         }
 
