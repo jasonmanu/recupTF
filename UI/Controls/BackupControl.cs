@@ -18,7 +18,6 @@ namespace UI.Controls
             InitializeComponent();
             LoadData();
             HabilitarBotones();
-            btnImport.Enabled = false;
         }
 
         private void HabilitarBotones()
@@ -68,19 +67,20 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generando backup.");
+                MessageBox.Show("Error generando backup");
             }
         }
 
         private void dgvData_SelectionChanged(object sender, EventArgs e)
         {
+            btnImport.Enabled = false;
             string id = FormHelper.GetCurrentRowId(dgvData);
 
             if (id != null)
             {
                 Backup selectBackup = backupService.GetById(id);
 
-                if (selectBackup.Action.Contains("Export"))
+                if (selectBackup.Action == "Export")
                 {
                     btnImport.Enabled = true;
                 }

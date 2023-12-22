@@ -2,12 +2,9 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -16,16 +13,22 @@ namespace UI.Controls
     public partial class StatsControl : UserControl
     {
         private readonly ISubscriptionService subscriptionService;
+        private readonly ISubscriptionTypeService subscriptionTypeService;
 
-        public StatsControl(ISubscriptionService subscriptionService)
+        public StatsControl(ISubscriptionService subscriptionService, ISubscriptionTypeService subscriptionTypeService)
         {
             InitializeComponent();
             this.subscriptionService = subscriptionService;
+            this.subscriptionTypeService = subscriptionTypeService;
             try
             {
-                LoadChart1();
-                LoadChart2();
-                LoadChart3();
+                LoadChartNewSubs();
+                LoadChartMasReservas();
+                LoadChartUsersPerSubType();
+
+                int currentYear = DateTime.Now.Year;
+                List<int> yearsList = new List<int>() { currentYear, currentYear - 1, currentYear - 2 };
+                cboYearSubsChart.DataSource = yearsList;
             }
             catch (Exception ex)
             {
@@ -33,7 +36,29 @@ namespace UI.Controls
             }
         }
 
-        private void LoadChart2()
+        private void LoadChartNewSubs()
+        {
+            // Datos de ejemplo para cada mes (puedes sustituirlos con tus propios datos)
+            int[] valoresPorMes = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65 };
+
+            // Configurar el gráfico como de columnas
+            chartNewSubs.Series.Clear();
+            chartNewSubs.Series.Add("NewSubs");
+            chartNewSubs.Series["NewSubs"].ChartType = SeriesChartType.Column;
+
+            // Llenar el gráfico con los valores por cada mes
+            for (int i = 0; i < valoresPorMes.Length; i++)
+            {
+                chartNewSubs.Series["NewSubs"].Points.AddXY(i + 1, valoresPorMes[i]);
+            }
+
+            // Configurar etiquetas y título
+            chartNewSubs.ChartAreas[0].AxisX.Title = "Mes";
+            chartNewSubs.ChartAreas[0].AxisY.Title = "Valores";
+            chartNewSubs.Titles.Add("Nuevas suscripciones por mes");
+        }
+
+        private void LoadChartMasReservas()
         {
             // Configurar el área del gráfico
             ChartArea chartArea = new ChartArea();
@@ -42,7 +67,7 @@ namespace UI.Controls
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = false;
 
-            chart2.ChartAreas.Add(chartArea);
+            chartMasReservas.ChartAreas.Add(chartArea);
 
             // Crear una serie para el gráfico de barras
             Series series = new Series
@@ -56,46 +81,10 @@ namespace UI.Controls
             series.Points.Add(new DataPoint(0, 11) { AxisLabel = "C" });
 
             // Añadir la serie al gráfico
-            chart2.Series.Add(series);
+            chartMasReservas.Series.Add(series);
         }
 
-        private void LoadChart1()
-        {
-            // Datos de ejemplo para los 12 meses
-            //string[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
-            //int[] valores = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65 };
-
-            //// Configurar el gráfico
-            //chartNewSubs.Series.Clear();
-            //chartNewSubs.Series.Add("Ventas"); // Nombre de la serie
-            //chartNewSubs.Series["Ventas"].ChartType = SeriesChartType.Column; // Tipo de gráfico
-
-            //// Llenar el gráfico con datos
-            //for (int i = 0; i < meses.Length; i++)
-            //{
-            //    chartNewSubs.Series["Ventas"].Points.AddXY(meses[i], valores[i]);
-            //}
-            // Datos de ejemplo para cada mes (puedes sustituirlos con tus propios datos)
-            int[] valoresPorMes = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65 };
-
-            // Configurar el gráfico como de columnas
-            chartNewSubs.Series.Clear();
-            chartNewSubs.Series.Add("DatosMensuales");
-            chartNewSubs.Series["DatosMensuales"].ChartType = SeriesChartType.Column;
-
-            // Llenar el gráfico con los valores por cada mes
-            for (int i = 0; i < valoresPorMes.Length; i++)
-            {
-                chartNewSubs.Series["DatosMensuales"].Points.AddXY(i + 1, valoresPorMes[i]);
-            } 
-
-            // Configurar etiquetas y título
-            chartNewSubs.ChartAreas[0].AxisX.Title = "Mes";
-            chartNewSubs.ChartAreas[0].AxisY.Title = "Valores";
-            chartNewSubs.Titles.Add("Valores Mensuales");
-        }
-
-        private void LoadChart3()
+        private void LoadChartUsersPerSubType()
         {
             List<Subscription> subscriptions = subscriptionService.GetAll();
             List<string> subTypesIds = subscriptions.Select(x => x.SubscriptionTypeId).Distinct().ToList();
@@ -104,8 +93,7 @@ namespace UI.Controls
             foreach (string subTypeId in subTypesIds)
             {
                 int cantidadDeUsuarios = subscriptions.Count(x => x.SubscriptionTypeId == subTypeId);
-                // TODO: cambiar subTypeId por nombre de subType
-                datosUsuariosPorSubscripcion.Add(key: subTypeId, value: cantidadDeUsuarios);
+                datosUsuariosPorSubscripcion.Add(key: subscriptionTypeService.GetById(subTypeId)?.Name, value: cantidadDeUsuarios);
             }
 
             // Configuración del gráfico circular
@@ -137,6 +125,11 @@ namespace UI.Controls
 
         private void StatsControl_Load(object sender, EventArgs e)
         {
+        }
+
+        private void cboYearSubsChart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedYear = (int)cboYearSubsChart.SelectedValue;
         }
     }
 }
