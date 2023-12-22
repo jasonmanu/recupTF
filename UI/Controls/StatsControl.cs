@@ -82,11 +82,11 @@ namespace UI.Controls
             Series series = new Series
             {
                 ChartType = SeriesChartType.Bar,
-                Name = "Mas reservas"
+                Name = "MasReservas"
             };
 
             var reservas = loanService.GetAll();
-            var reservasAgrupadas = loanService.GetAll().GroupBy(x => x.BookId);
+            var reservasAgrupadas = loanService.GetAll().Where(x => x.PuedeRetirar == false).GroupBy(x => x.BookId);
 
             foreach (var item in reservasAgrupadas)
             {
