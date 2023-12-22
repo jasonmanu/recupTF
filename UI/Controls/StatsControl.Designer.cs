@@ -49,13 +49,17 @@ namespace UI.Controls
             this.chartSubsPerType = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cboYearSubsChart = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboMonthReservas = new System.Windows.Forms.ComboBox();
+            this.cboYearReservas = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartNewSubs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMasReservas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSubsPerType)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,7 +69,6 @@ namespace UI.Controls
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Controls.Add(this.label5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -75,6 +78,8 @@ namespace UI.Controls
             this.tableLayoutPanel1.Controls.Add(this.chartSubsPerType, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.cboYearSubsChart, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 18);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -90,9 +95,9 @@ namespace UI.Controls
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(348, 38);
+            this.label5.Location = new System.Drawing.Point(694, 38);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(340, 13);
+            this.label5.Size = new System.Drawing.Size(341, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "mes y año";
             // 
@@ -104,7 +109,7 @@ namespace UI.Controls
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(339, 13);
             this.label4.TabIndex = 4;
-            this.label4.Text = "año";
+            this.label4.Text = "Año";
             // 
             // label3
             // 
@@ -205,8 +210,8 @@ namespace UI.Controls
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.comboBox2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox4, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.cboMonthReservas, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.cboYearReservas, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(348, 63);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -214,25 +219,59 @@ namespace UI.Controls
             this.tableLayoutPanel2.Size = new System.Drawing.Size(340, 24);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
-            // comboBox2
+            // cboMonthReservas
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(173, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(164, 21);
-            this.comboBox2.TabIndex = 9;
+            this.cboMonthReservas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMonthReservas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMonthReservas.FormattingEnabled = true;
+            this.cboMonthReservas.Location = new System.Drawing.Point(173, 3);
+            this.cboMonthReservas.Name = "cboMonthReservas";
+            this.cboMonthReservas.Size = new System.Drawing.Size(164, 21);
+            this.cboMonthReservas.TabIndex = 9;
             // 
-            // comboBox4
+            // cboYearReservas
             // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(3, 3);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(164, 21);
-            this.comboBox4.TabIndex = 8;
+            this.cboYearReservas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboYearReservas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboYearReservas.FormattingEnabled = true;
+            this.cboYearReservas.Location = new System.Drawing.Point(3, 3);
+            this.cboYearReservas.Name = "cboYearReservas";
+            this.cboYearReservas.Size = new System.Drawing.Size(164, 21);
+            this.cboYearReservas.TabIndex = 8;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(348, 33);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(340, 24);
+            this.tableLayoutPanel3.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(164, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Año";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(173, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(164, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Mes";
             // 
             // StatsControl
             // 
@@ -248,6 +287,8 @@ namespace UI.Controls
             ((System.ComponentModel.ISupportInitialize)(this.chartMasReservas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSubsPerType)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -265,7 +306,10 @@ namespace UI.Controls
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSubsPerType;
         private System.Windows.Forms.ComboBox cboYearSubsChart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboMonthReservas;
+        private System.Windows.Forms.ComboBox cboYearReservas;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

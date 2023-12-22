@@ -53,7 +53,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -67,23 +67,30 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generando backup");
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
         private void dgvData_SelectionChanged(object sender, EventArgs e)
         {
-            btnImport.Enabled = false;
-            string id = FormHelper.GetCurrentRowId(dgvData);
-
-            if (id != null)
+            try
             {
-                Backup selectBackup = backupService.GetById(id);
+                btnImport.Enabled = false;
+                string id = FormHelper.GetCurrentRowId(dgvData);
 
-                if (selectBackup.Action == "Export")
+                if (id != null)
                 {
-                    btnImport.Enabled = true;
+                    Backup selectBackup = backupService.GetById(id);
+
+                    if (selectBackup.Action == "Export")
+                    {
+                        btnImport.Enabled = true;
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
             }
         }
     }

@@ -22,13 +22,13 @@ namespace UI.Controls
             this.subscriptionTypeService = subscriptionTypeService;
             try
             {
-                LoadChartNewSubs();
-                LoadChartMasReservas();
-                LoadChartUsersPerSubType();
-
                 int currentYear = DateTime.Now.Year;
                 List<int> yearsList = new List<int>() { currentYear, currentYear - 1, currentYear - 2 };
                 cboYearSubsChart.DataSource = yearsList;
+
+                LoadChartNewSubs();
+                LoadChartMasReservas();
+                LoadChartUsersPerSubType();
             }
             catch (Exception ex)
             {
@@ -38,24 +38,31 @@ namespace UI.Controls
 
         private void LoadChartNewSubs()
         {
-            // Datos de ejemplo para cada mes (puedes sustituirlos con tus propios datos)
-            int[] valoresPorMes = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65 };
+            List<Subscription> subs = subscriptionService.GetAll().Where(x => x.StartDate.Year == (int)cboYearSubsChart.SelectedValue).ToList();
+            List<int> meses = Enumerable.Range(1, 12).ToList();
 
-            // Configurar el gráfico como de columnas
+            var totalPorMes = meses.GroupJoin(subs, mes => mes,
+                objeto => objeto.StartDate.Month,
+                (mes, registros) => new { Mes = mes, Suma = registros.Count() }).ToList();
+
+            int[] valoresPorMes = totalPorMes.Select(x => x.Suma).ToArray();
+
             chartNewSubs.Series.Clear();
-            chartNewSubs.Series.Add("NewSubs");
-            chartNewSubs.Series["NewSubs"].ChartType = SeriesChartType.Column;
+            chartNewSubs.Series.Add("Subs");
+            chartNewSubs.Series["Subs"].ChartType = SeriesChartType.Column;
 
-            // Llenar el gráfico con los valores por cada mes
             for (int i = 0; i < valoresPorMes.Length; i++)
             {
-                chartNewSubs.Series["NewSubs"].Points.AddXY(i + 1, valoresPorMes[i]);
+                chartNewSubs.Series["Subs"].Points.AddXY(i + 1, valoresPorMes[i]);
             }
 
-            // Configurar etiquetas y título
             chartNewSubs.ChartAreas[0].AxisX.Title = "Mes";
             chartNewSubs.ChartAreas[0].AxisY.Title = "Valores";
-            chartNewSubs.Titles.Add("Nuevas suscripciones por mes");
+
+            if (chartNewSubs.Titles.Count == 0)
+            {
+                chartNewSubs.Titles.Add("Nuevas suscripciones por mes");
+            }
         }
 
         private void LoadChartMasReservas()
@@ -129,7 +136,7 @@ namespace UI.Controls
 
         private void cboYearSubsChart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedYear = (int)cboYearSubsChart.SelectedValue;
+            LoadChartNewSubs();
         }
     }
 }

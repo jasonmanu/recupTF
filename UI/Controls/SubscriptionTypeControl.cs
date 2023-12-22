@@ -2,13 +2,8 @@
 using Entities;
 using FormSupport;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Controls
@@ -98,7 +93,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show("error creando sub type");
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -122,7 +117,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show("error actualizando sub type");
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -138,7 +133,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -157,36 +152,50 @@ namespace UI.Controls
 
         private void btnBuySubscription_Click(object sender, EventArgs e)
         {
-            string subTypeId = FormHelper.GetCurrentRowId(dgvData);
-            Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == user.Id).FirstOrDefault();
+            try
+            {
+                string subTypeId = FormHelper.GetCurrentRowId(dgvData);
+                Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == user.Id).FirstOrDefault();
 
-            if (userSubscription == null)
-            {
-                subscriptionService.Create(new Subscription() { SubscriptionTypeId = subTypeId, UserId = user.Id, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
-                MessageBox.Show("Subscripcion creada");
-            }
-            else
-            {
-                if (userSubscription.SubscriptionTypeId != subTypeId)
+                if (userSubscription == null)
                 {
-                    subscriptionService.Update(new Subscription() { Id = userSubscription.Id, SubscriptionTypeId = subTypeId, UserId = user.Id, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
+                    subscriptionService.Create(new Subscription() { SubscriptionTypeId = subTypeId, UserId = user.Id, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
+                    MessageBox.Show("Subscripcion creada");
                 }
+                else
+                {
+                    if (userSubscription.SubscriptionTypeId != subTypeId)
+                    {
+                        subscriptionService.Update(new Subscription() { Id = userSubscription.Id, SubscriptionTypeId = subTypeId, UserId = user.Id, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) });
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
         private void btnCancelSubscription_Click(object sender, EventArgs e)
         {
-            string subTypeId = FormHelper.GetCurrentRowId(dgvData);
-            Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == user.Id).FirstOrDefault();
+            try
+            {
+                string subTypeId = FormHelper.GetCurrentRowId(dgvData);
+                Subscription userSubscription = subscriptionService.GetAll().Where(x => x.UserId == user.Id).FirstOrDefault();
 
-            if (userSubscription != null)
-            {
-                subscriptionService.Delete(userSubscription.Id);
-                MessageBox.Show("Subscripcion cancelada");
+                if (userSubscription != null)
+                {
+                    subscriptionService.Delete(userSubscription.Id);
+                    MessageBox.Show("Subscripcion cancelada");
+                }
+                else
+                {
+                    MessageBox.Show("sub no encontrada");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("sub no encontrada");
+                MessageBox.Show("Error ejecutando accion");
             }
         }
     }

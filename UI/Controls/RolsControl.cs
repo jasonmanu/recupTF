@@ -67,15 +67,29 @@ namespace UI.Controls
 
         private void btnAsignar_Click(object sender, EventArgs e)
         {
-            TreeNode selectedNode = treeViewAvailable.SelectedNode;
-            TreeNode clonedNode = (TreeNode)selectedNode.Clone();
-            treeViewAssigned.Nodes.Add(clonedNode);
+            try
+            {
+                TreeNode selectedNode = treeViewAvailable.SelectedNode;
+                TreeNode clonedNode = (TreeNode)selectedNode.Clone();
+                treeViewAssigned.Nodes.Add(clonedNode);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void btnDesasignar_Click(object sender, EventArgs e)
         {
-            TreeNode selectedNode = treeViewAssigned.SelectedNode;
-            selectedNode.Remove();
+            try
+            {
+                TreeNode selectedNode = treeViewAssigned.SelectedNode;
+                selectedNode.Remove();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void btnCreateRole_Click(object sender, EventArgs e)
@@ -85,24 +99,29 @@ namespace UI.Controls
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var rolDeArbolAsignado = new CompositeRole
+            try
             {
-                Name = txtNewRoleName.Text,
-            };
+                CompositeRole rolDeArbolAsignado = new CompositeRole
+                {
+                    Name = txtNewRoleName.Text,
+                };
 
-            // Llamar al método recursivo para convertir el TreeView a roles
-            ConvertirTreeViewARoles(treeViewAssigned.Nodes, rolDeArbolAsignado);
+                ConvertirTreeViewARoles(treeViewAssigned.Nodes, rolDeArbolAsignado);
 
-            if (((Role)cboRoles.SelectedValue)?.Name == txtNewRoleName.Text)
-            {
-                roleService.Delete(((Role)cboRoles.SelectedValue).Id);
+                if (((Role)cboRoles.SelectedValue)?.Name == txtNewRoleName.Text)
+                {
+                    roleService.Delete(((Role)cboRoles.SelectedValue).Id);
+                }
+
+                roleService.Create(rolDeArbolAsignado);
+                treeViewAvailable.Nodes.Clear();
+                CargarPermisosPredefinidos();
+                CargarRolesExistentes();
             }
-
-            // guarda rol en XML
-            roleService.Create(rolDeArbolAsignado);
-            treeViewAvailable.Nodes.Clear();
-            CargarPermisosPredefinidos();
-            CargarRolesExistentes();
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void cboRoles_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,7 +130,7 @@ namespace UI.Controls
 
             if (cboRoles.SelectedValue != null)
             {
-                var rolId = ((Role)cboRoles.SelectedValue).Id;
+                string rolId = ((Role)cboRoles.SelectedValue).Id;
                 txtNewRoleName.Text = ((Role)cboRoles.SelectedValue).Name;
 
                 var rol = roleService.GetById(rolId);

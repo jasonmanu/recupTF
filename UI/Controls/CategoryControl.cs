@@ -47,7 +47,14 @@ namespace UI.Controls
 
         private void LoadData()
         {
-            dgvData.DataSource = categoryService.GetAll();
+            try
+            {
+                dgvData.DataSource = categoryService.GetAll();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void dgvData_SelectionChanged(object sender, EventArgs e)
@@ -63,26 +70,47 @@ namespace UI.Controls
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Category newCategory = new Category() { Name = txtName.Text };
-            categoryService.Create(newCategory);
-            MessageBox.Show("creado");
-            LoadData();
+            try
+            {
+                Category newCategory = new Category() { Name = txtName.Text };
+                categoryService.Create(newCategory);
+                MessageBox.Show("creado");
+                LoadData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvData);
-            categoryService.Delete(id);
-            MessageBox.Show("eliminado");
-            LoadData();
+            try
+            {
+                string id = FormHelper.GetCurrentRowId(dgvData);
+                categoryService.Delete(id);
+                MessageBox.Show("eliminado");
+                LoadData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvData);
-            categoryService.Update(new Category() { Id = id, Name = txtName.Text });
-            MessageBox.Show("actualizado");
-            LoadData();
+            try
+            {
+                string id = FormHelper.GetCurrentRowId(dgvData);
+                categoryService.Update(new Category() { Id = id, Name = txtName.Text });
+                MessageBox.Show("actualizado");
+                LoadData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
     }
 }

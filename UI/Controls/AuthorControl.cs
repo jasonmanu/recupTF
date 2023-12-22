@@ -2,13 +2,6 @@
 using Entities;
 using FormSupport;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Controls
@@ -67,7 +60,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -76,20 +69,14 @@ namespace UI.Controls
             try
             {
                 string id = FormHelper.GetCurrentRowId(dgvAuthors);
-                //Product toUpdate = new Product()
-                //{
-                //    Id = id,
-                //    Name = txtName.Text,
-                //    BrandId = (string)cboBrand.SelectedValue,
-                //    CategoryId = (string)cboCategory.SelectedValue,
-                //    Description = txtDescription.Text,
-                //    Price = Convert.ToInt32(nudPrice.Value)
-                //};
                 authorService.Update(new Author() { Id = id, Name = txtName.Text, Description = txtDescription.Text });
                 MessageBox.Show("Actualizado");
                 LoadData();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void dgvAuthors_SelectionChanged(object sender, EventArgs e)
@@ -106,16 +93,23 @@ namespace UI.Controls
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvAuthors);
+            try
+            {
+                string id = FormHelper.GetCurrentRowId(dgvAuthors);
 
-            if (id != null)
-            {
-                authorService.Delete(id);
-                LoadData();
+                if (id != null)
+                {
+                    authorService.Delete(id);
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione fila a actualizar");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Seleccione fila a actualizar");
+                MessageBox.Show("Error ejecutando accion");
             }
         }
     }

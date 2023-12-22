@@ -2,12 +2,8 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI.Controls
@@ -29,8 +25,15 @@ namespace UI.Controls
 
         private void LoadData()
         {
-            var myNotifs = notificationService.GetAll().Where(x => x.UserId == user.Id).ToList();
-            dgvData.DataSource = myNotifs;
+            try
+            {
+                List<Notification> myNotifs = notificationService.GetAll().Where(x => x.UserId == user.Id).ToList();
+                dgvData.DataSource = myNotifs;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
     }
 }

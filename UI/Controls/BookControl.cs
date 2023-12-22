@@ -63,18 +63,19 @@ namespace UI.Controls
         private void HabilitarBotones()
         {
             listBoxRecommendations.Visible = false;
+            btnLoan.Enabled = false;
 
-            if (user.RoleName == "Cliente")
+            if (user.Permisos.Contains("Prestamo.Crear"))
             {
                 listBoxRecommendations.Visible = true;
+                btnLoan.Enabled = true;
+                lblLibroCbo.Visible = false;
+                lblUserCbo.Visible = false;
+                btnEntregar.Visible = false;
+                cboUsuario.Visible = false;
+                cboLibro.Visible = false;
+                btnRecibirLibro.Visible = false;
             }
-
-            //tlpCrud.Visible = true;
-            //tlpCrud.Enabled = true;
-            //tlpCrudBotones.Visible = true;
-            //tlpCrudBotones.Enabled = true;
-
-            btnLoan.Enabled = false;
 
             if (user.Permisos.Contains("Libro.Leer"))
             {
@@ -101,21 +102,6 @@ namespace UI.Controls
                 tlpCrud.Enabled = true;
                 tlpCrudBotones.Visible = true;
                 btnDelete.Visible = true;
-            }
-
-            if (user.Permisos.Contains("Prestamo.Crear"))
-            {
-                btnLoan.Enabled = true;
-            }
-
-            if (user.RoleName == "Cliente")
-            {
-                lblLibroCbo.Visible = false;
-                lblUserCbo.Visible = false;
-                btnEntregar.Visible = false;
-                cboUsuario.Visible = false;
-                cboLibro.Visible = false;
-                btnRecibirLibro.Visible = false;
             }
         }
 
@@ -149,7 +135,7 @@ namespace UI.Controls
             List<Book> recommendedBooks = new List<Book>();
             var todosLosLibros = bookService.GetAll();
 
-            foreach (var libro in todosLosLibros)
+            foreach (Book libro in todosLosLibros)
             {
                 if (misCategorias.Contains(libro.CategoryId))
                 {
@@ -157,7 +143,7 @@ namespace UI.Controls
                 }
             }
 
-            foreach (var libro in todosLosLibros)
+            foreach (Book libro in todosLosLibros)
             {
                 if (misAutores.Contains(libro.AuthorId))
                 {
@@ -167,7 +153,7 @@ namespace UI.Controls
 
             listBoxRecommendations.Items.Add($"Basado en tus prestamos, reservas y autores te recomendamos los libros");
 
-            foreach (var book in recommendedBooks)
+            foreach (Book book in recommendedBooks)
             {
                 listBoxRecommendations.Items.Add($"- {book.Title}");
             }
@@ -175,47 +161,51 @@ namespace UI.Controls
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Book book = new Book()
+            try
             {
-                Title = txtTitle.Text,
-                Description = txtDescription.Text,
-                ISBN = txtISBN.Text,
-                Stock = (int)nudStock.Value,
-                CategoryId = (string)cboCategory.SelectedValue ?? null,
-                AuthorId = (string)cboAuthor.SelectedValue ?? null,
-                //CollectionId = (string)cboCollection.SelectedValue ?? null,
-            };
+                Book book = new Book()
+                {
+                    Title = txtTitle.Text,
+                    Description = txtDescription.Text,
+                    ISBN = txtISBN.Text,
+                    Stock = (int)nudStock.Value,
+                    CategoryId = (string)cboCategory.SelectedValue ?? null,
+                    AuthorId = (string)cboAuthor.SelectedValue ?? null,
+                };
 
-            bookService.Create(book);
-            MessageBox.Show("Libro creado correctamente");
-            LoadBooks();
-            txtDescription.ResetText();
-            txtISBN.ResetText();
-            txtTitle.ResetText();
+                bookService.Create(book);
+                MessageBox.Show("Libro creado correctamente");
+                LoadBooks();
+                txtDescription.ResetText();
+                txtISBN.ResetText();
+                txtTitle.ResetText();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvData);
-
             try
             {
+                string id = FormHelper.GetCurrentRowId(dgvData);
                 bookService.Delete(id);
                 MessageBox.Show("eliminado correctamente");
                 LoadBooks();
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvData);
-
             try
             {
+                string id = FormHelper.GetCurrentRowId(dgvData);
                 Book book = new Book()
                 {
                     Description = txtDescription.Text,
@@ -233,40 +223,47 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
         private void dgvBooks_SelectionChanged(object sender, EventArgs e)
         {
-            string id = FormHelper.GetCurrentRowId(dgvData);
-            Book book = bookService.GetById(id);
-
-            if (book != null)
+            try
             {
-                txtDescription.Text = book.Description;
-                txtISBN.Text = book.ISBN;
-                txtTitle.Text = book.Title;
-                nudStock.Value = book.Stock;
+                string id = FormHelper.GetCurrentRowId(dgvData);
+                Book book = bookService.GetById(id);
 
-                if (book.AuthorId != null)
+                if (book != null)
                 {
-                    cboAuthor.SelectedValue = book.AuthorId;
-                }
+                    txtDescription.Text = book.Description;
+                    txtISBN.Text = book.ISBN;
+                    txtTitle.Text = book.Title;
+                    nudStock.Value = book.Stock;
 
-                if (book.CategoryId != null)
-                {
-                    cboCategory.SelectedValue = book.CategoryId;
-                }
+                    if (book.AuthorId != null)
+                    {
+                        cboAuthor.SelectedValue = book.AuthorId;
+                    }
 
-                if (book.Stock == 0)
-                {
-                    btnLoan.Text = "Crear reserva";
+                    if (book.CategoryId != null)
+                    {
+                        cboCategory.SelectedValue = book.CategoryId;
+                    }
+
+                    if (book.Stock == 0)
+                    {
+                        btnLoan.Text = "Crear reserva";
+                    }
+                    else
+                    {
+                        btnLoan.Text = "Iniciar prestamo";
+                    }
                 }
-                else
-                {
-                    btnLoan.Text = "Iniciar prestamo";
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -275,10 +272,9 @@ namespace UI.Controls
             DialogResult result = MessageBox.Show("Confirmar prestamo/reserva", "Confirmar", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                string bookId = FormHelper.GetCurrentRowId(dgvData);
-
                 try
                 {
+                    string bookId = FormHelper.GetCurrentRowId(dgvData);
                     Book book = bookService.GetById(bookId);
 
                     if (userSubscription == null)
@@ -289,7 +285,6 @@ namespace UI.Controls
 
                     if (book.Stock == 0)
                     {
-                        //crea reserva
                         loanService.Create(new Loan()
                         {
                             BookId = bookId,
@@ -310,7 +305,6 @@ namespace UI.Controls
                         {
                             DateTime loanEndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
 
-                            // crea prestamo
                             loanService.Create(new Loan()
                             {
                                 BookId = bookId,
@@ -337,18 +331,13 @@ namespace UI.Controls
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Error ejecutando accion");
                 }
             }
             else
             {
                 MessageBox.Show("Prestamo/Reserva cancelado");
             }
-        }
-
-        private void btnReserve_Click(object sender, EventArgs e)
-        {
-            // deprecado
         }
 
         private void cboCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -361,69 +350,83 @@ namespace UI.Controls
 
         private void btnEntregar_Click(object sender, EventArgs e)
         {
-            //entregar a cliente
-            string selectedBookId = (string)cboLibro.SelectedValue;
-            string selectedUserId = (string)cboLibro.SelectedValue;
-            Loan prestamoParaRetirar = loanService.GetAll().FirstOrDefault(x => x.UserId == selectedUserId && x.BookId == selectedBookId && x.PuedeRetirar == true);
+            try
+            {
+                //entregar a cliente
+                string selectedBookId = (string)cboLibro.SelectedValue;
+                string selectedUserId = (string)cboLibro.SelectedValue;
+                Loan prestamoParaRetirar = loanService.GetAll().FirstOrDefault(x => x.UserId == selectedUserId && x.BookId == selectedBookId && x.PuedeRetirar == true);
 
-            if (prestamoParaRetirar != null)
-            {
-                prestamoParaRetirar.PuedeRetirar = false;
-                loanService.Update(prestamoParaRetirar);
-                MessageBox.Show("Retirado correcto, puede entregar libro");
+                if (prestamoParaRetirar != null)
+                {
+                    prestamoParaRetirar.PuedeRetirar = false;
+                    loanService.Update(prestamoParaRetirar);
+                    MessageBox.Show("Retirado correcto, puede entregar libro");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró prestamo para retirar");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("No se encontró prestamo para retirar");
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
         private void btnRecibirLibro_Click(object sender, EventArgs e)
         {
-            // recibir de cliente
-            string selectedBookId = (string)cboLibro.SelectedValue;
-            string selectedUserId = (string)cboLibro.SelectedValue;
-            Book book = bookService.GetById(selectedBookId);
-            Loan prestamoARecibir = loanService.GetAll().FirstOrDefault(x => x.UserId == selectedUserId && x.BookId == selectedBookId && x.ReturnDate == null);
-
-            if (prestamoARecibir != null)
+            try
             {
-                DateTime currentDate = DateTime.Now;
+                // recibir de cliente
+                string selectedBookId = (string)cboLibro.SelectedValue;
+                string selectedUserId = (string)cboLibro.SelectedValue;
+                Book book = bookService.GetById(selectedBookId);
+                Loan prestamoARecibir = loanService.GetAll().FirstOrDefault(x => x.UserId == selectedUserId && x.BookId == selectedBookId && x.ReturnDate == null);
 
-                if (currentDate > prestamoARecibir.EndDate)
+                if (prestamoARecibir != null)
                 {
-                    // cobrar multa
-                    TimeSpan diferencia = (TimeSpan)(currentDate - prestamoARecibir.EndDate);
-                    int diferenciaEnDias = (int)diferencia.TotalDays;
-                    int multaPorDia = 5;
-                    MessageBox.Show($"Multa es de ${diferenciaEnDias * multaPorDia}");
+                    DateTime currentDate = DateTime.Now;
+
+                    if (currentDate > prestamoARecibir.EndDate)
+                    {
+                        // cobrar multa
+                        TimeSpan diferencia = (TimeSpan)(currentDate - prestamoARecibir.EndDate);
+                        int diferenciaEnDias = (int)diferencia.TotalDays;
+                        int multaPorDia = 5;
+                        MessageBox.Show($"Multa es de ${diferenciaEnDias * multaPorDia}");
+                    }
+
+                    // setear return date
+                    prestamoARecibir.ReturnDate = DateTime.Now;
+                    loanService.Update(prestamoARecibir);
+                    MessageBox.Show("Libro devuelto correctamente");
                 }
 
-                // setear return date
-                prestamoARecibir.ReturnDate = DateTime.Now;
-                loanService.Update(prestamoARecibir);
-                MessageBox.Show("Libro devuelto correctamente");
-            }
-
-            // aumentar stock
-            book.Stock = book.Stock + 1;
-            bookService.Update(book);
-
-            // avisar a reserva
-            Loan reservaDelLibro = loanService.GetAll().Where(x => x.BookId == selectedBookId).OrderBy(x => x.StartDate).FirstOrDefault();
-
-            if (reservaDelLibro != null)
-            {
-                reservaDelLibro.StartDate = DateTime.Now;
-                reservaDelLibro.EndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
-                reservaDelLibro.PuedeRetirar = true;
-
-                loanService.Update(reservaDelLibro);
-
-                book.Stock = book.Stock - 1;
+                // aumentar stock
+                book.Stock = book.Stock + 1;
                 bookService.Update(book);
 
-                notificationService.Create(new Notification() { Date = DateTime.Now, UserId = reservaDelLibro.UserId, Message = $"El libro reservado {book.Title} ya esta disponible para retirar" });
+                // avisar a reserva
+                Loan reservaDelLibro = loanService.GetAll().Where(x => x.BookId == selectedBookId).OrderBy(x => x.StartDate).FirstOrDefault();
+
+                if (reservaDelLibro != null)
+                {
+                    reservaDelLibro.StartDate = DateTime.Now;
+                    reservaDelLibro.EndDate = DateTime.Now.AddDays(userSubscriptionType.LoanDays);
+                    reservaDelLibro.PuedeRetirar = true;
+
+                    loanService.Update(reservaDelLibro);
+
+                    book.Stock = book.Stock - 1;
+                    bookService.Update(book);
+
+                    notificationService.Create(new Notification() { Date = DateTime.Now, UserId = reservaDelLibro.UserId, Message = $"El libro reservado {book.Title} ya esta disponible para retirar" });
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ejecutando accion");
             }
         }
     }

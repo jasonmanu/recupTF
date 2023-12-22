@@ -86,7 +86,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -112,7 +112,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -130,7 +130,7 @@ namespace UI.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error ejecutando accion");
             }
         }
 
@@ -150,14 +150,6 @@ namespace UI.Controls
 
         private void cboRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (cboRole.SelectedValue != null)
-            //{
-            //    string rolId = ((Role)cboRole.SelectedValue).Id;
-            //    txtNewRoleName.Text = ((Role)cboRole.SelectedValue).Name;
-
-            //    var rol = roleService.GetById(rolId);
-            //    treeViewAssigned.Nodes.Add(ConvertToTreeNode(rol));
-            //}
         }
     }
 }
