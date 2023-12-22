@@ -83,7 +83,7 @@ namespace UI.Controls
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(339, 425);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(317, 425);
             this.tableLayoutPanel4.TabIndex = 26;
             // 
             // tableLayoutPanel3
@@ -98,22 +98,22 @@ namespace UI.Controls
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(333, 53);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(311, 53);
             this.tableLayoutPanel3.TabIndex = 12;
             // 
             // txtAddress
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.Location = new System.Drawing.Point(86, 16);
+            this.txtAddress.Location = new System.Drawing.Point(80, 16);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(244, 20);
+            this.txtAddress.Size = new System.Drawing.Size(228, 20);
             this.txtAddress.TabIndex = 30;
             // 
             // lblPrice
             // 
             this.lblPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(28, 20);
+            this.lblPrice.Location = new System.Drawing.Point(22, 20);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(52, 13);
             this.lblPrice.TabIndex = 6;
@@ -131,14 +131,14 @@ namespace UI.Controls
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(333, 53);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(311, 53);
             this.tableLayoutPanel5.TabIndex = 7;
             // 
             // lblCategory
             // 
             this.lblCategory.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(57, 20);
+            this.lblCategory.Location = new System.Drawing.Point(51, 20);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(23, 13);
             this.lblCategory.TabIndex = 6;
@@ -149,9 +149,9 @@ namespace UI.Controls
             this.cboRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRole.FormattingEnabled = true;
-            this.cboRole.Location = new System.Drawing.Point(86, 16);
+            this.cboRole.Location = new System.Drawing.Point(80, 16);
             this.cboRole.Name = "cboRole";
-            this.cboRole.Size = new System.Drawing.Size(244, 21);
+            this.cboRole.Size = new System.Drawing.Size(228, 21);
             this.cboRole.TabIndex = 5;
             this.cboRole.SelectedIndexChanged += new System.EventHandler(this.cboRole_SelectedIndexChanged);
             // 
@@ -167,14 +167,14 @@ namespace UI.Controls
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(333, 53);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(311, 53);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // lblPassword
             // 
             this.lblPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(17, 20);
+            this.lblPassword.Location = new System.Drawing.Point(11, 20);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(63, 13);
             this.lblPassword.TabIndex = 6;
@@ -183,10 +183,10 @@ namespace UI.Controls
             // txtPassword
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(86, 16);
+            this.txtPassword.Location = new System.Drawing.Point(80, 16);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(244, 20);
+            this.txtPassword.Size = new System.Drawing.Size(228, 20);
             this.txtPassword.TabIndex = 7;
             // 
             // tableLayoutPanel1
@@ -201,14 +201,14 @@ namespace UI.Controls
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(333, 53);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(311, 53);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // lblUsername
             // 
             this.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(18, 13);
+            this.lblUsername.Location = new System.Drawing.Point(12, 13);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(62, 26);
             this.lblUsername.TabIndex = 6;
@@ -217,9 +217,9 @@ namespace UI.Controls
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(86, 16);
+            this.txtName.Location = new System.Drawing.Point(80, 16);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(244, 20);
+            this.txtName.Size = new System.Drawing.Size(228, 20);
             this.txtName.TabIndex = 7;
             // 
             // tlpAdmin
@@ -235,7 +235,7 @@ namespace UI.Controls
             this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpAdmin.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpAdmin.Size = new System.Drawing.Size(339, 123);
+            this.tlpAdmin.Size = new System.Drawing.Size(317, 123);
             this.tlpAdmin.TabIndex = 25;
             // 
             // btnCreate
@@ -243,7 +243,7 @@ namespace UI.Controls
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.Location = new System.Drawing.Point(3, 3);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(333, 35);
+            this.btnCreate.Size = new System.Drawing.Size(311, 35);
             this.btnCreate.TabIndex = 0;
             this.btnCreate.Text = "Crear";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -254,7 +254,7 @@ namespace UI.Controls
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.Location = new System.Drawing.Point(3, 44);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(333, 35);
+            this.btnUpdate.Size = new System.Drawing.Size(311, 35);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Actualizar";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -265,7 +265,7 @@ namespace UI.Controls
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Location = new System.Drawing.Point(3, 85);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(333, 35);
+            this.btnDelete.Size = new System.Drawing.Size(311, 35);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -280,10 +280,10 @@ namespace UI.Controls
             this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvData.Location = new System.Drawing.Point(388, 77);
+            this.dgvData.Location = new System.Drawing.Point(347, 77);
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(694, 549);
+            this.dgvData.Size = new System.Drawing.Size(686, 549);
             this.dgvData.TabIndex = 24;
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
             // 
@@ -307,7 +307,7 @@ namespace UI.Controls
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.label6);
             this.Name = "UsuariosControl";
-            this.Size = new System.Drawing.Size(1100, 640);
+            this.Size = new System.Drawing.Size(1044, 640);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();

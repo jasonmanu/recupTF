@@ -28,9 +28,6 @@ namespace Entities
         [XmlElement("Address")]
         public string Address { get; set; }
 
-        [XmlElement("LastLoginAt")]
-        public DateTime? LastLoginAt { get; set; }
-
         [XmlElement("IsActive")]
         public bool IsActive { get; set; }
 

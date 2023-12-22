@@ -35,13 +35,13 @@ namespace UI
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEstadisticas = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnCategories = new System.Windows.Forms.Button();
             this.btnAuthors = new System.Windows.Forms.Button();
             this.btnLibros = new System.Windows.Forms.Button();
-            this.btnSubscriptionTypes = new System.Windows.Forms.Button();
             this.btnNotificaciones = new System.Windows.Forms.Button();
-            this.btnCategories = new System.Windows.Forms.Button();
             this.btnRoles = new System.Windows.Forms.Button();
             this.btnBackup = new System.Windows.Forms.Button();
+            this.btnSubscriptionTypes = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.lblHome = new System.Windows.Forms.Label();
@@ -117,6 +117,17 @@ namespace UI
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
+            // btnCategories
+            // 
+            this.btnCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCategories.Location = new System.Drawing.Point(115, 191);
+            this.btnCategories.Name = "btnCategories";
+            this.btnCategories.Size = new System.Drawing.Size(107, 40);
+            this.btnCategories.TabIndex = 7;
+            this.btnCategories.Text = "Categorias";
+            this.btnCategories.UseVisualStyleBackColor = true;
+            this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
+            // 
             // btnAuthors
             // 
             this.btnAuthors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -139,17 +150,6 @@ namespace UI
             this.btnLibros.UseVisualStyleBackColor = true;
             this.btnLibros.Click += new System.EventHandler(this.btnLibros_Click);
             // 
-            // btnSubscriptionTypes
-            // 
-            this.btnSubscriptionTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubscriptionTypes.Location = new System.Drawing.Point(3, 191);
-            this.btnSubscriptionTypes.Name = "btnSubscriptionTypes";
-            this.btnSubscriptionTypes.Size = new System.Drawing.Size(106, 40);
-            this.btnSubscriptionTypes.TabIndex = 11;
-            this.btnSubscriptionTypes.Text = "Suscripciones";
-            this.btnSubscriptionTypes.UseVisualStyleBackColor = true;
-            this.btnSubscriptionTypes.Click += new System.EventHandler(this.btnSubsInfo_Click);
-            // 
             // btnNotificaciones
             // 
             this.btnNotificaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -160,17 +160,6 @@ namespace UI
             this.btnNotificaciones.Text = "Notificaciones";
             this.btnNotificaciones.UseVisualStyleBackColor = true;
             this.btnNotificaciones.Click += new System.EventHandler(this.btnNotificaciones_Click);
-            // 
-            // btnCategories
-            // 
-            this.btnCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategories.Location = new System.Drawing.Point(115, 191);
-            this.btnCategories.Name = "btnCategories";
-            this.btnCategories.Size = new System.Drawing.Size(107, 40);
-            this.btnCategories.TabIndex = 7;
-            this.btnCategories.Text = "Categorias";
-            this.btnCategories.UseVisualStyleBackColor = true;
-            this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
             // 
             // btnRoles
             // 
@@ -193,6 +182,17 @@ namespace UI
             this.btnBackup.Text = "Backup";
             this.btnBackup.UseVisualStyleBackColor = true;
             this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
+            // btnSubscriptionTypes
+            // 
+            this.btnSubscriptionTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSubscriptionTypes.Location = new System.Drawing.Point(3, 191);
+            this.btnSubscriptionTypes.Name = "btnSubscriptionTypes";
+            this.btnSubscriptionTypes.Size = new System.Drawing.Size(106, 40);
+            this.btnSubscriptionTypes.TabIndex = 11;
+            this.btnSubscriptionTypes.Text = "Suscripciones";
+            this.btnSubscriptionTypes.UseVisualStyleBackColor = true;
+            this.btnSubscriptionTypes.Click += new System.EventHandler(this.btnSubsInfo_Click);
             // 
             // btnLogout
             // 
@@ -219,7 +219,7 @@ namespace UI
             this.lblHome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblHome.AutoSize = true;
             this.lblHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHome.Location = new System.Drawing.Point(381, 41);
+            this.lblHome.Location = new System.Drawing.Point(446, 42);
             this.lblHome.Name = "lblHome";
             this.lblHome.Size = new System.Drawing.Size(239, 26);
             this.lblHome.TabIndex = 6;

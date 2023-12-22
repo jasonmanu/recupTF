@@ -38,7 +38,7 @@ namespace UI.Controls
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpGeneral = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@ namespace UI.Controls
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartNewSubs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMasReservas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSubsPerType)).BeginInit();
@@ -62,42 +62,42 @@ namespace UI.Controls
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tlpGeneral
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chartNewSubs, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.chartMasReservas, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.chartSubsPerType, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cboYearSubsChart, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 18);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1038, 604);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tlpGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpGeneral.ColumnCount = 3;
+            this.tlpGeneral.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpGeneral.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tlpGeneral.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tlpGeneral.Controls.Add(this.label4, 0, 1);
+            this.tlpGeneral.Controls.Add(this.label3, 2, 0);
+            this.tlpGeneral.Controls.Add(this.label1, 0, 0);
+            this.tlpGeneral.Controls.Add(this.label2, 1, 0);
+            this.tlpGeneral.Controls.Add(this.chartNewSubs, 0, 3);
+            this.tlpGeneral.Controls.Add(this.chartMasReservas, 1, 3);
+            this.tlpGeneral.Controls.Add(this.chartSubsPerType, 2, 3);
+            this.tlpGeneral.Controls.Add(this.cboYearSubsChart, 0, 2);
+            this.tlpGeneral.Controls.Add(this.tableLayoutPanel2, 1, 2);
+            this.tlpGeneral.Controls.Add(this.label5, 2, 1);
+            this.tlpGeneral.Controls.Add(this.tableLayoutPanel3, 1, 1);
+            this.tlpGeneral.Location = new System.Drawing.Point(3, 18);
+            this.tlpGeneral.Name = "tlpGeneral";
+            this.tlpGeneral.RowCount = 4;
+            this.tlpGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tlpGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tlpGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tlpGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tlpGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpGeneral.Size = new System.Drawing.Size(1044, 619);
+            this.tlpGeneral.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(694, 38);
+            this.label5.Location = new System.Drawing.Point(698, 38);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(341, 13);
+            this.label5.Size = new System.Drawing.Size(343, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "mes y año";
             // 
@@ -107,7 +107,7 @@ namespace UI.Controls
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(339, 13);
+            this.label4.Size = new System.Drawing.Size(341, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Año";
             // 
@@ -115,9 +115,9 @@ namespace UI.Controls
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(694, 8);
+            this.label3.Location = new System.Drawing.Point(698, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(341, 13);
+            this.label3.Size = new System.Drawing.Size(343, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Cantida de usuarios por tipo de Suscripcion";
             // 
@@ -127,7 +127,7 @@ namespace UI.Controls
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(339, 13);
+            this.label1.Size = new System.Drawing.Size(341, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Nuevos suscriptores";
             // 
@@ -135,9 +135,9 @@ namespace UI.Controls
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(348, 8);
+            this.label2.Location = new System.Drawing.Point(350, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(340, 13);
+            this.label2.Size = new System.Drawing.Size(342, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Libros con mas reservas";
             // 
@@ -148,13 +148,13 @@ namespace UI.Controls
             this.chartNewSubs.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartNewSubs.Legends.Add(legend1);
-            this.chartNewSubs.Location = new System.Drawing.Point(3, 166);
+            this.chartNewSubs.Location = new System.Drawing.Point(3, 173);
             this.chartNewSubs.Name = "chartNewSubs";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartNewSubs.Series.Add(series1);
-            this.chartNewSubs.Size = new System.Drawing.Size(339, 362);
+            this.chartNewSubs.Size = new System.Drawing.Size(341, 362);
             this.chartNewSubs.TabIndex = 0;
             this.chartNewSubs.Text = "chart1";
             // 
@@ -165,14 +165,14 @@ namespace UI.Controls
             this.chartMasReservas.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartMasReservas.Legends.Add(legend2);
-            this.chartMasReservas.Location = new System.Drawing.Point(348, 166);
+            this.chartMasReservas.Location = new System.Drawing.Point(350, 174);
             this.chartMasReservas.Name = "chartMasReservas";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartMasReservas.Series.Add(series2);
-            this.chartMasReservas.Size = new System.Drawing.Size(340, 361);
+            this.chartMasReservas.Size = new System.Drawing.Size(342, 361);
             this.chartMasReservas.TabIndex = 2;
             this.chartMasReservas.Text = "chart2";
             // 
@@ -183,14 +183,14 @@ namespace UI.Controls
             this.chartSubsPerType.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartSubsPerType.Legends.Add(legend3);
-            this.chartSubsPerType.Location = new System.Drawing.Point(694, 164);
+            this.chartSubsPerType.Location = new System.Drawing.Point(698, 172);
             this.chartSubsPerType.Name = "chartSubsPerType";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chartSubsPerType.Series.Add(series3);
-            this.chartSubsPerType.Size = new System.Drawing.Size(341, 365);
+            this.chartSubsPerType.Size = new System.Drawing.Size(343, 365);
             this.chartSubsPerType.TabIndex = 1;
             this.chartSubsPerType.Text = "chart1";
             // 
@@ -201,7 +201,7 @@ namespace UI.Controls
             this.cboYearSubsChart.FormattingEnabled = true;
             this.cboYearSubsChart.Location = new System.Drawing.Point(3, 64);
             this.cboYearSubsChart.Name = "cboYearSubsChart";
-            this.cboYearSubsChart.Size = new System.Drawing.Size(339, 21);
+            this.cboYearSubsChart.Size = new System.Drawing.Size(341, 21);
             this.cboYearSubsChart.TabIndex = 6;
             this.cboYearSubsChart.SelectedIndexChanged += new System.EventHandler(this.cboYearSubsChart_SelectedIndexChanged);
             // 
@@ -212,7 +212,7 @@ namespace UI.Controls
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.cboMonthReservas, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.cboYearReservas, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(348, 63);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(350, 63);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -246,11 +246,11 @@ namespace UI.Controls
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(348, 33);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(350, 33);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(340, 24);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(342, 24);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // label6
@@ -259,7 +259,7 @@ namespace UI.Controls
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 5);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(164, 13);
+            this.label6.Size = new System.Drawing.Size(165, 13);
             this.label6.TabIndex = 11;
             this.label6.Text = "Año";
             // 
@@ -267,9 +267,9 @@ namespace UI.Controls
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(173, 5);
+            this.label7.Location = new System.Drawing.Point(174, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(164, 13);
+            this.label7.Size = new System.Drawing.Size(165, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Mes";
             // 
@@ -277,12 +277,12 @@ namespace UI.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tlpGeneral);
             this.Name = "StatsControl";
             this.Size = new System.Drawing.Size(1044, 640);
             this.Load += new System.EventHandler(this.StatsControl_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tlpGeneral.ResumeLayout(false);
+            this.tlpGeneral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartNewSubs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMasReservas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSubsPerType)).EndInit();
@@ -295,7 +295,7 @@ namespace UI.Controls
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpGeneral;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

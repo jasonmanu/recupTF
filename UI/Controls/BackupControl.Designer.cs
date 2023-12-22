@@ -79,7 +79,7 @@ namespace UI.Controls
             this.dgvData.Location = new System.Drawing.Point(168, 109);
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(776, 248);
+            this.dgvData.Size = new System.Drawing.Size(720, 248);
             this.dgvData.TabIndex = 5;
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
             // 
@@ -92,7 +92,7 @@ namespace UI.Controls
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvData);
             this.Name = "BackupControl";
-            this.Size = new System.Drawing.Size(1100, 640);
+            this.Size = new System.Drawing.Size(1044, 640);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

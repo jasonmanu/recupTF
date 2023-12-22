@@ -167,7 +167,7 @@ namespace UI.Controls
             this.Controls.Add(this.treeViewAssigned);
             this.Controls.Add(this.treeViewAvailable);
             this.Name = "RolsControl";
-            this.Size = new System.Drawing.Size(970, 665);
+            this.Size = new System.Drawing.Size(1044, 640);
             this.ResumeLayout(false);
             this.PerformLayout();
 

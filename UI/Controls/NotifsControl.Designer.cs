@@ -59,7 +59,7 @@ namespace UI.Controls
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.lblInfo);
             this.Name = "NotifsControl";
-            this.Size = new System.Drawing.Size(1100, 640);
+            this.Size = new System.Drawing.Size(1044, 640);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

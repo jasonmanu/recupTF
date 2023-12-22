@@ -71,7 +71,6 @@ namespace UI.Controls
                     Username = txtName.Text,
                     Password = txtPassword.Text,
                     Address = txtAddress.Text,
-                    LastLoginAt = DateTime.Now,
                     RoleName = ((Role)cboRole.SelectedItem).Name,
                     IsActive = true,
                 });
@@ -102,8 +101,8 @@ namespace UI.Controls
                     Username = txtName.Text,
                     Password = txtPassword.Text,
                     Address = txtAddress.Text,
-                    LastLoginAt = DateTime.Now,
                     RoleName = ((Role)cboRole.SelectedItem).Name,
+                    IsActive = true,
                 };
 
                 userService.Update(user);

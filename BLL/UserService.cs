@@ -64,6 +64,7 @@ namespace BLL
 
             user.Id = Guid.NewGuid().ToString();
             user.Password = CryptoHelper.Encrypt(user.Password);
+            user.IsActive = true;
 
             repository.Create(user);
         }

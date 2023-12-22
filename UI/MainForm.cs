@@ -239,7 +239,7 @@ namespace UI
                 string username = txtUsername.Text;
                 string password = txtUsername.Text;
 
-                userService.Create(new User(username, password, "Cliente"));
+                userService.Create(new User(username, password, "cliente"));
                 MessageBox.Show("Registrado Correctamente");
             }
             catch (Exception ex)
@@ -375,14 +375,14 @@ namespace UI
                     btnSubscriptionTypes.Visible = true;
                 }
 
-                if (permisosGenerales.Contains("Roles"))
-                {
-                    btnRoles.Visible = true;
-                }
-
                 if (permisosGenerales.Contains("Estadisticas"))
                 {
                     btnEstadisticas.Visible = true;
+                }
+
+                if (permisosGenerales.Contains("Roles"))
+                {
+                    btnRoles.Visible = true;
                 }
             }
             catch (Exception ex)
