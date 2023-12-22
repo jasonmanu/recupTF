@@ -114,12 +114,12 @@ namespace UI.Controls
             {
                 User existingUser = userService.GetAll().FirstOrDefault(x => x.Username == txtName.Text);
 
-                if (existingUser != null)
-                {
-                    MessageBox.Show("Username ya esta en uso");
-                }
-                else
-                {
+                //if (existingUser != null)
+                //{
+                //    MessageBox.Show("Username ya esta en uso");
+                //}
+                //else
+                //{
                     var user = new User()
                     {
                         Id = id,
@@ -133,7 +133,7 @@ namespace UI.Controls
                     userService.Update(user);
                     MessageBox.Show("Actualizado correctamente");
                     LoadData();
-                }
+                //}
             }
             catch (Exception ex)
             {

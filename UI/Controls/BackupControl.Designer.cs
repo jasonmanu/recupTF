@@ -38,7 +38,7 @@ namespace UI.Controls
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(615, 380);
+            this.btnImport.Location = new System.Drawing.Point(617, 479);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(294, 43);
             this.btnImport.TabIndex = 8;
@@ -48,7 +48,7 @@ namespace UI.Controls
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(254, 380);
+            this.btnExport.Location = new System.Drawing.Point(212, 479);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(294, 43);
             this.btnExport.TabIndex = 7;
@@ -76,10 +76,10 @@ namespace UI.Controls
             this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvData.Location = new System.Drawing.Point(168, 109);
+            this.dgvData.Location = new System.Drawing.Point(15, 109);
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(720, 248);
+            this.dgvData.Size = new System.Drawing.Size(1015, 352);
             this.dgvData.TabIndex = 5;
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
             // 

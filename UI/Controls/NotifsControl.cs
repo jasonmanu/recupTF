@@ -20,7 +20,12 @@ namespace UI.Controls
             this.user = user;
 
             InitializeComponent();
-            LoadData();
+            //LoadData();
+
+            if (user.Permisos.Contains("Notificacion.Leer"))
+            {
+                LoadData();
+            }
         }
 
         private void LoadData()

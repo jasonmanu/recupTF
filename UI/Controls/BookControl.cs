@@ -76,41 +76,39 @@ namespace UI.Controls
             listBoxRecommendations.Items.Clear();
 
             List<Loan> misPrestamos = loanService.GetAll().Where(x => x.UserId == user.Id).ToList();
-            List<string> misCategoriasIds = new List<string>();
-            //List<string> misCategorias = new List<string>();
-            List<string> misAutoresIds = new List<string>();
-
-            foreach (var prestamo in misPrestamos)
-            {
-                // get libro
-                Book book = bookService.GetById(prestamo.BookId);
-                misCategoriasIds.Add(book.CategoryId);
-
-                // get category
-                //Category category = categoryService.GetById(book.CategoryId);
-                //misCategorias.Add(category.Name);
-
-                // get autor
-                misAutoresIds.Add(book.AuthorId);
-            }
-
+            //List<Book> recommendedBooks = bookService.GetRecommendedBooks(misPrestamos);
             List<Book> recommendedBooks = new List<Book>();
-            var todosLosLibros = bookService.GetAll();
+            List<string> misCategoriasIds = new List<string>();
+            List<string> misAutoresIds = new List<string>();
+            List<Book> todosLosLibros = bookService.GetAll();
 
-            foreach (Book libro in todosLosLibros)
+            if (recommendedBooks.Count == 0)
             {
-                // agrega libros con categoria igual a mis prestamos previos que no sean los que ya tengo
-                if (misCategoriasIds.Contains(libro.CategoryId) && misPrestamos.Select(x => x.BookId).Contains(libro.Id) == false)
+                foreach (var prestamo in misPrestamos)
                 {
-                    recommendedBooks.Add(libro);
+                    // get libro
+                    Book book = bookService.GetById(prestamo.BookId);
+                    misCategoriasIds.Add(book.CategoryId);
+
+                    // get autor
+                    misAutoresIds.Add(book.AuthorId);
                 }
-            }
 
-            foreach (Book libro in todosLosLibros)
-            {
-                if (misAutoresIds.Contains(libro.AuthorId) && misPrestamos.Select(x => x.BookId).Contains(libro.Id) == false)
+                foreach (Book libro in todosLosLibros)
                 {
-                    recommendedBooks.Add(libro);
+                    // agrega libros con categoria igual a mis prestamos previos que no sean los que ya tengo
+                    if (misCategoriasIds.Contains(libro.CategoryId) && misPrestamos.Select(x => x.BookId).Contains(libro.Id) == false)
+                    {
+                        recommendedBooks.Add(libro);
+                    }
+                }
+
+                foreach (Book libro in todosLosLibros)
+                {
+                    if (misAutoresIds.Contains(libro.AuthorId) && misPrestamos.Select(x => x.BookId).Contains(libro.Id) == false)
+                    {
+                        recommendedBooks.Add(libro);
+                    }
                 }
             }
 

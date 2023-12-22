@@ -27,7 +27,7 @@ namespace UI.Controls
         private void HabilitarBotones()
         {
             btnBuySubscription.Enabled = false;
-            btnCancelSubscription.Enabled = false;
+            //btnCancelSubscription.Enabled = false;
 
             if (user.Permisos.Contains("TipoSubscripcion.Leer"))
             {
@@ -55,7 +55,7 @@ namespace UI.Controls
             if (user.Permisos.Contains("Prestamo.Crear"))
             {
                 btnBuySubscription.Enabled = true;
-                btnCancelSubscription.Enabled = true;
+                //btnCancelSubscription.Enabled = true;
             }
         }
 

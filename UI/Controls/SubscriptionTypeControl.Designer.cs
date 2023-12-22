@@ -38,6 +38,9 @@ namespace UI.Controls
             this.txtName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblMaxLoans = new System.Windows.Forms.Label();
+            this.nudPrestamosSimultaneos = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.nudLoanDays = new System.Windows.Forms.NumericUpDown();
@@ -49,20 +52,16 @@ namespace UI.Controls
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.btnBuySubscription = new System.Windows.Forms.Button();
-            this.btnCancelSubscription = new System.Windows.Forms.Button();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblMaxLoans = new System.Windows.Forms.Label();
-            this.nudPrestamosSimultaneos = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrestamosSimultaneos)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLoanDays)).BeginInit();
             this.tlpCrud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrestamosSimultaneos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -181,6 +180,54 @@ namespace UI.Controls
             this.tableLayoutPanel4.Size = new System.Drawing.Size(528, 165);
             this.tableLayoutPanel4.TabIndex = 34;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel5.Controls.Add(this.lblMaxLoans, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.nudPrestamosSimultaneos, 1, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 126);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(522, 35);
+            this.tableLayoutPanel5.TabIndex = 42;
+            // 
+            // lblMaxLoans
+            // 
+            this.lblMaxLoans.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblMaxLoans.AutoSize = true;
+            this.lblMaxLoans.Location = new System.Drawing.Point(13, 11);
+            this.lblMaxLoans.Name = "lblMaxLoans";
+            this.lblMaxLoans.Size = new System.Drawing.Size(114, 13);
+            this.lblMaxLoans.TabIndex = 6;
+            this.lblMaxLoans.Text = "Prestamos simultaneos";
+            // 
+            // nudPrestamosSimultaneos
+            // 
+            this.nudPrestamosSimultaneos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudPrestamosSimultaneos.Location = new System.Drawing.Point(133, 7);
+            this.nudPrestamosSimultaneos.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudPrestamosSimultaneos.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudPrestamosSimultaneos.Name = "nudPrestamosSimultaneos";
+            this.nudPrestamosSimultaneos.Size = new System.Drawing.Size(386, 20);
+            this.nudPrestamosSimultaneos.TabIndex = 7;
+            this.nudPrestamosSimultaneos.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -193,7 +240,7 @@ namespace UI.Controls
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(522, 35);
             this.tableLayoutPanel2.TabIndex = 41;
             // 
@@ -314,78 +361,18 @@ namespace UI.Controls
             // btnBuySubscription
             // 
             this.btnBuySubscription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuySubscription.Location = new System.Drawing.Point(24, 554);
+            this.btnBuySubscription.Location = new System.Drawing.Point(216, 534);
             this.btnBuySubscription.Name = "btnBuySubscription";
-            this.btnBuySubscription.Size = new System.Drawing.Size(511, 55);
+            this.btnBuySubscription.Size = new System.Drawing.Size(594, 55);
             this.btnBuySubscription.TabIndex = 0;
             this.btnBuySubscription.Text = "Comprar subscripcion";
             this.btnBuySubscription.UseVisualStyleBackColor = true;
             this.btnBuySubscription.Click += new System.EventHandler(this.btnBuySubscription_Click);
             // 
-            // btnCancelSubscription
-            // 
-            this.btnCancelSubscription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelSubscription.Location = new System.Drawing.Point(553, 554);
-            this.btnCancelSubscription.Name = "btnCancelSubscription";
-            this.btnCancelSubscription.Size = new System.Drawing.Size(458, 55);
-            this.btnCancelSubscription.TabIndex = 1;
-            this.btnCancelSubscription.Text = "Cancelar subscripcion";
-            this.btnCancelSubscription.UseVisualStyleBackColor = true;
-            this.btnCancelSubscription.Click += new System.EventHandler(this.btnCancelSubscription_Click);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel5.Controls.Add(this.lblMaxLoans, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.nudPrestamosSimultaneos, 1, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 126);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(522, 35);
-            this.tableLayoutPanel5.TabIndex = 42;
-            // 
-            // lblMaxLoans
-            // 
-            this.lblMaxLoans.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblMaxLoans.AutoSize = true;
-            this.lblMaxLoans.Location = new System.Drawing.Point(13, 11);
-            this.lblMaxLoans.Name = "lblMaxLoans";
-            this.lblMaxLoans.Size = new System.Drawing.Size(114, 13);
-            this.lblMaxLoans.TabIndex = 6;
-            this.lblMaxLoans.Text = "Prestamos simultaneos";
-            // 
-            // nudPrestamosSimultaneos
-            // 
-            this.nudPrestamosSimultaneos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudPrestamosSimultaneos.Location = new System.Drawing.Point(133, 7);
-            this.nudPrestamosSimultaneos.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.nudPrestamosSimultaneos.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudPrestamosSimultaneos.Name = "nudPrestamosSimultaneos";
-            this.nudPrestamosSimultaneos.Size = new System.Drawing.Size(386, 20);
-            this.nudPrestamosSimultaneos.TabIndex = 7;
-            this.nudPrestamosSimultaneos.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // SubscriptionTypeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnCancelSubscription);
             this.Controls.Add(this.btnBuySubscription);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.label1);
@@ -402,14 +389,14 @@ namespace UI.Controls
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrestamosSimultaneos)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLoanDays)).EndInit();
             this.tlpCrud.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrestamosSimultaneos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -437,7 +424,6 @@ namespace UI.Controls
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown nudLoanDays;
         private System.Windows.Forms.Button btnBuySubscription;
-        private System.Windows.Forms.Button btnCancelSubscription;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label lblMaxLoans;
         private System.Windows.Forms.NumericUpDown nudPrestamosSimultaneos;
