@@ -66,14 +66,31 @@ namespace UI.Controls
         {
             try
             {
-                userService.Create(new User()
+                User user = userService.GetAll().FirstOrDefault(x => x.Username == txtName.Text);
+
+                if (user == null)
                 {
-                    Username = txtName.Text,
-                    Password = txtPassword.Text,
-                    Address = txtAddress.Text,
-                    RoleName = ((Role)cboRole.SelectedItem).Name,
-                    IsActive = true,
-                });
+                    userService.Create(new User()
+                    {
+                        Username = txtName.Text,
+                        Password = txtPassword.Text,
+                        Address = txtAddress.Text,
+                        RoleName = ((Role)cboRole.SelectedItem).Name,
+                        IsActive = true,
+                    });
+                }
+                else
+                {
+                    userService.Update(new User()
+                    {
+                        Id = user.Id,
+                        Username = txtName.Text,
+                        Password = txtPassword.Text,
+                        Address = txtAddress.Text,
+                        RoleName = ((Role)cboRole.SelectedItem).Name,
+                        IsActive = true,
+                    });
+                }
 
                 MessageBox.Show("Creado correctamente");
                 LoadData();
@@ -95,19 +112,28 @@ namespace UI.Controls
 
             try
             {
-                var user = new User()
-                {
-                    Id = id,
-                    Username = txtName.Text,
-                    Password = txtPassword.Text,
-                    Address = txtAddress.Text,
-                    RoleName = ((Role)cboRole.SelectedItem).Name,
-                    IsActive = true,
-                };
+                User existingUser = userService.GetAll().FirstOrDefault(x => x.Username == txtName.Text);
 
-                userService.Update(user);
-                MessageBox.Show("Actualizado correctamente");
-                LoadData();
+                if (existingUser != null)
+                {
+                    MessageBox.Show("Username ya esta en uso");
+                }
+                else
+                {
+                    var user = new User()
+                    {
+                        Id = id,
+                        Username = txtName.Text,
+                        Password = txtPassword.Text,
+                        Address = txtAddress.Text,
+                        RoleName = ((Role)cboRole.SelectedItem).Name,
+                        IsActive = true,
+                    };
+
+                    userService.Update(user);
+                    MessageBox.Show("Actualizado correctamente");
+                    LoadData();
+                }
             }
             catch (Exception ex)
             {

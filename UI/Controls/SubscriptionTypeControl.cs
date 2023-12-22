@@ -34,6 +34,7 @@ namespace UI.Controls
                 btnCreate.Enabled = false;
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
+                tlpCrud.Visible = false;
             }
 
             if (user.Permisos.Contains("TipoSubscripcion.Crear"))
@@ -54,15 +55,6 @@ namespace UI.Controls
             if (user.Permisos.Contains("Prestamo.Crear"))
             {
                 btnBuySubscription.Enabled = true;
-            }
-
-            if (user.Permisos.Contains("Prestamo.Editar"))
-            {
-                btnCancelSubscription.Enabled = true;
-            }
-
-            if (user.Permisos.Contains("Prestamo.Eliminar"))
-            {
                 btnCancelSubscription.Enabled = true;
             }
         }

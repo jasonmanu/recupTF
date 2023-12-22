@@ -29,7 +29,7 @@ namespace BLL
 
             User user = repository.GetByUsername(username);
 
-            if (user != null)
+            if (user != null && user.IsActive == true)
             {
                 string decryptedPassword = CryptoHelper.Decrypt(user.Password);
 

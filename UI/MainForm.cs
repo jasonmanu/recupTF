@@ -213,18 +213,21 @@ namespace UI
                 if (user == null)
                 {
                     MessageBox.Show("Usuario y/o contraseña no validos");
+                    txtUsername.ResetText();
                 }
                 else
                 {
                     txtUsername.Enabled = false;
                     txtPassword.Enabled = false;
-                    txtPassword.ResetText();
+
 
                     btnLogin.Enabled = false;
                     btnRegister.Enabled = false;
 
                     HabilitarBotonesPorRol();
                 }
+
+                txtPassword.ResetText();
             }
             catch (Exception ex)
             {

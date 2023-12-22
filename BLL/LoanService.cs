@@ -33,7 +33,7 @@ namespace BLL
             SubscriptionType subscriptionType = subscriptionTypeService.GetById(userSubscription.SubscriptionTypeId);
             DateTime endDate = DateTime.Now.AddDays(subscriptionType.LoanDays);
 
-            loanRepository.Create(new Loan()
+            base.Create(new Loan()
             {
                 BookId = entity.BookId,
                 StartDate = DateTime.Now,

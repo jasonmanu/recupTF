@@ -39,7 +39,6 @@ namespace UI.Controls
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tlpGeneral = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,8 +51,8 @@ namespace UI.Controls
             this.cboMonthReservas = new System.Windows.Forms.ComboBox();
             this.cboYearReservas = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tlpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartNewSubs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartMasReservas)).BeginInit();
@@ -78,7 +77,6 @@ namespace UI.Controls
             this.tlpGeneral.Controls.Add(this.chartSubsPerType, 2, 3);
             this.tlpGeneral.Controls.Add(this.cboYearSubsChart, 0, 2);
             this.tlpGeneral.Controls.Add(this.tableLayoutPanel2, 1, 2);
-            this.tlpGeneral.Controls.Add(this.label5, 2, 1);
             this.tlpGeneral.Controls.Add(this.tableLayoutPanel3, 1, 1);
             this.tlpGeneral.Location = new System.Drawing.Point(3, 18);
             this.tlpGeneral.Name = "tlpGeneral";
@@ -90,16 +88,6 @@ namespace UI.Controls
             this.tlpGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpGeneral.Size = new System.Drawing.Size(1044, 619);
             this.tlpGeneral.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(698, 38);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(343, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "mes y año";
             // 
             // label4
             // 
@@ -253,16 +241,6 @@ namespace UI.Controls
             this.tableLayoutPanel3.Size = new System.Drawing.Size(342, 24);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(165, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Año";
-            // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -272,6 +250,16 @@ namespace UI.Controls
             this.label7.Size = new System.Drawing.Size(165, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Mes";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(165, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Año";
             // 
             // StatsControl
             // 
@@ -296,7 +284,6 @@ namespace UI.Controls
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlpGeneral;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
