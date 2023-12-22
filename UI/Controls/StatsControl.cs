@@ -23,7 +23,7 @@ namespace UI.Controls
             try
             {
                 int currentYear = DateTime.Now.Year;
-                List<int> yearsList = new List<int>() { currentYear, currentYear - 1, currentYear - 2 };
+                List<int> yearsList = new List<int>() { currentYear, currentYear - 1 };
                 cboYearSubsChart.DataSource = yearsList;
 
                 LoadChartNewSubs();
@@ -103,7 +103,6 @@ namespace UI.Controls
                 datosUsuariosPorSubscripcion.Add(key: subscriptionTypeService.GetById(subTypeId)?.Name, value: cantidadDeUsuarios);
             }
 
-            // Configuración del gráfico circular
             ChartArea chartArea = chartSubsPerType.ChartAreas[0];
             Series series = chartSubsPerType.Series[0];
 
@@ -114,10 +113,8 @@ namespace UI.Controls
             series.IsValueShownAsLabel = true;
             series.LabelFormat = "#,##0";
 
-            // Paleta de colores personalizada
             Color[] colores = new Color[] { Color.Blue, Color.Green, Color.Orange };
 
-            // Llenar el gráfico con los datos proporcionados y asignar colores
             int index = 0;
             foreach (var kvp in datosUsuariosPorSubscripcion)
             {
@@ -125,6 +122,8 @@ namespace UI.Controls
                 point.SetValueY(kvp.Value);
                 point.AxisLabel = kvp.Key;
                 point.Color = colores[index % colores.Length];
+                point.Font = new Font("Arial", 10, FontStyle.Bold);
+                point.LabelForeColor = Color.White;
                 series.Points.Add(point);
                 index++;
             }
