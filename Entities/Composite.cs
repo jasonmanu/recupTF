@@ -16,10 +16,10 @@ public class Role : Entity
         Permissions = new List<string>();
     }
 
-    public virtual List<string> GetAllPermissions()
-    {
-        return new List<string>(Permissions);
-    }
+    //public virtual List<string> GetAllPermissions()
+    //{
+    //    return new List<string>(Permissions);
+    //}
 }
 
 [Serializable]
@@ -35,16 +35,16 @@ public class CompositeRole : Role
         SubRoles = new List<Role>();
     }
 
-    public override List<string> GetAllPermissions()
-    {
-        List<string> allPermissions = base.GetAllPermissions();
+    //public override List<string> GetAllPermissions()
+    //{
+    //    List<string> allPermissions = base.GetAllPermissions();
 
-        foreach (Role subRole in SubRoles)
-        {
-            List<string> subRolePermissions = subRole.GetAllPermissions();
-            allPermissions.AddRange(subRolePermissions);
-        }
+    //    foreach (Role subRole in SubRoles)
+    //    {
+    //        List<string> subRolePermissions = subRole.GetAllPermissions();
+    //        allPermissions.AddRange(subRolePermissions);
+    //    }
 
-        return allPermissions;
-    }
+    //    return allPermissions;
+    //}
 }
