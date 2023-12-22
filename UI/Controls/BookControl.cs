@@ -333,7 +333,7 @@ namespace UI.Controls
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error ejecutando accion");
+                    MessageBox.Show(ex.Message);
                 }
             }
             else

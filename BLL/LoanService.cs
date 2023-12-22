@@ -39,7 +39,8 @@ namespace BLL
                 StartDate = DateTime.Now,
                 EndDate = endDate,
                 ReturnDate = null,
-                UserId = entity.UserId
+                UserId = entity.UserId,
+                PuedeRetirar = entity.PuedeRetirar,
             });
         }
     }
