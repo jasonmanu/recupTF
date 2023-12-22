@@ -82,7 +82,7 @@ namespace UI.Controls
                     LoanDays = (int)nudLoanDays.Value,
                     Name = txtName.Text,
                     Price = (int)nudPrice.Value,
-                    MaxLoanBooks = 1//(int)nudPrice.MaxLoanBooks
+                    MaxLoanBooks = (int)nudPrestamosSimultaneos.Value,
                 });
 
                 MessageBox.Show("Creado correctamente");
@@ -108,7 +108,8 @@ namespace UI.Controls
                     Id = id,
                     LoanDays = (int)nudLoanDays.Value,
                     Name = txtName.Text,
-                    Price = (int)nudPrice.Value
+                    Price = (int)nudPrice.Value,
+                    MaxLoanBooks = (int)nudPrestamosSimultaneos.Value,
                 };
 
                 subscriptionTypeService.Update(book);
@@ -147,6 +148,7 @@ namespace UI.Controls
                 txtName.Text = subscriptionType.Name;
                 nudPrice.Value = subscriptionType.Price;
                 nudLoanDays.Value = subscriptionType.LoanDays;
+                nudPrestamosSimultaneos.Value = subscriptionType.MaxLoanBooks;
             }
         }
 

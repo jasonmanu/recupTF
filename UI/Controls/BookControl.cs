@@ -295,6 +295,8 @@ namespace UI.Controls
                             ReturnDate = null,
                         });
 
+                        notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Recibira notificacion cuando el libro {book.Title} este disponible", UserId = user.Id });
+
                         MessageBox.Show($"Reserva creada. Recibira una notificacion cuando el libro este disponible para retirar");
                     }
                     else
@@ -315,7 +317,7 @@ namespace UI.Controls
                                 ReturnDate = null,
                             });
 
-                            book.Stock = book.Stock - 1;
+                            book.Stock--;
                             bookService.Update(book);
 
                             notificationService.Create(new Notification() { Date = DateTime.Now, Message = $"Puede retirar su libro {book.Title}", UserId = user.Id });

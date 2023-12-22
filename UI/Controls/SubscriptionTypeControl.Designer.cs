@@ -50,6 +50,9 @@ namespace UI.Controls
             this.label8 = new System.Windows.Forms.Label();
             this.btnBuySubscription = new System.Windows.Forms.Button();
             this.btnCancelSubscription = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblMaxLoans = new System.Windows.Forms.Label();
+            this.nudPrestamosSimultaneos = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -58,6 +61,8 @@ namespace UI.Controls
             ((System.ComponentModel.ISupportInitialize)(this.nudLoanDays)).BeginInit();
             this.tlpCrud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrestamosSimultaneos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -86,7 +91,7 @@ namespace UI.Controls
             // 
             this.lblPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(35, 11);
+            this.lblPrice.Location = new System.Drawing.Point(50, 11);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(77, 13);
             this.lblPrice.TabIndex = 6;
@@ -95,14 +100,14 @@ namespace UI.Controls
             // nudPrice
             // 
             this.nudPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudPrice.Location = new System.Drawing.Point(118, 7);
+            this.nudPrice.Location = new System.Drawing.Point(133, 7);
             this.nudPrice.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.nudPrice.Name = "nudPrice";
-            this.nudPrice.Size = new System.Drawing.Size(339, 20);
+            this.nudPrice.Size = new System.Drawing.Size(386, 20);
             this.nudPrice.TabIndex = 7;
             this.nudPrice.Value = new decimal(new int[] {
             1,
@@ -122,14 +127,14 @@ namespace UI.Controls
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(460, 35);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(522, 35);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // lblName
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(68, 11);
+            this.lblName.Location = new System.Drawing.Point(83, 11);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(44, 13);
             this.lblName.TabIndex = 6;
@@ -138,9 +143,9 @@ namespace UI.Controls
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(118, 7);
+            this.txtName.Location = new System.Drawing.Point(133, 7);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(339, 20);
+            this.txtName.Size = new System.Drawing.Size(386, 20);
             this.txtName.TabIndex = 7;
             // 
             // tableLayoutPanel3
@@ -155,24 +160,25 @@ namespace UI.Controls
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(460, 35);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(522, 35);
             this.tableLayoutPanel3.TabIndex = 12;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 3);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(177, 133);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(115, 91);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(466, 123);
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(528, 165);
             this.tableLayoutPanel4.TabIndex = 34;
             // 
             // tableLayoutPanel2
@@ -187,14 +193,15 @@ namespace UI.Controls
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(460, 35);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(522, 35);
             this.tableLayoutPanel2.TabIndex = 41;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 11);
+            this.label2.Location = new System.Drawing.Point(38, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 6;
@@ -203,7 +210,7 @@ namespace UI.Controls
             // nudLoanDays
             // 
             this.nudLoanDays.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudLoanDays.Location = new System.Drawing.Point(118, 7);
+            this.nudLoanDays.Location = new System.Drawing.Point(133, 7);
             this.nudLoanDays.Maximum = new decimal(new int[] {
             60,
             0,
@@ -215,7 +222,7 @@ namespace UI.Controls
             0,
             0});
             this.nudLoanDays.Name = "nudLoanDays";
-            this.nudLoanDays.Size = new System.Drawing.Size(339, 20);
+            this.nudLoanDays.Size = new System.Drawing.Size(386, 20);
             this.nudLoanDays.TabIndex = 7;
             this.nudLoanDays.Value = new decimal(new int[] {
             1,
@@ -326,6 +333,54 @@ namespace UI.Controls
             this.btnCancelSubscription.UseVisualStyleBackColor = true;
             this.btnCancelSubscription.Click += new System.EventHandler(this.btnCancelSubscription_Click);
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel5.Controls.Add(this.lblMaxLoans, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.nudPrestamosSimultaneos, 1, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 126);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(522, 35);
+            this.tableLayoutPanel5.TabIndex = 42;
+            // 
+            // lblMaxLoans
+            // 
+            this.lblMaxLoans.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblMaxLoans.AutoSize = true;
+            this.lblMaxLoans.Location = new System.Drawing.Point(13, 11);
+            this.lblMaxLoans.Name = "lblMaxLoans";
+            this.lblMaxLoans.Size = new System.Drawing.Size(114, 13);
+            this.lblMaxLoans.TabIndex = 6;
+            this.lblMaxLoans.Text = "Prestamos simultaneos";
+            // 
+            // nudPrestamosSimultaneos
+            // 
+            this.nudPrestamosSimultaneos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudPrestamosSimultaneos.Location = new System.Drawing.Point(133, 7);
+            this.nudPrestamosSimultaneos.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudPrestamosSimultaneos.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudPrestamosSimultaneos.Name = "nudPrestamosSimultaneos";
+            this.nudPrestamosSimultaneos.Size = new System.Drawing.Size(386, 20);
+            this.nudPrestamosSimultaneos.TabIndex = 7;
+            this.nudPrestamosSimultaneos.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // SubscriptionTypeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,6 +407,9 @@ namespace UI.Controls
             ((System.ComponentModel.ISupportInitialize)(this.nudLoanDays)).EndInit();
             this.tlpCrud.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrestamosSimultaneos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,5 +438,8 @@ namespace UI.Controls
         private System.Windows.Forms.NumericUpDown nudLoanDays;
         private System.Windows.Forms.Button btnBuySubscription;
         private System.Windows.Forms.Button btnCancelSubscription;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label lblMaxLoans;
+        private System.Windows.Forms.NumericUpDown nudPrestamosSimultaneos;
     }
 }
